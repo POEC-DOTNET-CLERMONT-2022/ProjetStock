@@ -13,26 +13,26 @@ namespace ProjectStockLibrary
         private DateTime _openingDate { get; set; }
         private DateTime _closingDate { get; set; }
 
-        private Stock _stock { get; set; }
+        private List<Stock> _stock { get; set; }
         
-        public Market(string name, DateTime closingDate , DateTime openingDate,Stock stock)
+        public Market(string name, DateTime closingDate , DateTime openingDate,)
         {
             _id = Guid.NewGuid();
             _name = string.IsNullOrEmpty(name) ? throw new ArgumentNullException(nameof(name)) : name;
             _openingDate = openingDate;
             _closingDate = closingDate;
-            _stock = stock != null ? stock : throw new Exception("Erreur");
+            _stock = new List<Stock>();
 
         }
 
 
-        public Market(string name,Stock stock)
+        public Market(string name)
         {
             _id = Guid.NewGuid();
             _name = string.IsNullOrEmpty(name) ? throw new ArgumentNullException(nameof(name)) : name;
             _openingDate = DateTime.Now;
             _closingDate = DateTime.Now;
-            _stock = stock;
+            _stock = new List<Stock>();
         }
 
   
