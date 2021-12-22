@@ -10,7 +10,7 @@ namespace ProjectStockLibrary
         private string _email { get; set; }
         private string _phone { get; set; }
         private string _siret { get; set; }
-        private List<Address> _addresses { get; set; };
+        private List<Address> _addresses { get; set; }
 
         private List<Stock> _stocks { get; set; }
 
@@ -72,7 +72,7 @@ namespace ProjectStockLibrary
 
         }
 
-        public void removeAdress(Stock stock)
+        public void removeStocks(Stock stock)
         {
             if (_stocks.Contains(stock))
             {
