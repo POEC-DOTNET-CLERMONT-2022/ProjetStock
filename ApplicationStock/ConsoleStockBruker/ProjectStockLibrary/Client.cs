@@ -10,7 +10,9 @@ namespace ProjectStockLibrary
         private string _email { get; set; }
         private string _phone { get; set; }
         private string _siret { get; set; }
-        private List<Address> _addresses;
+        private List<Address> _addresses { get; set; };
+
+        private List<Stock> _stocks { get; set; }
 
         public Client(string firstName , string lastName, string email, string phone, string siret)
         {
@@ -22,6 +24,7 @@ namespace ProjectStockLibrary
             _siret = string.IsNullOrEmpty(siret) && siret.Length < 14 ? throw new ArgumentNullException(nameof(siret)) : siret;
             _phone = string.IsNullOrEmpty(phone) && phone.Length < 12 ? throw new ArgumentNullException(nameof(phone)) : phone;
             _addresses = new List<Address>();
+            _stocks = new List<Stock>();
 
 
         }
@@ -56,6 +59,45 @@ namespace ProjectStockLibrary
             }
            
         }
+        public void AddStocks(Stock stock)
+        {
+            if (!_stocks.Contains(stock))
+            {
+                _stocks.Add(stock);
+            }
+            else
+            {
+                throw new Exception("Is already add this ");
+            }
+
+        }
+
+        public void removeAdress(Stock stock)
+        {
+            if (_stocks.Contains(stock))
+            {
+                _stocks.Remove(stock);
+            }
+            else
+            {
+                throw new Exception("Not address correpond to your address");
+            }
+
+        }
+
+
+        public string readAllMyStock()
+        {
+            string maString = "";
+            foreach (Stock stock in _stocks)
+            {
+                maString += stock.read();
+            }
+
+            return maString;
+        }
+
+
 
         public void modifyAdress(int i,string firstName,string lastName,string email,string phone,string siret)
         {
