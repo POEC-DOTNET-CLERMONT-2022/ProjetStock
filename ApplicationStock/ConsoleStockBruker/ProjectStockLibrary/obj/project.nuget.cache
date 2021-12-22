@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2iCAqoV2g+DrPGvr3kTnwinWVA2KwUVS+CYoQ7mHv3qaXaNlhvOcoIhACwezs8kFg++6wXIh+thOlqxzwz/tog==",
+  "dgSpecHash": "cJNdgrjHyx32ZrHbWst+13I8Az/RYDYVS/cedbdDn55RtmADOOeli7ha4/6dNDdZ0O0rAWDjCHoF21fXdjNe1w==",
   "success": true,
-  "projectFilePath": "E:\\IPME_Project\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\ProjectStockLibrary\\ProjectStockLibrary.csproj",
+  "projectFilePath": "C:\\Users\\trito\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\ProjectStockLibrary\\ProjectStockLibrary.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
