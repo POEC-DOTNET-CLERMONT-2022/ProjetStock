@@ -13,6 +13,23 @@ namespace ProjectStockLibrary
         public void read()
         {
 
+
+
+
         }
+        public TItem Read()
+        {
+            Writer.Display("Donne moi le nom d'un ingredient");
+            var name = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(ingredientName))
+            {
+                Writer.Display("Ce nom n'est pas bon !");
+                return read
+            }
+
+            return new TItem { }
+          }
+    
     }
 }
