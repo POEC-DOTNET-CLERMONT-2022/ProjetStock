@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyStockModels
 {
-    public class Manager<TItem>
+    public  class Manager<TItem>
     {
         public IWriter<TItem> _Writer { get; set; }
         public IReader<TItem> _Reader { get; set; }
@@ -15,29 +15,63 @@ namespace MyStockModels
 
         public Manager(IWriter<TItem> writer,IReader<TItem> reader)
         {
-
             _Writer = writer;
-
             _Reader = reader;
             _Reader.Writer = writer;
             _items = new List<TItem>();
-
         }
 
-        public void updateStock()
+
+        public void update()
         {
+            try
+            {
+              /* _items*/
+            }
+            catch (Exception ex)
+            {
+                _Writer.Display($"Attention un problème est survenue : {ex.Message}");
+            }
+        }
+        public void delete(TItem item)
+        {
+            try
+            {
+                _items.Remove(item);
+            }
+            catch (Exception ex)
+            {
+                _Writer.Display($"Attention un problème est survenue : {ex.Message}");
+            }
 
         }
-        public void deleteStock()
+        public void read()
         {
-
+            try
+            {
+                foreach (var item in _items)
+                {
+                    _Writer.Display(item.);
+                }
+            }
+            catch (Exception ex)
+            {
+                _Writer.Display($"Attention un prolbème est survenue : {ex.Message}");
+            }
         }
-        public void readStock()
+        public void readAll()
         {
-
-        }
-        public void readAllStock()
-        {
+            try
+            {
+                foreach (var item in _items)
+                {
+                    _Writer.DisplayAll(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                _Writer.Display($"Attention un prolbème est survenue : {ex.Message}");
+            }
 
         }
     }

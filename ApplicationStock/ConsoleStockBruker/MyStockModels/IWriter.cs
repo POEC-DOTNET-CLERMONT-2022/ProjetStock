@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Pro
 
 namespace MyStockModels
 {
@@ -10,6 +11,6 @@ namespace MyStockModels
     {
         public void Display(string s);
 
-        public void Display(TItem item);
+        public void DisplayAll(TItem item);
     }
 }
