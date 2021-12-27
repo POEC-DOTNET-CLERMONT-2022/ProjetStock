@@ -4,7 +4,7 @@ using ProjectStockLibrary;
 
 Console.WriteLine("Hello, World!");
 
-Manager<Market> marketManager = new Manager<Market>(new Writer<Market>(), new Reader<Market>());
+ManagerMarket marketManager = new ManagerMarket(new IwriterMarket(), new Reader<Stock>());
 
 
 

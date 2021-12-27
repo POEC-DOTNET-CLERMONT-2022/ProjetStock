@@ -15,7 +15,12 @@
       "ProjectGuid": "53be34bc-3dd3-4098-b498-184936983cff",
       "DisplayName": "ProjectStockLibrary",
       "ColorIndex": 1
+    },
+    "df8c4aa6-a607-4746-89bd-6642ed91f87b": {
+      "ProjectGuid": "df8c4aa6-a607-4746-89bd-6642ed91f87b",
+      "DisplayName": "MyStockModels",
+      "ColorIndex": 2
     }
   },
-  "NextColorIndex": 2
+  "NextColorIndex": 3
 }
