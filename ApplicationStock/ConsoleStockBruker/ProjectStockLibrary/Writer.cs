@@ -15,7 +15,7 @@ namespace ProjectStockLibrary
         
         }
 
-        public void Display(TItem value)
+        public void DisplayAll(TItem value)
         {
             Console.WriteLine(value);
         }

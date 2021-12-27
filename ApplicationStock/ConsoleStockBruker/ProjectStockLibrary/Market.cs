@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace ProjectStockLibrary
 {
-    public class Market 
+    public class Market
     {
         private Guid _id { get; set; }
-        private string _name { get; set; }
+        public string _name { get; set; }
         private DateTime _openingDate { get; set; }
         private DateTime _closingDate { get; set; }
 
         private List<Stock> _stock { get; set; }
         
-        public Market(string name, DateTime closingDate , DateTime openingDate,)
+        public Market(string name, DateTime closingDate , DateTime openingDate)
         {
             _id = Guid.NewGuid();
             _name = string.IsNullOrEmpty(name) ? throw new ArgumentNullException(nameof(name)) : name;
@@ -34,8 +34,11 @@ namespace ProjectStockLibrary
             _closingDate = DateTime.Now;
             _stock = new List<Stock>();
         }
+        public void setName(string name)
+        {
+            this._name = name;
+        }
 
-  
 
     }
 }

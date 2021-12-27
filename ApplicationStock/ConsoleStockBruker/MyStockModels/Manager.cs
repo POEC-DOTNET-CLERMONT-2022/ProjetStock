@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace MyStockModels
 {
     public  class Manager<TItem>
@@ -19,6 +20,22 @@ namespace MyStockModels
             _Reader = reader;
             _Reader.Writer = writer;
             _items = new List<TItem>();
+        }
+
+
+
+        public void Create()
+        {
+            try
+            {
+               _items.Add(_Reader.create());
+               
+               
+            }
+            catch (Exception ex)
+            {
+                _Writer.Display($"Attention un prolbème est survenue : {ex.Message}");
+            }
         }
 
 
@@ -51,7 +68,7 @@ namespace MyStockModels
             {
                 foreach (var item in _items)
                 {
-                    _Writer.Display(item.);
+                    _Writer.Display(item.ToString());
                 }
             }
             catch (Exception ex)

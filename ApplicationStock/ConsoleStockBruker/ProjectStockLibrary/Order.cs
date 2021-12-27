@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectStockLibrary
 {
-    internal class Order
+    public  class Order
     {
         private Guid _id;
         private string _orderName { get; set; }

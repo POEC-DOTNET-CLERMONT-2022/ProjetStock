@@ -5,13 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace MyStockModels
+namespace ProjectStockLibrary
 {
-    public interface IReader<TItem> 
+    internal interface IReaderCommande
     {
-        public IWriter<TItem> Writer { get; set; }
-        public TItem create();
+        public IWriterCommande Writer { get; set; }
+        public Order create();
         public void read();
-
     }
 }

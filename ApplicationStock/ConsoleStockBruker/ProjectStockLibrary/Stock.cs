@@ -12,7 +12,7 @@ namespace ProjectStockLibrary
     {
         private Guid _id { get; set; }
         public string _name { get; set; }
-        private float _value { get; set; }
+        public float _value { get; set; }
         public string _entrepriseName { get; set; }
         private List<Client> _clients { get; set; }
         
@@ -27,6 +27,8 @@ namespace ProjectStockLibrary
             _clients = new List<Client>();
         }
 
+
+       
         public string read()
         {
             return $"name : {_name} value : {_value} entrepriseName :{ _entrepriseName}";

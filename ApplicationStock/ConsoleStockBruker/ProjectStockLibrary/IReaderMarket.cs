@@ -4,14 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-namespace MyStockModels
+namespace ProjectStockLibrary
 {
-    public interface IReader<TItem> 
+    internal interface IReaderMarket
     {
-        public IWriter<TItem> Writer { get; set; }
-        public TItem create();
+        public IWriterMarket Writer { get; set; }
+        public Market create();
         public void read();
-
     }
 }
