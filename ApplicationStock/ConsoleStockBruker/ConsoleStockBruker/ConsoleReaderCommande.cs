@@ -1,0 +1,37 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ProjectStockLibrary;
+
+namespace ConsoleStockBruker
+{
+    internal class ConsoleReaderCommande : IReaderCommande
+    {
+        public IWriterCommande Writer { get; set; }
+
+
+        public Order create(Stock stock)
+        {
+            Writer.Display("Donne moi le nom de l'action");
+            var Name = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(Name))
+            {
+                Writer.Display("Ce nom n'est pas bon !");
+                return create(stock);
+            }
+            Writer.Display("Donne moi le nom de l'action");
+            var nbStock = int.Parse(Console.ReadLine());
+
+            if (string.IsNullOrWhiteSpace(Name))
+            {
+                Writer.Display("Ce nom n'est pas bon !");
+                return create(stock);
+            }
+
+            return new Order(Name,stock,nbStock);
+        }
+    }
+}

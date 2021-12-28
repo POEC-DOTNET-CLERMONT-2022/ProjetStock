@@ -7,7 +7,7 @@ using ProjectStockLibrary;
 
 namespace MyStockModels
 {
-    internal class StockManager
+    public class StockManager
     {
             public IWriterStock _Writer { get; set; }
             public IReaderStock _Reader { get; set; }
@@ -50,7 +50,7 @@ namespace MyStockModels
                     _Writer.Display($"Attention un problème est survenue : {ex.Message}");
                 }
             }
-            public void delete(TItem item)
+            public void delete(Stock item)
             {
                 try
                 {

@@ -1,30 +1,11 @@
 {
   "version": 3,
   "targets": {
-    "net5.0": {
-      "ProjectStockLibrary/1.0.0": {
-        "type": "project",
-        "framework": "Unsupported,Version=v0.0",
-        "compile": {
-          "bin/placeholder/ProjectStockLibrary.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/ProjectStockLibrary.dll": {}
-        }
-      }
-    }
+    "net5.0": {}
   },
-  "libraries": {
-    "ProjectStockLibrary/1.0.0": {
-      "type": "project",
-      "path": "../ProjectStockLibrary/ProjectStockLibrary.csproj",
-      "msbuildProject": "../ProjectStockLibrary/ProjectStockLibrary.csproj"
-    }
-  },
+  "libraries": {},
   "projectFileDependencyGroups": {
-    "net5.0": [
-      "ProjectStockLibrary >= 1.0.0"
-    ]
+    "net5.0": []
   },
   "packageFolders": {
     "C:\\Users\\trito\\.nuget\\packages\\": {},
@@ -62,11 +43,7 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {
-            "C:\\Users\\trito\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\ProjectStockLibrary\\ProjectStockLibrary.csproj": {
-              "projectPath": "C:\\Users\\trito\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\ProjectStockLibrary\\ProjectStockLibrary.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -96,16 +73,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1201",
-      "level": "Error",
-      "message": "Le projet ProjectStockLibrary n'est pas compatible avec net5.0 (.NETCoreApp,Version=v5.0). Le projet ProjectStockLibrary prend en charge : net6.0 (.NETCoreApp,Version=v6.0)",
-      "libraryId": "ProjectStockLibrary",
-      "targetGraphs": [
-        "net5.0"
-      ]
-    }
-  ]
+  }
 }

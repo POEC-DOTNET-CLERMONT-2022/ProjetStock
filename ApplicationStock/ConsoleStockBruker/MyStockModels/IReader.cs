@@ -9,9 +9,9 @@ namespace MyStockModels
 {
     public interface IReader<TItem> 
     {
-        public IWriter<TItem> Writer { get; set; }
-        public TItem create();
-        public void read();
+        //public IWriter<TItem> Writer { get; set; }
+        //public TItem create();
+        //public void read();
 
     }
 }

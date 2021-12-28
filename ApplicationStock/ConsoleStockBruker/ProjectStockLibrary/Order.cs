@@ -9,10 +9,10 @@ namespace ProjectStockLibrary
     public  class Order
     {
         private Guid _id;
-        private string _orderName { get; set; }
-        private DateTime _orderDate;
+        public string _orderName { get; private set; }
+        public  DateTime _orderDate { get; private set; }
         private Stock _stock { get; set; }
-        private  int _nbStock { get; set; }
+        public  int _nbStock { get; private set; }
         public Order(string orderName,Stock stock, int nbStock) 
         {
             _orderName = orderName;

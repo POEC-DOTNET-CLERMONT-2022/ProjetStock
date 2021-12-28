@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace ProjectStockLibrary
 {
-    internal interface IReaderStock
+    public interface IReaderStock
     {
         public IWriterStock Writer { get; set; }
         public Stock create();
-        public void read();
     }
 }

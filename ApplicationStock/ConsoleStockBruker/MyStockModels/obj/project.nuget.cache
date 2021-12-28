@@ -1,18 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CW++sweNZw7vpgPWMBXijgD9bg2uAx4miZsIfpXW90KmnoHqd6bOF7H/OdEi1EGCx4MdaeP+nSJ/uHv4Anlbjw==",
-  "success": false,
+  "dgSpecHash": "T45CdodUfMnWlaRI3AhOxDJjsvb9HBbxZ7ELYI5ZPIXlZFHyJIdvAjWh+fh9EEUFclg7jCQNpCl367bDZiIwpg==",
+  "success": true,
   "projectFilePath": "C:\\Users\\trito\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\MyStockModels\\MyStockModels.csproj",
   "expectedPackageFiles": [],
-  "logs": [
-    {
-      "code": "NU1201",
-      "level": "Error",
-      "message": "Le projet ProjectStockLibrary n'est pas compatible avec net5.0 (.NETCoreApp,Version=v5.0). Le projet ProjectStockLibrary prend en charge : net6.0 (.NETCoreApp,Version=v6.0)",
-      "libraryId": "ProjectStockLibrary",
-      "targetGraphs": [
-        "net5.0"
-      ]
-    }
-  ]
+  "logs": []
 }

@@ -7,9 +7,6 @@ C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibra
 C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibrary\bin\Debug\net6.0\ProjectStockLibrary.dll
 C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibrary\bin\Debug\net6.0\ref\ProjectStockLibrary.dll
 C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibrary\bin\Debug\net6.0\ProjectStockLibrary.pdb
-C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibrary\bin\Debug\net6.0\MyStockModels.dll
-C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibrary\bin\Debug\net6.0\MyStockModels.pdb
-C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibrary\obj\Debug\net6.0\ProjectStockLibrary.csproj.CopyComplete
 C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibrary\obj\Debug\net6.0\ProjectStockLibrary.dll
 C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibrary\obj\Debug\net6.0\ref\ProjectStockLibrary.dll
 C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibrary\obj\Debug\net6.0\ProjectStockLibrary.pdb

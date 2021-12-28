@@ -8,10 +8,10 @@ namespace ProjectStockLibrary
 {
     public class Market
     {
-        private Guid _id { get; set; }
-        public string _name { get; set; }
-        private DateTime _openingDate { get; set; }
-        private DateTime _closingDate { get; set; }
+        private Guid _id;
+        public string _name {  get; private set; }
+        public DateTime _openingDate {  get; private set; }
+        public  DateTime _closingDate { get; private set; }
 
         private List<Stock> _stock { get; set; }
         

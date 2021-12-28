@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProjectStockLibrary;
 
 
 namespace ProjectStockLibrary
 {
-    internal class MarketManager
+    public class MarketManager
     {
             public IWriterMarket _Writer { get; set; }
             public IReaderMarket _Reader { get; set; }

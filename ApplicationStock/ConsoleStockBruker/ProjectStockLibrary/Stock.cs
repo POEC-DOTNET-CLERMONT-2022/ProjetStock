@@ -11,9 +11,9 @@ namespace ProjectStockLibrary
     public class Stock
     {
         private Guid _id { get; set; }
-        public string _name { get; set; }
-        public float _value { get; set; }
-        public string _entrepriseName { get; set; }
+        public string _name { get;  set; }
+        public float _value { get; private set; }
+        public string _entrepriseName { get;set; }
         private List<Client> _clients { get; set; }
         
 
