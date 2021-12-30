@@ -1,30 +1,11 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {
-      "MyStockModels/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "compile": {
-          "bin/placeholder/MyStockModels.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/MyStockModels.dll": {}
-        }
-      }
-    }
+    "net6.0": {}
   },
-  "libraries": {
-    "MyStockModels/1.0.0": {
-      "type": "project",
-      "path": "../MyStockModels/MyStockModels.csproj",
-      "msbuildProject": "../MyStockModels/MyStockModels.csproj"
-    }
-  },
+  "libraries": {},
   "projectFileDependencyGroups": {
-    "net6.0": [
-      "MyStockModels >= 1.0.0"
-    ]
+    "net6.0": []
   },
   "packageFolders": {
     "C:\\Users\\trito\\.nuget\\packages\\": {},
@@ -62,11 +43,7 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {
-            "C:\\Users\\trito\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\MyStockModels\\MyStockModels.csproj": {
-              "projectPath": "C:\\Users\\trito\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\MyStockModels\\MyStockModels.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {

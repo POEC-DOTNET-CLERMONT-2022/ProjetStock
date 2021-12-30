@@ -8,16 +8,16 @@ using MyStockModels;
 
 namespace ProjectStockLibrary
 {
-    public class Writer<TItem> : IWriter<TItem>
-    {
-        public void Display(string s) {
-            Console.WriteLine(s);
+    //public class Writer<TItem> : IWriter<TItem>
+    //{
+    //    public void Display(string s) {
+    //        Console.WriteLine(s);
         
-        }
+    //    }
 
-        public void Display(TItem value)
-        {
-            Console.WriteLine(value);
-        }
-    }
+    //    public void DisplayAll(TItem value)
+    //    {
+    //        Console.WriteLine(value);
+    //    }
+    //}
 }

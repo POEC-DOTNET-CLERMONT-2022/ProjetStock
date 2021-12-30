@@ -1,0 +1,47 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "ConsoleStockBruker/1.0.0": {
+        "dependencies": {
+          "MyStockModels": "1.0.0",
+          "ProjectStockLibrary": "1.0.0"
+        },
+        "runtime": {
+          "ConsoleStockBruker.dll": {}
+        }
+      },
+      "MyStockModels/1.0.0": {
+        "runtime": {
+          "MyStockModels.dll": {}
+        }
+      },
+      "ProjectStockLibrary/1.0.0": {
+        "runtime": {
+          "ProjectStockLibrary.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ConsoleStockBruker/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MyStockModels/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ProjectStockLibrary/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
