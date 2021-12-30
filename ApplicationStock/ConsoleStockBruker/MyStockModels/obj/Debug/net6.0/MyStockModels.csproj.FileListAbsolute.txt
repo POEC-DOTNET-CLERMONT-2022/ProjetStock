@@ -1,0 +1,15 @@
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\MyStockModels\obj\Debug\net6.0\MyStockModels.csproj.AssemblyReference.cache
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\MyStockModels\obj\Debug\net6.0\MyStockModels.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\MyStockModels\obj\Debug\net6.0\MyStockModels.AssemblyInfoInputs.cache
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\MyStockModels\obj\Debug\net6.0\MyStockModels.AssemblyInfo.cs
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\MyStockModels\obj\Debug\net6.0\MyStockModels.csproj.CoreCompileInputs.cache
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\MyStockModels\bin\Debug\net6.0\MyStockModels.deps.json
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\MyStockModels\bin\Debug\net6.0\MyStockModels.dll
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\MyStockModels\bin\Debug\net6.0\ref\MyStockModels.dll
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\MyStockModels\bin\Debug\net6.0\MyStockModels.pdb
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\MyStockModels\bin\Debug\net6.0\ProjectStockLibrary.dll
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\MyStockModels\bin\Debug\net6.0\ProjectStockLibrary.pdb
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\MyStockModels\obj\Debug\net6.0\MyStockModels.csproj.CopyComplete
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\MyStockModels\obj\Debug\net6.0\MyStockModels.dll
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\MyStockModels\obj\Debug\net6.0\ref\MyStockModels.dll
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\MyStockModels\obj\Debug\net6.0\MyStockModels.pdb
