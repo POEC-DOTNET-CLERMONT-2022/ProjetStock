@@ -12,5 +12,7 @@ namespace MyStockModels
         public void Display(string s);
 
         public void DisplayAll(Stock item);
+
+        public void DisplayAllOwnersStock(List<Client> clients);
     }
 }

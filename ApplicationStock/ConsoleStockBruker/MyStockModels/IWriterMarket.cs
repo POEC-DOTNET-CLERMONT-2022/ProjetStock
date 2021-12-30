@@ -12,5 +12,8 @@ namespace MyStockModels
         public void Display(string s);
 
         public void DisplayAll(Market item);
+
+        public void DisplayAllStocks(List<Stock> stocks);
+
     }
 }

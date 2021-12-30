@@ -44,5 +44,6 @@ namespace ConsoleStockBruker
             return new Stock (Name,value,entrepriseName);
         }
 
+
     }
 }

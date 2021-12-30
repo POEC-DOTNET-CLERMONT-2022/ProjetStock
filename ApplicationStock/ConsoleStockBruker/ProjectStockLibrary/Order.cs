@@ -26,6 +26,20 @@ namespace ProjectStockLibrary
         {
             _orderName = string.IsNullOrEmpty(orderName) ? throw new ArgumentNullException(nameof(orderName)) : orderName;
         }
+
+        public void modifyOrder(Order order,Stock stock, int nbStock)
+        {
+            if (order == null)
+            {
+                throw new ArgumentNullException(nameof(order));
+            }
+            else
+            {
+                order._stock = stock;
+                order._nbStock = nbStock;
+            }
+
+        }
         public void AddStocks(Stock stock)
         {
             if (!(stock is null))

@@ -11,5 +11,7 @@ namespace MyStockModels
     {
         public IWriterStock Writer { get; set; }
         public Stock create();
+
+        public void update(Stock stock);
     }
 }

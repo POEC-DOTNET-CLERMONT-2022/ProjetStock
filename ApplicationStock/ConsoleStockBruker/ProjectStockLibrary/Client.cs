@@ -2,19 +2,19 @@
 
 namespace ProjectStockLibrary
 {
-     internal class Client 
+    public class Client 
     {
         private Guid _id;
-        private string _firstName { get; set; }
-        private string _lastName { get; set; }
-        private string _email { get; set; }
-        private string _phone { get; set; }
-        private string _siret { get; set; }
-        private List<Address> _addresses { get; set; }
+        public string _firstName { get; private set; }
+        public string _lastName { get; private set; }
+        public string _email { get; private set; }
+        public string _phone { get; private set; }
+        public string _siret { get; private set; }
+        private List<Address> _addresses;
 
-        private List<Stock> _stocks { get; set; }
+        private List<Stock> _stocks;
 
-        public Client(string firstName , string lastName, string email, string phone, string siret)
+        internal Client(string firstName , string lastName, string email, string phone, string siret)
         {
             _id = Guid.NewGuid();
             _firstName = string.IsNullOrEmpty(firstName) ? throw new ArgumentNullException(nameof(firstName)) : firstName;
@@ -28,7 +28,7 @@ namespace ProjectStockLibrary
 
 
         }
-        public Client(Guid id, string firstName , string lastName, string email, string phone, string siret) : this(firstName, lastName, email, phone, siret)
+        internal Client(Guid id, string firstName , string lastName, string email, string phone, string siret) : this(firstName, lastName, email, phone, siret)
         {
             _id = id;
             

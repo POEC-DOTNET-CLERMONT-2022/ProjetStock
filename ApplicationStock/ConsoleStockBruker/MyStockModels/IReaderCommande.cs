@@ -12,5 +12,8 @@ namespace MyStockModels
     {
         public IWriterCommande Writer { get; set; }
         public Order create(Stock stock);
+
+        public void update(Order order, Stock stock);
+
     }
 }

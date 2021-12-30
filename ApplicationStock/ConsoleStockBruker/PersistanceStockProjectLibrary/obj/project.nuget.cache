@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Yg9hEOdI3uBBQ98tzuvEZfNLLUXyehmJDn9+LDlWRyuJJPrX/4dQ1jqBWmriN2e1ocGfQcthHn9OFoQ3bqs55w==",
+  "dgSpecHash": "19lUZnwVVmnhftpe0b3JQ+w//Q1VrvH3Lxra1YlxJ82ZZNNUgI7bzID2j0ifKjFeWl9fSWFger3cy9shTAstmA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\trito\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\PersistanceStockProjectLibrary\\PersistanceStockProjectLibrary.csproj",
+  "projectFilePath": "C:\\Users\\trito\\ProjetStock\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\PersistanceStockProjectLibrary\\PersistanceStockProjectLibrary.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

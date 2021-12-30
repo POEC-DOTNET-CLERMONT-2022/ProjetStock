@@ -9,12 +9,12 @@ namespace ProjectStockLibrary
     internal class Address
     {
         private Guid _id;
-        private string _address_line_1 { get; set; }
-        private string _address_line_2 { get; set; }
-        private string _codePostal { get; set; }
-        private string _city { get; set; }
-        private string _country { get; set; }
-      
+        public string _address_line_1 { get; private set; }
+        public string _address_line_2 { get; private set; }
+        public string _codePostal { get; private set; }
+        public string _city { get; private set; }
+        public string _country { get; private set; }
+
         public Address(string address_line_1, string address_line_2, string codePostal, string city, string country)
         {
              _id = Guid.NewGuid();

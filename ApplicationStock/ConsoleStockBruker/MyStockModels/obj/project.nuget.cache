@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fDNFoG+ihEAgPHfxk4KJxELi91E85i6MU+BHqzdpBzXgqhP8eVE2pdzMjFsZX0thlaHRvR4W9UHNOVW5njfqGA==",
+  "dgSpecHash": "qOUTbQCrhGjl3Wa/4OHK1pI1Q9kqrlkXhDeuj4xgBh2WsD9XuKDZgKGIJmv6Os8Ulb+c5H/qPfRkO8H3zvrJ3g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\trito\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\MyStockModels\\MyStockModels.csproj",
+  "projectFilePath": "C:\\Users\\trito\\ProjetStock\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\MyStockModels\\MyStockModels.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
