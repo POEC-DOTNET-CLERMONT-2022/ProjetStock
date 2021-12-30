@@ -39,11 +39,12 @@ namespace MyStockModels
             }
 
 
-            public void update()
+            public void update(int i ,Stock item)
             {
                 try
                 {
-                    /* _items*/
+                       _items[i] = item;
+                    
                 }
                 catch (Exception ex)
                 {

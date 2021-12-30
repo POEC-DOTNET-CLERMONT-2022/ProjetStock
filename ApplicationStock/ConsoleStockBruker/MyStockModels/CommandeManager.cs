@@ -39,10 +39,11 @@ namespace MyStockModels
         }
 
 
-        public void update()
+        public void update(int i, Order order)
         {
             try
             {
+                _items[i] = order;
                 /* _items*/
             }
             catch (Exception ex)
@@ -50,6 +51,7 @@ namespace MyStockModels
                 _Writer.Display($"Attention un problème est survenue : {ex.Message}");
             }
         }
+
         public void delete(Order item)
         {
             try

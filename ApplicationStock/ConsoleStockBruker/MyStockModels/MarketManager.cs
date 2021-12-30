@@ -40,10 +40,11 @@ namespace MyStockModels
             }
 
 
-            public void update()
+            public void update(int i, Market item)
             {
                 try
                 {
+                   _items[i] = item;
                     /* _items*/
                 }
                 catch (Exception ex)
