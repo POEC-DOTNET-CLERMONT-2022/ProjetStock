@@ -1,0 +1,15 @@
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ApiConsumerStockLibrary\obj\Debug\net6.0\ApiConsumerStockLibrary.csproj.AssemblyReference.cache
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ApiConsumerStockLibrary\obj\Debug\net6.0\ApiConsumerStockLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ApiConsumerStockLibrary\obj\Debug\net6.0\ApiConsumerStockLibrary.AssemblyInfoInputs.cache
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ApiConsumerStockLibrary\obj\Debug\net6.0\ApiConsumerStockLibrary.AssemblyInfo.cs
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ApiConsumerStockLibrary\obj\Debug\net6.0\ApiConsumerStockLibrary.csproj.CoreCompileInputs.cache
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ApiConsumerStockLibrary\bin\Debug\net6.0\ApiConsumerStockLibrary.deps.json
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ApiConsumerStockLibrary\bin\Debug\net6.0\ApiConsumerStockLibrary.dll
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ApiConsumerStockLibrary\bin\Debug\net6.0\ref\ApiConsumerStockLibrary.dll
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ApiConsumerStockLibrary\bin\Debug\net6.0\ApiConsumerStockLibrary.pdb
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ApiConsumerStockLibrary\bin\Debug\net6.0\ProjectStockLibrary.dll
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ApiConsumerStockLibrary\bin\Debug\net6.0\ProjectStockLibrary.pdb
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ApiConsumerStockLibrary\obj\Debug\net6.0\ApiConsumerStockLibrary.csproj.CopyComplete
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ApiConsumerStockLibrary\obj\Debug\net6.0\ApiConsumerStockLibrary.dll
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ApiConsumerStockLibrary\obj\Debug\net6.0\ref\ApiConsumerStockLibrary.dll
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ApiConsumerStockLibrary\obj\Debug\net6.0\ApiConsumerStockLibrary.pdb

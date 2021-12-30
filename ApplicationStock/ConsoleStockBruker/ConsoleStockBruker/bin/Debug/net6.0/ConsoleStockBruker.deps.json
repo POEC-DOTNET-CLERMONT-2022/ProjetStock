@@ -16,6 +16,9 @@
         }
       },
       "MyStockModels/1.0.0": {
+        "dependencies": {
+          "ProjectStockLibrary": "1.0.0"
+        },
         "runtime": {
           "MyStockModels.dll": {}
         }

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "OWXL0vMnVSfr9n6sjBqe4UBoLXAH845vLiPtOBg37q/880uQoz1wsgNcMOihmmFY6SBZ9n7V6/ySbGmMPDsVMQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\trito\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\ApiConsumerStockLibrary\\ApiConsumerStockLibrary.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\trito\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
