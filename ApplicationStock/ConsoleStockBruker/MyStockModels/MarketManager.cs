@@ -40,18 +40,21 @@ namespace MyStockModels
             }
 
 
-            public void update()
+        public void update(int i, Market market)
+        {
+            try
             {
-                try
-                {
-                    /* _items*/
-                }
-                catch (Exception ex)
-                {
-                    _Writer.Display($"Attention un problème est survenue : {ex.Message}");
-                }
+                _items[i] = market;
+                /* _items*/
             }
-            public void delete(Market item)
+            catch (Exception ex)
+            {
+                _Writer.Display($"Attention un problème est survenue : {ex.Message}");
+            }
+
+
+        }
+        public void delete(Market item)
             {
                 try
                 {
