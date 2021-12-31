@@ -25,7 +25,12 @@
       "ProjectGuid": "84f73860-0c4b-4911-bacf-b4ee3d99a763",
       "DisplayName": "ApiConsumerStockLibrary",
       "ColorIndex": 3
+    },
+    "f087972b-373d-4b64-b4f5-7e8bbb3a0388": {
+      "ProjectGuid": "f087972b-373d-4b64-b4f5-7e8bbb3a0388",
+      "DisplayName": "PersistanceStockProjectLibrary",
+      "ColorIndex": 4
     }
   },
-  "NextColorIndex": 4
+  "NextColorIndex": 5
 }

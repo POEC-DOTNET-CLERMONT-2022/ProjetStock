@@ -35,10 +35,10 @@ namespace ConsoleStockBruker
             return new Order(Name,stock,nbStock);
         }
 
-        public Order update(Order order, Stock stock)
+        public void update(Order order, Stock stock)
         {
             Writer.Display("Modification de l'order " + order._orderName);
-            Writer.Display("Donne moi le nom de l'action");
+            Writer.Display("Donne moi le nom de la commande ");
         
             Writer.Display("Donne moi le nom de l'action");
             var nbStock = int.Parse(Console.ReadLine());
@@ -46,14 +46,11 @@ namespace ConsoleStockBruker
             if (nbStock == null || nbStock < 0)
             {
                 Writer.Display("Mauvais chiffre!");
-                return update(order,stock);
             }
 
 
             order.modifyOrder(order, stock, nbStock);
 
-
-            return order;
 
         }
     }

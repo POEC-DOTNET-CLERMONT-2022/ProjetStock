@@ -23,7 +23,7 @@ namespace ConsoleStockBruker
             
         }
 
-        public void DisplayAllStocksOfMarket(List<Stock> _stocks)
+        public void DisplayAllStocks(List<Stock> _stocks)
         {
             string maString = "";
             foreach (Stock stock in _stocks)

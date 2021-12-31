@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectStockLibrary
 {
-    internal class Address
+   public  class Address
     {
         private Guid _id;
         public string _address_line_1 { get; private set; }

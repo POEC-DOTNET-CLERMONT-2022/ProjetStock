@@ -1,7 +1,6 @@
 ﻿
 using ConsoleStockBruker;
 using MyStockModels;
-using ProjectStockLibrary;
 
 Console.WriteLine("Application Stock  - Version console ");
 
@@ -21,7 +20,7 @@ while (monBool)
             marketManager.Create();
             break;
         case 3:
-            marketManager.update();
+            
             break;
         default:
             Console.WriteLine("Fin Market");
@@ -50,7 +49,7 @@ while (iscontinue)
             stockmanager.Create();
             break;
         case 3:
-            stockmanager.update();
+            stockmanager.update(Stock);
             break;
         default:
             Console.WriteLine("Fin partie stock");
@@ -78,6 +77,7 @@ while (true)
             commandeManager.Create(new ConsoleReaderStock().create());
             break;
         case 3:
+            Console.WriteLine("erreur");
             commandeManager.update();
             break;
         default:

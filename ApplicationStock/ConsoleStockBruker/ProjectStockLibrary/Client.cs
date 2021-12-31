@@ -14,7 +14,7 @@ namespace ProjectStockLibrary
 
         private List<Stock> _stocks;
 
-        internal Client(string firstName , string lastName, string email, string phone, string siret)
+        public Client(string firstName , string lastName, string email, string phone, string siret)
         {
             _id = Guid.NewGuid();
             _firstName = string.IsNullOrEmpty(firstName) ? throw new ArgumentNullException(nameof(firstName)) : firstName;
@@ -34,7 +34,7 @@ namespace ProjectStockLibrary
             
         }
 
-        public void AddAdress(Address address)
+        private void AddAdress(Address address)
         {
             if (!_addresses.Contains(address))
             {
@@ -47,7 +47,7 @@ namespace ProjectStockLibrary
             
         }
 
-        public void removeAdress(Address address)
+        private void removeAdress(Address address)
         {
             if (_addresses.Contains(address))
             {
@@ -99,9 +99,13 @@ namespace ProjectStockLibrary
 
 
 
-        public void modifyAdress(int i,string firstName,string lastName,string email,string phone,string siret)
+        public void modifyAdress(string firstName,string lastName,string email,string phone,string siret)
         {
-            
+            _firstName = firstName;
+            _lastName = lastName;
+            _email = email;
+            _phone = phone;
+            _siret = siret;
         }
         
 
