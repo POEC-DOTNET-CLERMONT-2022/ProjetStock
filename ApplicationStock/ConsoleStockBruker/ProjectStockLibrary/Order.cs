@@ -11,7 +11,7 @@ namespace ProjectStockLibrary
         private Guid _id;
         public string _orderName { get; private set; }
         public  DateTime _orderDate { get; private set; }
-        private Stock _stock { get; set; }
+        public Stock _stock { get; private set; }
         public  int _nbStock { get; private set; }
         public Order(string orderName,Stock stock, int nbStock) 
         {

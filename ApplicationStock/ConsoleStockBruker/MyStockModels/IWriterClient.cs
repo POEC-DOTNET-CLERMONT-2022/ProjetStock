@@ -15,6 +15,6 @@ namespace MyStockModels
 
         public void DisplayAllUserStock(List<Stock> _stocks);
 
-        public void DispalyAllUserAddress(List<Address> adresses);
+        public void DisplayAllUserAddress(List<Address> adresses);
     }
 }

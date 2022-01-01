@@ -43,7 +43,7 @@ namespace ConsoleStockBruker
 
             return new Stock (Name,value,entrepriseName);
         }
-        public void update(Stock stock)
+        public Stock update(Stock stock)
         {
             Writer.Display("Donne moi le nom de l'action");
             var Name = Console.ReadLine();
@@ -51,7 +51,7 @@ namespace ConsoleStockBruker
             if (string.IsNullOrWhiteSpace(Name))
             {
                 Writer.Display("Ce nom n'est pas bon !");
-                
+                return update(stock);
             }
             Writer.Display("Donne moi le nom de l'entreprise");
             var entrepriseName = Console.ReadLine();
@@ -59,7 +59,7 @@ namespace ConsoleStockBruker
             if (string.IsNullOrWhiteSpace(entrepriseName))
             {
                 Writer.Display("Ce nom n'est pas bon !");
-                
+                return update(stock);
             }
 
             Writer.Display("Donne moi la valeur de l'action");
@@ -68,8 +68,9 @@ namespace ConsoleStockBruker
             if (string.IsNullOrWhiteSpace(entrepriseName))
             {
                 Writer.Display("Ce nom n'est pas bon !");
-             
+                return update(stock);
             }
+            return stock;
 
         }
 

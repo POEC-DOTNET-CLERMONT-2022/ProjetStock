@@ -12,6 +12,6 @@ namespace MyStockModels
         public IWriterClient Writer { get; set; }
         public Client create();
 
-        public void update(Client client);
+        public Client update(Client client);
     }
 }

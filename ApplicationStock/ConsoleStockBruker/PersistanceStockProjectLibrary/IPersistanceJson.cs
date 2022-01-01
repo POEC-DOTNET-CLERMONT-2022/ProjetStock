@@ -12,6 +12,8 @@ namespace PersistanceStockProjectLibrary
 
         public void writeJson(Type objectType, object existingValue);
 
-      
+        public void updateJson(Type objectType, object existingValue);
+
+
     }
 }

@@ -7,7 +7,7 @@ using ProjectStockLibrary;
 
 namespace MyStockModels
 {
-    internal class ClientManager
+    public class ClientManager
     {
         public IWriterClient _Writer { get; set; }
         public IReaderClient _Reader { get; set; }
@@ -29,8 +29,6 @@ namespace MyStockModels
             try
             {
                 _items.Add(_Reader.create());
-
-
             }
             catch (Exception ex)
             {
@@ -39,11 +37,11 @@ namespace MyStockModels
         }
 
 
-        public void update(int i, Client client)
+        public void update(int i)
         {
             try
             {
-                _items[i] = client;
+                _items[i] = _Reader.update(_items[i]);
                 /* _items*/
             }
             catch (Exception ex)
@@ -53,11 +51,11 @@ namespace MyStockModels
 
 
         }
-        public void delete(Client item)
+        public void delete(int i)
         {
             try
             {
-                _items.Remove(item);
+                _items.Remove(_items[i]);
             }
             catch (Exception ex)
             {

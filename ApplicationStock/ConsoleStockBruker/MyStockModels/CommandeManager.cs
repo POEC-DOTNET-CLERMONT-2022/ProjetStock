@@ -39,11 +39,11 @@ namespace MyStockModels
         }
 
 
-        public void update(int i, Order order)
+        public void update(int i)
         {
             try
             {
-                _items[i] = order;
+                _items[i] = _Reader.update(_items[i], _items[i]._stock);
                 /* _items*/
             }
             catch (Exception ex)
@@ -53,11 +53,12 @@ namespace MyStockModels
 
 
         }
-        public void delete(Order item)
+
+        public void delete(int i)
         {
             try
             {
-                _items.Remove(item);
+                _items.Remove(_items[i]);
             }
             catch (Exception ex)
             {

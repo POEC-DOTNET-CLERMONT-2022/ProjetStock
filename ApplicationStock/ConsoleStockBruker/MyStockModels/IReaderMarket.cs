@@ -11,7 +11,7 @@ namespace MyStockModels
     {
         public IWriterMarket Writer { get; set; }
         public Market create();
-        public void update(Market market);
+        public Market update(Market market);
 
        
     }

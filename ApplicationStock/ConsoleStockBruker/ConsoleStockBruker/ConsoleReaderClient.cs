@@ -64,7 +64,7 @@ namespace ConsoleStockBruker
             return new Client(firstName,lastName, email, phone, siret);
         }
 
-        public void update(Client client)
+        public Client update(Client client)
         {
             Writer.Display("Donne moi le prenom du client");
             var firstName = Console.ReadLine();
@@ -72,7 +72,7 @@ namespace ConsoleStockBruker
             if (string.IsNullOrWhiteSpace(firstName))
             {
                 Writer.Display("Ce nom n'est pas bon !");
-                
+                return update(client);
             }
             Writer.Display("Donne moi le nom du client");
             var lastName = Console.ReadLine();
@@ -80,17 +80,17 @@ namespace ConsoleStockBruker
             if (string.IsNullOrWhiteSpace(firstName))
             {
                 Writer.Display("Ce nom n'est pas bon !");
-               
+                return update(client);
             }
 
             Writer.Display("Donne moi le email du client");
             var email = Console.ReadLine();
             Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
             Match match = regex.Match(email);
-            if (string.IsNullOrWhiteSpace(email) && match.Success)
+            if (string.IsNullOrWhiteSpace(email) && !match.Success)
             {
                 Writer.Display("Ce email n'est pas bon !");
-                
+                return update(client);
             }
             Writer.Display("Donne moi votre bigot");
             var phone = Console.ReadLine();
@@ -100,7 +100,7 @@ namespace ConsoleStockBruker
             if (string.IsNullOrWhiteSpace(phone) && match_phone.Success)
             {
                 Writer.Display("Ce nom n'est pas bon !");
-               
+                return update(client);
             }
             Writer.Display("Donne moi le siret");
             var siret = Console.ReadLine();
@@ -108,11 +108,11 @@ namespace ConsoleStockBruker
             if (string.IsNullOrWhiteSpace(siret))
             {
                 Writer.Display("Mauvais siret !");
-               
+                return update(client);
             }
             client.modifyAdress(firstName, lastName, email, phone, siret);
 
-
+            return client;
         }
     }
 }

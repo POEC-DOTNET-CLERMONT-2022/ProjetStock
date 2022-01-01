@@ -10,3 +10,15 @@ C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibra
 C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibrary\obj\Debug\net6.0\ProjectStockLibrary.dll
 C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibrary\obj\Debug\net6.0\ref\ProjectStockLibrary.dll
 C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibrary\obj\Debug\net6.0\ProjectStockLibrary.pdb
+C:\Users\trito\ProjetStock\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibrary\bin\Debug\net6.0\ProjectStockLibrary.deps.json
+C:\Users\trito\ProjetStock\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibrary\bin\Debug\net6.0\ProjectStockLibrary.dll
+C:\Users\trito\ProjetStock\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibrary\bin\Debug\net6.0\ref\ProjectStockLibrary.dll
+C:\Users\trito\ProjetStock\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibrary\bin\Debug\net6.0\ProjectStockLibrary.pdb
+C:\Users\trito\ProjetStock\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibrary\obj\Debug\net6.0\ProjectStockLibrary.csproj.AssemblyReference.cache
+C:\Users\trito\ProjetStock\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibrary\obj\Debug\net6.0\ProjectStockLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\trito\ProjetStock\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibrary\obj\Debug\net6.0\ProjectStockLibrary.AssemblyInfoInputs.cache
+C:\Users\trito\ProjetStock\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibrary\obj\Debug\net6.0\ProjectStockLibrary.AssemblyInfo.cs
+C:\Users\trito\ProjetStock\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibrary\obj\Debug\net6.0\ProjectStockLibrary.csproj.CoreCompileInputs.cache
+C:\Users\trito\ProjetStock\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibrary\obj\Debug\net6.0\ProjectStockLibrary.dll
+C:\Users\trito\ProjetStock\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibrary\obj\Debug\net6.0\ref\ProjectStockLibrary.dll
+C:\Users\trito\ProjetStock\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibrary\obj\Debug\net6.0\ProjectStockLibrary.pdb

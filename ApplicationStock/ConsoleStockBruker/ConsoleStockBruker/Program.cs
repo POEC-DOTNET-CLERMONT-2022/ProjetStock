@@ -9,7 +9,7 @@ bool monBool = true;
 while (monBool)
 {
     Console.WriteLine("Market");
-    Console.WriteLine("1: read a market , 2: create a market ,3 - update market");
+    Console.WriteLine("1: read a market , 2: create a market ,3 - delete market , 4 - update market");
     var choice = int.Parse(Console.ReadLine());
     switch (choice)
     {
@@ -20,12 +20,60 @@ while (monBool)
             marketManager.Create();
             break;
         case 3:
-            
+            marketManager.readAll();
+            Console.WriteLine("\nChoix a supprimer");
+            int choix = int.Parse(Console.ReadLine());
+            marketManager.delete(choix);
+            break;
+        case 4:
+            marketManager.readAll();
+            Console.WriteLine("\nChoix a modifier");
+            int choix_update = int.Parse(Console.ReadLine());
+            Console.WriteLine("Update");
+            marketManager.update(choix_update);
+
             break;
         default:
             Console.WriteLine("Fin Market");
 
             monBool = false;
+            break;
+    }
+
+}
+var clientManager = new ClientManager(new ConsoleWriterClient(), new ConsoleReaderClient());
+bool _monBool = true;
+while (_monBool)
+{
+    Console.WriteLine("Client");
+    Console.WriteLine("1: read a client , 2: create a client ,3 - delete client , 4 - update client");
+    var choice = int.Parse(Console.ReadLine());
+    switch (choice)
+    {
+        case 1:
+            clientManager.read();
+            break;
+        case 2:
+            clientManager.Create();
+            break;
+        case 3:
+            clientManager.readAll();
+            Console.WriteLine("\nChoix a supprimer");
+            int choix = int.Parse(Console.ReadLine());
+            clientManager.delete(choix);
+            break;
+        case 4:
+            clientManager.readAll();
+            Console.WriteLine("\nChoix a modifier");
+            int choix_update = int.Parse(Console.ReadLine());
+            Console.WriteLine("Update");
+            clientManager.update(choix_update);
+
+            break;
+        default:
+            Console.WriteLine("Fin Client");
+
+            _monBool = false;
             break;
     }
 
@@ -38,7 +86,7 @@ StockManager stockmanager = new StockManager(new ConsoleWriterStocks(),new Conso
 while (iscontinue)
 {
     Console.WriteLine("Stock");
-    Console.WriteLine("1: read a Stock , 2: create a Stock ,3 - update Stock");
+    Console.WriteLine("1: read a Stock , 2: create a Stock ,3 - delete Stock , 4 - update stock");
     var choice = int.Parse(Console.ReadLine());
     switch (choice)
     {
@@ -49,7 +97,18 @@ while (iscontinue)
             stockmanager.Create();
             break;
         case 3:
-            stockmanager.update(Stock);
+            Console.WriteLine("erreur");
+            stockmanager.readAll();
+            Console.WriteLine("\nChoix a supprimer");
+            int choix = int.Parse(Console.ReadLine());
+            stockmanager.delete(choix);
+            break;
+        case 4:
+            stockmanager.readAll();
+            Console.WriteLine("\nChoix a modifier");
+            int choix_update = int.Parse(Console.ReadLine());
+            Console.WriteLine("Update");
+            stockmanager.update(choix_update);
             break;
         default:
             Console.WriteLine("Fin partie stock");
@@ -66,7 +125,7 @@ var commandeManager = new CommandeManager(new ConsoleWriterCommande(), new Conso
 while (true)
 {
     Console.WriteLine("Stock");
-    Console.WriteLine("1: read a Commande , 2: create a commande,3 - update commande");
+    Console.WriteLine("1: read a Commande , 2: create a commande,3 - delete commande , 4 - update market");
     var choice = int.Parse(Console.ReadLine());
     switch (choice)
     {
@@ -77,8 +136,17 @@ while (true)
             commandeManager.Create(new ConsoleReaderStock().create());
             break;
         case 3:
-            Console.WriteLine("erreur");
-            commandeManager.update();
+            commandeManager.readAll();
+            Console.WriteLine("\nChoix a supprimer");
+            int choix = int.Parse(Console.ReadLine());
+            commandeManager.delete(choix);
+            break;
+        case 4:
+            commandeManager.readAll();
+            Console.WriteLine("\nChoix a modifier");
+            int choix_update = int.Parse(Console.ReadLine());
+            Console.WriteLine("Update");
+            commandeManager.update(choix_update);
             break;
         default:
             Console.WriteLine("Fin partie commande");

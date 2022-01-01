@@ -39,11 +39,11 @@ namespace MyStockModels
             }
 
 
-            public void update(int i, Stock stock)
+            public void update(int i)
             {
             try
             {
-                _items[i] = stock;
+                _items[i] = _Reader.update(_items[i]);
                 /* _items*/
             }
             catch (Exception ex)
@@ -53,18 +53,18 @@ namespace MyStockModels
          
             
             }
-        public void delete(Stock item)
+        public void delete(int i)
+        {
+            try
             {
-                try
-                {
-                    _items.Remove(item);
-                }
-                catch (Exception ex)
-                {
-                    _Writer.Display($"Attention un problème est survenue : {ex.Message}");
-                }
-
+                _items.Remove(_items[i]);
             }
+            catch (Exception ex)
+            {
+                _Writer.Display($"Attention un problème est survenue : {ex.Message}");
+            }
+
+        }
             public void read()
             {
                 try
