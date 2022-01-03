@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace WPFStockControlLibrary
 {
     /// <summary>
-    /// Logique d'interaction pour SendEmailRecover.xaml
+    /// Logique d'interaction pour UserControle.xaml
     /// </summary>
-    public partial class SendEmailRecover : Window
+    public partial class UserControle : UserControl
     {
-        public SendEmailRecover()
+        public UserControle()
         {
             InitializeComponent();
         }
@@ -29,7 +30,11 @@ namespace WPFStockControlLibrary
         }
         private void MenuItem_Click_Connection(object sender, RoutedEventArgs e)
         {
+        
+            LoginPage page_connection  = new LoginPage();
 
+            page_connection.Show();
+            
         }
         private void MenuItem_Click_Contact(object sender, RoutedEventArgs e)
         {

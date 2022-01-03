@@ -10,18 +10,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace WPFStockControlLibrary
 {
     /// <summary>
-    /// Logique d'interaction pour recoverPassword.xaml
+    /// Logique d'interaction pour ClientControle.xaml
     /// </summary>
-    public partial class recoverPassword : Window
+    public partial class ClientControle : UserControl
     {
-        public recoverPassword()
+        public ClientControle()
         {
             InitializeComponent();
+
         }
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {

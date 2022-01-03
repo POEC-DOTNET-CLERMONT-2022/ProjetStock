@@ -58,9 +58,11 @@
                         </MenuItem>
                         <MenuItem Header="My order">
                         </MenuItem>
-                        <MenuItem Header="My rappels">
+                        <MenuItem Header="My notification">
                         </MenuItem>
-                        <MenuItem Header="Sell stocks">
+                        <MenuItem Header="Sell stocks ">
+                        </MenuItem>
+                        <MenuItem Header="Buy stocks ">
                         </MenuItem>
                         <MenuItem Header="Contact us">
                             <MenuItem Header="Direct Message" Click="MenuItem_Click_Contact"></MenuItem>

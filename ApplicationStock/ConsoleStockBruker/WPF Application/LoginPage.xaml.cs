@@ -15,18 +15,17 @@ using System.Windows.Shapes;
 namespace WPFStockControlLibrary
 {
     /// <summary>
-    /// Logique d'interaction pour CreateAccount.xaml
+    /// Logique d'interaction pour LoginPage.xaml
     /// </summary>
-    public partial class CreateAccount : Window
+    public partial class LoginPage : Window
     {
-        public CreateAccount()
+        public LoginPage()
         {
             InitializeComponent();
+            UserControle userControle = new UserControle();
+            userMenu.Content = userControle;
         }
 
-        private void login_button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
     }
 }

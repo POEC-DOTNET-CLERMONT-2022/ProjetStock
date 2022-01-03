@@ -12,17 +12,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFStockControlLibrary;
 
-namespace WPFStockControlLibrary
+namespace WPF_Application
 {
     /// <summary>
-    /// Logique d'interaction pour ClientControle.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class ClientControle : UserControl
+    public partial class MainWindow : Window
     {
-        public ClientControle()
+
+        
+        public MainWindow()
         {
             InitializeComponent();
+            UserControle userControle = new UserControle();
+            userMenu.Content = userControle;
         }
+       
     }
 }

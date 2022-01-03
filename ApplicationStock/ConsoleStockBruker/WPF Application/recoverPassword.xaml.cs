@@ -15,25 +15,20 @@ using System.Windows.Shapes;
 namespace WPFStockControlLibrary
 {
     /// <summary>
-    /// Logique d'interaction pour LoginPage.xaml
+    /// Logique d'interaction pour recoverPassword.xaml
     /// </summary>
-    public partial class LoginPage : Window
+    public partial class recoverPassword : Window
     {
-        public LoginPage()
+        public recoverPassword()
         {
             InitializeComponent();
+            UserControle userControle = new UserControle();
+            userMenu.Content = userControle;
         }
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void login_button_recover_Click(object sender, RoutedEventArgs e)
         {
 
         }
-        private void MenuItem_Click_Connection(object sender, RoutedEventArgs e)
-        {
 
-        }
-        private void MenuItem_Click_Contact(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

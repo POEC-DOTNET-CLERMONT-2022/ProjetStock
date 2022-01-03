@@ -1,16 +1,16 @@
-﻿<Window x:Class="WPFStockControlLibrary.LoginPage"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPFStockControlLibrary"
-        mc:Ignorable="d"
-        Title="Application " Height="450" Width="800">
+﻿<UserControl x:Class="WPFStockControlLibrary.UserControle"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFStockControlLibrary"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <WrapPanel Height="50" Width="auto" VerticalAlignment="Top" Background="LightGray">
             <DockPanel>
                 <Menu DockPanel.Dock="Top">
-                    <MenuItem Header="Menu" Height="50" >
+                    <MenuItem Header="Menu"  Height="50">
                         <MenuItem Header="Connection" Click="MenuItem_Click_Connection"></MenuItem>
                         <MenuItem Header="Market">
                             <MenuItem Header="MarketA">
@@ -49,56 +49,6 @@
                 </Menu>
             </DockPanel>
         </WrapPanel>
-        <DockPanel>
-
-            <StackPanel  Width="557" DockPanel.Dock="top" Background="#FFCEC0C0" Height="309" >
-
-                <Label x:Name="login" HorizontalAlignment="Center"  FontSize="18"  VerticalAlignment="Center" >Login</Label>
-                <DockPanel x:Name="user_message">
-                    <Label x:Name="username" Margin="0,0,0,0">Username</Label>
-                    <TextBox  Text="" Height="17"/>
-                </DockPanel>
-                <DockPanel  x:Name="pass_message"  >
-                    <Label x:Name="password" Margin="0,0,0,0">Password</Label>
-                    <TextBox Margin="0,10,0,0" Text="" Height="17"/>
-                </DockPanel>
-                <DockPanel Margin="10">
-                    <TextBlock FontSize="10">
-                <Hyperlink NavigateUri="Page1.xaml#contentpanel" x:Name="create"  >Create a account </Hyperlink>
-                    </TextBlock>
-                </DockPanel>
-                <DockPanel Margin="10">
-                    <TextBlock FontSize="10">
-                    Forgot Password ?
-                    </TextBlock>
-
-                    <TextBlock FontSize="10">
-                <Hyperlink NavigateUri="Page1.xaml#contentpanel"   x:Name="recover" >Recover a account </Hyperlink>
-                    </TextBlock>
-
-                </DockPanel>
-                <DockPanel Margin="10" Visibility="Hidden" x:Name="message_error">
-                    <TextBlock FontSize="20">
-                    Error
-                    </TextBlock>
-
-
-
-                </DockPanel>
-                <DockPanel Margin="10">
-
-
-                    <Button Height="30" BorderThickness="3"  x:Name="login_button" Width="304" >Connexion</Button>
-
-                </DockPanel>
-
-
-            </StackPanel>
-
-        </DockPanel>
-
-
+        
     </Grid>
-
-
-</Window>
+</UserControl>
