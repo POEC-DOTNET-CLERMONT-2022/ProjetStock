@@ -13,7 +13,13 @@
                 <DataTemplate>
                     <StackPanel>
                         <TextBlock Text="OrderName :"/>
-                        <TextBlock Text="{Binding _orders}"></TextBlock>
+                        <TextBlock Text="{Binding _orderName}"></TextBlock>
+                        <TextBlock Text="Stock Name :"/>
+                        <TextBlock Text="{Binding _stock._name}"></TextBlock>
+                        <TextBlock Text="Stock value :"/>
+                        <TextBlock Text="{Binding _stock._value  }"></TextBlock>
+                        <TextBlock Text="Stock entrepriseName :"/>
+                        <TextBlock Text="{Binding _stock._entrepriseName  }"></TextBlock>
                         <TextBlock Text="NbStock :"/>
                         <TextBlock Text="{Binding _nbStock  }"></TextBlock>
                     </StackPanel>

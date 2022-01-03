@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using ProjectStockLibrary;
 
 namespace WPF_Application
 {
@@ -25,15 +25,19 @@ namespace WPF_Application
         
         public ListOrderControl()
         {
-            //List<Order> _orders = new List<Order>();
-            //Stock stock = new Stock("etst", 5, "tests");
-            //_orders.Add(new Order("testc",stock , 5));
-
-
-            //listsOrders.ItemsSource = _items;
-
-
             InitializeComponent();
+            List<Order> _orders = new List<Order>();
+            Stock stock = new Stock("CGI", 5, "CGI");
+            _orders.Add(new Order("test_action",stock , 5));
+
+            Stock stock_ = new Stock("Apside", 5, "Apside");
+            _orders.Add(new Order("test_action", stock_, 5));
+            Stock stock_michelin = new Stock("Michelin", 5, "Michelin");
+            _orders.Add(new Order("test_action", stock_michelin, 5));
+            listsOrders.ItemsSource = _orders;
+
+
+            
         }
 
         private void ChangeViewOrder_Click(object sender, RoutedEventArgs e)
