@@ -1,28 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\trito\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\ConsoleStockBruker\\ConsoleStockBruker.csproj": {}
+    "E:\\IPME_Project\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\ConsoleStockBruker\\ConsoleStockBruker.csproj": {}
   },
   "projects": {
-    "C:\\Users\\trito\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\ConsoleStockBruker\\ConsoleStockBruker.csproj": {
+    "E:\\IPME_Project\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\ConsoleStockBruker\\ConsoleStockBruker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\trito\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\ConsoleStockBruker\\ConsoleStockBruker.csproj",
+        "projectUniqueName": "E:\\IPME_Project\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\ConsoleStockBruker\\ConsoleStockBruker.csproj",
         "projectName": "ConsoleStockBruker",
-        "projectPath": "C:\\Users\\trito\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\ConsoleStockBruker\\ConsoleStockBruker.csproj",
-        "packagesPath": "C:\\Users\\trito\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\trito\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\ConsoleStockBruker\\obj\\",
+        "projectPath": "E:\\IPME_Project\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\ConsoleStockBruker\\ConsoleStockBruker.csproj",
+        "packagesPath": "C:\\Users\\hosse\\.nuget\\packages\\",
+        "outputPath": "E:\\IPME_Project\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\ConsoleStockBruker\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\trito\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\hosse\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
