@@ -7,10 +7,13 @@ using ProjectStockLibrary;
 
 namespace MyStockModels
 {
-    public interface IWriter<TItem>
+    public interface IWriterMarket
     {
-        //public void Display(string s);
+        public void Display(string s);
 
-        //public void DisplayAll(TItem item);
+        public void DisplayAll(Market item);
+
+        public void DisplayAllStocks(List<Stock> stocks);
+
     }
 }

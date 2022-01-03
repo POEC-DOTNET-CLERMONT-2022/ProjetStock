@@ -1,5 +1,0 @@
-C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibrary\obj\Debug\net6.0\ProjectStockLibrary.csproj.AssemblyReference.cache
-C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibrary\obj\Debug\net6.0\ProjectStockLibrary.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibrary\obj\Debug\net6.0\ProjectStockLibrary.AssemblyInfoInputs.cache
-C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibrary\obj\Debug\net6.0\ProjectStockLibrary.AssemblyInfo.cs
-C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockLibrary\obj\Debug\net6.0\ProjectStockLibrary.csproj.CoreCompileInputs.cache

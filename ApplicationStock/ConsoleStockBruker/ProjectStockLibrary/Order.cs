@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace ProjectStockLibrary
 {
-    internal class Order
+    public  class Order
     {
         private Guid _id;
-        private string _orderName { get; set; }
-        private DateTime _orderDate;
-        private Stock _stock { get; set; }
-        private  int _nbStock { get; set; }
+        public string _orderName { get; private set; }
+        public  DateTime _orderDate { get; private set; }
+        public Stock _stock { get; private set; }
+        public  int _nbStock { get; private set; }
         public Order(string orderName,Stock stock, int nbStock) 
         {
             _orderName = orderName;
@@ -25,6 +25,20 @@ namespace ProjectStockLibrary
         public Order(string orderName,Stock stock, int nbStock, DateTime orderDate, Guid id ) : this(orderName, stock, nbStock)
         {
             _orderName = string.IsNullOrEmpty(orderName) ? throw new ArgumentNullException(nameof(orderName)) : orderName;
+        }
+
+        public void modifyOrder(Order order,Stock stock, int nbStock)
+        {
+            if (order == null)
+            {
+                throw new ArgumentNullException(nameof(order));
+            }
+            else
+            {
+                order._stock = stock;
+                order._nbStock = nbStock;
+            }
+
         }
         public void AddStocks(Stock stock)
         {

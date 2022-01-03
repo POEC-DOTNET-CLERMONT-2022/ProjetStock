@@ -2,17 +2,17 @@
 
 namespace ProjectStockLibrary
 {
-     internal class Client 
+    public class Client 
     {
         private Guid _id;
-        private string _firstName { get; set; }
-        private string _lastName { get; set; }
-        private string _email { get; set; }
-        private string _phone { get; set; }
-        private string _siret { get; set; }
-        private List<Address> _addresses { get; set; }
+        public string _firstName { get; private set; }
+        public string _lastName { get; private set; }
+        public string _email { get; private set; }
+        public string _phone { get; private set; }
+        public string _siret { get; private set; }
+        private List<Address> _addresses;
 
-        private List<Stock> _stocks { get; set; }
+        private List<Stock> _stocks;
 
         public Client(string firstName , string lastName, string email, string phone, string siret)
         {
@@ -28,13 +28,13 @@ namespace ProjectStockLibrary
 
 
         }
-        public Client(Guid id, string firstName , string lastName, string email, string phone, string siret) : this(firstName, lastName, email, phone, siret)
+        internal Client(Guid id, string firstName , string lastName, string email, string phone, string siret) : this(firstName, lastName, email, phone, siret)
         {
             _id = id;
             
         }
 
-        public void AddAdress(Address address)
+        private void AddAdress(Address address)
         {
             if (!_addresses.Contains(address))
             {
@@ -47,7 +47,7 @@ namespace ProjectStockLibrary
             
         }
 
-        public void removeAdress(Address address)
+        private void removeAdress(Address address)
         {
             if (_addresses.Contains(address))
             {
@@ -99,9 +99,13 @@ namespace ProjectStockLibrary
 
 
 
-        public void modifyAdress(int i,string firstName,string lastName,string email,string phone,string siret)
+        public void modifyAdress(string firstName,string lastName,string email,string phone,string siret)
         {
-            
+            _firstName = firstName;
+            _lastName = lastName;
+            _email = email;
+            _phone = phone;
+            _siret = siret;
         }
         
 

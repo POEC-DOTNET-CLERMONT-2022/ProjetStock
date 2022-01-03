@@ -7,10 +7,10 @@ using ProjectStockLibrary;
 
 namespace MyStockModels
 {
-    public interface IWriter<TItem>
+    public interface IWriterCommande
     {
-        //public void Display(string s);
+        public void Display(string s);
 
-        //public void DisplayAll(TItem item);
+        public void DisplayAll(Order item);
     }
 }
