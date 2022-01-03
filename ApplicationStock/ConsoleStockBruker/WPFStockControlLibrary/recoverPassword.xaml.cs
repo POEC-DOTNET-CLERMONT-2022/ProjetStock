@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace WPFStockControlLibrary
 {
     /// <summary>
-    /// Logique d'interaction pour LoginPage.xaml
+    /// Logique d'interaction pour recoverPassword.xaml
     /// </summary>
-    public partial class LoginPage : Window
+    public partial class recoverPassword : Window
     {
-        public LoginPage()
+        public recoverPassword()
         {
             InitializeComponent();
         }

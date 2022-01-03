@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace WPFStockControlLibrary
 {
     /// <summary>
-    /// Logique d'interaction pour LoginPage.xaml
+    /// Logique d'interaction pour SendEmailRecover.xaml
     /// </summary>
-    public partial class LoginPage : Window
+    public partial class SendEmailRecover : Window
     {
-        public LoginPage()
+        public SendEmailRecover()
         {
             InitializeComponent();
         }
