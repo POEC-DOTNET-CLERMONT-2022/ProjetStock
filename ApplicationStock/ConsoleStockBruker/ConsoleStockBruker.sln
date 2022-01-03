@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyStockModels", "MyStockMod
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersistanceStockProjectLibrary", "PersistanceStockProjectLibrary\PersistanceStockProjectLibrary.csproj", "{F087972B-373D-4B64-B4F5-7E8BBB3A0388}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFStockControlLibrary", "WPFStockControlLibrary\WPFStockControlLibrary.csproj", "{81207D82-F1CF-4820-BCDE-8B277FFA91D2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_Application", "WPF_Application\WPF_Application.csproj", "{70FD9C60-DD9D-41C9-BFAC-8172AE0D53D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{F087972B-373D-4B64-B4F5-7E8BBB3A0388}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F087972B-373D-4B64-B4F5-7E8BBB3A0388}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F087972B-373D-4B64-B4F5-7E8BBB3A0388}.Release|Any CPU.Build.0 = Release|Any CPU
-		{81207D82-F1CF-4820-BCDE-8B277FFA91D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{81207D82-F1CF-4820-BCDE-8B277FFA91D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{81207D82-F1CF-4820-BCDE-8B277FFA91D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{81207D82-F1CF-4820-BCDE-8B277FFA91D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70FD9C60-DD9D-41C9-BFAC-8172AE0D53D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70FD9C60-DD9D-41C9-BFAC-8172AE0D53D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70FD9C60-DD9D-41C9-BFAC-8172AE0D53D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70FD9C60-DD9D-41C9-BFAC-8172AE0D53D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
