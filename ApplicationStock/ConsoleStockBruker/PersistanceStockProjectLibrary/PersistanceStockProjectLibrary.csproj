@@ -1,7 +1,21 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		
+		<Nullable>enable</Nullable>
+	    <LangVersion>10.0</LangVersion>
+		
+
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="AutoFixture" Version="4.17.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\ProjectStockDTOS\ProjectStockDTOS.csproj" />
+	  <ProjectReference Include="..\ProjectStockLibrary\ProjectStockLibrary.csproj" />
+	</ItemGroup>
 
 </Project>

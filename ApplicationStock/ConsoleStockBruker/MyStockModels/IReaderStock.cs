@@ -9,7 +9,7 @@ namespace MyStockModels
 {
     public interface IReaderStock
     {
-        public IWriterStock Writer { get; set; }
-        public Stock create();
+         IWriterStock Writer { get; set; }
+         Stock create();
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31911.196
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleStockBruker", "ConsoleStockBruker\ConsoleStockBruker.csproj", "{819B80AD-8F02-4D66-9418-C69A590E6560}"
 EndProject
@@ -9,15 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectStockLibrary", "Proj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyStockModels", "MyStockModels\MyStockModels.csproj", "{DF8C4AA6-A607-4746-89BD-6642ED91F87B}"
 EndProject
-<<<<<<< Updated upstream
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersistanceStockProjectLibrary", "PersistanceStockProjectLibrary\PersistanceStockProjectLibrary.csproj", "{F087972B-373D-4B64-B4F5-7E8BBB3A0388}"
-=======
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersistanceStockProjectLibrary", "PersistanceStockProjectLibrary\PersistanceStockProjectLibrary.csproj", "{F087972B-373D-4B64-B4F5-7E8BBB3A0388}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPF_Application", "WPF_Application\WPF_Application.csproj", "{70FD9C60-DD9D-41C9-BFAC-8172AE0D53D1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCF_application", "WCF_application\WCF_application.csproj", "{5A5106CC-78E5-4BE9-A798-148E5F38D4E4}"
->>>>>>> Stashed changes
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectStockDTOS", "ProjectStockDTOS\ProjectStockDTOS.csproj", "{2DC5BDE5-4B4B-4175-991D-41E6E6C0536F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,8 +39,6 @@ Global
 		{F087972B-373D-4B64-B4F5-7E8BBB3A0388}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F087972B-373D-4B64-B4F5-7E8BBB3A0388}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F087972B-373D-4B64-B4F5-7E8BBB3A0388}.Release|Any CPU.Build.0 = Release|Any CPU
-<<<<<<< Updated upstream
-=======
 		{70FD9C60-DD9D-41C9-BFAC-8172AE0D53D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{70FD9C60-DD9D-41C9-BFAC-8172AE0D53D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70FD9C60-DD9D-41C9-BFAC-8172AE0D53D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,7 +47,10 @@ Global
 		{5A5106CC-78E5-4BE9-A798-148E5F38D4E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A5106CC-78E5-4BE9-A798-148E5F38D4E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A5106CC-78E5-4BE9-A798-148E5F38D4E4}.Release|Any CPU.Build.0 = Release|Any CPU
->>>>>>> Stashed changes
+		{2DC5BDE5-4B4B-4175-991D-41E6E6C0536F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DC5BDE5-4B4B-4175-991D-41E6E6C0536F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DC5BDE5-4B4B-4175-991D-41E6E6C0536F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DC5BDE5-4B4B-4175-991D-41E6E6C0536F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

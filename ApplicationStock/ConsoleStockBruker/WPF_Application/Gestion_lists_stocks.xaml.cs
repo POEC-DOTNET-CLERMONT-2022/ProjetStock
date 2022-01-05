@@ -12,8 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
-using WCF_application.Services;
+using ServiceReference1;
 
 namespace WPF_Application
 {
@@ -22,16 +21,20 @@ namespace WPF_Application
     /// </summary>
     public partial class Gestion_lists_stocks : UserControl
     {
-        public Gestion_lists_stocks()
-        {
+
+         public ServiceStockClient serviceStock { get; }
+
+         public Gestion_lists_stocks()
+         {
             InitializeComponent();
+            serviceStock = new ServiceStockClient();
+            lists.ItemsSource = serviceStock.GetAllStocks();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var _stocks = new ServiceStock();
-            var stocks = _stocks.GetStocks();
-            lists.ItemsSource= stocks;
+           
+;         
         }
     }
 }

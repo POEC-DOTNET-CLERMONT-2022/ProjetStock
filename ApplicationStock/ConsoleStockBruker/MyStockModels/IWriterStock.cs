@@ -9,8 +9,8 @@ namespace MyStockModels
 {
     public interface IWriterStock
     {
-        public void Display(string s);
+         void Display(string s);
 
-        public void DisplayAll(Stock item);
+         void DisplayAll(Stock item);
     }
 }

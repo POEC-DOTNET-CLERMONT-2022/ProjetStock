@@ -22,8 +22,6 @@ namespace MyStockModels
                 _items = new List<Stock>();
             }
 
-
-
             public void Create()
             {
                 try

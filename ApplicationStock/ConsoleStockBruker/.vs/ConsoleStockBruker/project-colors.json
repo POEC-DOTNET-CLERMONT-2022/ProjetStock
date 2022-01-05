@@ -5,7 +5,53 @@
       "ProjectGuid": "f087972b-373d-4b64-b4f5-7e8bbb3a0388",
       "DisplayName": "PersistanceStockProjectLibrary",
       "ColorIndex": 0
+<<<<<<< Updated upstream
     }
   },
   "NextColorIndex": 1
+=======
+    },
+    "53be34bc-3dd3-4098-b498-184936983cff": {
+      "ProjectGuid": "53be34bc-3dd3-4098-b498-184936983cff",
+      "DisplayName": "ProjectStockLibrary",
+      "ColorIndex": 1
+    },
+    "df8c4aa6-a607-4746-89bd-6642ed91f87b": {
+      "ProjectGuid": "df8c4aa6-a607-4746-89bd-6642ed91f87b",
+      "DisplayName": "MyStockModels",
+      "ColorIndex": 2
+    },
+    "84f73860-0c4b-4911-bacf-b4ee3d99a763": {
+      "ProjectGuid": "84f73860-0c4b-4911-bacf-b4ee3d99a763",
+      "DisplayName": "ApiConsumerStockLibrary",
+      "ColorIndex": 3
+    },
+    "f087972b-373d-4b64-b4f5-7e8bbb3a0388": {
+      "ProjectGuid": "f087972b-373d-4b64-b4f5-7e8bbb3a0388",
+      "DisplayName": "PersistanceStockProjectLibrary",
+      "ColorIndex": 4
+    },
+    "70fd9c60-dd9d-41c9-bfac-8172ae0d53d1": {
+      "ProjectGuid": "70fd9c60-dd9d-41c9-bfac-8172ae0d53d1",
+      "DisplayName": "WPF_Application",
+      "ColorIndex": 5
+    },
+    "5a5106cc-78e5-4be9-a798-148e5f38d4e4": {
+      "ProjectGuid": "5a5106cc-78e5-4be9-a798-148e5f38d4e4",
+      "DisplayName": "WCF_application",
+      "ColorIndex": 6
+    },
+    "2dc5bde5-4b4b-4175-991d-41e6e6c0536f": {
+      "ProjectGuid": "2dc5bde5-4b4b-4175-991d-41e6e6c0536f",
+      "DisplayName": "ProjectStockDTOS",
+      "ColorIndex": 7
+    },
+    "28db58ff-42b4-4c45-95f2-0634bcb3989c": {
+      "ProjectGuid": "28db58ff-42b4-4c45-95f2-0634bcb3989c",
+      "DisplayName": "ServiceStock",
+      "ColorIndex": 8
+    }
+  },
+  "NextColorIndex": 9
+>>>>>>> Stashed changes
 }
