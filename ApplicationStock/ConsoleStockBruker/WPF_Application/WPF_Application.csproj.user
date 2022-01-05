@@ -13,6 +13,12 @@
     <Compile Update="MonProfil.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="UserCart.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserCommandeControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UserCreateRappelControle.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -49,6 +55,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SendMailReceoverPassword.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserCart.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserCommandeControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UserCreateRappelControle.xaml">
