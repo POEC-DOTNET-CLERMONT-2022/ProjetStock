@@ -1,0 +1,16 @@
+C:\Users\trito\Desktop\ApplicationStock\ConsoleStockBruker\WCF_application\bin\WCF_application.dll.config
+C:\Users\trito\Desktop\ApplicationStock\ConsoleStockBruker\WCF_application\bin\WCF_application.dll
+C:\Users\trito\Desktop\ApplicationStock\ConsoleStockBruker\WCF_application\bin\WCF_application.pdb
+C:\Users\trito\Desktop\ApplicationStock\ConsoleStockBruker\WCF_application\bin\MyStockModels.dll
+C:\Users\trito\Desktop\ApplicationStock\ConsoleStockBruker\WCF_application\bin\PersistanceStockProjectLibrary.dll
+C:\Users\trito\Desktop\ApplicationStock\ConsoleStockBruker\WCF_application\bin\ProjectStockDTOS.dll
+C:\Users\trito\Desktop\ApplicationStock\ConsoleStockBruker\WCF_application\bin\ProjectStockLibrary.dll
+C:\Users\trito\Desktop\ApplicationStock\ConsoleStockBruker\WCF_application\bin\MyStockModels.pdb
+C:\Users\trito\Desktop\ApplicationStock\ConsoleStockBruker\WCF_application\bin\PersistanceStockProjectLibrary.pdb
+C:\Users\trito\Desktop\ApplicationStock\ConsoleStockBruker\WCF_application\bin\ProjectStockDTOS.pdb
+C:\Users\trito\Desktop\ApplicationStock\ConsoleStockBruker\WCF_application\bin\ProjectStockLibrary.pdb
+C:\Users\trito\Desktop\ApplicationStock\ConsoleStockBruker\WCF_application\obj\Debug\WCF_application.csproj.AssemblyReference.cache
+C:\Users\trito\Desktop\ApplicationStock\ConsoleStockBruker\WCF_application\obj\Debug\WCF_application.csproj.CoreCompileInputs.cache
+C:\Users\trito\Desktop\ApplicationStock\ConsoleStockBruker\WCF_application\obj\Debug\WCF_application.csproj.CopyComplete
+C:\Users\trito\Desktop\ApplicationStock\ConsoleStockBruker\WCF_application\obj\Debug\WCF_application.dll
+C:\Users\trito\Desktop\ApplicationStock\ConsoleStockBruker\WCF_application\obj\Debug\WCF_application.pdb

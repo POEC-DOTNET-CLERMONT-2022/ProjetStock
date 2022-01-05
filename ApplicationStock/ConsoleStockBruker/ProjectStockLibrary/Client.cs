@@ -2,14 +2,14 @@
 
 namespace ProjectStockLibrary
 {
-     internal class Client 
+     public class Client
     {
-        private Guid _id;
-        private string _firstName { get; set; }
-        private string _lastName { get; set; }
-        private string _email { get; set; }
-        private string _phone { get; set; }
-        private string _siret { get; set; }
+        public  Guid _id { get; private set; }
+        public string _firstName { get;  set; }
+        public string _lastName { get; set; }
+        public string _email { get; set; }
+        public string _phone { get;  set; }
+        public string _siret { get;  set; }
         private List<Address> _addresses { get; set; }
 
         private List<Stock> _stocks { get; set; }
@@ -33,7 +33,17 @@ namespace ProjectStockLibrary
             _id = id;
             
         }
-
+        public Client()
+        {
+            _id = Guid.NewGuid();
+            _firstName = "";
+            _lastName = "";
+            _email = "test@test.fr";
+            _siret = "";
+            _phone = "";
+            _addresses = new List<Address>();
+            _stocks = new List<Stock>();
+        }
         public void AddAdress(Address address)
         {
             if (!_addresses.Contains(address))

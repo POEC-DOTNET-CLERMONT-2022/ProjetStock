@@ -22,8 +22,6 @@ namespace MyStockModels
             _items = new List<Order>();
         }
 
-
-
         public void Create(Stock stock)
         {
             try
@@ -37,7 +35,6 @@ namespace MyStockModels
                 _Writer.Display($"Attention un prolbème est survenue : {ex.Message}");
             }
         }
-
 
         public void update(int i, Order order)
         {

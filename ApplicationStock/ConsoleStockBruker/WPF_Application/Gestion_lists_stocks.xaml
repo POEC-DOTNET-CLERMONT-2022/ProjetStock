@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="WPF_Application.Gestion_lists_stocks"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF_Application"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Margin="0,0,10,148">
+        <ListView  x:Name="lists" Margin="0,56,0,-56">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="Stock Name :"/>
+                        <TextBlock Text="{Binding _stock._name}"></TextBlock>
+                        <TextBlock Text="Stock value :"/>
+                        <TextBlock Text="{Binding _stock._value  }"></TextBlock>
+                        <TextBlock Text="Stock entrepriseName :"/>
+                        <TextBlock Text="{Binding _stock._entrepriseName  }"></TextBlock>
+                       
+                    </StackPanel>
+                </DataTemplate>
+
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Content="Envoyer" Margin="315,303,315,-33" Click="Button_Click"/>
+
+    </Grid>
+</UserControl>

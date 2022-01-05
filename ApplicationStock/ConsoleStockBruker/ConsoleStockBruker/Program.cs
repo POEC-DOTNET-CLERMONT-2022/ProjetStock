@@ -21,7 +21,7 @@ while (monBool)
             marketManager.Create();
             break;
         case 3:
-            marketManager.update();
+           // marketManager.update();
             break;
         default:
             Console.WriteLine("Fin Market");
@@ -50,7 +50,7 @@ while (iscontinue)
             stockmanager.Create();
             break;
         case 3:
-            stockmanager.update();
+            //  stockmanager.update();
             break;
         default:
             Console.WriteLine("Fin partie stock");
@@ -78,7 +78,7 @@ while (true)
             commandeManager.Create(new ConsoleReaderStock().create());
             break;
         case 3:
-            commandeManager.update();
+            //  commandeManager.update();
             break;
         default:
             Console.WriteLine("Fin partie commande");

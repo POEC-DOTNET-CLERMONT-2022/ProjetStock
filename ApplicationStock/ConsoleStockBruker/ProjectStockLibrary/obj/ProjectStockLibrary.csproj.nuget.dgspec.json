@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\trito\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\ProjectStockLibrary\\ProjectStockLibrary.csproj": {}
+    "C:\\Users\\trito\\Desktop\\ApplicationStock\\ConsoleStockBruker\\ProjectStockLibrary\\ProjectStockLibrary.csproj": {}
   },
   "projects": {
-    "C:\\Users\\trito\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\ProjectStockLibrary\\ProjectStockLibrary.csproj": {
+    "C:\\Users\\trito\\Desktop\\ApplicationStock\\ConsoleStockBruker\\ProjectStockLibrary\\ProjectStockLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\trito\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\ProjectStockLibrary\\ProjectStockLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\trito\\Desktop\\ApplicationStock\\ConsoleStockBruker\\ProjectStockLibrary\\ProjectStockLibrary.csproj",
         "projectName": "ProjectStockLibrary",
-        "projectPath": "C:\\Users\\trito\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\ProjectStockLibrary\\ProjectStockLibrary.csproj",
+        "projectPath": "C:\\Users\\trito\\Desktop\\ApplicationStock\\ConsoleStockBruker\\ProjectStockLibrary\\ProjectStockLibrary.csproj",
         "packagesPath": "C:\\Users\\trito\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\trito\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\ProjectStockLibrary\\obj\\",
+        "outputPath": "C:\\Users\\trito\\Desktop\\ApplicationStock\\ConsoleStockBruker\\ProjectStockLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -23,15 +23,15 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "netstandard2.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
             "projectReferences": {}
           }
         },
@@ -42,8 +42,16 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -54,11 +62,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }

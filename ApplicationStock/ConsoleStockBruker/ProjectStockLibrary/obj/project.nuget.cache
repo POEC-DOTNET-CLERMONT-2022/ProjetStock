@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "v/dFQevdJdPmPygGW7MPxg8GxYEtXiIN0EPgfOULqp79hXyqY/2Prw7Q+hBlQaKVjtTIaGOFm5kXcJhpAk4VDw==",
+  "dgSpecHash": "5tApfR7ssKmqge/WI+THZEcd7Dx7xTl/EBKZHhJRu0eI+3nrLhgGeTIz5z+gRc3dTB5TSNm8KkaoPk2YZmb/+w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\trito\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\ProjectStockLibrary\\ProjectStockLibrary.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\trito\\Desktop\\ApplicationStock\\ConsoleStockBruker\\ProjectStockLibrary\\ProjectStockLibrary.csproj",
+  "expectedPackageFiles": [
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
   "logs": []
 }
