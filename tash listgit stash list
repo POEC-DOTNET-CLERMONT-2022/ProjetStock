@@ -1,0 +1,160 @@
+ .../DesignTimeBuild/.dtbcache.v2                   | Bin [31m152342[m -> [32m199408[m bytes
+ .../config/applicationhost.config                  |  16 [32m+[m
+ .../.vs/ConsoleStockBruker/project-colors.json     |  27 [32m+[m[31m-[m
+ .../.vs/ConsoleStockBruker/v17/.futdcache.v1       | Bin [31m646[m -> [32m1685[m bytes
+ .../.vs/ConsoleStockBruker/v17/.suo                | Bin [31m177152[m -> [32m370176[m bytes
+ .../ConsoleStockBruker/ConsoleStockBruker.sln      |  17 [32m+[m[31m-[m
+ .../ConsoleStockBruker/ConsoleStockBruker.csproj   |   3 [32m+[m[31m-[m
+ .../ConsoleStockBruker/Program.cs                  |   6 [32m+[m[31m-[m
+ .../bin/Debug/net6.0/ConsoleStockBruker.deps.json  |  50 [31m---[m
+ .../bin/Debug/net6.0/ConsoleStockBruker.dll        | Bin [31m9728[m -> [32m0[m bytes
+ .../bin/Debug/net6.0/ConsoleStockBruker.exe        | Bin [31m149504[m -> [32m0[m bytes
+ .../bin/Debug/net6.0/ConsoleStockBruker.pdb        | Bin [31m12448[m -> [32m0[m bytes
+ .../net6.0/ConsoleStockBruker.runtimeconfig.json   |   9 [31m-[m
+ .../bin/Debug/net6.0/MyStockModels.dll             | Bin [31m9216[m -> [32m0[m bytes
+ .../bin/Debug/net6.0/MyStockModels.pdb             | Bin [31m13628[m -> [32m0[m bytes
+ .../bin/Debug/net6.0/ProjectStockLibrary.dll       | Bin [31m13312[m -> [32m0[m bytes
+ .../bin/Debug/net6.0/ProjectStockLibrary.pdb       | Bin [31m13836[m -> [32m0[m bytes
+ .../bin/Debug/net6.0/ref/ConsoleStockBruker.dll    | Bin [31m6656[m -> [32m0[m bytes
+ .../ConsoleStockBruker.csproj.nuget.dgspec.json    | 202 [31m----------[m
+ .../obj/ConsoleStockBruker.csproj.nuget.g.props    |  18 [31m-[m
+ .../obj/ConsoleStockBruker.csproj.nuget.g.targets  |   2 [31m-[m
+ .../.NETCoreApp,Version=v6.0.AssemblyAttributes.cs |   4 [31m-[m
+ .../net6.0/ConsoleStockBruker.AssemblyInfo.cs      |  23 [31m--[m
+ .../ConsoleStockBruker.AssemblyInfoInputs.cache    |   1 [31m-[m
+ ...ruker.GeneratedMSBuildEditorConfig.editorconfig |  10 [31m-[m
+ .../net6.0/ConsoleStockBruker.GlobalUsings.g.cs    |   8 [31m-[m
+ .../Debug/net6.0/ConsoleStockBruker.assets.cache   | Bin [31m324[m -> [32m0[m bytes
+ ...nsoleStockBruker.csproj.AssemblyReference.cache | Bin [31m684[m -> [32m0[m bytes
+ .../net6.0/ConsoleStockBruker.csproj.CopyComplete  |   0
+ ...nsoleStockBruker.csproj.CoreCompileInputs.cache |   1 [31m-[m
+ .../ConsoleStockBruker.csproj.FileListAbsolute.txt |  20 [31m-[m
+ .../obj/Debug/net6.0/ConsoleStockBruker.dll        | Bin [31m9728[m -> [32m0[m bytes
+ .../ConsoleStockBruker.genruntimeconfig.cache      |   1 [31m-[m
+ .../obj/Debug/net6.0/ConsoleStockBruker.pdb        | Bin [31m12448[m -> [32m0[m bytes
+ .../obj/Debug/net6.0/apphost.exe                   | Bin [31m149504[m -> [32m0[m bytes
+ .../obj/Debug/net6.0/ref/ConsoleStockBruker.dll    | Bin [31m6656[m -> [32m0[m bytes
+ .../ConsoleStockBruker/obj/project.assets.json     | 122 [31m------[m
+ .../ConsoleStockBruker/obj/project.nuget.cache     |   8 [31m-[m
+ .../MyStockModels/CommandeManager.cs               |   3 [31m-[m
+ .../MyStockModels/IReaderCommande.cs               |   4 [32m+[m[31m-[m
+ .../MyStockModels/IReaderMarket.cs                 |   4 [32m+[m[31m-[m
+ .../MyStockModels/IReaderStock.cs                  |   4 [32m+[m[31m-[m
+ .../MyStockModels/IWriterCommande.cs               |   4 [32m+[m[31m-[m
+ .../MyStockModels/IWriterMarket.cs                 |   4 [32m+[m[31m-[m
+ .../MyStockModels/IWriterStock.cs                  |   4 [32m+[m[31m-[m
+ .../MyStockModels/MyStockModels.csproj             |   2 [32m+[m[31m-[m
+ .../MyStockModels/StockManager.cs                  |   2 [31m-[m
+ .../bin/Debug/net6.0/MyStockModels.deps.json       |  36 [31m--[m
+ .../bin/Debug/net6.0/MyStockModels.dll             | Bin [31m9216[m -> [32m0[m bytes
+ .../bin/Debug/net6.0/MyStockModels.pdb             | Bin [31m13628[m -> [32m0[m bytes
+ .../bin/Debug/net6.0/ProjectStockLibrary.dll       | Bin [31m13312[m -> [32m0[m bytes
+ .../bin/Debug/net6.0/ProjectStockLibrary.pdb       | Bin [31m13836[m -> [32m0[m bytes
+ .../bin/Debug/net6.0/ref/MyStockModels.dll         | Bin [31m6656[m -> [32m0[m bytes
+ .../.NETCoreApp,Version=v5.0.AssemblyAttributes.cs |   4 [31m-[m
+ .../obj/Debug/net5.0/MyStockModels.AssemblyInfo.cs |  23 [31m--[m
+ .../net5.0/MyStockModels.AssemblyInfoInputs.cache  |   1 [31m-[m
+ ...odels.GeneratedMSBuildEditorConfig.editorconfig |  10 [31m-[m
+ .../obj/Debug/net5.0/MyStockModels.assets.cache    | Bin [31m566[m -> [32m0[m bytes
+ .../MyStockModels.csproj.FileListAbsolute.txt      |   0
+ .../.NETCoreApp,Version=v6.0.AssemblyAttributes.cs |   4 [31m-[m
+ .../obj/Debug/net6.0/MyStockModels.AssemblyInfo.cs |  23 [31m--[m
+ .../net6.0/MyStockModels.AssemblyInfoInputs.cache  |   1 [31m-[m
+ ...odels.GeneratedMSBuildEditorConfig.editorconfig |  10 [31m-[m
+ .../obj/Debug/net6.0/MyStockModels.assets.cache    | Bin [31m324[m -> [32m0[m bytes
+ .../MyStockModels.csproj.AssemblyReference.cache   | Bin [31m6[m -> [32m0[m bytes
+ .../Debug/net6.0/MyStockModels.csproj.CopyComplete |   0
+ .../MyStockModels.csproj.CoreCompileInputs.cache   |   1 [31m-[m
+ .../MyStockModels.csproj.FileListAbsolute.txt      |  15 [31m-[m
+ .../obj/Debug/net6.0/MyStockModels.dll             | Bin [31m9216[m -> [32m0[m bytes
+ .../obj/Debug/net6.0/MyStockModels.pdb             | Bin [31m13628[m -> [32m0[m bytes
+ .../obj/Debug/net6.0/ref/MyStockModels.dll         | Bin [31m6656[m -> [32m0[m bytes
+ .../obj/MyStockModels.csproj.nuget.dgspec.json     | 134 [31m-------[m
+ .../obj/MyStockModels.csproj.nuget.g.props         |  18 [31m-[m
+ .../obj/MyStockModels.csproj.nuget.g.targets       |   2 [31m-[m
+ .../MyStockModels/obj/project.assets.json          | 100 [31m-----[m
+ .../MyStockModels/obj/project.nuget.cache          |   8 [31m-[m
+ .../IStockManager.cs                               |  24 [32m++[m
+ .../PersistanceStockProjectLibrary/IUserManager.cs |  22 [32m++[m
+ .../PersistanceStockProjectLibrary.csproj          |  22 [32m+[m[31m-[m
+ .../PersistanceStockProjectLibrary/StockManager.cs |  84 [32m++++[m
+ .../PersistanceStockProjectLibrary/UserManager.cs  |  85 [32m++++[m
+ .../PersistanceStockProjectLibrary.deps.json       |  23 [31m--[m
+ .../net5.0/PersistanceStockProjectLibrary.dll      | Bin [31m4096[m -> [32m0[m bytes
+ .../net5.0/PersistanceStockProjectLibrary.pdb      | Bin [31m9628[m -> [32m0[m bytes
+ .../net5.0/ref/PersistanceStockProjectLibrary.dll  | Bin [31m4608[m -> [32m0[m bytes
+ .../.NETCoreApp,Version=v5.0.AssemblyAttributes.cs |   4 [31m-[m
+ .../PersistanceStockProjectLibrary.AssemblyInfo.cs |  23 [31m--[m
+ ...nceStockProjectLibrary.AssemblyInfoInputs.cache |   1 [31m-[m
+ ...brary.GeneratedMSBuildEditorConfig.editorconfig |  10 [31m-[m
+ .../PersistanceStockProjectLibrary.assets.cache    | Bin [31m324[m -> [32m0[m bytes
+ ...ckProjectLibrary.csproj.AssemblyReference.cache | Bin [31m6[m -> [32m0[m bytes
+ ...ckProjectLibrary.csproj.CoreCompileInputs.cache |   1 [31m-[m
+ ...StockProjectLibrary.csproj.FileListAbsolute.txt |  12 [31m-[m
+ .../net5.0/PersistanceStockProjectLibrary.dll      | Bin [31m4096[m -> [32m0[m bytes
+ .../net5.0/PersistanceStockProjectLibrary.pdb      | Bin [31m9628[m -> [32m0[m bytes
+ .../net5.0/ref/PersistanceStockProjectLibrary.dll  | Bin [31m4608[m -> [32m0[m bytes
+ ...nceStockProjectLibrary.csproj.nuget.dgspec.json |  69 [31m----[m
+ ...istanceStockProjectLibrary.csproj.nuget.g.props |  18 [31m-[m
+ ...tanceStockProjectLibrary.csproj.nuget.g.targets |   2 [31m-[m
+ .../obj/project.assets.json                        |  77 [31m----[m
+ .../obj/project.nuget.cache                        |   8 [31m-[m
+ .../Adress.cs => ProjectStockDTOS/AddressDto.cs}   |  21 [32m+[m[31m-[m
+ .../ProjectStockDTOS/MarketDto.cs                  |  31 [32m++[m
+ .../ProjectStockDTOS/NotificationDto.cs            |  25 [32m++[m
+ .../ProjectStockDTOS/ProjectStockDTOS.csproj       |  20 [32m+[m
+ .../Stock.cs => ProjectStockDTOS/StockDto.cs}      |  18 [32m+[m[31m-[m
+ .../ConsoleStockBruker/ProjectStockDTOS/UserDto.cs |  36 [32m++[m
+ .../ProjectStockLibrary/Address.cs                 |  14 [32m+[m[31m-[m
+ .../ProjectStockLibrary/Client.cs                  |  26 [32m+[m[31m-[m
+ .../ProjectStockLibrary/ProjectStockLibrary.csproj |   3 [32m+[m[31m-[m
+ .../ProjectStockLibrary/Stock.cs                   |  15 [32m+[m[31m-[m
+ .../bin/Debug/net6.0/ProjectStockLibrary.deps.json |  23 [31m--[m
+ .../bin/Debug/net6.0/ProjectStockLibrary.dll       | Bin [31m13312[m -> [32m0[m bytes
+ .../bin/Debug/net6.0/ProjectStockLibrary.pdb       | Bin [31m13836[m -> [32m0[m bytes
+ .../bin/Debug/net6.0/ref/ProjectStockLibrary.dll   | Bin [31m7168[m -> [32m0[m bytes
+ .../.NETCoreApp,Version=v6.0.AssemblyAttributes.cs |   4 [31m-[m
+ .../net6.0/ProjectStockLibrary.AssemblyInfo.cs     |  23 [31m--[m
+ .../ProjectStockLibrary.AssemblyInfoInputs.cache   |   1 [31m-[m
+ ...brary.GeneratedMSBuildEditorConfig.editorconfig |  10 [31m-[m
+ .../net6.0/ProjectStockLibrary.GlobalUsings.g.cs   |   8 [31m-[m
+ .../Debug/net6.0/ProjectStockLibrary.assets.cache  | Bin [31m324[m -> [32m0[m bytes
+ ...jectStockLibrary.csproj.AssemblyReference.cache | Bin [31m6[m -> [32m0[m bytes
+ ...jectStockLibrary.csproj.CoreCompileInputs.cache |   1 [31m-[m
+ ...ProjectStockLibrary.csproj.FileListAbsolute.txt |  12 [31m-[m
+ .../obj/Debug/net6.0/ProjectStockLibrary.dll       | Bin [31m13312[m -> [32m0[m bytes
+ .../obj/Debug/net6.0/ProjectStockLibrary.pdb       | Bin [31m13836[m -> [32m0[m bytes
+ .../obj/Debug/net6.0/ref/ProjectStockLibrary.dll   | Bin [31m7168[m -> [32m0[m bytes
+ .../ProjectStockLibrary.csproj.nuget.dgspec.json   |  69 [31m----[m
+ .../obj/ProjectStockLibrary.csproj.nuget.g.props   |  18 [31m-[m
+ .../obj/ProjectStockLibrary.csproj.nuget.g.targets |   2 [31m-[m
+ .../ProjectStockLibrary/obj/project.assets.json    |  77 [31m----[m
+ .../ProjectStockLibrary/obj/project.nuget.cache    |   8 [31m-[m
+ .../WCF_application/Entities/Client.cs             |  33 [31m--[m
+ .../WCF_application/Factory/StockFactory.cs        |  41 [32m++[m
+ .../WCF_application/Factory/UserFactory.cs         |  42 [32m++[m
+ .../WCF_application/IServiceClient.cs              |  35 [32m++[m
+ .../WCF_application/IServiceStock.cs               |  26 [32m+[m[31m-[m
+ .../WCF_application/Manager/StockManager.cs        |  16 [31m-[m
+ .../WCF_application/ServiceClient.svc              |   1 [32m+[m
+ .../WCF_application/ServiceClient.svc.cs           |  59 [32m+++[m
+ .../{ServiceStocks.svc => ServiceStock.svc}        |   2 [32m+[m[31m-[m
+ .../WCF_application/ServiceStock.svc.cs            |  60 [32m+++[m
+ .../WCF_application/ServiceStocks.svc.cs           |  37 [31m--[m
+ .../WCF_application/WCF_application.csproj         |  37 [32m+[m[31m-[m
+ .../WCF_application/bin/ProjectStockLibrary.dll    | Bin [31m12800[m -> [32m0[m bytes
+ .../WCF_application/bin/WCF_application.dll        | Bin [31m7680[m -> [32m0[m bytes
+ .../WCF_application/bin/WCF_application.dll.config |  36 [31m--[m
+ .../WCF_application/bin/WCF_application.pdb        | Bin [31m28160[m -> [32m0[m bytes
+ ...NETFramework,Version=v4.8.AssemblyAttributes.cs |   4 [31m-[m
+ .../DesignTimeResolveAssemblyReferencesInput.cache | Bin [31m8336[m -> [32m0[m bytes
+ .../WCF_application.csproj.AssemblyReference.cache | Bin [31m6[m -> [32m0[m bytes
+ .../WCF_application.csproj.CoreCompileInputs.cache |   1 [31m-[m
+ .../WCF_application.csproj.FileListAbsolute.txt    |   7 [31m-[m
+ .../WCF_application/obj/Debug/WCF_application.dll  | Bin [31m7680[m -> [32m0[m bytes
+ .../WCF_application/obj/Debug/WCF_application.pdb  | Bin [31m28160[m -> [32m0[m bytes
+ .../ServiceReference1/ConnectedService.json        |  17 [32m+[m
+ .../ServiceReference1/Reference.cs                 | 432 [32m+++++++++++++++++++++[m
+ .../WPF_Application/Gestion_lists_stocks.xaml.cs   |  17 [32m+[m[31m-[m
+ .../WPF_Application/WPF_Application.csproj         |   8 [32m+[m[31m-[m
+ 159 files changed, 1223 insertions(+), 1607 deletions(-)

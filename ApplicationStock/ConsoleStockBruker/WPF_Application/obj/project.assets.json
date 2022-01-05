@@ -1,0 +1,118 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0-windows7.0": {
+      "ProjectStockLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/ProjectStockLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ProjectStockLibrary.dll": {}
+        }
+      },
+      "WCF_application/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/WCF_application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WCF_application.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ProjectStockLibrary/1.0.0": {
+      "type": "project",
+      "path": "../ProjectStockLibrary/ProjectStockLibrary.csproj",
+      "msbuildProject": "../ProjectStockLibrary/ProjectStockLibrary.csproj"
+    },
+    "WCF_application/1.0.0": {
+      "type": "project",
+      "path": "../WCF_application/WCF_application.csproj",
+      "msbuildProject": "../WCF_application/WCF_application.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0-windows7.0": [
+      "ProjectStockLibrary >= 1.0.0",
+      "WCF_application >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\trito\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\trito\\ProjetStock\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\WPF_Application\\WPF_Application.csproj",
+      "projectName": "WPF_Application",
+      "projectPath": "C:\\Users\\trito\\ProjetStock\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\WPF_Application\\WPF_Application.csproj",
+      "packagesPath": "C:\\Users\\trito\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\trito\\ProjetStock\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\WPF_Application\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\trito\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0-windows7.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0-windows7.0": {
+          "targetAlias": "net6.0-windows",
+          "projectReferences": {
+            "C:\\Users\\trito\\ProjetStock\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\ProjectStockLibrary\\ProjectStockLibrary.csproj": {
+              "projectPath": "C:\\Users\\trito\\ProjetStock\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\ProjectStockLibrary\\ProjectStockLibrary.csproj"
+            },
+            "C:\\Users\\trito\\ProjetStock\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\WCF_application\\WCF_application.csproj": {
+              "projectPath": "C:\\Users\\trito\\ProjetStock\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\WCF_application\\WCF_application.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0-windows7.0": {
+        "targetAlias": "net6.0-windows",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App.WPF": {
+            "privateAssets": "none"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

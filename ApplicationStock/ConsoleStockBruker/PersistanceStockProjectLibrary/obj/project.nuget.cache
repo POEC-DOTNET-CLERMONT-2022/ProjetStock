@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "PbCWq0YsFbTKcy9LbhP9kLGhSka87imOoYcNhO4Ou5r4h2nd3oqrwY/lyzYCp3gc9G12ucRtl4IS5NNg0A5jLA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\trito\\ProjetStock\\ProjetStock\\ApplicationStock\\ConsoleStockBruker\\PersistanceStockProjectLibrary\\PersistanceStockProjectLibrary.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\trito\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\trito\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\trito\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
