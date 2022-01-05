@@ -22,5 +22,15 @@ namespace ConsoleStockBruker
             Console.WriteLine(maString);
             
         }
+
+        public void DisplayAllStocks(List<Stock> _stocks)
+        {
+            string maString = "";
+            foreach (Stock stock in _stocks)
+            {
+                maString += $"Name {stock._name}  entrepriseName {stock._entrepriseName} value : {stock._value }" + "\n";
+            }
+            Console.WriteLine(maString);
+        }
     }
 }

@@ -23,5 +23,16 @@ namespace ConsoleStockBruker
             maString += $"Name {stock._name} value: {stock._value } entrerprise :{stock._entrepriseName}";
             Console.WriteLine(maString);
         }
+
+
+        public void DisplayAllOwnersStock(List<Client> clients)
+        {
+            string maString = "";
+            foreach (Client client in clients)
+            {
+                maString += $"firstName {client._firstName}  lastName {client._lastName}  email : {client._email } siret: {client._siret}" + "\n";
+            }
+            Console.WriteLine(maString);
+        }
     }
 }
