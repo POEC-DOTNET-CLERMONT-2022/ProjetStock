@@ -25,7 +25,17 @@
       "ProjectGuid": "84f73860-0c4b-4911-bacf-b4ee3d99a763",
       "DisplayName": "ApiConsumerStockLibrary",
       "ColorIndex": 3
+    },
+    "f087972b-373d-4b64-b4f5-7e8bbb3a0388": {
+      "ProjectGuid": "f087972b-373d-4b64-b4f5-7e8bbb3a0388",
+      "DisplayName": "PersistanceStockProjectLibrary",
+      "ColorIndex": 4
+    },
+    "cbb8a0fe-5040-4f83-9f37-da8d14fe6ab2": {
+      "ProjectGuid": "cbb8a0fe-5040-4f83-9f37-da8d14fe6ab2",
+      "DisplayName": "WCFService_App",
+      "ColorIndex": 5
     }
   },
-  "NextColorIndex": 4
+  "NextColorIndex": 6
 }
