@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\trito\ProjetStock\ProjetStock\ApplicationStock\ConsoleStockBruker\WPF_Application\App.xaml
-8-54950975
+151458043357
 
-12-536379938
+19632957824
 1961922817945
-ContactUsControl.xaml;CreateUser.xaml;Gestion_lists_stocks.xaml;ListOrderControl.xaml;LoginControle.xaml;MainWindow.xaml;RecoverControler.xaml;SendMailReceoverPassword.xaml;
+ContactUsControl.xaml;CreateUser.xaml;Gestion_lists_stocks.xaml;ListOrderControl.xaml;LoginControle.xaml;MainWindow.xaml;MonProfil.xaml;RecoverControler.xaml;SendMailReceoverPassword.xaml;UserCart.xaml;UserCommandeControl.xaml;UserCreateRappelControle.xaml;UserInfoControl.xaml;UserModifyInfo.xaml;UserSellControl.xaml;
 
-False
+True
 

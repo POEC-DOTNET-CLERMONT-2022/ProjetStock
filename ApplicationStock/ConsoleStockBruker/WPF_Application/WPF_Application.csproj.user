@@ -2,12 +2,65 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Update="Gestion_lists_stocks.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MonProfil.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserCreateRappelControle.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserInfoControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserModifyInfo.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserSellControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="ContactUsControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="CreateUser.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Gestion_lists_stocks.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ListOrderControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="LoginControle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MonProfil.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="RecoverControler.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SendMailReceoverPassword.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserCreateRappelControle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserInfoControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserModifyInfo.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserSellControl.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

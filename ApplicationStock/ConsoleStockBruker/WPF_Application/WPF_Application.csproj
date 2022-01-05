@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Page Include="App.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ProjectStockLibrary\ProjectStockLibrary.csproj" />
     <ProjectReference Include="..\WCF_application\WCF_application.csproj" />
   </ItemGroup>
