@@ -10,9 +10,9 @@ namespace ProjectStockLibrary
 {
     public class Stock
     {
-        private Guid _id { get; set; }
+        public Guid _id { get; private set; }
         public string _name { get;  set; }
-        public float _value { get; private set; }
+        public float _value { get;  set; }
         public string _entrepriseName { get;set; }
         private List<Client> _clients { get; set; }
         
@@ -28,7 +28,16 @@ namespace ProjectStockLibrary
         }
 
 
-       
+        public Stock()
+        {
+            _id = Guid.NewGuid();
+            _name = "";
+            _value = 0;
+            _entrepriseName = "";
+            _clients = new List<Client>();
+        }
+
+
         public string read()
         {
             return $"name : {_name} value : {_value} entrepriseName :{ _entrepriseName}";

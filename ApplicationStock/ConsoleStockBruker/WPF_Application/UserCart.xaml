@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="WPF_Application.UserCart"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF_Application"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <ContentControl x:Name="userMenu"></ContentControl>
+        <DockPanel>
+            <Image Height="86" Width="71"></Image>
+        </DockPanel>
+        <DockPanel>
+
+
+            <StackPanel  Width="600" DockPanel.Dock="top" Background="#FFCEC0C0" Height="309" >
+
+                <Label x:Name="my_cart" HorizontalAlignment="Center"  FontSize="18"  VerticalAlignment="Center" >My Cart</Label>
+                <DockPanel x:Name="user_message_cart" Margin="0,0,0,0">
+                    <ListView Height="200" Width="550"></ListView>
+                </DockPanel>
+                <DockPanel>
+                    <Label Width="188"  Height="30" Margin="10,25,1,0"> Total : x $</Label>
+                    <Button Height="30" BorderThickness="3"  x:Name="button_payement_Click" Width="150"   Margin="0,25,1,0">Proceed payement</Button>
+                </DockPanel>
+
+
+            </StackPanel>
+
+        </DockPanel>
+
+
+    </Grid>
+</UserControl>

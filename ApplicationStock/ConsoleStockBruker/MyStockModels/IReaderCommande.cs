@@ -10,10 +10,7 @@ namespace MyStockModels
 {
     public interface IReaderCommande
     {
-        public IWriterCommande Writer { get; set; }
-        public Order create(Stock stock);
-
-        public Order update(Order order, Stock stock);
-
+        IWriterCommande Writer { get; set; }
+        Order create(Stock stock);
     }
 }

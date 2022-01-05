@@ -22,8 +22,6 @@ namespace MyStockModels
             _items = new List<Order>();
         }
 
-
-
         public void Create(Stock stock)
         {
             try
@@ -38,27 +36,24 @@ namespace MyStockModels
             }
         }
 
-
-        public void update(int i)
+        public void update(int i, Order order)
         {
             try
             {
-                _items[i] = _Reader.update(_items[i], _items[i]._stock);
+                _items[i] = order;
                 /* _items*/
             }
             catch (Exception ex)
             {
                 _Writer.Display($"Attention un problème est survenue : {ex.Message}");
             }
-
-
         }
 
-        public void delete(int i)
+        public void delete(Order item)
         {
             try
             {
-                _items.Remove(_items[i]);
+                _items.Remove(item);
             }
             catch (Exception ex)
             {

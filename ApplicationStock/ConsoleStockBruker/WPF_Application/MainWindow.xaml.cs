@@ -52,5 +52,11 @@ namespace WPF_Application
             user.Content = app_list;
 
         }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            Gestion_lists_stocks app_list_stocks = new Gestion_lists_stocks();
+            user.Content = app_list_stocks;
+        }
     }
 }

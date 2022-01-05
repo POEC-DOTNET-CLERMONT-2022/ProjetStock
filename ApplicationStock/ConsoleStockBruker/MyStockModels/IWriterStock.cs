@@ -9,10 +9,8 @@ namespace MyStockModels
 {
     public interface IWriterStock
     {
-        public void Display(string s);
+         void Display(string s);
 
-        public void DisplayAll(Stock item);
-
-        public void DisplayAllOwnersStock(List<Client> clients);
+         void DisplayAll(Stock item);
     }
 }

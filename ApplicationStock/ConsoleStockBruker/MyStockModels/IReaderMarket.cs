@@ -9,10 +9,7 @@ namespace MyStockModels
 {
     public  interface IReaderMarket
     {
-        public IWriterMarket Writer { get; set; }
-        public Market create();
-        public Market update(Market market);
-
-       
+        IWriterMarket Writer { get; set; }
+        Market create();
     }
 }
