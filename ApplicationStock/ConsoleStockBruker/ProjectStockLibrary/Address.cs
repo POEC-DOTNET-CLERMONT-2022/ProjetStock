@@ -8,7 +8,7 @@ namespace ProjectStockLibrary
 {
      public  class Address
     {
-        public Guid _id { get; set };
+        public Guid _id { get; set; }
         public string _address_line_1 { get; private set; }
         public string _address_line_2 { get; private set; }
         public string _codePostal { get; private set; }

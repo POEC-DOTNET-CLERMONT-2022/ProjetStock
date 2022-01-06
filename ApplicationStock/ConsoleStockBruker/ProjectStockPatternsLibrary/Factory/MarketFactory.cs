@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace WCF_application.Factory
+namespace ProjectStockPatternsLibrary
 {
     public  static class MarketFactory
     {

@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCF_application", "WCF_appl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectStockDTOS", "ProjectStockDTOS\ProjectStockDTOS.csproj", "{2DC5BDE5-4B4B-4175-991D-41E6E6C0536F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectStockPatternsLibrary", "ProjectStockPatternsLibrary\ProjectStockPatternsLibrary.csproj", "{45087946-CC62-448B-93CE-933CCB7C3908}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{2DC5BDE5-4B4B-4175-991D-41E6E6C0536F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DC5BDE5-4B4B-4175-991D-41E6E6C0536F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DC5BDE5-4B4B-4175-991D-41E6E6C0536F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45087946-CC62-448B-93CE-933CCB7C3908}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45087946-CC62-448B-93CE-933CCB7C3908}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45087946-CC62-448B-93CE-933CCB7C3908}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45087946-CC62-448B-93CE-933CCB7C3908}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

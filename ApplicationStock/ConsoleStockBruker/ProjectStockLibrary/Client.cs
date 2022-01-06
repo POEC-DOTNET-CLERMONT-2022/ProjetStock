@@ -1,8 +1,10 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
 
 namespace ProjectStockLibrary
 {
-     public class Client
+    [DataContract]
+    public class Client
     {
         public  Guid _id { get; private set; }
         public string _firstName { get;  set; }

@@ -9,9 +9,9 @@ namespace MyStockModels
 {
     public interface IReaderClient
     {
-        public IWriterClient Writer { get; set; }
-        public Client create();
+         IWriterClient Writer { get; set; }
+         Client create();
 
-        public Client update(Client client);
+         Client update(Client client);
     }
 }

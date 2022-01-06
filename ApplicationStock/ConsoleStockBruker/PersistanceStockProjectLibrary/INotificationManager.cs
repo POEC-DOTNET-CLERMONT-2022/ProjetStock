@@ -6,7 +6,7 @@ using ProjectStockLibrary;
 
 namespace PersistanceStockProjectLibrary
 {
-    internal interface INotificationManager
+    public interface INotificationManager
     {
         IEnumerable<NotificationDto> GetNotifications();
 

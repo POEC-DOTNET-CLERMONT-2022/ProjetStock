@@ -21,7 +21,7 @@ namespace ProjectStockDTOS
         [Required]
         public string _lastName { get; set; }
         [DataMember]
-        [Required]
+       
         public string _email { get; set; }
         [DataMember]
         [Required]
