@@ -9,12 +9,12 @@ namespace MyStockModels
 {
     public  interface IWriterClient
     {
-        public void Display(string s);
+        void Display(string s);
 
-        public void DisplayAll(Client item);
+        void DisplayAll(Client item);
 
-        public void DisplayAllUserStock(List<Stock> _stocks);
+        void DisplayAllUserStock(List<Stock> _stocks);
 
-        public void DisplayAllUserAddress(List<Address> adresses);
+       void DisplayAllUserAddress(List<Address> adresses);
     }
 }

@@ -8,7 +8,7 @@ using ProjectStockLibrary;
 
 namespace PersistanceStockProjectLibrary
 {
-    internal class NotificationManager : INotificationManager
+    public class NotificationManager : INotificationManager
     {
         private readonly Fixture _fixture = new Fixture();
         private List<NotificationDto> alerts { get; set; } = new List<NotificationDto>();
@@ -16,7 +16,7 @@ namespace PersistanceStockProjectLibrary
         /// Gets the creatures from the codex
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<NotificationDto> GetMarkets()
+        public IEnumerable<NotificationDto> GetNotifications()
         {
             var creatures = new List<Notification>() { new Notification("mon_rappel", DateTime.Now) };
 
@@ -26,7 +26,7 @@ namespace PersistanceStockProjectLibrary
                 yield return new NotificationDto() { _id = creature._id,textRappel = creature._textRappel,sendAt = creature._sendAt };
             }
         }
-        public IEnumerable<Notification> GetAllMarkets()
+        public IEnumerable<Notification> GetAllNotifications()
         {
             var creatures = new List<Notification>() { new Notification("mon_rappel", DateTime.Now) };
             return creatures;
