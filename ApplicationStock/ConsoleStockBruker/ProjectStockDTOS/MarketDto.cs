@@ -10,22 +10,22 @@ using System.Threading.Tasks;
 namespace ProjectStockDTOS
 {
     [DataContract]
-    internal class MarketDto
+    public class MarketDto
     {
         [DataMember]
         [Required]
-        private Guid _id;
+        public Guid _id { get; set; }
         [DataMember]
         [Required]
-        public string _name { get; private set; }
+        public string _name { get; set; }
         [DataMember]
         [Required]
-        public DateTime _openingDate { get; private set; }
+        public DateTime _openingDate { get;  set; }
         [DataMember]
         [Required]
-        public DateTime _closingDate { get; private set; }
+        public DateTime _closingDate { get;  set; }
         [DataMember]
         [Required]
-        public List<Stock> _stock { get; set; }
+        public List<Stock> _stocks { get; set; }
     }
 }

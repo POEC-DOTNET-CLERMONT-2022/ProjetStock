@@ -67,6 +67,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factory\AdressFactory.cs" />
+    <Compile Include="Factory\MarketFactory.cs" />
+    <Compile Include="Factory\NotificationFactory.cs" />
     <Compile Include="Factory\StockFactory.cs" />
     <Compile Include="Factory\UserFactory.cs" />
     <Compile Include="IServiceClient.cs" />

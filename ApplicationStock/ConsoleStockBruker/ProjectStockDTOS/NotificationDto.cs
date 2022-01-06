@@ -10,16 +10,16 @@ namespace ProjectStockDTOS
 
 {
     [DataContract]
-    internal class NotificationDto
+    public  class NotificationDto
     {
         [DataMember]
         [Required]
-        private Guid _id { get; set; }
+        public Guid _id { get; set; }
         [DataMember]
         [Required]
         public  string textRappel { get; set; }
         [DataMember]
         [Required]
-        private DateTime sendAt { get; set; }
+        public DateTime sendAt { get; set; }
     }
 }

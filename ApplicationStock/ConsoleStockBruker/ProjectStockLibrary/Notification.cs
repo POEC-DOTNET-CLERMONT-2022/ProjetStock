@@ -8,9 +8,9 @@ namespace ProjectStockLibrary
 {
     public class Notification
     {
-        private Guid _id { get; set; }
-        private string _textRappel { get; set; }
-        private DateTime _sendAt { get; set; }
+        public Guid _id { get; set; }
+        public string _textRappel { get; private set; }
+        public DateTime _sendAt { get; private set; }
         
         public Notification(string textRappel,DateTime sendAt)
         {

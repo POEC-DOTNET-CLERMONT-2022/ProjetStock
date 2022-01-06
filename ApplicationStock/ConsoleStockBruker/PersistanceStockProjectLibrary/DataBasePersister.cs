@@ -6,31 +6,7 @@ using System.Threading.Tasks;
 
 namespace PersistanceStockProjectLibrary
 {
-    internal class DataBasePersister : IPersistanceDataBase
+    internal class DataBasePersister
     {
-        public void persistInDatabase()
-        {
-
-        }
-
-        public void deleteItemOnDatabase()
-        {
-
-        }
-
-        public void updateItemOnDatabase()
-        {
-
-        }
-
-        public void findItemOnDatabase(int i) // prefer  object
-        {
-
-        } 
-
-        public void findItemsOnDatabase()
-        {
-
-        }
     }
 }

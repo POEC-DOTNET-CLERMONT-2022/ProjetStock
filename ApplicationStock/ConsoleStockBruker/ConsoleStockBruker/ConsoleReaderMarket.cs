@@ -28,22 +28,5 @@ namespace ConsoleStockBruker
 
             return new Market(Name);
         }
-        public Market update(Market market)
-        {
-
-            Console.WriteLine("Update");
-            Writer.Display("Donne moi le nom du market");
-            var Name = Console.ReadLine();
-
-            if (string.IsNullOrWhiteSpace(Name))
-            {
-                Writer.Display("Ce nom n'est pas bon !");
-                return update(market);
-            }
-
-            market.setName(Name);
-            return market;
-
-        }
     }
 }
