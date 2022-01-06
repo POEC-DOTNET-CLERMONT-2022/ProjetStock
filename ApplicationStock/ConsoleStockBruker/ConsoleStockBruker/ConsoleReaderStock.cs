@@ -43,36 +43,6 @@ namespace ConsoleStockBruker
 
             return new Stock (Name,value,entrepriseName);
         }
-        public Stock update(Stock stock)
-        {
-            Writer.Display("Donne moi le nom de l'action");
-            var Name = Console.ReadLine();
-
-            if (string.IsNullOrWhiteSpace(Name))
-            {
-                Writer.Display("Ce nom n'est pas bon !");
-                return update(stock);
-            }
-            Writer.Display("Donne moi le nom de l'entreprise");
-            var entrepriseName = Console.ReadLine();
-
-            if (string.IsNullOrWhiteSpace(entrepriseName))
-            {
-                Writer.Display("Ce nom n'est pas bon !");
-                return update(stock);
-            }
-
-            Writer.Display("Donne moi la valeur de l'action");
-            var value = float.Parse(Console.ReadLine());
-
-            if (string.IsNullOrWhiteSpace(entrepriseName))
-            {
-                Writer.Display("Ce nom n'est pas bon !");
-                return update(stock);
-            }
-            return stock;
-
-        }
 
     }
 }

@@ -13,16 +13,16 @@ namespace ProjectStockDTOS
     {
         [DataMember]
         [Required]
-        private Guid _id;
+        public Guid _id { get;  set; }
         [DataMember]
         public string _address_line_1 { get; set; }
         [DataMember]
-        public string _address_line_2 { get; private set; }
+        public string _address_line_2 { get; set; }
         [DataMember]    
-        public string _codePostal { get; private set; }
+        public string _codePostal { get;  set; }
         [DataMember]
-        public string _city { get; private set; }
+        public string _city { get; set; }
         [DataMember]     
-        public string _country { get; private set; }
+        public string _country { get; set; }
     }
 }
