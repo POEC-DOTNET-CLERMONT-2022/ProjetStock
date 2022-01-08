@@ -4,10 +4,11 @@ using System.Text;
 using ProjectStockDTOS;
 using AutoFixture;
 using ProjectStockLibrary;
+using PersistanceStockProjectLibrary.Interfaces;
 
-namespace PersistanceStockProjectLibrary
+namespace PersistanceStockProjectLibrary.Manager
 {
-    internal class MarketManager : IMarketManager
+    public class MarketManager : IMarketManager
     {
         private readonly Fixture _fixture = new Fixture();
         private List<MarketDto> markets { get; set; } = new List<MarketDto>();

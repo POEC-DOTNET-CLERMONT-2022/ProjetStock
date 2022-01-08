@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using PersistanceStockProjectLibrary;
+using PersistanceStockProjectLibrary.Manager;
 using ProjectStockDTOS;
 using ProjectStockPatternsLibrary;
 

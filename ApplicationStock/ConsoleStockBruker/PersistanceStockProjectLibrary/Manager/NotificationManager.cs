@@ -6,7 +6,7 @@ using ProjectStockDTOS;
 using AutoFixture;
 using ProjectStockLibrary;
 
-namespace PersistanceStockProjectLibrary
+namespace PersistanceStockProjectLibrary.Manager
 {
     public class NotificationManager : INotificationManager
     {

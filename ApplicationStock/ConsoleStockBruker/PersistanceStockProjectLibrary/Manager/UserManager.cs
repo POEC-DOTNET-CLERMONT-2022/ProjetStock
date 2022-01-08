@@ -5,8 +5,9 @@ using System.Linq;
 using System.Web;
 using ProjectStockDTOS;
 using AutoFixture;
+using PersistanceStockProjectLibrary.Interfaces;
 
-namespace PersistanceStockProjectLibrary
+namespace PersistanceStockProjectLibrary.Manager
 {
     public class UserManager : IUserManager
     {

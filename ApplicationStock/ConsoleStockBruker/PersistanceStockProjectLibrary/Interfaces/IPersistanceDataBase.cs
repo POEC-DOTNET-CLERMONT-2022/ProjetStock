@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PersistanceStockProjectLibrary
+namespace PersistanceStockProjectLibrary.Interfaces
 {
     internal interface IPersistanceDataBase 
     {

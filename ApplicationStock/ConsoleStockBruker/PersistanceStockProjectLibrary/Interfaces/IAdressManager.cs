@@ -4,7 +4,7 @@ using System.Text;
 using ProjectStockDTOS;
 using ProjectStockLibrary;
 
-namespace PersistanceStockProjectLibrary
+namespace PersistanceStockProjectLibrary.Interfaces
 {
     internal interface IAdressManager
     {

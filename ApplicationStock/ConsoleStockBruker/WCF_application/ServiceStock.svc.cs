@@ -1,6 +1,4 @@
-﻿
-using PersistanceStockProjectLibrary;
-using ProjectStockDTOS;
+﻿using ProjectStockDTOS;
 using ProjectStockLibrary;
 using System;
 using System.Collections.Generic;
@@ -9,6 +7,8 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using ProjectStockPatternsLibrary;
+using PersistanceStockProjectLibrary.Manager;
+using PersistanceStockProjectLibrary.Interfaces;
 
 namespace WCF_application
 {

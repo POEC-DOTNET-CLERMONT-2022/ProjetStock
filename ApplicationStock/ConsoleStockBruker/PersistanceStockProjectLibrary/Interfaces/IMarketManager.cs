@@ -4,9 +4,9 @@ using System.Text;
 using ProjectStockDTOS;
 using ProjectStockLibrary;
 
-namespace PersistanceStockProjectLibrary
+namespace PersistanceStockProjectLibrary.Interfaces
 {
-    internal interface IMarketManager
+    public interface IMarketManager
     {
         IEnumerable<MarketDto> GetMarkets();
 

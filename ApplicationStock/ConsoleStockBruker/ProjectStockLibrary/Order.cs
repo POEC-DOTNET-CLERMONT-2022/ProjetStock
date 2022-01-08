@@ -8,12 +8,12 @@ namespace ProjectStockLibrary
 {
     public  class Order
     {
-        private Guid _id;
+        public Guid _id { get; private set; }
         public string _orderName { get; private set; }
         public  DateTime _orderDate { get; private set; }
         private Stock _stock { get; set; }
         public  int _nbStock { get; private set; }
-        public Order(string orderName,Stock stock, int nbStock) 
+        public Order(string orderName,Stock stock,int nbStock) 
         {
             _orderName = orderName;
             _orderDate = DateTime.Now;
@@ -21,6 +21,15 @@ namespace ProjectStockLibrary
             _stock = stock;
             _nbStock = nbStock;
 
+        }
+
+        public Order(string orderName, int nbStock)
+        {
+            _orderName = orderName;
+            _orderDate = DateTime.Now;
+            _id = Guid.NewGuid();
+            _stock = new Stock();
+            _nbStock = nbStock;
         }
         public Order(string orderName,Stock stock, int nbStock, DateTime orderDate, Guid id ) : this(orderName, stock, nbStock)
         {
