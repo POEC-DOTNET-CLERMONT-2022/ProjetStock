@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using AutoFixture;
+using PersistanceStockProjectLibrary.Interfaces;
 using ProjectStockDTOS;
 using ProjectStockLibrary;
 
-namespace PersistanceStockProjectLibrary
+namespace PersistanceStockProjectLibrary.Manager
 {
     internal class AdressManager :IAdressManager
     {
