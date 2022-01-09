@@ -4,7 +4,6 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-
 using PersistanceStockProjectLibrary.Interfaces;
 using PersistanceStockProjectLibrary.Manager;
 using ProjectStockDTOS;
@@ -22,7 +21,6 @@ namespace WCF_application
         {
             _marketManager = new MarketManager();
         }
-
 
 
         public IEnumerable<Market> GetAllMarkets()
