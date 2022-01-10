@@ -1,14 +1,19 @@
-# ProjetStock 📈
-Projet Tristan/Hossein
+# ProjetStock  - Projet Tristan/Hossein
 
 
-![](https://pandao.github.io/editor.md/images/logos/editormd-logo-180x180.png)
-
-![](https://img.shields.io/github/stars/pandao/editor.md.svg) ![](https://img.shields.io/github/forks/pandao/editor.md.svg) ![](https://img.shields.io/github/tag/pandao/editor.md.svg) ![](https://img.shields.io/github/release/pandao/editor.md.svg) ![](https://img.shields.io/github/issues/pandao/editor.md.svg) ![](https://img.shields.io/bower/v/editor.md.svg)
+![alt text](https://images.emojiterra.com/google/noto-emoji/v2.028/128px/1f4c8.png "Logo Title Text 1")
+## Table of Contents
+1. [Presentation du projet](#Présentation du projet)
+    -  [Details](#Details)
+    -  [Avantages](#Avantages)
+    -  [Compléxité](#Compléxité)
+2. [Images](# Images)
+3. [Installation](#Installation )
 
 
 # Présentation du projet
- Detail du projet : 
+
+######Details
 1. Le projet permet de gérer les informations sur les actions dans différentes bourses. 
 2. Il consiste à :
 (phase 1) afficher les différents changements de valeur des actions en fonction du temps ( 6 mois, 1 mois , une semaine et le jour même )
@@ -16,17 +21,31 @@ Projet Tristan/Hossein
 1. avec le niveau de risque 
 2. et le montant à prévoir pour gagner
 
-Avantages :
+------------
+
+
+######Avantages
 1. Un système pour garder les informations des actions en fonction de durée différentes pour comparer les variations de valeur par rapport à plusieurs métriques.
 2. Une interface dynamique et personnalisée en fonction des choix de l'utilisateur
 3. Liste d'actions dynamique et personnalisable par le client
 4. Gérer les infor	mations en continu et il envoie des notifications  de rappel par email/sms
 
-Compléxité : 
+------------
+
+
+######Compléxité
 1. Mise à jour des informations par rapport a la liste dynamique.
 2. Le virement est liée aux vendeurs et aux acheteurs d'actions ( en temps réel) . Puis, il faut faire la mise à jour de la base de données
 3. Mise à jour de la base de données par rapport à des données en temps réel.
 4. Responsive design pour le site web ( utilisation de Boostrap ou tailwindcss)
+------------
 
+#Images:
 
-# Images du projet
+![alt text](https://images.emojiterra.com/google/noto-emoji/v2.028/128px/1f4c8.png "Logo Title Text 1")
+
+#Installation
+Mise en place de la base de données
+Mise en place du serveur web
+Mise en place du logiciel
+
