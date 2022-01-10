@@ -1,7 +1,9 @@
-# ProjetStock
+# ProjetStock 📈
 Projet Tristan/Hossein
 
 
+
+**Table of Contents**
 # Présentation du projet
  Detail du projet : 
 1. Le projet permet de gérer les informations sur les actions dans différentes bourses. 
@@ -22,3 +24,6 @@ Compléxité :
 2. Le virement est liée aux vendeurs et aux acheteurs d'actions ( en temps réel) . Puis, il faut faire la mise à jour de la base de données
 3. Mise à jour de la base de données par rapport à des données en temps réel.
 4. Responsive design pour le site web ( utilisation de Boostrap ou tailwindcss)
+
+
+# Images du projet
