@@ -9,14 +9,13 @@ using System.Text;
 
 namespace WCF_application
 {
-    // REMARQUE : vous pouvez utiliser la commande Renommer du menu Refactoriser pour changer le nom d'interface "IServiceMarket" à la fois dans le code et le fichier de configuration.
+    // REMARQUE : vous pouvez utiliser la commande Renommer du menu Refactoriser pour changer le nom d'interface "IServiceMarche" à la fois dans le code et le fichier de configuration.
     [ServiceContract]
-    public interface IServiceMarket
+    public interface IServiceMarche
     {
         [OperationContract]
-         IEnumerable<MarketDto> GetMarkets();
-        [OperationContract]
-        IEnumerable<Market> GetAllMarkets();
+        IEnumerable<MarketDto> GetMarkets();
+
 
         [OperationContract]
         MarketDto GetById(int id);
@@ -29,7 +28,6 @@ namespace WCF_application
 
         [OperationContract]
         void Delete(MarketDto marketDto);
-        
 
     }
 }

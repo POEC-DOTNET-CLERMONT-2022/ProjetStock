@@ -7,72 +7,72 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Gestion_lists_stocks.xaml.cs">
+    <Compile Update="Stocks\Gestion_lists_stocks.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="MonProfil.xaml.cs">
+    <Compile Update="User\MonProfil.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserCart.xaml.cs">
+    <Compile Update="Cart\UserCart.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserCommandeControl.xaml.cs">
+    <Compile Update="Order\UserCommandeControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserCreateRappelControle.xaml.cs">
+    <Compile Update="Rappel\UserCreateRappelControle.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserInfoControl.xaml.cs">
+    <Compile Update="User\UserInfoControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserModifyInfo.xaml.cs">
+    <Compile Update="User\UserModifyInfo.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserSellControl.xaml.cs">
+    <Compile Update="User\UserSellControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="ContactUsControl.xaml">
+    <Page Update="Info\ContactUsControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="CreateUser.xaml">
+    <Page Update="User\CreateUser.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Gestion_lists_stocks.xaml">
+    <Page Update="Stocks\Gestion_lists_stocks.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="ListOrderControl.xaml">
+    <Page Update="Order\ListOrderControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="LoginControle.xaml">
+    <Page Update="User\LoginControle.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MonProfil.xaml">
+    <Page Update="User\MonProfil.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="RecoverControler.xaml">
+    <Page Update="User\RecoverControler.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="SendMailReceoverPassword.xaml">
+    <Page Update="User\SendMailReceoverPassword.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserCart.xaml">
+    <Page Update="Cart\UserCart.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserCommandeControl.xaml">
+    <Page Update="Order\UserCommandeControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserCreateRappelControle.xaml">
+    <Page Update="Rappel\UserCreateRappelControle.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserInfoControl.xaml">
+    <Page Update="User\UserInfoControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserModifyInfo.xaml">
+    <Page Update="User\UserModifyInfo.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserSellControl.xaml">
+    <Page Update="User\UserSellControl.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
