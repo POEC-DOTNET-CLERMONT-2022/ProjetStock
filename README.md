@@ -3,15 +3,15 @@
 
 ![alt text](https://images.emojiterra.com/google/noto-emoji/v2.028/128px/1f4c8.png "Logo Title Text 1")
 ## Table of Contents
-1. [Presentation du projet](#Présentation du projet)
+1. [Presentation](#Présentation)
     -  [Details](#Details)
     -  [Avantages](#Avantages)
     -  [Compléxité](#Compléxité)
-2. [Images](# Images)
+2. [Images](#Images)
 3. [Installation](#Installation )
 
 
-# Présentation du projet
+# Présentation
 
 ######Details
 1. Le projet permet de gérer les informations sur les actions dans différentes bourses. 
