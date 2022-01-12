@@ -42,7 +42,7 @@
 4. Responsive design pour le site web ( utilisation de Boostrap ou tailwindcss)
 
 
-#####[Document Word](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2FPOEC-DOTNET-CLERMONT-2022%2FProjetStock%2Fmain%2FDocuments%2Fprojet%2520POEC%2520-%2520logiciel%2520vente%2520ou%2520achat%2520action.odt&wdOrigin=BROWSELINK)
+##### [Document Word](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2FPOEC-DOTNET-CLERMONT-2022%2FProjetStock%2Fmain%2FDocuments%2Fprojet%2520POEC%2520-%2520logiciel%2520vente%2520ou%2520achat%2520action.odt&wdOrigin=BROWSELINK)
 ------------
 
 # Images:
@@ -54,7 +54,7 @@
 ###### Usecase :
 ![alt text](https://raw.githubusercontent.com/POEC-DOTNET-CLERMONT-2022/ProjetStock/main/Documents/UML/Use_Case_Stock_Projet.jpg)
 
-######Diagramme de classe
+###### Diagramme de classe
 ![alt text](https://raw.githubusercontent.com/POEC-DOTNET-CLERMONT-2022/ProjetStock/main/Documents/UML/Diagram_Stock_Projet.jpg)
 ------------
 ##### Storyboard
