@@ -16,7 +16,7 @@
 # Présentation
 
 ##### Details
-1. Le projet permet de gérer les informations sur les actions dans différentes bourses. 
+1. Le 'projet permet de gérer les informations sur les actions dans différentes bourses. 
 2. Il consiste à :
 (phase 1) afficher les différents changements de valeur des actions en fonction du temps ( 6 mois, 1 mois , une semaine et le jour même )
  (phase 2 - optionnelle)  système de recommandation qui recommande aux clients pour acheter/vendre des actions :
@@ -58,7 +58,7 @@
 ![alt text](https://raw.githubusercontent.com/POEC-DOTNET-CLERMONT-2022/ProjetStock/main/Documents/UML/Diagram_Stock_Projet.jpg)
 ------------
 ##### Storyboard
-![alt text]() ![alt text]() ![alt text]()![alt text]()
+##### [Download]()
 ------------
 # Installation
  - Mise en place de la base de données
