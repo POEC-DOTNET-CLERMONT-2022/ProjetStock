@@ -1,6 +1,6 @@
 # ProjetStock  - Projet Tristan/Hossein
 
-![alt text](https://comparebrokers.co/img/ai-trader.jpg")
+![alt text]("https://comparebrokers.co/img/ai-trader.jpg")
 ## Table of Contents
 1. [Presentation](#Présentation)
     -  [Details](#Details)
