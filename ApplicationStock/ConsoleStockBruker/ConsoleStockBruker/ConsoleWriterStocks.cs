@@ -12,7 +12,7 @@ namespace ConsoleStockBruker
     {
         public void Display(string s)
         {
-            Console.WriteLine(s);
+            Console.WriteLine(s.ToString());
         }
 
        
