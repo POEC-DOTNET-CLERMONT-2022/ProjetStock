@@ -17,17 +17,17 @@ namespace ProjectStockRepository
             SqlContext = sqlContext;
         }
 
-        public StockSqlDtos? Add(StockSqlDtos stockSqlDto)
+        public StockSqlEntity? Add(StockSqlEntity stockSqlDto)
         {
-            StockSqlDtos entity = SqlContext.Add(stockSqlDto).Entity;
+            StockSqlEntity entity = SqlContext.Add(stockSqlDto).Entity;
             SqlContext.SaveChanges();
 
             return entity;
         }
 
-        public StockSqlDtos? Update(StockSqlDtos stockSqlDto)
+        public StockSqlEntity? Update(StockSqlEntity stockSqlDto)
         {
-            StockSqlDtos? entity = GetSingle(stockSqlDto._id);
+            StockSqlEntity? entity = GetSingle(stockSqlDto._id);
             if (entity == null)
             {
                 return null;
@@ -44,18 +44,18 @@ namespace ProjectStockRepository
 
         public bool Delete(Guid id)
         {
-            StockSqlDtos? entity = GetSingle(id);
+            StockSqlEntity? entity = GetSingle(id);
             if (entity == null)
             {
                 return false;
             }
-            SqlContext.Set<StockSqlDtos>().Remove(entity);
+            SqlContext.Set<StockSqlEntity>().Remove(entity);
             return SqlContext.SaveChanges() == 1;
         }
 
-        public StockSqlDtos? GetSingle(Guid id)
+        public StockSqlEntity? GetSingle(Guid id)
         {
-            return SqlContext.Set<StockSqlDtos>()
+            return SqlContext.Set<StockSqlEntity>()
                              .SingleOrDefault(stock => stock._id == id);
         }
 

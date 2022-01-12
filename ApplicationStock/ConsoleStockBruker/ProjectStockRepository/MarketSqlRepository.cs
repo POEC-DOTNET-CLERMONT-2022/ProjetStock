@@ -16,17 +16,17 @@ namespace ProjectStockRepository
             SqlContext = sqlContext;
         }
 
-        public MarketSqlDtos? Add(MarketSqlDtos marketSqlDto)
+        public MarketSqlEntity? Add(MarketSqlEntity marketSqlDto)
         {
-            MarketSqlDtos entity = SqlContext.Add(marketSqlDto).Entity;
+            MarketSqlEntity entity = SqlContext.Add(marketSqlDto).Entity;
             SqlContext.SaveChanges();
 
             return entity;
         }
 
-        public  MarketSqlDtos? Update(MarketSqlDtos marketSqlDto)
+        public  MarketSqlEntity? Update(MarketSqlEntity marketSqlDto)
         {
-            MarketSqlDtos? entity = GetSingle(marketSqlDto._id);
+            MarketSqlEntity? entity = GetSingle(marketSqlDto._id);
             if (entity == null)
             {
                 return null;
@@ -44,18 +44,18 @@ namespace ProjectStockRepository
 
         public bool Delete(Guid id)
         {
-            MarketSqlDtos? entity = GetSingle(id);
+            MarketSqlEntity? entity = GetSingle(id);
             if (entity == null)
             {
                 return false;
             }
-            SqlContext.Set<MarketSqlDtos>().Remove(entity);
+            SqlContext.Set<MarketSqlEntity>().Remove(entity);
             return SqlContext.SaveChanges() == 1;
         }
 
-        public MarketSqlDtos? GetSingle(Guid id)
+        public MarketSqlEntity? GetSingle(Guid id)
         {
-            return SqlContext.Set<MarketSqlDtos>()
+            return SqlContext.Set<MarketSqlEntity>()
                              .SingleOrDefault(market => market._id == id);
         }
     }

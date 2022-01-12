@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 namespace ProjectStockSQLDTOS
 {
     [Table("User")]
-    public  sealed class UserSqlDtos : IEquatable<UserSqlDtos>
+    public  sealed class UserSqlEntity : IEquatable<UserSqlEntity>
     {
         [Key]
         public Guid _id { get; private set; }
@@ -23,20 +23,20 @@ namespace ProjectStockSQLDTOS
         
         public List<Address> _addresses { get; set; }
 
-        public UserSqlDtos(string firstName, string lastName, string email, string phone, string siret)
+        public UserSqlEntity(string firstName, string lastName, string email, string phone, string siret)
         {
             _id = Guid.NewGuid();
             _firstName = string.IsNullOrEmpty(firstName) ? throw new ArgumentNullException(nameof(firstName)) : firstName;
             _lastName = string.IsNullOrEmpty(lastName) ? throw new ArgumentNullException(nameof(lastName)) : lastName;
             var regex = new Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
             _email = !regex.IsMatch(email) ? throw new Exception(nameof(email)) : email;
-            _siret = string.IsNullOrEmpty(siret) && siret.Length < 14 ? throw new ArgumentNullException(nameof(siret)) : siret;
-            _phone = string.IsNullOrEmpty(phone) && phone.Length < 12 ? throw new ArgumentNullException(nameof(phone)) : phone;
+            _siret = string.IsNullOrEmpty(siret) && siret.Length < 14 && phone is null ? throw new ArgumentNullException(nameof(siret)) : siret;
+            _phone = string.IsNullOrEmpty(phone) && phone.Length < 12 && phone is null ? throw new ArgumentNullException(nameof(phone)) : phone;
             _addresses = new List<Address>();
 
         }
 
-        public bool Equals(UserSqlDtos? other)
+        public bool Equals(UserSqlEntity? other)
         {
             if (other == null) return false;
             return true;

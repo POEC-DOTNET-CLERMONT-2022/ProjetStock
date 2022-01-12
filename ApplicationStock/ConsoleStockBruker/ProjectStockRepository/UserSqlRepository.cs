@@ -16,17 +16,17 @@ namespace ProjectStockRepository
             SqlContext = sqlContext;
         }
 
-        public UserSqlDtos? Add(UserSqlDtos userSqlDto)
+        public UserSqlEntity? Add(UserSqlEntity userSqlDto)
         {
-            UserSqlDtos entity = SqlContext.Add(userSqlDto).Entity;
+            UserSqlEntity entity = SqlContext.Add(userSqlDto).Entity;
             SqlContext.SaveChanges();
 
             return entity;
         }
 
-        public UserSqlDtos? Update(UserSqlDtos userSqlDto)
+        public UserSqlEntity? Update(UserSqlEntity userSqlDto)
         {
-            UserSqlDtos? entity = GetSingle(userSqlDto._id);
+            UserSqlEntity? entity = GetSingle(userSqlDto._id);
             if (entity == null)
             {
                 return null;
@@ -47,18 +47,18 @@ namespace ProjectStockRepository
 
         public bool Delete(Guid id)
         {
-            UserSqlDtos? entity = GetSingle(id);
+            UserSqlEntity? entity = GetSingle(id);
             if (entity == null)
             {
                 return false;
             }
-            SqlContext.Set<UserSqlDtos>().Remove(entity);
+            SqlContext.Set<UserSqlEntity>().Remove(entity);
             return SqlContext.SaveChanges() == 1;
         }
 
-        public UserSqlDtos? GetSingle(Guid id)
+        public UserSqlEntity? GetSingle(Guid id)
         {
-            return SqlContext.Set<UserSqlDtos>()
+            return SqlContext.Set<UserSqlEntity>()
                              .SingleOrDefault(user => user._id == id);
         }
 

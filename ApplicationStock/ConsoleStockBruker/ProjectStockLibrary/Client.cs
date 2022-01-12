@@ -16,15 +16,15 @@ namespace ProjectStockLibrary
 
         private List<Stock> _stocks { get; set; }
 
-        public Client(string firstName , string lastName, string email, string _phone, string _siret)
+        public Client(string firstName , string lastName, string email, string phone, string siret)
         {
             _id = Guid.NewGuid();
             _firstName = string.IsNullOrEmpty(firstName) ? throw new ArgumentNullException(nameof(firstName)) : firstName;
             _lastName = string.IsNullOrEmpty(lastName) ? throw new ArgumentNullException(nameof(lastName)) : lastName;
             var regex = new Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
             _email = !regex.IsMatch(email) ? throw new Exception(nameof(email)) : email;
-            this._siret = string.IsNullOrEmpty(_siret) && _siret.Length < 14 ? throw new ArgumentNullException(nameof(_siret)) : _siret;
-            this. _phone = string.IsNullOrEmpty(_phone) && _phone.Length < 12 ? throw new ArgumentNullException(nameof(_phone)) : _phone;
+            _siret = string.IsNullOrEmpty(siret) && siret.Length < 14 && siret is null ? throw new ArgumentNullException(nameof(siret)) : siret;
+            _phone = string.IsNullOrEmpty(phone) && phone.Length < 12 phone is null? throw new ArgumentNullException(nameof(phone)) : phone;
             _addresses = new List<Address>();
             _stocks = new List<Stock>();
 

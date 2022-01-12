@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace ProjectStockSQLDTOS
 { 
     [Table("Address")]
-    public sealed class AddressSqlDtos : IEquatable<AddressSqlDtos>
+    public sealed class AddressSqlEntity : IEquatable<AddressSqlEntity>
     {
         [Key]
         public Guid _id { get; private set; }
@@ -25,7 +25,7 @@ namespace ProjectStockSQLDTOS
         public string _country { get; set; }
 
 
-        public AddressSqlDtos(string address_line_1, string address_line_2, string codePostal, string city, string country)
+        public AddressSqlEntity(string address_line_1, string address_line_2, string codePostal, string city, string country)
         {
             _id = Guid.NewGuid();
             _address_line_1 = address_line_1;
@@ -34,7 +34,7 @@ namespace ProjectStockSQLDTOS
             _city = city;
             _country = country;
         }
-        public bool Equals(AddressSqlDtos? other)
+        public bool Equals(AddressSqlEntity? other)
         {
             if (other == null) return false;
             return true;
