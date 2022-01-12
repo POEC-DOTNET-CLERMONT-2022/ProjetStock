@@ -20,7 +20,7 @@ namespace ProjectStockEntity
 
         public DateTime _orderDate { get; set; }
 
-        private Stock _stock { get; set; }
+        public Stock _stock { get; set; }
 
         public int _nbStock { get; set; }
 

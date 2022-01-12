@@ -18,30 +18,30 @@
                           
                         <MenuItem Header="Market">
                             <MenuItem Header="MarketA">
-                                <MenuItem Header="StockA1" Click="MenuItem_Click"></MenuItem>
-                                <MenuItem Header="StockA2" Click="MenuItem_Click"></MenuItem>
-                                <MenuItem Header="StockA3" Click="MenuItem_Click"></MenuItem>
-                                <MenuItem Header="StockA4" Click="MenuItem_Click"></MenuItem>
+                                <MenuItem Header="StockA1" ></MenuItem>
+                                <MenuItem Header="StockA2" ></MenuItem>
+                                <MenuItem Header="StockA3" ></MenuItem>
+                                <MenuItem Header="StockA4" ></MenuItem>
                             </MenuItem>
                             <MenuItem Header="MarketB">
-                                <MenuItem Header="StockB1" Click="MenuItem_Click"></MenuItem>
-                                <MenuItem Header="StockB2" Click="MenuItem_Click"></MenuItem>
-                                <MenuItem Header="StockB3" Click="MenuItem_Click"></MenuItem>
-                                <MenuItem Header="StockB4" Click="MenuItem_Click"></MenuItem>
+                                <MenuItem Header="StockB1" ></MenuItem>
+                                <MenuItem Header="StockB2" ></MenuItem>
+                                <MenuItem Header="StockB3" ></MenuItem>
+                                <MenuItem Header="StockB4" ></MenuItem>
                             </MenuItem>
 
                             <MenuItem Header="MarketC">
-                                <MenuItem Header="StockC1" Click="MenuItem_Click"></MenuItem>
-                                <MenuItem Header="StockC2" Click="MenuItem_Click"></MenuItem>
-                                <MenuItem Header="StockC3" Click="MenuItem_Click"></MenuItem>
-                                <MenuItem Header="StockC4" Click="MenuItem_Click"></MenuItem>
+                                <MenuItem Header="StockC1" ></MenuItem>
+                                <MenuItem Header="StockC2" ></MenuItem>
+                                <MenuItem Header="StockC3" ></MenuItem>
+                                <MenuItem Header="StockC4"></MenuItem>
                             </MenuItem>
 
                             <MenuItem Header="MarketD">
-                                <MenuItem Header="StockD1" Click="MenuItem_Click"></MenuItem>
-                                <MenuItem Header="StockD2" Click="MenuItem_Click"></MenuItem>
-                                <MenuItem Header="StockD3" Click="MenuItem_Click"></MenuItem>
-                                <MenuItem Header="StockD4" Click="MenuItem_Click"></MenuItem>
+                                <MenuItem Header="StockD1"></MenuItem>
+                                <MenuItem Header="StockD2" ></MenuItem>
+                                <MenuItem Header="StockD3"></MenuItem>
+                                <MenuItem Header="StockD4" ></MenuItem>
                             </MenuItem>
                         </MenuItem>
                         <MenuItem Header="Contact us">

@@ -1,6 +1,7 @@
 ﻿
 using ProjectStockEntity;
 using ProjectStockRepository.Context;
+using ProjectStockRepository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

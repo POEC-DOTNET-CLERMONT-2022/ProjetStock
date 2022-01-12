@@ -110,7 +110,7 @@ namespace ConsoleStockBruker
                 Writer.Display("Mauvais siret !");
                 return update(client);
             }
-            client.modifyAdress(firstName, lastName, email, phone, siret);
+           // client.modifyAdress(firstName, lastName, email, phone, siret);
 
             return client;
         }
