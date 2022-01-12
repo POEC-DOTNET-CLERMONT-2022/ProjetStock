@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace ProjectStockEntity
 {
     [Table("Order")]
-    public sealed class OrderSqlEntity : IEquatable<OrderSqlEntity>
+    public sealed class OrderEntity : IEquatable<OrderEntity>
     {
         [Key]
 
@@ -24,7 +24,7 @@ namespace ProjectStockEntity
 
         public int _nbStock { get; set; }
 
-        public OrderSqlEntity(string orderName, int nbStock)
+        public OrderEntity(string orderName, int nbStock)
         {
             _orderName = orderName;
             _orderDate = DateTime.Now;
@@ -32,7 +32,7 @@ namespace ProjectStockEntity
             _stock = new Stock();
             _nbStock = nbStock;
         }
-        public bool Equals(OrderSqlEntity? other)
+        public bool Equals(OrderEntity? other)
         {
             if (other == null) return false;
             return true;

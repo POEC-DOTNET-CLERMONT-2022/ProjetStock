@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 namespace ProjectStockEntity
 {
     [Table("User")]
-    public  sealed class UserEntity : IEquatable<UserEntity>
+    public  sealed class UserSqlEntity : IEquatable<UserSqlEntity>
     {
         [Key]
         public Guid _id { get; private set; }
@@ -23,7 +23,7 @@ namespace ProjectStockEntity
         
         public List<Address> _addresses { get; set; }
 
-        public UserEntity(string firstName, string lastName, string email, string phone, string siret)
+        public UserSqlEntity(string firstName, string lastName, string email, string phone, string siret)
         {
             _id = Guid.NewGuid();
             _firstName = string.IsNullOrEmpty(firstName) ? throw new ArgumentNullException(nameof(firstName)) : firstName;
@@ -36,7 +36,7 @@ namespace ProjectStockEntity
 
         }
 
-      public bool Equals(UserEntity? other)
+        public bool Equals(UserSqlEntity? other)
         {
             if (other == null) return false;
             return true;

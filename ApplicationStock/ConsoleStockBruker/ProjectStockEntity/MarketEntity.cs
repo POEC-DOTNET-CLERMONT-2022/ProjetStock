@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace ProjectStockEntity
 {
     [Table("Market")]
-    public sealed class MarketSqlEntity : IEquatable<MarketSqlEntity>
+    public sealed class MarketEntity : IEquatable<MarketEntity>
     {
         [Key]
 
@@ -24,7 +24,7 @@ namespace ProjectStockEntity
 
         public List<Stock> _stocks { get; set; }
 
-        public MarketSqlEntity(string name, DateTime closingDate, DateTime openingDate)
+        public MarketEntity(string name, DateTime closingDate, DateTime openingDate)
         {
             _id = Guid.NewGuid();
             _name = string.IsNullOrEmpty(name) ? throw new ArgumentNullException(nameof(name)) : name;
@@ -33,7 +33,7 @@ namespace ProjectStockEntity
             _stocks = new List<Stock>();
 
         }
-        public bool Equals(MarketSqlEntity? other)
+        public bool Equals(MarketEntity? other)
         {
             if (other == null) return false;
             return true;
