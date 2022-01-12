@@ -24,9 +24,6 @@ namespace WPF_Application
         {
             InitializeComponent();
         }
-        private void login_button_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
     }
 }

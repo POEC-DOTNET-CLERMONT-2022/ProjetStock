@@ -23,8 +23,8 @@ namespace ProjectStockLibrary
             _lastName = string.IsNullOrEmpty(lastName) ? throw new ArgumentNullException(nameof(lastName)) : lastName;
             var regex = new Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
             _email = !regex.IsMatch(email) ? throw new Exception(nameof(email)) : email;
-            _siret = string.IsNullOrEmpty(siret) && siret.Length < 14 ? throw new ArgumentNullException(nameof(siret)) : siret;
-            _phone = string.IsNullOrEmpty(phone) && phone.Length < 12 ? throw new ArgumentNullException(nameof(phone)) : phone;
+            _siret = string.IsNullOrEmpty(siret) && siret.Length < 14 && siret is null ? throw new ArgumentNullException(nameof(siret)) : siret;
+            _phone = string.IsNullOrEmpty(phone) && phone.Length < 12 phone is null? throw new ArgumentNullException(nameof(phone)) : phone;
             _addresses = new List<Address>();
             _stocks = new List<Stock>();
 
@@ -67,7 +67,7 @@ namespace ProjectStockLibrary
             }
             else
             {
-                throw new Exception("Not address correpond to your address");
+                throw new ArgumentException("Not address correpond to your address");
             }
            
         }
@@ -79,7 +79,7 @@ namespace ProjectStockLibrary
             }
             else
             {
-                throw new Exception("Is already add this ");
+                throw new ArgumentException("Not address correpond to your address");
             }
 
         }
@@ -92,7 +92,7 @@ namespace ProjectStockLibrary
             }
             else
             {
-                throw new Exception("Not address correpond to your address");
+                throw new ArgumentException("Not address correpond to your address");
             }
 
         }
