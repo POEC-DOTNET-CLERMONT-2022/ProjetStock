@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace ProjectStockSQLDTOS
 { 
     [Table("Address")]
-    public class AddressSqlDtos : IEquatable<AddressSqlDtos>
+    public sealed class AddressSqlDtos : IEquatable<AddressSqlDtos>
     {
         [Key]
         public Guid _id { get; private set; }

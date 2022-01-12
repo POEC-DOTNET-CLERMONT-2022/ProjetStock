@@ -44,7 +44,7 @@ namespace ProjectStockLibrary
             }
             else
             {
-                throw new Exception("The stock is not Defined");
+                throw new ArgumentException("The stock is not Defined");
             }
 
         }
@@ -60,7 +60,7 @@ namespace ProjectStockLibrary
             }
             else
             {
-                throw new Exception("The Stock Does not correspond to the Chosen One! Please Check!");
+                throw new ArgumentException("The Stock Does not correspond to the Chosen One! Please Check!");
             }
 
         }

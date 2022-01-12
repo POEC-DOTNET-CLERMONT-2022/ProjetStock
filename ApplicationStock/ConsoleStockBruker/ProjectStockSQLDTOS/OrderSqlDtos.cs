@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace ProjectStockSQLDTOS
 {
     [Table("Order")]
-    public class OrderSqlDtos : IEquatable<OrderSqlDtos>
+    public sealed class OrderSqlDtos : IEquatable<OrderSqlDtos>
     {
         [Key]
 

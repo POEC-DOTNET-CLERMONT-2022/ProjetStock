@@ -28,10 +28,7 @@ namespace WPF_Application
         
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
         private void MenuItem_Click_Connection(object sender, RoutedEventArgs e)
         {
 

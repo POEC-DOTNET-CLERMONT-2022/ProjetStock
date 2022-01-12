@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 namespace ProjectStockSQLDTOS
 {
     [Table("User")]
-    public class UserSqlDtos : IEquatable<UserSqlDtos>
+    public  sealed class UserSqlDtos : IEquatable<UserSqlDtos>
     {
         [Key]
         public Guid _id { get; private set; }

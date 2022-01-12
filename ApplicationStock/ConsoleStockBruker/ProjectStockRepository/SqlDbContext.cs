@@ -25,7 +25,7 @@ namespace ProjectStockRepository
         {
             base.OnModelCreating(modelBuilder);
 
-            EntityTypeBuilder<UserSqlDtos> entityTypeBuilder = modelBuilder.Entity<UserSqlDtos>();
+           
 
         }
 

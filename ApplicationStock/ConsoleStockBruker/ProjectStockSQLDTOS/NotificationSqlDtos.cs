@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace ProjectStockSQLDTOS
 {
     [Table("Notification")]
-    public class NotificationSqlDtos : IEquatable<NotificationSqlDtos>
+    public sealed class NotificationSqlDtos : IEquatable<NotificationSqlDtos>
     {
         
         [Key]

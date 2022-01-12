@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace ProjectStockSQLDTOS
 {
     [Table("Market")]
-    public class MarketSqlDtos : IEquatable<MarketSqlDtos>
+    public sealed class MarketSqlDtos : IEquatable<MarketSqlDtos>
     {
         [Key]
 
