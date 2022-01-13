@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ namespace ProjectStockLibrary
 {
     public class Stock
     {
+        [Key]
         public Guid _id { get; private set; }
         public string _name { get;  set; }
         public float _value { get;  set; }

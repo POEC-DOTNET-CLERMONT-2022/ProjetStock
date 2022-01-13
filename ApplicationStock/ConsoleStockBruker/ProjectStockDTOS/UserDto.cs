@@ -36,6 +36,6 @@ namespace ProjectStockDTOS
 
         [DataMember]
         [Required]
-        private List<Stock> _stocks { get; set; }
+        public List<Stock> _stocks { get; set; }
     }
 }

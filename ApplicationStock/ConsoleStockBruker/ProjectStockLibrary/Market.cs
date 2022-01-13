@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ namespace ProjectStockLibrary
 {
     public class Market
     {
+        [Key]
         public Guid _id { get; set; }
         public string _name {  get;  set; }
         public DateTime _openingDate {  get;  set; }

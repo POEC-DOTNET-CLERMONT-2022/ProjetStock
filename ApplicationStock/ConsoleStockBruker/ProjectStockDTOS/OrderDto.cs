@@ -21,7 +21,7 @@ namespace ProjectStockDTOS
         public DateTime _orderDate { get; set; }
         [DataMember]
         [Required]
-        private Stock _stock { get; set; }
+        public Stock _stock { get; set; }
         [DataMember]
         [Required]
         public int _nbStock { get;  set; }

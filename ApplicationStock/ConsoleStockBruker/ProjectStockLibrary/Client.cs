@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
 
 namespace ProjectStockLibrary
@@ -6,6 +7,7 @@ namespace ProjectStockLibrary
     [DataContract]
     public class Client
     {
+        [Key]
         public  Guid _id { get; private set; }
         public string _firstName { get;  set; }
         public string _lastName { get; set; }

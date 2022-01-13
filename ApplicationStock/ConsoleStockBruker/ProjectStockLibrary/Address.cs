@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ namespace ProjectStockLibrary
 {
      public  class Address
     {
+        [Key]
         public Guid _id { get; set; }
         public string _address_line_1 { get; private set; }
         public string _address_line_2 { get; private set; }
