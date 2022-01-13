@@ -22,6 +22,8 @@ namespace ProjectStockEntity
 
         public DateTime _closingDate { get; set; }
 
+
+        [ForeignKey("Market")]
         public List<Stock> _stocks { get; set; }
 
         public MarketEntity(string name, DateTime closingDate, DateTime openingDate)

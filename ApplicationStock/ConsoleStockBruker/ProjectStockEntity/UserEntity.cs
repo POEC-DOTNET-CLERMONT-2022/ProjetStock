@@ -20,8 +20,13 @@ namespace ProjectStockEntity
         public string _phone { get; set; }
        
         public string _siret { get; set; }
-        
+
+
+        [ForeignKey("Address")]
         public List<Address> _addresses { get; set; }
+
+        [ForeignKey("Stock")]
+        private List<Stock> _stocks { get; set; }
 
         public UserEntity(string firstName, string lastName, string email, string phone, string siret)
         {

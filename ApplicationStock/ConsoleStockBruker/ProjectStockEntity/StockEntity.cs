@@ -21,7 +21,9 @@ namespace ProjectStockEntity
         public float _value { get; set; }
       
         public string _entrepriseName { get; set; }
-     
+
+
+        [ForeignKey("Client")]
         public List<Client> _clients { get; set; }
 
         public StockEntity(string name, float value, string entrepriseName)
