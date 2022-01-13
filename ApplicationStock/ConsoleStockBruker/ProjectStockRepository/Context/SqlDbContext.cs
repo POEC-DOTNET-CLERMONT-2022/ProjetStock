@@ -5,7 +5,7 @@ using ProjectStockEntity;
 
 namespace ProjectStockRepository.Context
 {
-    public class SqlDbContext : DbContext
+    public class SqlDbContext: DbContext
     { 
         private string ConnectionString { get; }
 
@@ -26,7 +26,11 @@ namespace ProjectStockRepository.Context
             base.OnModelCreating(modelBuilder);
 
             EntityTypeBuilder<UserEntity> entityTypeBuilder = modelBuilder.Entity<UserEntity>();
-
+            EntityTypeBuilder<AddressEntity> addressTypeBuilder = modelBuilder.Entity<AddressEntity>();
+            EntityTypeBuilder<MarketEntity> marketTypeBuilder = modelBuilder.Entity<MarketEntity>();
+            EntityTypeBuilder<OrderEntity> orderTypeBuilder = modelBuilder.Entity<OrderEntity>();
+            EntityTypeBuilder<NotificationEntity> notifTypeBuilder = modelBuilder.Entity<NotificationEntity>();
+            EntityTypeBuilder<StockEntity> stockTypeBuilder = modelBuilder.Entity<StockEntity>();
         }
 
         public override DbSet<TEntity> Set<TEntity>()

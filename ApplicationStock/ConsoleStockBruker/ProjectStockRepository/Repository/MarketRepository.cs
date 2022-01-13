@@ -19,26 +19,26 @@ namespace ProjectStockRepository.Repository
             SqlContext = sqlContext;
         }
 
-        public MarketEntity? Add(MarketEntity marketSqlDto)
+        public MarketEntity? Add(MarketEntity marketEntity)
         {
-            MarketEntity entity = SqlContext.Add(marketSqlDto).Entity;
+            MarketEntity entity = SqlContext.Add(marketEntity).Entity;
             SqlContext.SaveChanges();
 
             return entity;
         }
 
-        public  MarketEntity? Update(MarketEntity marketSqlDto)
+        public  MarketEntity? Update(MarketEntity marketEntity)
         {
-            MarketEntity? entity = GetSingle(marketSqlDto._id);
+            MarketEntity? entity = GetSingle(marketEntity._id);
             if (entity == null)
             {
                 return null;
             }
 
            
-            entity._name = marketSqlDto._name;
-            entity._openingDate = marketSqlDto._openingDate;
-            entity._stocks = marketSqlDto._stocks;
+            entity._name = marketEntity._name;
+            entity._openingDate = marketEntity._openingDate;
+            entity._stocks = marketEntity._stocks;
             SqlContext.Update(entity);
             SqlContext.SaveChanges();
 

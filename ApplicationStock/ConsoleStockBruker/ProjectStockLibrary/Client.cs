@@ -23,8 +23,8 @@ namespace ProjectStockLibrary
             _lastName = string.IsNullOrEmpty(lastName) ? throw new ArgumentNullException(nameof(lastName)) : lastName;
             var regex = new Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
             _email = !regex.IsMatch(email) ? throw new Exception(nameof(email)) : email;
-            _siret = string.IsNullOrEmpty(siret) && siret.Length < 14 && siret is null ? throw new ArgumentNullException(nameof(siret)) : siret;
-            _phone = string.IsNullOrEmpty(phone) && phone.Length < 12 && phone is null ? throw new ArgumentNullException(nameof(phone)) : phone;
+            _siret = string.IsNullOrEmpty(siret) && siret.Length < 14 || siret is null ? throw new ArgumentNullException(nameof(siret)) : siret;
+            _phone = string.IsNullOrEmpty(phone) && phone.Length < 12 || phone is null ? throw new ArgumentNullException(nameof(phone)) : phone;
             _addresses = new List<Address>();
             _stocks = new List<Stock>();
 
