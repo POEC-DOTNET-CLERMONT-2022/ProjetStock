@@ -49,13 +49,19 @@ namespace ApiApplicationProjectStock.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<StockDto> Post(StockDto stockDto)
         {
+            try
+            {
+                var p = stockDto.ToModelStock();
 
-            var p = stockDto.ToModelStock();
-
-            var mapProj = _mapper.Map<StockDto>(p);
-            _context._stocks.Add(p);
-            _context.SaveChanges();
-            return Ok(mapProj);
+                var mapProj = _mapper.Map<StockDto>(p);
+                _context._stocks.Add(p);
+                _context.SaveChanges();
+                return Ok(mapProj);
+            }catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+           
         }
 
         // GET api/<ProjectController>/5
