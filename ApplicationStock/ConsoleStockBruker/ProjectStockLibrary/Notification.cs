@@ -11,8 +11,8 @@ namespace ProjectStockLibrary
     {
         [Key]
         public Guid _id { get; set; }
-        public string _textRappel { get; private set; }
-        public DateTime _sendAt { get; private set; }
+        public string _textRappel { get; set; }
+        public DateTime _sendAt { get;  set; }
         
         public Notification(string textRappel,DateTime sendAt)
         {

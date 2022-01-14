@@ -76,9 +76,9 @@ namespace ApiApplicationProjectStock.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDto))]
         public ActionResult<UserDto> Delete(Guid id)
         {
-            var p = _context._stocks.Find(id);
+            var p = _context._users.Find(id);
             if (p != null)
-                _context._stocks.Remove(p);
+                _context._users.Remove(p);
             else
                 return NotFound();
 

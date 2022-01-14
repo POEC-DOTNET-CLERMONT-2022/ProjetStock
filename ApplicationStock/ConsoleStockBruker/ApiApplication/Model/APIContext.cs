@@ -16,5 +16,10 @@ namespace ApiApplicationProjectStock.Model
         public DbSet<Stock> _stocks { get; set; }
 
         public DbSet<Order> _orders { get; set; }
+
+        public DbSet<Notification> _notifs { get; set; }
+
+
+        public DbSet<Address> _addresses { get; set; }
     }
 }
