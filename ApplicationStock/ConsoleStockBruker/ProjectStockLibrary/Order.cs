@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace ProjectStockLibrary
         public Guid _id { get; private set; }
         public string _orderName { get;  set; }
         public  DateTime _orderDate { get;  set; }
+        [ForeignKey("Stock")]
         private Stock _stock { get; set; }
         public  int _nbStock { get;  set; }
         public Order(string orderName,Stock stock,int nbStock) 

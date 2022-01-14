@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectStockRepository", "P
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectStockEntity", "ProjectStockEntity\ProjectStockEntity.csproj", "{A880563C-E2D5-4B00-8EA4-028AE436FDE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiApplication", "ApiApplication\ApiApplication.csproj", "{B45A70BC-FE83-46F1-8760-169271D45F73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiApplication", "ApiApplication\ApiApplication.csproj", "{B45A70BC-FE83-46F1-8760-169271D45F73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

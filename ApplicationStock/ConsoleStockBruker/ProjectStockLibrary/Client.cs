@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
 
@@ -14,8 +15,11 @@ namespace ProjectStockLibrary
         public string _email { get; set; }
         public string _phone { get;  set; }
         public string _siret { get;  set; }
+
+        [ForeignKey("Address")]
         private List<Address> _addresses { get; set; }
 
+        [ForeignKey("Stock")]
         private List<Stock> _stocks { get; set; }
 
         public Client(string firstName , string lastName, string email, string phone, string siret)

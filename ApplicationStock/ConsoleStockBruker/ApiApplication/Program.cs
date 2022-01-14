@@ -1,10 +1,11 @@
-using ApiApplicationProjectStock.Model;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Identity.Web;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.SqlServer;
+using System.Data.Entity;
+using ApiApplication.Model;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,4 +1,5 @@
-﻿using ApiApplicationProjectStock.Model;
+﻿using ApiApplication.Model;
+
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using ProjectStockDTOS;
