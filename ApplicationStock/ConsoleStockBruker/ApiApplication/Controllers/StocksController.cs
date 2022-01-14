@@ -27,12 +27,20 @@ namespace ApiApplicationProjectStock.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<StockDto> Get(Guid id)
         {
+            try { 
+               var p = _context._stocks.Find(id);
 
-            var p = _context._stocks.Find(id);
+               var mapProj = _mapper.Map<StockDto>(p);
 
-            var mapProj = _mapper.Map<StockDto>(p);
-
-            return Ok(mapProj);
+               if (mapProj == null)
+                  return NotFound();
+               else
+                  return Ok(mapProj);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         // GET api/<ProjectController>/5
@@ -45,7 +53,8 @@ namespace ApiApplicationProjectStock.Controllers
             var p = stockDto.ToModelStock();
 
             var mapProj = _mapper.Map<StockDto>(p);
-
+            _context._stocks.Add(p);
+            _context.SaveChanges();
             return Ok(mapProj);
         }
 
@@ -53,7 +62,7 @@ namespace ApiApplicationProjectStock.Controllers
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(StockDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<StockDto> Put(StockDto stockDto, int id)
+        public ActionResult<StockDto> Put(StockDto stockDto, Guid id)
         {
 
 
@@ -65,7 +74,8 @@ namespace ApiApplicationProjectStock.Controllers
            
 
             var mapProj = _mapper.Map<StockDto>(p);
-
+            _context._stocks.Update(p);
+            _context.SaveChanges();
             return Ok(mapProj);
         }
 
@@ -76,11 +86,16 @@ namespace ApiApplicationProjectStock.Controllers
         {
             var p = _context._stocks.Find(id);
             if (p != null)
+            {
                 _context._stocks.Remove(p);
+                _context.SaveChanges();
+            }
+              
             else
                 return NotFound();
 
             var mapProj = _mapper.Map<StockDto>(p);
+
             return Ok(mapProj);
         }
     }

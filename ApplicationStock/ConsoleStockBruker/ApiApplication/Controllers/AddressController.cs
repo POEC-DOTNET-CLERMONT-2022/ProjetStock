@@ -28,12 +28,17 @@ namespace ApiApplication.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<AddressDto> Get(Guid id)
         {
+          
+                var p = _context._addresses.Find(id);
+            
 
-            var p = _context._addresses.Find(id);
+               var mapProj = _mapper.Map<AddressDto>(p);
 
-            var mapProj = _mapper.Map<AddressDto>(p);
-
-            return Ok(mapProj);
+               if (mapProj == null)
+                  return NotFound();
+               else
+                  return Ok(mapProj);
+           
         }
 
 
@@ -43,12 +48,23 @@ namespace ApiApplication.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<AddressDto> Post(AddressDto addressDto)
         {
+            try
+             {
+                   var p = addressDto.ToModelStock();
 
-            var p = addressDto.ToModelStock();
+                var mapProj = _mapper.Map<AddressDto>(p);
+                _context._addresses.Add(p);
+                _context.SaveChanges();
+                if (mapProj == null)
+                    return NotFound();
+                else
 
-            var mapProj = _mapper.Map<AddressDto>(p);
-
-            return Ok(mapProj);
+                    return Ok(mapProj);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
 
@@ -56,15 +72,23 @@ namespace ApiApplication.Controllers
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddressDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<AddressDto> Put(MarketDto marketDto, int id)
+        public ActionResult<AddressDto> Put(AddressDto addressDto)
         {
 
 
-            var p = _context._addresses.Find(id);
-
+            var p = _context._addresses.Find(addressDto._id);
+            p._address_line_1 = addressDto._address_line_1;
+            p._address_line_2 = addressDto._address_line_2;
+            p._city = addressDto._city;
+            p._codePostal = addressDto._codePostal;
+            p._country = addressDto._country; 
+   
            
 
             var mapProj = _mapper.Map<AddressDto>(p);
+
+            _context._addresses.Update(p);
+            _context.SaveChanges();
 
             return Ok(mapProj);
         }
@@ -76,11 +100,16 @@ namespace ApiApplication.Controllers
         {
             var p = _context._addresses.Find(id);
             if (p != null)
+            {
                 _context._addresses.Remove(p);
+                _context.SaveChanges();
+            } 
             else
                 return NotFound();
 
             var mapProj = _mapper.Map<AddressDto>(p);
+
+
             return Ok(mapProj);
         }
     }

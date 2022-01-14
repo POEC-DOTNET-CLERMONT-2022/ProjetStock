@@ -13,6 +13,7 @@ namespace ApiApplication.Model
         {
             ConnectionString = "Server=(localdb)\\mssqllocaldb;Database=BDProjectStock;Trusted_Connection=True;MultipleActiveResultSets=true";
 
+
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -25,6 +26,16 @@ namespace ApiApplication.Model
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+        }
+
+
+        public override DbSet<TEntity> Set<TEntity>()
+        {
+            ChangeTracker.LazyLoadingEnabled = false;
+            ChangeTracker.AutoDetectChangesEnabled = false;
+            ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+
+            return base.Set<TEntity>();
         }
         public DbSet<Market> _markets { get; set; }
 

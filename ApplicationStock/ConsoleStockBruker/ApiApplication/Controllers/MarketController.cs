@@ -27,12 +27,17 @@ namespace ApiApplicationProjectStock.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<MarketDto> Get(Guid id)
         {
+      
+                var p = _context._markets.Find(id);
 
-            var p = _context._markets.Find(id);
+                var mapProj = _mapper.Map<MarketDto>(p);
 
-            var mapProj = _mapper.Map<MarketDto>(p);
-
-            return Ok(mapProj);
+                if (mapProj == null)
+                    return NotFound();
+                else
+                    _context.SaveChanges();
+                return Ok(mapProj);
+            
         }
 
 
@@ -40,14 +45,27 @@ namespace ApiApplicationProjectStock.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MarketDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<MarketDto> Post(MarketDto marketDto)
+        public ActionResult<MarketDto> Post( MarketDto    marketDto)
         {
+            try
+            {
 
-            var p = marketDto.ToModelStock();
+                var p = marketDto.ToModelStock();
 
-            var mapProj = _mapper.Map<MarketDto>(p);
+                var mapProj = _mapper.Map<MarketDto>(p);
 
-            return Ok(mapProj);
+
+                if (mapProj == null)
+                    return NotFound();
+                else
+                    _context._markets.Add(p);
+                _context.SaveChanges();
+                return Ok(mapProj);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
 
@@ -55,7 +73,7 @@ namespace ApiApplicationProjectStock.Controllers
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MarketDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<MarketDto> Put(MarketDto marketDto,int id)
+        public ActionResult<MarketDto> Put(MarketDto marketDto,Guid id)
         {
 
 
@@ -66,6 +84,9 @@ namespace ApiApplicationProjectStock.Controllers
             p._openingDate = marketDto._openingDate;
 
             var mapProj = _mapper.Map<MarketDto>(p);
+
+            _context._markets.Update(p);
+            _context.SaveChanges();
 
             return Ok(mapProj);
         }
@@ -82,6 +103,9 @@ namespace ApiApplicationProjectStock.Controllers
                 return NotFound();
 
             var mapProj = _mapper.Map<MarketDto>(p);
+
+            _context._markets.Remove(p);
+            _context.SaveChanges();
             return Ok(mapProj);
         }
     }

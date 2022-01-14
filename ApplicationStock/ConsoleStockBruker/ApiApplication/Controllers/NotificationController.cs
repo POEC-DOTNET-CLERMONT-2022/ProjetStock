@@ -32,7 +32,14 @@ namespace ApiApplication.Controllers
 
             var mapProj = _mapper.Map<NotificationDto>(p);
 
-            return Ok(mapProj);
+            if (mapProj == null)
+                return NotFound();
+            else
+            {
+     
+                return Ok(mapProj);
+            }
+                
         }
 
 
@@ -42,12 +49,22 @@ namespace ApiApplication.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<MarketDto> Post(NotificationDto notificationDto)
         {
+            try
+            {
+                var p = notificationDto.ToModelStock();
 
-            var p = notificationDto.ToModelStock();
+                var mapProj = _mapper.Map<NotificationDto>(p);
+                _context._notifs.Add(p);
+                _context.SaveChanges();
 
-            var mapProj = _mapper.Map<NotificationDto>(p);
+                return Ok(mapProj);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
 
-            return Ok(mapProj);
+            
         }
 
 
@@ -55,7 +72,7 @@ namespace ApiApplication.Controllers
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MarketDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<NotificationDto> Put(NotificationDto notificationDto, int id)
+        public ActionResult<NotificationDto> Put(NotificationDto notificationDto, Guid id)
         {
 
 
@@ -65,7 +82,8 @@ namespace ApiApplication.Controllers
             p._sendAt = p._sendAt;
 
             var mapProj = _mapper.Map<NotificationDto>(p);
-
+            _context._notifs.Update(p);
+            _context.SaveChanges();
             return Ok(mapProj);
         }
 
@@ -76,7 +94,11 @@ namespace ApiApplication.Controllers
         {
             var p = _context._notifs.Find(id);
             if (p != null)
+            {
                 _context._notifs.Remove(p);
+                _context.SaveChanges();
+
+            }    
             else
                 return NotFound();
 

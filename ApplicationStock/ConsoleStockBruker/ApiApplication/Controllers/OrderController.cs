@@ -33,7 +33,10 @@ namespace ApiApplication.Controllers
 
             var mapProj = _mapper.Map<OrderDto>(p);
 
-            return Ok(mapProj);
+           if (mapProj == null)
+                return NotFound();
+            else
+                return Ok(mapProj);
         }
 
 
@@ -43,12 +46,20 @@ namespace ApiApplication.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<MarketDto> Post(OrderDto orderDto)
         {
+            try
+            {
+                var p = orderDto.ToModel();
 
-            var p = orderDto.ToModel();
+                var mapProj = _mapper.Map<MarketDto>(p);
+                _context._orders.Add(p);
+                _context.SaveChanges();
 
-            var mapProj = _mapper.Map<MarketDto>(p);
-
-            return Ok(mapProj);
+                return Ok(mapProj);
+            } 
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
 
@@ -56,7 +67,7 @@ namespace ApiApplication.Controllers
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(OrderDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<OrderDto> Put(OrderDto orderDto, int id)
+        public ActionResult<OrderDto> Put(OrderDto orderDto,Guid id)
         {
 
 
@@ -69,6 +80,8 @@ namespace ApiApplication.Controllers
            
 
             var mapProj = _mapper.Map<MarketDto>(p);
+            _context._orders.Update(p);
+            _context.SaveChanges();
 
             return Ok(mapProj);
         }
@@ -80,7 +93,10 @@ namespace ApiApplication.Controllers
         {
             var p = _context._orders.Find(id);
             if (p != null)
+            {
                 _context._orders.Remove(p);
+                _context.SaveChanges();
+            }
             else
                 return NotFound();
 

@@ -29,11 +29,14 @@ namespace ApiApplicationProjectStock.Controllers
         public ActionResult<UserDto> Get(Guid id)
         {
 
-            var p = _context._stocks.Find(id);
+            var p = _context._stocks.First();
 
             var mapProj = _mapper.Map<UserDto>(p);
 
-            return Ok(mapProj);
+            if (mapProj == null)
+                return NotFound();
+            else
+                return Ok(mapProj);
         }
 
 
@@ -43,19 +46,27 @@ namespace ApiApplicationProjectStock.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<UserDto> Post(UserDto userDto)
         {
+            try
+            {
+                var p = userDto.ToModel();
 
-            var p = userDto.ToModel();
-
-            var mapProj = _mapper.Map<StockDto>(p);
-
-            return Ok(mapProj);
+                var mapProj = _mapper.Map<StockDto>(p);
+                _context._users.Add(p);
+                _context.SaveChanges();
+                return Ok(mapProj);
+            } 
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+  
         }
 
         // GET api/<ProjectController>/5
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<UserDto> Put(UserDto userDto, int id)
+        public ActionResult<UserDto> Put(UserDto userDto, Guid id)
         {
 
 
@@ -68,7 +79,8 @@ namespace ApiApplicationProjectStock.Controllers
             p._email = userDto._email;
             p._phone = userDto._phone;
             var mapProj = _mapper.Map<UserDto>(p);
-
+            _context._users.Update(p);
+            _context.SaveChanges();
             return Ok(mapProj);
         }
 
@@ -79,7 +91,11 @@ namespace ApiApplicationProjectStock.Controllers
         {
             var p = _context._users.Find(id);
             if (p != null)
+            {
                 _context._users.Remove(p);
+                _context.SaveChanges();
+            }
+            
             else
                 return NotFound();
 
