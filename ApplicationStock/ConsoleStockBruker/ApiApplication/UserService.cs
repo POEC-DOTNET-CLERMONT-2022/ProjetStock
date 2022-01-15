@@ -34,6 +34,11 @@ namespace ApiApplication
             // authentication successful so generate jwt token
             var token = generateJwtToken(user);
 
+            user.setToken(token);
+            user.setExpireDate(DateTime.UtcNow.AddDays(7));
+            _context._users.Update(user);
+            _context.SaveChanges();
+
             return new AuthenticateResponse(user, token);
         }
         public Client GetById(Guid id)
@@ -55,7 +60,10 @@ namespace ApiApplication
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Secret phase ez^pozâoeaz^pozapeozaêoazeoazeoazpeoaézeopeozapoaézpepôaezpeoaô")), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
-            return tokenHandler.WriteToken(token);
+            var send_token = tokenHandler.WriteToken(token);
+          
+
+            return send_token;
         }
     }
 }

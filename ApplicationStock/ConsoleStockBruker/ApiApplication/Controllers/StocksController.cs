@@ -1,11 +1,16 @@
 ﻿using ApiApplication.Helpers;
 using ApiApplication.Model;
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using ProjectStockDTOS;
 using ProjectStockPatternsLibrary;
+using System.Net;
+
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 
 namespace ApiApplicationProjectStock.Controllers
 {
@@ -20,12 +25,13 @@ namespace ApiApplicationProjectStock.Controllers
         {
             _mapper = mapper;
             _context = context;
+           
         }
 
 
 
         // GET api/<ProjectController>/5
-        //[Authorize]
+       // [Authorize]
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(StockDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -49,11 +55,14 @@ namespace ApiApplicationProjectStock.Controllers
 
         // GET api/<ProjectController>/5
         //[Authorize]
+      
         [HttpPost]
+     
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(StockDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<StockDto> Post(StockDto stockDto)
         {
+
             try
             {
                 var p = stockDto.ToModelStock();
@@ -93,6 +102,7 @@ namespace ApiApplicationProjectStock.Controllers
 
         // DELETE api/<ProjectController>/5
         //[Authorize]
+
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(StockDto))]
         public ActionResult<StockDto> Delete(Guid id)

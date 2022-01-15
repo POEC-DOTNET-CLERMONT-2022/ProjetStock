@@ -9,6 +9,7 @@ using ApiApplication.Model;
 using ApiApplication.Helpers;
 using ApiApplication.Interface;
 using ApiApplication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,9 +23,11 @@ services.Configure<AppSetting>(builder.Configuration.GetSection("AppSettings"));
 // configure DI for application services
 services.AddScoped<IUserService, UserService>();
 
+
 // Add services to the container.
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

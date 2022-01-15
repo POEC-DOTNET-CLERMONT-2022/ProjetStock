@@ -18,6 +18,10 @@ namespace ProjectStockLibrary
         public string _siret { get;  set; }
 
 
+        public string? _token { get; set; } = null;
+
+        public DateTime? _expireToken { get; set; } = null;
+
         [JsonIgnore]
         public string _password { get; set; }
 
@@ -41,6 +45,7 @@ namespace ProjectStockLibrary
             _addresses = new List<Address>();
             _stocks = new List<Stock>();
             _password = "";
+            
 
 
         }
@@ -59,6 +64,19 @@ namespace ProjectStockLibrary
             _phone = "";
             _addresses = new List<Address>();
             _stocks = new List<Stock>();
+        }
+
+
+
+
+        public void setToken(string token)
+        {
+            _token = token;
+        }
+
+        public void setExpireDate(DateTime date)
+        {
+            _expireToken = date ;
         }
         public void AddAdress(Address address)
         {

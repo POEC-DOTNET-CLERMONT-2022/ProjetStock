@@ -34,6 +34,16 @@ namespace ProjectStockDTOS
         [DataMember]
         [Required]
         public string _password { get; set; }
+
+
+        [DataMember]
+        [Required]
+        public string _token { get; set; }
+
+        [DataMember]
+        [Required]
+        public  DateTime _expireToken { get; set; }
+
         [DataMember]
         [Required]
         public List<Address> _addresses { get; set; }
