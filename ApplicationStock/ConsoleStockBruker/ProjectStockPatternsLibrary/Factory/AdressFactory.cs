@@ -34,9 +34,9 @@ namespace ProjectStockPatternsLibrary
                       
         }
 
-        public static Address ToModelStock(this AddressDto address)
+        public static Address ToModelStock(this AddressDto adress)
         {
-            return new Address(address._address_line_2, address._address_line_2, address._codePostal, address._city, address._city) { _id = address._id};
-        }
+            return new Address(adress._id) { _address_line_1 = adress._address_line_1, _address_line_2 = adress._address_line_2, _city = adress._city, _codePostal = adress._codePostal, _country = adress._country };
+    }
     }
 }

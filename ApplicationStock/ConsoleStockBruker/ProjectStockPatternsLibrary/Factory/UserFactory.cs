@@ -20,7 +20,7 @@ namespace ProjectStockPatternsLibrary
 
         public static UserDto ToDto(this Client user)
         {
-            return new UserDto() { _firstName = user._firstName, _lastName = user._lastName, _email = user._email, _phone = user._phone, _siret = user._siret };
+            return new UserDto() { _firstName = user._firstName, _lastName = user._lastName, _email = user._email, _phone = user._phone, _siret = user._siret, _password = user._password };
         }
 
 

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
@@ -16,12 +17,18 @@ namespace ProjectStockLibrary
         public string _phone { get;  set; }
         public string _siret { get;  set; }
 
+
+        [JsonIgnore]
+        public string _password { get; set; }
+
         [ForeignKey("Address")]
-        private List<Address> _addresses { get; set; }
+        public List<Address> _addresses { get; private set; }
 
         [ForeignKey("Stock")]
         private List<Stock> _stocks { get; set; }
 
+
+        [JsonConstructor]
         public Client(string firstName , string lastName, string email, string phone, string siret)
         {
             _id = Guid.NewGuid();
@@ -33,6 +40,7 @@ namespace ProjectStockLibrary
             _phone = string.IsNullOrEmpty(phone) && phone.Length < 12 || phone is null ? throw new ArgumentNullException(nameof(phone)) : phone;
             _addresses = new List<Address>();
             _stocks = new List<Stock>();
+            _password = "";
 
 
         }
@@ -134,6 +142,8 @@ namespace ProjectStockLibrary
             return maString;
         }
       
+
+        
 
 
     }

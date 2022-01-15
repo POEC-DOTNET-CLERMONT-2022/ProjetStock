@@ -1,7 +1,10 @@
-﻿using ApiApplication.Model;
-
+﻿using ApiApplication.Interface;
+using ApiApplication.Model;
+using ApiApplication.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+
 using ProjectStockDTOS;
 using ProjectStockPatternsLibrary;
 
@@ -16,13 +19,30 @@ namespace ApiApplicationProjectStock.Controllers
         private IMapper _mapper;
 
         private APIContext _context;
-        public UserController(IMapper mapper, APIContext context)
+
+        private IUserService _userService;
+
+        public UserController(IMapper mapper, APIContext context, IUserService userService)
         {
             _mapper = mapper;
             _context = context;
+            _userService = userService;
+        }
+
+
+        [HttpPost("authenticate")]
+        public IActionResult Authenticate(AuthenticateRequest model)
+        {
+            var response = _userService.Authenticate(model);
+
+            if (response == null)
+                return BadRequest(new { message = "Username or password is incorrect" });
+
+            return Ok(response);
         }
 
         // GET api/<ProjectController>/5
+        [Authorize]
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -41,6 +61,7 @@ namespace ApiApplicationProjectStock.Controllers
 
 
         // GET api/<ProjectController>/5
+        
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -49,7 +70,16 @@ namespace ApiApplicationProjectStock.Controllers
             try
             {
                 var p = userDto.ToModel();
-                var mapProj = _mapper.Map<StockDto>(p);
+
+                var mapProj = _mapper.Map<UserDto>(p);
+                foreach (var _address in p._addresses)
+                {
+                    _context._addresses.Add(_address);
+                    _context.SaveChanges();
+
+                }
+
+
                 _context._users.Add(p);
                 _context.SaveChanges();
                 return Ok(mapProj);
@@ -62,6 +92,7 @@ namespace ApiApplicationProjectStock.Controllers
         }
 
         // GET api/<ProjectController>/5
+        [Authorize]
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -77,6 +108,9 @@ namespace ApiApplicationProjectStock.Controllers
             p._firstName = userDto._firstName;
             p._email = userDto._email;
             p._phone = userDto._phone;
+            p._password = userDto._password;
+           
+
             var mapProj = _mapper.Map<UserDto>(p);
             _context._users.Update(p);
             _context.SaveChanges();
@@ -84,6 +118,7 @@ namespace ApiApplicationProjectStock.Controllers
         }
 
         // DELETE api/<ProjectController>/5
+        [Authorize]
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDto))]
         public ActionResult<UserDto> Delete(Guid id)

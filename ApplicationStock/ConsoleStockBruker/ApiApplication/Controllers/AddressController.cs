@@ -1,4 +1,5 @@
-﻿using ApiApplication.Model;
+﻿using ApiApplication.Helpers;
+using ApiApplication.Model;
 
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -43,6 +44,7 @@ namespace ApiApplication.Controllers
 
 
         // GET api/<ProjectController>/5
+       // [Authorize]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddressDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -69,6 +71,7 @@ namespace ApiApplication.Controllers
 
 
         // GET api/<ProjectController>/5
+       // [Authorize]
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddressDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -94,6 +97,7 @@ namespace ApiApplication.Controllers
         }
 
         // DELETE api/<ProjectController>/5
+        //[Authorize]
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddressDto))]
         public ActionResult<AddressDto> Delete(Guid id)

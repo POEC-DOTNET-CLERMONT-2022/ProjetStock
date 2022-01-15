@@ -30,6 +30,10 @@ namespace ProjectStockDTOS
         [DataMember]
         [Required]
         public string _siret { get; set; }
+
+        [DataMember]
+        [Required]
+        public string _password { get; set; }
         [DataMember]
         [Required]
         public List<Address> _addresses { get; set; }

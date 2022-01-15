@@ -1,4 +1,5 @@
-﻿using ApiApplication.Model;
+﻿using ApiApplication.Helpers;
+using ApiApplication.Model;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using ProjectStockDTOS;
@@ -22,6 +23,7 @@ namespace ApiApplicationProjectStock.Controllers
         }
 
         // GET api/<ProjectController>/5
+
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MarketDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -42,6 +44,7 @@ namespace ApiApplicationProjectStock.Controllers
 
 
         // GET api/<ProjectController>/5
+       // [Authorize]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MarketDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -70,6 +73,7 @@ namespace ApiApplicationProjectStock.Controllers
 
 
         // GET api/<ProjectController>/5
+        //[Authorize]
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MarketDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -92,6 +96,7 @@ namespace ApiApplicationProjectStock.Controllers
         }
 
         // DELETE api/<ProjectController>/5
+       // [Authorize]
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MarketDto))]
         public ActionResult<MarketDto> Delete(Guid id)

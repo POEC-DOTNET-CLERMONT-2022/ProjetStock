@@ -19,6 +19,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Identity.Web" Version="1.16.0" />
+    <PackageReference Include="NEST" Version="7.16.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
@@ -26,6 +27,10 @@
     <ProjectReference Include="..\ProjectStockDTOS\ProjectStockDTOS.csproj" />
     <ProjectReference Include="..\ProjectStockLibrary\ProjectStockLibrary.csproj" />
     <ProjectReference Include="..\ProjectStockPatternsLibrary\ProjectStockPatternsLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\Backup database\" />
   </ItemGroup>
 
 </Project>

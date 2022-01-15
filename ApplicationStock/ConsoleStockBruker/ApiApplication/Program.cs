@@ -6,8 +6,21 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using System.Data.Entity;
 using ApiApplication.Model;
+using ApiApplication.Helpers;
+using ApiApplication.Interface;
+using ApiApplication;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var services = builder.Services;
+services.AddCors();
+services.AddControllers();
+
+// configure strongly typed settings object
+services.Configure<AppSetting>(builder.Configuration.GetSection("AppSettings"));
+
+// configure DI for application services
+services.AddScoped<IUserService, UserService>();
 
 // Add services to the container.
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

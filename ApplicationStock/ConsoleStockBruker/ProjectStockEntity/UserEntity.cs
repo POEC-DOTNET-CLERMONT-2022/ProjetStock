@@ -21,6 +21,7 @@ namespace ProjectStockEntity
        
         public string _siret { get; set; }
 
+        public string _password { get; set; }
 
         [ForeignKey("Address")]
         public List<Address> _addresses { get; set; }
@@ -38,6 +39,7 @@ namespace ProjectStockEntity
             _siret = string.IsNullOrEmpty(siret) && siret.Length < 14 && phone is null ? throw new ArgumentNullException(nameof(siret)) : siret;
             _phone = string.IsNullOrEmpty(phone) && phone.Length < 12 && phone is null ? throw new ArgumentNullException(nameof(phone)) : phone;
             _addresses = new List<Address>();
+            _password = "";
 
         }
 

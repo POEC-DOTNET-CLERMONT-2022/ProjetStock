@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,13 +12,14 @@ namespace ProjectStockLibrary
      public  class Address
     {
         [Key]
-        public Guid _id { get; set; }
+        public Guid _id { get; private set; }
         public string _address_line_1 { get; set; }
         public string _address_line_2 { get;  set; }
         public string _codePostal { get;set; }
         public string _city { get; set; }
         public string _country { get; set; }
 
+       
         public Address(string address_line_1, string address_line_2, string codePostal, string city, string country)
         {
              _id = Guid.NewGuid();
@@ -27,8 +29,20 @@ namespace ProjectStockLibrary
             _city = city;
             _country = country;
         }
+        public Address(Guid id ,string address_line_1, string address_line_2, string codePostal, string city, string country)
+        {
+            _id = id;
+            _address_line_1 = address_line_1;
+            _address_line_2 = address_line_2;
+            _codePostal = codePostal;
+            _city = city;
+            _country = country;
+        }
 
+        public Address(Guid _id)
+        {
 
+        }
 
 
         public string read()

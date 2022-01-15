@@ -1,4 +1,5 @@
-﻿using ApiApplication.Model;
+﻿using ApiApplication.Helpers;
+using ApiApplication.Model;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using ProjectStockDTOS;
@@ -22,6 +23,7 @@ namespace ApiApplication.Controllers
             _context = context;
         }
 
+
         // GET api/<ProjectController>/5
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(OrderDto))]
@@ -41,6 +43,7 @@ namespace ApiApplication.Controllers
 
 
         // GET api/<ProjectController>/5
+        //[Authorize]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(OrderDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -65,7 +68,9 @@ namespace ApiApplication.Controllers
 
 
 
+
         // GET api/<ProjectController>/5
+        //[Authorize]
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(OrderDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -89,6 +94,7 @@ namespace ApiApplication.Controllers
         }
 
         // DELETE api/<ProjectController>/5
+        [Authorize]
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(OrderDto))]
         public ActionResult<OrderDto> Delete(Guid id)
