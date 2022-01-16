@@ -22,8 +22,9 @@
  (phase 2 - optionnelle)  système de recommandation qui recommande aux clients pour acheter/vendre des actions :
 1. avec le niveau de risque 
 2. et le montant à prévoir pour gagner
+3. L'application a une api crud avec une connexion JWT (bearer).
 
-L'application a une api crud avec une connexion Jwt Bearer.
+
 ------------
 
 
