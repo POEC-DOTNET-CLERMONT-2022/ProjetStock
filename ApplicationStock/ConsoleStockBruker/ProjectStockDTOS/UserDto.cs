@@ -54,5 +54,7 @@ namespace ProjectStockDTOS
         [DataMember]
         [Required]
         public List<Stock> _stocks { get; set; }
+
+
     }
 }

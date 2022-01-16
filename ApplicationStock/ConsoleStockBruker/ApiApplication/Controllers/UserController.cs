@@ -7,6 +7,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 using ProjectStockDTOS;
+using ProjectStockLibrary;
 using ProjectStockPatternsLibrary;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -42,6 +43,46 @@ namespace ApiApplicationProjectStock.Controllers
             return Ok(response);
         }
 
+
+        [HttpPost("logout")]
+        public IActionResult Logout()
+        {
+            try
+            {
+                var token = HttpContext.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
+                var p = _context._users.Where(x => x._token == token);
+
+
+                Client client = null;
+
+                foreach (var user in p)
+                {
+                    if(user._token == token)
+                    {
+                        client = user;
+                    }
+                
+                }
+
+                if (client == null)
+                    return BadRequest(new { message = "No connected user" });
+                else
+                {
+                    client.setToken("");
+                    _context._users.Update(client);
+                    _context.SaveChanges();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+
+            return Ok(new { message = "Deconnected" });
+        }
+
+
         // GET api/<ProjectController>/5
         [Authorize]
         [HttpGet]
@@ -68,28 +109,30 @@ namespace ApiApplicationProjectStock.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<UserDto> Post(UserDto userDto)
         {
+
+            var p = userDto.ToModel();
             try
             {
-                var p = userDto.ToModel();
 
-                var mapProj = _mapper.Map<UserDto>(p);
+
                 foreach (var _address in p._addresses)
                 {
-                    _context._addresses.Add(_address);
-                    _context.SaveChanges();
+                   _context._addresses.Add(_address);
+                   _context.SaveChanges();
 
                 }
 
 
                 _context._users.Add(p);
-                _context.SaveChanges();
-                return Ok(mapProj);
+               
+              
             } 
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
-  
+            _context.SaveChanges();
+            return Ok(p);
         }
 
         // GET api/<ProjectController>/5

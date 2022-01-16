@@ -32,6 +32,24 @@ namespace ProjectStockLibrary
         [ForeignKey("Stock")]
         private List<Stock> _stocks { get; set; }
 
+        [JsonConstructorAttribute]
+        public Client(string firstName, string lastName, string email, string phone, string siret ,List<Address> addresses, List<Stock> stocks)
+        {
+            _id = Guid.NewGuid();
+            _firstName = string.IsNullOrEmpty(firstName) ? throw new ArgumentNullException(nameof(firstName)) : firstName;
+            _lastName = string.IsNullOrEmpty(lastName) ? throw new ArgumentNullException(nameof(lastName)) : lastName;
+            var regex = new Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
+            _email = !regex.IsMatch(email) ? throw new Exception(nameof(email)) : email;
+            _siret = string.IsNullOrEmpty(siret) && siret.Length < 14 || siret is null ? throw new ArgumentNullException(nameof(siret)) : siret;
+            _phone = string.IsNullOrEmpty(phone) && phone.Length < 12 || phone is null ? throw new ArgumentNullException(nameof(phone)) : phone;
+            _addresses = addresses;
+            _stocks = stocks;
+            _password = "";
+
+
+
+        }
+
 
         public Client(string firstName , string lastName, string email, string phone, string siret)
         {
@@ -46,6 +64,23 @@ namespace ProjectStockLibrary
             _stocks = new List<Stock>();
             _password = "";
             
+
+
+        }
+        [JsonConstructor]
+        public Client(string firstName, string lastName, string email, string phone, string siret, string password)
+        {
+            _id = Guid.NewGuid();
+            _firstName = string.IsNullOrEmpty(firstName) ? throw new ArgumentNullException(nameof(firstName)) : firstName;
+            _lastName = string.IsNullOrEmpty(lastName) ? throw new ArgumentNullException(nameof(lastName)) : lastName;
+            var regex = new Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
+            _email = !regex.IsMatch(email) ? throw new Exception(nameof(email)) : email;
+            _siret = string.IsNullOrEmpty(siret) && siret.Length < 14 || siret is null ? throw new ArgumentNullException(nameof(siret)) : siret;
+            _phone = string.IsNullOrEmpty(phone) && phone.Length < 12 || phone is null ? throw new ArgumentNullException(nameof(phone)) : phone;
+            _addresses = new List<Address>();
+            _stocks = new List<Stock>();
+            _password = password;
+
 
 
         }
@@ -64,6 +99,7 @@ namespace ProjectStockLibrary
             _phone = "";
             _addresses = new List<Address>();
             _stocks = new List<Stock>();
+            _password = "";
         }
 
 

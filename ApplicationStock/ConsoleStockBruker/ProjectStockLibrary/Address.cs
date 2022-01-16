@@ -19,7 +19,7 @@ namespace ProjectStockLibrary
         public string _city { get; set; }
         public string _country { get; set; }
 
-       
+       [JsonConstructorAttribute]
         public Address(string address_line_1, string address_line_2, string codePostal, string city, string country)
         {
              _id = Guid.NewGuid();
@@ -41,6 +41,18 @@ namespace ProjectStockLibrary
 
         public Address(Guid _id)
         {
+
+        }
+
+
+        public Address()
+        {
+            _id = Guid.NewGuid() ;
+            _address_line_1 = "";
+            _address_line_2 = "";
+            _codePostal = "";
+            _city = "";
+            _country = "";
 
         }
 

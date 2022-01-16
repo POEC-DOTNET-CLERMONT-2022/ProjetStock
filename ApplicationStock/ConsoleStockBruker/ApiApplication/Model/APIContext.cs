@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProjectStockLibrary;
 
-
-
 namespace ApiApplication.Model
 {
     public class APIContext : DbContext

@@ -63,8 +63,6 @@ namespace ApiApplication.Controllers
                     _context._orders.Add(p);
                 _context.SaveChanges();
                 return Ok(mapProj);
-
-
             }
             catch (Exception ex)
             {
@@ -85,11 +83,6 @@ namespace ApiApplication.Controllers
         {
 
             var p = _context._orders.Find(orderDto._id);
-
-           
-
-
-
             p._orderName = orderDto._orderName;
             p._orderDate = orderDto._orderDate;
             p._nbStock = orderDto._nbStock;
