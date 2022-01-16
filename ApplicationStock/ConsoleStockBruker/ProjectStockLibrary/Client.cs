@@ -103,8 +103,6 @@ namespace ProjectStockLibrary
         }
 
 
-
-
         public void setToken(string token)
         {
             _token = token;

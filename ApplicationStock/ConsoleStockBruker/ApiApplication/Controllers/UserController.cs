@@ -42,9 +42,31 @@ namespace ApiApplicationProjectStock.Controllers
 
             return Ok(response);
         }
+        
+
+        [HttpPost("register")]
+        public IActionResult Register(CreateResult create)
+        {
+            Client _client = new Client();
+            _client._email = create._email;
+            _client._password = create._password;
+            _client._lastName = create._lastName;
+            _client._firstName = create._firstName;
+            try
+            {
+                _context._users.Add(_client);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            _context.SaveChanges();
+            return Ok(new { message = $"Created user { _client._firstName}  { _client._lastName} with email { _client._email}" });
+
+        }
 
 
-        [HttpPost("logout")]
+        [HttpPost("Logout")]
         public IActionResult Logout()
         {
             try
@@ -69,6 +91,7 @@ namespace ApiApplicationProjectStock.Controllers
                 else
                 {
                     client.setToken("");
+                    client.setExpireDate(DateTime.Now);
                     _context._users.Update(client);
                     _context.SaveChanges();
                 }
