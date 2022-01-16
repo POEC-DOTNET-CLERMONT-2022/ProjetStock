@@ -65,7 +65,6 @@ namespace ApiApplicationProjectStock.Controllers
 
         }
 
-
         [HttpPost("Logout")]
         public IActionResult Logout()
         {
@@ -80,10 +79,7 @@ namespace ApiApplicationProjectStock.Controllers
                 foreach (var user in p)
                 {
                     if(user._token == token)
-                    {
                         client = user;
-                    }
-                
                 }
 
                 if (client == null)
@@ -95,13 +91,11 @@ namespace ApiApplicationProjectStock.Controllers
                     _context._users.Update(client);
                     _context.SaveChanges();
                 }
-
             }
             catch (Exception ex)
             {
                 return BadRequest(ex);
             }
-
             return Ok(new { message = "Deconnected" });
         }
 
@@ -136,19 +130,13 @@ namespace ApiApplicationProjectStock.Controllers
             var p = userDto.ToModel();
             try
             {
-
-
                 foreach (var _address in p._addresses)
                 {
                    _context._addresses.Add(_address);
                    _context.SaveChanges();
 
                 }
-
-
                 _context._users.Add(p);
-               
-              
             } 
             catch (Exception ex)
             {
