@@ -24,6 +24,7 @@ namespace ApiApplication.Controllers
         }
 
         // GET api/<ProjectController>/5
+        [Authorize]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddressDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -39,7 +40,7 @@ namespace ApiApplication.Controllers
 
 
         // GET api/<ProjectController>/5
-       // [Authorize]
+       
         [HttpPost]
         [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddressDto))]
