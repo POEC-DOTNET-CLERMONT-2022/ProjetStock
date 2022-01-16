@@ -4,7 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
 using System.Web;
+using Newtonsoft.Json;
 using ProjectStockLibrary;
 
 namespace ProjectStockDTOS
@@ -22,7 +24,7 @@ namespace ProjectStockDTOS
         [Required]
         public string _lastName { get; set; }
         [DataMember]
-       
+
         public string _email { get; set; }
         [DataMember]
         [Required]
@@ -35,14 +37,15 @@ namespace ProjectStockDTOS
         [Required]
         public string _password { get; set; }
 
-
+        [JsonIgnore]
         [DataMember]
         [Required]
         public string _token { get; set; }
 
+        [JsonIgnore]
         [DataMember]
         [Required]
-        public  DateTime _expireToken { get; set; }
+        public DateTime _expireToken { get; set; }
 
         [DataMember]
         [Required]

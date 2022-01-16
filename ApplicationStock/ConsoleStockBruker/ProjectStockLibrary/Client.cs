@@ -17,9 +17,10 @@ namespace ProjectStockLibrary
         public string _phone { get;  set; }
         public string _siret { get;  set; }
 
-
+        [JsonIgnore]
         public string? _token { get; set; } = null;
 
+        [JsonIgnore]
         public DateTime? _expireToken { get; set; } = null;
 
         [JsonIgnore]
@@ -32,7 +33,6 @@ namespace ProjectStockLibrary
         private List<Stock> _stocks { get; set; }
 
 
-        [JsonConstructor]
         public Client(string firstName , string lastName, string email, string phone, string siret)
         {
             _id = Guid.NewGuid();

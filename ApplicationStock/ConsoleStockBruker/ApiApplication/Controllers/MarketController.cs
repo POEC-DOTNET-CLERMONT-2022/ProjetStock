@@ -1,5 +1,6 @@
 ﻿using ApiApplication.Helpers;
 using ApiApplication.Model;
+using ApiApplication.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using ProjectStockDTOS;
@@ -22,29 +23,26 @@ namespace ApiApplicationProjectStock.Controllers
             _context = context;
         }
 
-        // GET api/<ProjectController>/5
-
-        [HttpGet("{id}")]
+        // GET api/<ProjectController>/Get
+        [Authorize]
+        [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MarketDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<MarketDto> Get(Guid id)
+        public ActionResult<MarketDto> Get([FromQuery]Guid id)
         {
-      
                 var p = _context._markets.Find(id);
 
-                var mapProj = _mapper.Map<MarketDto>(p);
-
-                if (mapProj == null)
+            
+                if (p == null)
                     return NotFound();
-                else
-                    _context.SaveChanges();
-                return Ok(mapProj);
+
+                return Ok(p);
             
         }
 
 
         // GET api/<ProjectController>/5
-       // [Authorize]
+        [Authorize]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MarketDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -62,8 +60,8 @@ namespace ApiApplicationProjectStock.Controllers
                     return NotFound();
                 else
                     _context._markets.Add(p);
-                _context.SaveChanges();
-                return Ok(mapProj);
+                    _context.SaveChanges();
+                    return Ok(mapProj);
             }
             catch (Exception ex)
             {
@@ -73,17 +71,17 @@ namespace ApiApplicationProjectStock.Controllers
 
 
         // GET api/<ProjectController>/5
-        //[Authorize]
+        [Authorize]
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MarketDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<MarketDto> Put(MarketDto marketDto,Guid id)
+        public ActionResult<MarketDto> Put(MarketDto marketDto)
         {
 
 
-            var p = _context._markets.Find(id);
+            var p = _context._markets.Find(marketDto._id);
 
-            p._stock = marketDto._stocks;
+           
             p._name = marketDto._name;
             p._openingDate = marketDto._openingDate;
 
@@ -96,22 +94,21 @@ namespace ApiApplicationProjectStock.Controllers
         }
 
         // DELETE api/<ProjectController>/5
-       // [Authorize]
-        [HttpDelete("{id}")]
+        [Authorize]
+        [HttpDelete]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MarketDto))]
-        public ActionResult<MarketDto> Delete(Guid id)
+        public ActionResult<MarketDto> Delete(DeleteClass delete)
         {
-            var p = _context._markets.Find(id);
+            var p = _context._markets.Find(delete._id);
             if(p != null)
-              _context._markets.Remove(p);
+            {
+                _context._markets.Remove(p);
+          
+            }
+           
             else
                 return NotFound();
-
-            var mapProj = _mapper.Map<MarketDto>(p);
-
-            _context._markets.Remove(p);
-            _context.SaveChanges();
-            return Ok(mapProj);
+            return Ok(p);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using ApiApplication.Helpers;
 using ApiApplication.Model;
-
+using ApiApplication.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using ProjectStockDTOS;
@@ -24,21 +24,16 @@ namespace ApiApplication.Controllers
         }
 
         // GET api/<ProjectController>/5
-        [HttpGet("{id}")]
+        [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddressDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<AddressDto> Get(Guid id)
+        public ActionResult<AddressDto> Get([FromQuery] Guid id)
         {
-          
-                var p = _context._addresses.Find(id);
-            
-
-               var mapProj = _mapper.Map<AddressDto>(p);
-
-               if (mapProj == null)
+            var p = _context._addresses.Find(id);
+            if ( p == null)
                   return NotFound();
                else
-                  return Ok(mapProj);
+                  return Ok(p);
            
         }
 
@@ -46,22 +41,25 @@ namespace ApiApplication.Controllers
         // GET api/<ProjectController>/5
        // [Authorize]
         [HttpPost]
+        [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddressDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+
         public ActionResult<AddressDto> Post(AddressDto addressDto)
         {
             try
              {
-                   var p = addressDto.ToModelStock();
+                var p = addressDto.ToModelStock();
 
                 var mapProj = _mapper.Map<AddressDto>(p);
-                _context._addresses.Add(p);
-                _context.SaveChanges();
-                if (mapProj == null)
+       
+                if (p == null)
                     return NotFound();
                 else
-
+                    _context._addresses.Add(p);
+                    _context.SaveChanges();
                     return Ok(mapProj);
+
             }
             catch (Exception ex)
             {
@@ -73,6 +71,7 @@ namespace ApiApplication.Controllers
         // GET api/<ProjectController>/5
        // [Authorize]
         [HttpPut]
+        [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddressDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<AddressDto> Put(AddressDto addressDto)
@@ -97,24 +96,24 @@ namespace ApiApplication.Controllers
         }
 
         // DELETE api/<ProjectController>/5
-        //[Authorize]
-        [HttpDelete("{id}")]
+        [Authorize]
+        [HttpDelete]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddressDto))]
-        public ActionResult<AddressDto> Delete(Guid id)
+        public ActionResult<AddressDto> Delete(DeleteClass delete)
         {
-            var p = _context._addresses.Find(id);
+            var p = _context._addresses.Find(delete._id);
+
             if (p != null)
             {
                 _context._addresses.Remove(p);
-                _context.SaveChanges();
-            } 
+               
+            }
+
             else
                 return NotFound();
 
-            var mapProj = _mapper.Map<AddressDto>(p);
-
-
-            return Ok(mapProj);
+             _context.SaveChanges();
+            return Ok(p);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using ApiApplication.Helpers;
 using ApiApplication.Model;
+using ApiApplication.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using ProjectStockDTOS;
@@ -23,10 +24,11 @@ namespace ApiApplication.Controllers
         }
 
         // GET api/<ProjectController>/5
-        [HttpGet("{id}")]
+        [HttpGet]
+        [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(NotificationDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<NotificationDto> Get(Guid id)
+        public ActionResult<NotificationDto> Get([FromQuery] Guid id)
         {
 
             var p = _context._notifs.Find(id); 
@@ -45,21 +47,26 @@ namespace ApiApplication.Controllers
 
 
         // GET api/<ProjectController>/5
-        //[Authorize]
+        [Authorize]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(NotificationDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<MarketDto> Post(NotificationDto notificationDto)
+        public ActionResult<NotificationDto> Post(NotificationDto notificationDto)
         {
             try
             {
                 var p = notificationDto.ToModelStock();
 
                 var mapProj = _mapper.Map<NotificationDto>(p);
-                _context._notifs.Add(p);
-                _context.SaveChanges();
 
-                return Ok(mapProj);
+                if (mapProj == null)
+                    return NotFound();
+                else
+                    _context._notifs.Add(p);
+                    _context.SaveChanges();
+                    return Ok(mapProj);
+
+              
             }
             catch (Exception ex)
             {
@@ -71,15 +78,15 @@ namespace ApiApplication.Controllers
 
 
         // GET api/<ProjectController>/5
-        //[Authorize]
+        [Authorize]
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MarketDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<NotificationDto> Put(NotificationDto notificationDto, Guid id)
+        public ActionResult<NotificationDto> Put(NotificationDto notificationDto)
         {
 
 
-            var p = _context._notifs.Find(id);
+            var p = _context._notifs.Find(notificationDto._id);
 
             p._textRappel = notificationDto.textRappel;
             p._sendAt = p._sendAt;
@@ -91,12 +98,12 @@ namespace ApiApplication.Controllers
         }
 
         // DELETE api/<ProjectController>/5
-        //[Authorize]
-        [HttpDelete("{id}")]
+        [Authorize]
+        [HttpDelete]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(NotificationDto))]
-        public ActionResult<NotificationDto> Delete(Guid id)
+        public ActionResult<NotificationDto> Delete(DeleteClass delete)
         {
-            var p = _context._notifs.Find(id);
+            var p = _context._notifs.Find(delete._id);
             if (p != null)
             {
                 _context._notifs.Remove(p);
@@ -106,8 +113,7 @@ namespace ApiApplication.Controllers
             else
                 return NotFound();
 
-            var mapProj = _mapper.Map<NotificationDto>(p);
-            return Ok(mapProj);
+            return Ok(p);
         }
     }
 }

@@ -47,8 +47,8 @@ namespace ApiApplication.Helpers
                 var userId = Guid.Parse(jwtToken.Claims.First(x => x.Type == "id").Value);
 
                 // attach user to context on successful jwt validation
-                context.Items["User"] = userService.GetById(userId);
-                context.Items["Stocks"] = userService.GetById(userId);
+                context.Items["Client"] = userService.GetById(userId);
+           
 
             }
             catch

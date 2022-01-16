@@ -1,8 +1,9 @@
-﻿using ApiApplication.Interface;
+﻿using ApiApplication.Helpers;
+using ApiApplication.Interface;
 using ApiApplication.Model;
 using ApiApplication.Models;
 using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
+
 using Microsoft.AspNetCore.Mvc;
 
 using ProjectStockDTOS;
@@ -18,7 +19,7 @@ namespace ApiApplicationProjectStock.Controllers
     {
         private IMapper _mapper;
 
-        private APIContext _context;
+        private APIContext _context { get; }
 
         private IUserService _userService;
 
@@ -43,25 +44,25 @@ namespace ApiApplicationProjectStock.Controllers
 
         // GET api/<ProjectController>/5
         [Authorize]
-        [HttpGet("{id}")]
+        [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<UserDto> Get(Guid id)
+        public ActionResult<UserDto> Get([FromQuery] Guid id)
         {
 
-            var p = _context._stocks.First();
+            var p = _context._users.Find(id);
 
             var mapProj = _mapper.Map<UserDto>(p);
 
-            if (mapProj == null)
+            if (p == null)
                 return NotFound();
             else
-                return Ok(mapProj);
+                return Ok(p);
         }
 
 
         // GET api/<ProjectController>/5
-        
+        [Authorize]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -96,11 +97,11 @@ namespace ApiApplicationProjectStock.Controllers
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<UserDto> Put(UserDto userDto, Guid id)
+        public ActionResult<UserDto> Put(UserDto userDto)
         {
 
 
-            var p = _context._users.Find(id);
+            var p = _context._users.Find(userDto._id);
 
             p._siret = userDto._siret;
             p._phone = userDto._phone;
@@ -119,11 +120,11 @@ namespace ApiApplicationProjectStock.Controllers
 
         // DELETE api/<ProjectController>/5
         [Authorize]
-        [HttpDelete("{id}")]
+        [HttpDelete]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDto))]
-        public ActionResult<UserDto> Delete(Guid id)
+        public ActionResult<UserDto> Delete(DeleteClass delete)
         {
-            var p = _context._users.Find(id);
+            var p = _context._users.Find(delete._id);
             if (p != null)
             {
                 _context._users.Remove(p);
@@ -133,8 +134,7 @@ namespace ApiApplicationProjectStock.Controllers
             else
                 return NotFound();
 
-            var mapProj = _mapper.Map<UserDto>(p);
-            return Ok(mapProj);
+            return Ok();
         }
     }
 }

@@ -1,8 +1,10 @@
 ﻿using ApiApplication.Helpers;
 using ApiApplication.Model;
+using ApiApplication.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+
 using Microsoft.AspNetCore.Mvc;
 using ProjectStockDTOS;
 using ProjectStockPatternsLibrary;
@@ -20,7 +22,7 @@ namespace ApiApplicationProjectStock.Controllers
     {
         private IMapper _mapper;
 
-        private APIContext _context;
+        private APIContext _context { get; }
         public StocksController(IMapper mapper, APIContext context)
         {
             _mapper = mapper;
@@ -31,11 +33,11 @@ namespace ApiApplicationProjectStock.Controllers
 
 
         // GET api/<ProjectController>/5
-       // [Authorize]
-        [HttpGet("{id}")]
+        [Authorize]
+        [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(StockDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<StockDto> Get(Guid id)
+        public ActionResult<StockDto> Get([FromQuery] Guid id)
         {
             try { 
                var p = _context._stocks.Find(id);
@@ -54,7 +56,7 @@ namespace ApiApplicationProjectStock.Controllers
         }
 
         // GET api/<ProjectController>/5
-        //[Authorize]
+        [Authorize]
       
         [HttpPost]
      
@@ -70,7 +72,8 @@ namespace ApiApplicationProjectStock.Controllers
                 var mapProj = _mapper.Map<StockDto>(p);
                 _context._stocks.Add(p);
                 _context.SaveChanges();
-                return Ok(mapProj);
+                return Ok(p);
+
             }catch (Exception ex)
             {
                 return BadRequest(ex.Message);
@@ -79,15 +82,15 @@ namespace ApiApplicationProjectStock.Controllers
         }
 
         // GET api/<ProjectController>/5
-        //[Authorize]
+        [Authorize]
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(StockDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<StockDto> Put(StockDto stockDto, Guid id)
+        public ActionResult<StockDto> Put(StockDto stockDto)
         {
 
 
-            var p = _context._stocks.Find(id);
+            var p = _context._stocks.Find(stockDto._id);
 
             p._entrepriseName = stockDto._entrepriseName;
             p._value = stockDto._value;
@@ -101,25 +104,27 @@ namespace ApiApplicationProjectStock.Controllers
         }
 
         // DELETE api/<ProjectController>/5
-        //[Authorize]
+        [Authorize]
 
-        [HttpDelete("{id}")]
+        [HttpDelete]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(StockDto))]
-        public ActionResult<StockDto> Delete(Guid id)
+        public ActionResult<StockDto> Delete(DeleteClass delete)
         {
-            var p = _context._stocks.Find(id);
+            var p = _context._stocks.Find(delete._id);
             if (p != null)
             {
                 _context._stocks.Remove(p);
                 _context.SaveChanges();
+                return Ok(p);
+
             }
               
             else
                 return NotFound();
 
-            var mapProj = _mapper.Map<StockDto>(p);
+     
 
-            return Ok(mapProj);
+          
         }
     }
 }
