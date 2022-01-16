@@ -23,6 +23,7 @@
 1. avec le niveau de risque 
 2. et le montant à prévoir pour gagner
 
+L'application a une api crud avec une connexion Jwt Bearer.
 ------------
 
 
