@@ -61,15 +61,16 @@ namespace ApiApplicationProjectStock.Controllers
                 return BadRequest(ex.Message);
             }
             _context.SaveChanges();
-            return Ok(new { message = $"Created user { _client._firstName}  { _client._lastName} with email { _client._email}" });
+            return Ok(new { message = $"Created user { _client._firstName}  { _client._lastName} with email { _client._email}" });        }
 
-        }
+        
 
         [HttpPost("Logout")]
         public IActionResult Logout()
         {
             try
             {
+                //Find authorization in headers
                 var token = HttpContext.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
                 var p = _context._users.Where(x => x._token == token);
 

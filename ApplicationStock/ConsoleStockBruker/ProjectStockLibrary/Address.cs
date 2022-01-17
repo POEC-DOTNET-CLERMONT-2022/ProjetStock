@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProjectStockLibrary
 {
-     public  class Address
+    public class Address
     {
         [Key]
         public Guid _id { get; private set; }

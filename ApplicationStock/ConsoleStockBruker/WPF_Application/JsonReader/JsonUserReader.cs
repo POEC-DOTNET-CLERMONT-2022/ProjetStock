@@ -1,16 +1,15 @@
 ﻿using ApiApplication.Profil;
-using ProjectStockLibrary;
 using AutoMapper;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using ProjectStockDTOS;
+using ProjectStockLibrary;
+using ProjectStockPatternsLibrary;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
 using System.Text.Json;
-using ProjectStockPatternsLibrary;
+using System.Threading.Tasks;
 
 namespace WPF_Application.JsonReader
 {
@@ -27,6 +26,7 @@ namespace WPF_Application.JsonReader
 
             // Update port # in the following line.
             _httpClient.BaseAddress = new Uri("http://localhost:7136/api/User/");
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "");
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(
             new MediaTypeWithQualityHeaderValue("application/json"));
@@ -74,9 +74,9 @@ namespace WPF_Application.JsonReader
         }
 
 
-
-
-        public async void deleteClient(UserDto user)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MarketDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<int> deleteClient(UserDto user)
         {
 
             var request = new HttpRequestMessage(HttpMethod.Delete,  _httpClient.BaseAddress + user._id.ToString());
@@ -85,17 +85,21 @@ namespace WPF_Application.JsonReader
             var response = await _httpClient.SendAsync(request);
 
 
+
             if (!response.IsSuccessStatusCode)
             {
-                throw new InvalidOperationException("Error");
-               
-            }
+                return StatusCodes.Status200OK;
 
-           
+
+            }
+            return StatusCodes.Status400BadRequest;
+
+
         }
 
-
-        public async void addClient(UserDto user)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MarketDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<int> addClient(UserDto user)
         {
 
             var request = new HttpRequestMessage(HttpMethod.Post, _httpClient.BaseAddress + user._id.ToString());
@@ -103,11 +107,14 @@ namespace WPF_Application.JsonReader
             var response = await _httpClient.SendAsync(request);
 
 
+
             if (!response.IsSuccessStatusCode)
             {
-                throw new InvalidOperationException("Error");
+                return StatusCodes.Status200OK;
+
 
             }
+            return StatusCodes.Status400BadRequest;
 
         }
 

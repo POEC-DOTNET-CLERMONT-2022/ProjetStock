@@ -1,5 +1,7 @@
 ﻿using ApiApplication.Profil;
 using AutoMapper;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using ProjectStockDTOS;
 using ProjectStockLibrary;
 using ProjectStockPatternsLibrary;
@@ -27,6 +29,7 @@ namespace WPF_Application.JsonReader
 
             // Update port # in the following line.
             _httpClient.BaseAddress = new Uri("http://localhost:7136/api/Market/");
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "");
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(
             new MediaTypeWithQualityHeaderValue("application/json"));
@@ -93,9 +96,9 @@ namespace WPF_Application.JsonReader
         }
 
 
-
-
-        public async void deleteMarket(MarketDto marketDto)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MarketDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<int> deleteMarket(MarketDto marketDto)
         {
 
             var request = new HttpRequestMessage(HttpMethod.Delete, _httpClient.BaseAddress + marketDto._id.ToString());
@@ -106,15 +109,18 @@ namespace WPF_Application.JsonReader
 
             if (!response.IsSuccessStatusCode)
             {
-                throw new InvalidOperationException("Error");
+                return StatusCodes.Status200OK;
+
 
             }
+            return StatusCodes.Status400BadRequest;
 
 
         }
 
-
-        public async void addMarket(MarketDto marketDto)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MarketDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<int> addMarket(MarketDto marketDto)
         {
 
             var request = new HttpRequestMessage(HttpMethod.Post, _httpClient.BaseAddress + marketDto._id.ToString());
@@ -125,9 +131,11 @@ namespace WPF_Application.JsonReader
 
             if (!response.IsSuccessStatusCode)
             {
-                throw new InvalidOperationException("Error");
+                return StatusCodes.Status200OK;
+
 
             }
+            return StatusCodes.Status400BadRequest;
 
         }
 

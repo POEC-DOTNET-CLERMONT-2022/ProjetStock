@@ -70,10 +70,6 @@ namespace ApiApplication.Controllers
             }
         }
 
-
-
-
-
         // GET api/<ProjectController>/5
         [Authorize]
         [HttpPut]
