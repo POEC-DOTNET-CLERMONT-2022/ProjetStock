@@ -25,15 +25,15 @@
             <StackPanel Grid.Column="1">
                 <WrapPanel>
                     <TextBlock Text="Modifier le nom :" />
-                    <TextBox Width="500" Text="{Binding CurrentUser.Name, UpdateSourceTrigger=PropertyChanged}"  />
+                    <TextBox Width="500" Text="{Binding CurrentUser.FirstName, UpdateSourceTrigger=PropertyChanged}"  />
                 </WrapPanel>
             </StackPanel>
-            <ListBox Grid.ColumnSpan="2" SelectedItem="{Binding CurrentUser}" ItemsSource="{Binding Users}" Grid.Row="1" x:Name="ListUser">
+        <ListBox Grid.ColumnSpan="2" SelectedItem="{Binding CurrentUser}" ItemsSource="{Binding Users}" Grid.Row="1" x:Name="ListUser">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
                             <TextBlock Text="Name :"/>
-                            <TextBlock Text="{Binding Name}"/>
+                            <TextBlock Text="{Binding FirstName}"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

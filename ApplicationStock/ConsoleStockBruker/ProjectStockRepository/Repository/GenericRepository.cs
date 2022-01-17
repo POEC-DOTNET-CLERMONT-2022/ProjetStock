@@ -65,7 +65,8 @@ namespace ProjectStockRepository.Repository
 
         public IEnumerable<T> GetAll()
         {
-           
+
+
             return _listEntity;
         }
 

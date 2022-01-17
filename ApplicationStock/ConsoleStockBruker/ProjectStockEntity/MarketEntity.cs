@@ -26,15 +26,15 @@ namespace ProjectStockEntity
         [ForeignKey("Market")]
         public List<Stock> _stocks { get; set; }
 
-        public MarketEntity(string name, DateTime closingDate, DateTime openingDate)
-        {
-            _id = Guid.NewGuid();
-            _name = string.IsNullOrEmpty(name) ? throw new ArgumentNullException(nameof(name)) : name;
-            _openingDate = openingDate;
-            _closingDate = closingDate;
-            _stocks = new List<Stock>();
+        //public MarketEntity(string name, DateTime closingDate, DateTime openingDate)
+        //{
+        //    _id = Guid.NewGuid();
+        //    _name = string.IsNullOrEmpty(name) ? throw new ArgumentNullException(nameof(name)) : name;
+        //    _openingDate = openingDate;
+        //    _closingDate = closingDate;
+        //    _stocks = new List<Stock>();
 
-        }
+        //}
         public bool Equals(MarketEntity? other)
         {
             if (other == null) return false;

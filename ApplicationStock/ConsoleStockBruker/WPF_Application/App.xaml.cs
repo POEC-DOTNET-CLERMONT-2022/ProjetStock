@@ -20,6 +20,17 @@ namespace WPF_Application
     {
         public IGenericRepository<UserEntity> userRepository { get; } = new GenericRepository<UserEntity>();
 
+        public IGenericRepository<OrderEntity> orderRepository { get;} = new GenericRepository<OrderEntity>();
+
+
+        public IGenericRepository<StockEntity> stockRepository { get; } = new GenericRepository<StockEntity>();
+
+        public IGenericRepository<NotificationEntity> notificationRepository { get; } = new GenericRepository<NotificationEntity>();
+
+        public IGenericRepository<MarketEntity> marketRepository { get; } = new GenericRepository<MarketEntity>();
+        
+
+        public IGenericRepository<AddressEntity> addressEntity { get; } = new   GenericRepository<AddressEntity>();
 
         public IMapper Mapper { get; }
         public App()
@@ -27,7 +38,9 @@ namespace WPF_Application
             InitializeComponent();
 
                 var configuration = new MapperConfiguration(cfg => cfg.AddMaps(typeof(App)));
-            Mapper = new Mapper(configuration); 
+            Mapper = new Mapper(configuration);
+            
+            
         }
     }
 }
