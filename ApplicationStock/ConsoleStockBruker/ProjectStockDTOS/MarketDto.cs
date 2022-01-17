@@ -14,6 +14,7 @@ namespace ProjectStockDTOS
     {
         [DataMember]
         [Required]
+        [Key]
         public Guid _id { get; set; }
         [DataMember]
         [Required]

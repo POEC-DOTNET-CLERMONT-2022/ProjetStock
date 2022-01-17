@@ -18,7 +18,7 @@ namespace ConsoleStockBruker
             Writer.Display("Donne moi le nom de l'action");
             var Name = Console.ReadLine();
 
-            if (string.IsNullOrWhiteSpace(Name))
+            if (string.IsNullOrEmpty(Name))
             {
                 Writer.Display("Ce nom n'est pas bon !");
                 return create(stock);
@@ -26,7 +26,7 @@ namespace ConsoleStockBruker
             Writer.Display("Donne moi le nom de l'action");
             var nbStock = int.Parse(Console.ReadLine());
 
-            if (string.IsNullOrWhiteSpace(Name))
+            if (nbStock == null || nbStock < 0)
             {
                 Writer.Display("Ce nom n'est pas bon !");
                 return create(stock);

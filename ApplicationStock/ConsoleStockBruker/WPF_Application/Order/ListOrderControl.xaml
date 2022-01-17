@@ -28,7 +28,7 @@
             </ListView.ItemTemplate>
 
         </ListView>
-        <Button Content="Change view Order list" Click="ChangeViewOrder_Click" HorizontalAlignment="Center" Margin="0,389,0,0" Width="170"/>
+        <Button Content="Change view Order list" HorizontalAlignment="Center" Margin="0,389,0,0" Width="170"/>
 
     </Grid>
 </UserControl>

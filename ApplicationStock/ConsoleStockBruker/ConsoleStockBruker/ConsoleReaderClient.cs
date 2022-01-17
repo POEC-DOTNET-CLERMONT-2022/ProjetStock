@@ -26,7 +26,7 @@ namespace ConsoleStockBruker
             Writer.Display("Donne moi le nom du client");
             var lastName = Console.ReadLine();
 
-            if (string.IsNullOrWhiteSpace(firstName))
+            if (string.IsNullOrWhiteSpace(lastName))
             {
                 Writer.Display("Ce nom n'est pas bon !");
                 return create();
@@ -44,7 +44,7 @@ namespace ConsoleStockBruker
             Writer.Display("Donne moi votre bigot");
             var phone = Console.ReadLine();
             Regex regex_phone = new Regex(@"/ ^(33 | 0)(6 | 7 | 9)\d{ 8}$/");
-            Match match_phone = regex.Match(phone);
+            Match match_phone = regex_phone.Match(phone);
         
             if (string.IsNullOrWhiteSpace(phone) && match_phone.Success)
             {
@@ -69,7 +69,7 @@ namespace ConsoleStockBruker
             Writer.Display("Donne moi le prenom du client");
             var firstName = Console.ReadLine();
 
-            if (string.IsNullOrWhiteSpace(firstName))
+            if (string.IsNullOrEmpty(firstName))
             {
                 Writer.Display("Ce nom n'est pas bon !");
                 return update(client);
@@ -77,7 +77,7 @@ namespace ConsoleStockBruker
             Writer.Display("Donne moi le nom du client");
             var lastName = Console.ReadLine();
 
-            if (string.IsNullOrWhiteSpace(firstName))
+            if (string.IsNullOrEmpty(lastName))
             {
                 Writer.Display("Ce nom n'est pas bon !");
                 return update(client);
@@ -87,7 +87,7 @@ namespace ConsoleStockBruker
             var email = Console.ReadLine();
             Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
             Match match = regex.Match(email);
-            if (string.IsNullOrWhiteSpace(email) && !match.Success)
+            if (!string.IsNullOrWhiteSpace(email) && !match.Success)
             {
                 Writer.Display("Ce email n'est pas bon !");
                 return update(client);
@@ -95,9 +95,9 @@ namespace ConsoleStockBruker
             Writer.Display("Donne moi votre bigot");
             var phone = Console.ReadLine();
             Regex regex_phone = new Regex(@"/ ^(33 | 0)(6 | 7 | 9)\d{ 8}$/");
-            Match match_phone = regex.Match(phone);
+            Match match_phone = regex_phone.Match(phone);
 
-            if (string.IsNullOrWhiteSpace(phone) && match_phone.Success)
+            if (!string.IsNullOrWhiteSpace(phone) && match_phone.Success)
             {
                 Writer.Display("Ce nom n'est pas bon !");
                 return update(client);
@@ -110,7 +110,7 @@ namespace ConsoleStockBruker
                 Writer.Display("Mauvais siret !");
                 return update(client);
             }
-            client.modifyAdress(firstName, lastName, email, phone, siret);
+           
 
             return client;
         }

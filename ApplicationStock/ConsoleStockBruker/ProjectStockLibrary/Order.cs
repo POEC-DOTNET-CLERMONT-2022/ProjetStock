@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,11 +10,13 @@ namespace ProjectStockLibrary
 {
     public  class Order
     {
+        [Key]
         public Guid _id { get; private set; }
-        public string _orderName { get; private set; }
-        public  DateTime _orderDate { get; private set; }
+        public string _orderName { get;  set; }
+        public  DateTime _orderDate { get;  set; }
+        [ForeignKey("Stock")]
         private Stock _stock { get; set; }
-        public  int _nbStock { get; private set; }
+        public  int _nbStock { get;  set; }
         public Order(string orderName,Stock stock,int nbStock) 
         {
             _orderName = orderName;
@@ -34,6 +38,13 @@ namespace ProjectStockLibrary
         public Order(string orderName,Stock stock, int nbStock, DateTime orderDate, Guid id ) : this(orderName, stock, nbStock)
         {
             _orderName = string.IsNullOrEmpty(orderName) ? throw new ArgumentNullException(nameof(orderName)) : orderName;
+
+        }
+        public Order(string orderName, Stock stock, int nbStock, DateTime orderDate) : this(orderName, stock, nbStock)
+        {
+            _id = Guid.NewGuid();
+            _orderName = string.IsNullOrEmpty(orderName) ? throw new ArgumentNullException(nameof(orderName)) : orderName;
+
         }
         public void AddStocks(Stock stock)
         {

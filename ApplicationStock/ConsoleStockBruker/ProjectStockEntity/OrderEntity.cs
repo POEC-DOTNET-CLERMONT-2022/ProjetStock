@@ -20,7 +20,8 @@ namespace ProjectStockEntity
 
         public DateTime _orderDate { get; set; }
 
-        private Stock _stock { get; set; }
+        [ForeignKey("Stock")]
+        public Stock _stock { get; set; }
 
         public int _nbStock { get; set; }
 

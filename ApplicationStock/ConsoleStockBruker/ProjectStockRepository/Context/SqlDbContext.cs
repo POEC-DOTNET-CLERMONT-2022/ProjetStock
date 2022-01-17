@@ -5,7 +5,7 @@ using ProjectStockEntity;
 
 namespace ProjectStockRepository.Context
 {
-    public class SqlDbContext : DbContext
+    public class SqlDbContext: DbContext
     { 
         private string ConnectionString { get; }
 
@@ -25,8 +25,7 @@ namespace ProjectStockRepository.Context
         {
             base.OnModelCreating(modelBuilder);
 
-            EntityTypeBuilder<UserEntity> entityTypeBuilder = modelBuilder.Entity<UserEntity>();
-
+        
         }
 
         public override DbSet<TEntity> Set<TEntity>()
