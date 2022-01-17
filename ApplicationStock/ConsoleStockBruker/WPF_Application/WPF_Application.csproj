@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.0" />
     <PackageReference Include="System.ServiceModel.Duplex" Version="4.8.*" />
     <PackageReference Include="System.ServiceModel.Http" Version="4.8.*" />
     <PackageReference Include="System.ServiceModel.NetTcp" Version="4.8.*" />
@@ -21,7 +22,14 @@
   <ItemGroup>
     <ProjectReference Include="..\ApiApplication\ApiApplication.csproj" />
     <ProjectReference Include="..\ProjectStockDTOS\ProjectStockDTOS.csproj" />
+    <ProjectReference Include="..\ProjectStockEntity\ProjectStockEntity.csproj" />
     <ProjectReference Include="..\ProjectStockLibrary\ProjectStockLibrary.csproj" />
+    <ProjectReference Include="..\ProjectStockModels\ProjectStockModels.csproj" />
+    <ProjectReference Include="..\ProjectStockRepository\ProjectStockRepository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Stocks\" />
   </ItemGroup>
 
 </Project>
