@@ -29,7 +29,7 @@ namespace ProjectStockModels.Lists
         }
 
 
-        public ObservableCollection<NotificationModel> MyProperty
+        public ObservableCollection<NotificationModel> Notifs
         {
             get { return _Notifs; }
             set {
