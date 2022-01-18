@@ -19,12 +19,12 @@ namespace ProjectStockEntity
     
         public DateTime sendAt { get; set; }
 
-        public NotificationEntity(string textRappel, DateTime _sendAt)
-        {
-            _id = Guid.NewGuid();
-            _textRappel = textRappel;
-            sendAt = _sendAt;
-        }
+        //public NotificationEntity(string textRappel, DateTime _sendAt)
+        //{
+        //    _id = Guid.NewGuid();
+        //    _textRappel = textRappel;
+        //    sendAt = _sendAt;
+        //}
         public bool Equals(NotificationEntity? other)
         {
             if (other == null) return false;

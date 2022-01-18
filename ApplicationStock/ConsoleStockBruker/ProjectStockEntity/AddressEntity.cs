@@ -25,15 +25,15 @@ namespace ProjectStockEntity
         public string _country { get; set; }
 
 
-        public AddressEntity(string address_line_1, string address_line_2, string codePostal, string city, string country)
-        {
-            _id = Guid.NewGuid();
-            _address_line_1 = address_line_1;
-            _address_line_2 = address_line_2;
-            _codePostal = codePostal;
-            _city = city;
-            _country = country;
-        }
+        //public AddressEntity(string address_line_1, string address_line_2, string codePostal, string city, string country)
+        //{
+        //    _id = Guid.NewGuid();
+        //    _address_line_1 = address_line_1;
+        //    _address_line_2 = address_line_2;
+        //    _codePostal = codePostal;
+        //    _city = city;
+        //    _country = country;
+        //}
         public bool Equals(AddressEntity? other)
         {
             if (other == null) return false;

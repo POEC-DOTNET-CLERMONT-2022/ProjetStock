@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF_Application.User;
 
 
 namespace WPF_Application
@@ -52,8 +53,8 @@ namespace WPF_Application
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
-            Gestion_lists_stocks app_list_stocks = new Gestion_lists_stocks();
-            user.Content = app_list_stocks;
+          UsersLists app_lists_user = new UsersLists();
+          user.Content = app_lists_user;
         }
     }
 }

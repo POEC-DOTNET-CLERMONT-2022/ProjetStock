@@ -25,14 +25,14 @@ namespace ProjectStockEntity
 
         public int _nbStock { get; set; }
 
-        public OrderEntity(string orderName, int nbStock)
-        {
-            _orderName = orderName;
-            _orderDate = DateTime.Now;
-            _id = Guid.NewGuid();
-            _stock = new Stock();
-            _nbStock = nbStock;
-        }
+        //public OrderEntity(string orderName, int nbStock)
+        //{
+        //    _orderName = orderName;
+        //    _orderDate = DateTime.Now;
+        //    _id = Guid.NewGuid();
+        //    _stock = new Stock();
+        //    _nbStock = nbStock;
+        //}
         public bool Equals(OrderEntity? other)
         {
             if (other == null) return false;
