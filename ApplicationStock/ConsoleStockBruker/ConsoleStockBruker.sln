@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectStockEntity", "Proje
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiApplication", "ApiApplication\ApiApplication.csproj", "{B45A70BC-FE83-46F1-8760-169271D45F73}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectStockModels", "ProjectStockModels\ProjectStockModels.csproj", "{BD06BBEA-0769-4C40-B4CB-D21D43B36516}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{B45A70BC-FE83-46F1-8760-169271D45F73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B45A70BC-FE83-46F1-8760-169271D45F73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B45A70BC-FE83-46F1-8760-169271D45F73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD06BBEA-0769-4C40-B4CB-D21D43B36516}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD06BBEA-0769-4C40-B4CB-D21D43B36516}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD06BBEA-0769-4C40-B4CB-D21D43B36516}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD06BBEA-0769-4C40-B4CB-D21D43B36516}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

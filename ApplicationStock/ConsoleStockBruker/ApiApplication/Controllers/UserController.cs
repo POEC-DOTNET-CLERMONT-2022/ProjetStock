@@ -112,7 +112,6 @@ namespace ApiApplicationProjectStock.Controllers
             var p = _context._users.Find(id);
 
             var mapProj = _mapper.Map<UserDto>(p);
-
             if (p == null)
                 return NotFound();
             else

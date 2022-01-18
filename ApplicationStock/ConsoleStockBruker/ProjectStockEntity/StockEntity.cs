@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace ProjectStockEntity
 {
     [Table("Stock")]
-    public sealed class StockEntity : IEquatable<StockEntity>
+    public  class StockEntity : IEquatable<StockEntity>
     {
        
         [Key]
@@ -26,14 +26,17 @@ namespace ProjectStockEntity
         [ForeignKey("Client")]
         public List<Client> _clients { get; set; }
 
-        public StockEntity(string name, float value, string entrepriseName)
-        {
-            _id = Guid.NewGuid();
-            _name = string.IsNullOrEmpty(name) ? throw new ArgumentNullException(nameof(name)) : name;
-            _value = value < 0 ? throw new Exception(nameof(_value)) : value;
-            _entrepriseName = string.IsNullOrEmpty(entrepriseName) ? throw new ArgumentNullException(nameof(entrepriseName)) : entrepriseName;
-            _clients = new List<Client>();
-        }
+
+
+        //public StockEntity(string name, float value, string entrepriseName)
+        //{
+        //    _id = Guid.NewGuid();
+        //    _name = string.IsNullOrEmpty(name) ? throw new ArgumentNullException(nameof(name)) : name;
+        //    _value = value < 0 ? throw new Exception(nameof(_value)) : value;
+        //    _entrepriseName = string.IsNullOrEmpty(entrepriseName) ? throw new ArgumentNullException(nameof(entrepriseName)) : entrepriseName;
+        //    _clients = new List<Client>();
+        //}
+       
         public bool Equals(StockEntity? other)
         {
             if (other == null) return false;

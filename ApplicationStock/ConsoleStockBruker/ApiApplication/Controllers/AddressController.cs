@@ -45,7 +45,6 @@ namespace ApiApplication.Controllers
         [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddressDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-
         public ActionResult<AddressDto> Post(AddressDto addressDto)
         {
             try
@@ -77,17 +76,12 @@ namespace ApiApplication.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<AddressDto> Put(AddressDto addressDto)
         {
-
-
             var p = _context._addresses.Find(addressDto._id);
             p._address_line_1 = addressDto._address_line_1;
             p._address_line_2 = addressDto._address_line_2;
             p._city = addressDto._city;
             p._codePostal = addressDto._codePostal;
             p._country = addressDto._country; 
-   
-           
-
             var mapProj = _mapper.Map<AddressDto>(p);
 
             _context._addresses.Update(p);
