@@ -9,11 +9,11 @@ using ProjectStockEntity;
 
 namespace ProjectStockModels.Mapper
 {
-   public class UserEntityProfile : Profile
+   public class UserModelProfile : Profile
     {
-        public UserEntityProfile()
+        public UserModelProfile()
         {
-            CreateMap<UserEntity,UserModel>().ReverseMap();
+            CreateMap<UserModel,Client>().ReverseMap();
         }
       
     }

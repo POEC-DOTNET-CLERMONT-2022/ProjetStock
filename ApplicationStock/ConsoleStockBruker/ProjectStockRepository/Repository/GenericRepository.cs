@@ -51,6 +51,7 @@ namespace ProjectStockRepository.Repository
 
         public bool Delete(T entity)
         {
+            _listEntity.Remove(entity);
             SqlContext.Set<T>().Remove(entity);
             if(SqlContext.SaveChanges() == 1)
             {
@@ -65,6 +66,7 @@ namespace ProjectStockRepository.Repository
 
         public IEnumerable<T> GetAll()
         {
+            _listEntity
 
 
             return _listEntity;
