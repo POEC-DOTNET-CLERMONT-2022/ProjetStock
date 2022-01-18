@@ -11,10 +11,11 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using WPF_Application.JsonReader;
 
-namespace WPF_Application.JsonReader
+namespace ProjectStockModels.JsonReader
 {
-    internal class JsonGenericReader<T> : IGenericReader<T> where T : class, new()
+   public class JsonGenericReader<T> : IGenericReader<T> where T : class, new()
     {
 
         private HttpClient _httpClient { get; }
@@ -31,6 +32,10 @@ namespace WPF_Application.JsonReader
             _httpClient.DefaultRequestHeaders.Accept.Add(
             new MediaTypeWithQualityHeaderValue("application/json"));
         }
+
+
+
+    
 
         public async Task<T> Get(T item)
         {

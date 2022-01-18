@@ -7,12 +7,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
+using ProjectStockLibrary;
+using ProjectStockModels;
+using ProjectStockModels.JsonReader;
 
 namespace ProjectStockRepository.Repository
 {
     public class GenericRepository<T> :  IGenericRepository<T> where T : class,new ()
     {
- 
+        public IMapper _mapper { get; }
+
         private SqlDbContext SqlContext { get; }
 
         private  List<T> _listEntity { get; set; }
@@ -24,17 +29,29 @@ namespace ProjectStockRepository.Repository
         {
             SqlContext = new SqlDbContext();
              _listEntity  = new List<T>();
+            _mapper = new Mapper(configuration);
         }
 
+
+        public List<T> getAll()
+        {
+            JsonGenericReader<T> _reader = new JsonGenericReader<T>(_mapper);
+            _reader.Get()
+
+            return 
+        }
+        
         public T? Update(T entity)
         {
+
+
            
             if (entity == null)
             {
                 return null;
             }
 
-            SqlContext.Update(entity);
+            SqlContext.Set<T>().Update(entity); 
             SqlContext.SaveChanges();
 
             return entity;
@@ -43,6 +60,9 @@ namespace ProjectStockRepository.Repository
         public T Add(T entity)
         {
             //T _entity = SqlContext.Add(entity).Entity;
+
+
+            SqlContext.Set<T>().Add(entity);
             
             _listEntity.Add(entity);
             //SqlContext.SaveChanges();
@@ -66,9 +86,7 @@ namespace ProjectStockRepository.Repository
 
         public IEnumerable<T> GetAll()
         {
-            _listEntity
-
-
+       
             return _listEntity;
         }
 

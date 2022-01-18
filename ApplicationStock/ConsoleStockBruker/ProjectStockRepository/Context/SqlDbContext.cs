@@ -36,6 +36,9 @@ namespace ProjectStockRepository.Context
             return base.Set<TEntity>();
         }
 
+
+
+
         public DbSet<Market> _markets { get; set; }
 
         public DbSet<Client> _users { get; set; }
