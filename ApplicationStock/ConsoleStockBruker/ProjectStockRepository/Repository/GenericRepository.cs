@@ -27,18 +27,10 @@ namespace ProjectStockRepository.Repository
 
         public GenericRepository()
         {
-            SqlContext = new SqlDbContext();
+             SqlContext = new SqlDbContext();
              _listEntity  = new List<T>();
-            _mapper = new Mapper(configuration);
-        }
-
-
-        public List<T> getAll()
-        {
-            JsonGenericReader<T> _reader = new JsonGenericReader<T>(_mapper);
-            _reader.Get()
-
-            return 
+            // var configuration = new MapperConfiguration(cfg => cfg.AddMaps(typeof(WPF_Application.App)));
+            //_mapper = new Mapper(configuration);
         }
         
         public T? Update(T entity)

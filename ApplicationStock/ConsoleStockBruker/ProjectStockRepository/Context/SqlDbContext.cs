@@ -38,6 +38,7 @@ namespace ProjectStockRepository.Context
 
 
 
+        //public DbSet<T> _Items { get; set; }
 
         public DbSet<Market> _markets { get; set; }
 
