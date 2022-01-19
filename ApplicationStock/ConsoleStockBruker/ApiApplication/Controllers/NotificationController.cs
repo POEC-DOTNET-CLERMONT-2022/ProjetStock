@@ -23,9 +23,9 @@ namespace ApiApplication.Controllers
             _context = context;
         }
 
-        // GET api/<ProjectController>/5
+        // GET api/<ProjectController>/GetAll
         [Authorize]
-        [HttpGet]
+        [HttpGet("GetAll")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(NotificationDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<IEnumerable<NotificationDto>> GetAll()

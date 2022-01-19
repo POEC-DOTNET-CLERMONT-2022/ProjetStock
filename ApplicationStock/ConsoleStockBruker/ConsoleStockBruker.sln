@@ -3,11 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleStockBruker", "ConsoleStockBruker\ConsoleStockBruker.csproj", "{819B80AD-8F02-4D66-9418-C69A590E6560}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectStockLibrary", "ProjectStockLibrary\ProjectStockLibrary.csproj", "{53BE34BC-3DD3-4098-B498-184936983CFF}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyStockModels", "MyStockModels\MyStockModels.csproj", "{DF8C4AA6-A607-4746-89BD-6642ED91F87B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersistanceStockProjectLibrary", "PersistanceStockProjectLibrary\PersistanceStockProjectLibrary.csproj", "{F087972B-373D-4B64-B4F5-7E8BBB3A0388}"
 EndProject
@@ -25,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectStockEntity", "Proje
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiApplication", "ApiApplication\ApiApplication.csproj", "{B45A70BC-FE83-46F1-8760-169271D45F73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectStockModels", "ProjectStockModels\ProjectStockModels.csproj", "{BD06BBEA-0769-4C40-B4CB-D21D43B36516}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectStockModels", "ProjectStockModels\ProjectStockModels.csproj", "{BD06BBEA-0769-4C40-B4CB-D21D43B36516}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,18 +29,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{819B80AD-8F02-4D66-9418-C69A590E6560}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{819B80AD-8F02-4D66-9418-C69A590E6560}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{819B80AD-8F02-4D66-9418-C69A590E6560}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{819B80AD-8F02-4D66-9418-C69A590E6560}.Release|Any CPU.Build.0 = Release|Any CPU
 		{53BE34BC-3DD3-4098-B498-184936983CFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{53BE34BC-3DD3-4098-B498-184936983CFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53BE34BC-3DD3-4098-B498-184936983CFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53BE34BC-3DD3-4098-B498-184936983CFF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DF8C4AA6-A607-4746-89BD-6642ED91F87B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DF8C4AA6-A607-4746-89BD-6642ED91F87B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DF8C4AA6-A607-4746-89BD-6642ED91F87B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DF8C4AA6-A607-4746-89BD-6642ED91F87B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F087972B-373D-4B64-B4F5-7E8BBB3A0388}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F087972B-373D-4B64-B4F5-7E8BBB3A0388}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F087972B-373D-4B64-B4F5-7E8BBB3A0388}.Release|Any CPU.ActiveCfg = Release|Any CPU

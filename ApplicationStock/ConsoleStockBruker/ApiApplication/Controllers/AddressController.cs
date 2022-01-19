@@ -24,7 +24,7 @@ namespace ApiApplication.Controllers
         }
 
 
-        // GET api/<ProjectController>/5
+        // GET api/<ProjectController>/ 
         [Authorize]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddressDto))]

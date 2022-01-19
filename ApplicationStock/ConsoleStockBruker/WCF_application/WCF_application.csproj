@@ -99,10 +99,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MyStockModels\MyStockModels.csproj">
-      <Project>{df8c4aa6-a607-4746-89bd-6642ed91f87b}</Project>
-      <Name>MyStockModels</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PersistanceStockProjectLibrary\PersistanceStockProjectLibrary.csproj">
       <Project>{f087972b-373d-4b64-b4f5-7e8bbb3a0388}</Project>
       <Name>PersistanceStockProjectLibrary</Name>

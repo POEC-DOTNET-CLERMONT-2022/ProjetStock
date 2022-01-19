@@ -30,7 +30,7 @@ namespace ApiApplicationProjectStock.Controllers
            
         }
 
-        // GET api/<ProjectController>/5
+        // GET api/<ProjectController>/GetAll
         [Authorize]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(StockDto))]

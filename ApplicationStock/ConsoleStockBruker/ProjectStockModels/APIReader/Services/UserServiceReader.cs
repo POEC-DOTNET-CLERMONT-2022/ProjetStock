@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProjectStockModels.APIReader.Services
 {
-    internal class UserServiceReader : JsonGenericReader<UserModel, UserDto>,IUserService
+    internal class UserServiceReader : JsonGenericReader<UserModel, UserDto> , IUserService
     {
     
 

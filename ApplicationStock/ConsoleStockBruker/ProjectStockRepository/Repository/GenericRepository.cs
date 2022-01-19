@@ -78,7 +78,7 @@ namespace ProjectStockRepository.Repository
 
         public IEnumerable<T> GetAll()
         {
-       
+            JsonGenericReader<T,UserDto>
             return _listEntity;
         }
 
