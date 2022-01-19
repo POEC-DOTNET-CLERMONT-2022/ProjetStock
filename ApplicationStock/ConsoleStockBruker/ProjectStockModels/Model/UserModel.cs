@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProjectStockModels
 {
-    public class UserModel : ObservableObject
+    public class UserModel : INotifyPropertyChanged
     {
         private Guid _id;
 

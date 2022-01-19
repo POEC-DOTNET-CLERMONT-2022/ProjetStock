@@ -11,7 +11,7 @@ using ProjectStockLibrary;
 
 namespace ProjectStockDTOS
 {
-    [DataContract]
+  
     public class UserDto
     {
         [DataMember]

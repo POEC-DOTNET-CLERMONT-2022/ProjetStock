@@ -11,16 +11,19 @@ using AutoMapper;
 using ProjectStockLibrary;
 using ProjectStockModels;
 using ProjectStockModels.JsonReader;
+using ProjectStockDTOS;
 
 namespace ProjectStockRepository.Repository
 {
-    public class GenericRepository<T> :  IGenericRepository<T> where T : class,new ()
+    public class GenericRepository<T,TDto> :  IGenericRepository<T> where T : class,new ()
+                                                                    where TDto : class
+                                                                  
     {
         public IMapper _mapper { get; }
 
         private SqlDbContext SqlContext { get; }
 
-        private  List<T> _listEntity { get; set; }
+        private  List<T, TDto> _listEntity { get; set; }
 
         private readonly Fixture _fixture = new Fixture();
 
@@ -78,7 +81,9 @@ namespace ProjectStockRepository.Repository
 
         public IEnumerable<T> GetAll()
         {
-            JsonGenericReader<T,UserDto>
+            HttpClient httpClient = new HttpClient();
+            JsonGenericReader<T, TDto> _userJsonReader = new JsonGenericReader<T, TDto>(httpClient,"api/User");
+            _listEntity = _userJsonReader<T, TDto>.GetAll();
             return _listEntity;
         }
 

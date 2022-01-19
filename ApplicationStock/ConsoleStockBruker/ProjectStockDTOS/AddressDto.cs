@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ProjectStockDTOS
 {
-    [DataContract]
+   
     public class AddressDto
     {
         [DataMember]

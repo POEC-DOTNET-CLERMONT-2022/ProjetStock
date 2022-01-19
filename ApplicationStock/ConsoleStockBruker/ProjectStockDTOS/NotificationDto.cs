@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace ProjectStockDTOS
 
 {
-    [DataContract]
+
     public  class NotificationDto
     {
         [DataMember]

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace ProjectStockDTOS
 {
-    [DataContract]
+    
    public class OrderDto
     {
         [DataMember]

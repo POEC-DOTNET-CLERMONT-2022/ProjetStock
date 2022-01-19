@@ -29,8 +29,7 @@ namespace ProjectStockModels.JsonReader
         {
           
             _httpClient = httpClient;
-            // Update port # in the following line.
-            _httpClient.BaseAddress = new Uri("https://localhost:" );
+            // Update port # in the following line
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIzNDY3Yjk5LTBmM2UtNDJkZi1hN2FjLTQzODY5YTFlMDdjMCIsIm5iZiI6MTY0MjQwNDY3MSwiZXhwIjoxNjQzMDA5NDcxLCJpYXQiOjE2NDI0MDQ2NzF9.3XvBwc9RVmZyVUGvaZqkAQX6Hh4Yn69uEhVdzFo-nAw");
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(
@@ -51,18 +50,18 @@ namespace ProjectStockModels.JsonReader
 
 
         public virtual async Task<IEnumerable<TModel>> GetAll()
-        { 
-        //{
-        //    var httpRequestMessage = new HttpRequestMessage
-        //    {
-        //        Method = HttpMethod.Get,
-        //        RequestUri = _httpClient.BaseAddress
-               
-        //    };
-        //    httpRequestMessage.Headers.Add("Accept", "application/json");
+        {
+            //{
+            //    var httpRequestMessage = new HttpRequestMessage
+            //    {
+            //        Method = HttpMethod.Get,
+            //        RequestUri = _httpClient.BaseAddress
+
+            //    };
+            //    httpRequestMessage.Headers.Add("Accept", "application/json");
 
 
-            var response = await _httpClient.GetFromJsonAsync<IEnumerable<TDto>>(_httpClient.BaseAddress.ToString(),_options);
+            var response = await _httpClient.GetFromJsonAsync<IEnumerable<TDto>>(_httpClient.BaseAddress.ToString(), _options) ;
             return _mapper.Map<IList<TModel>>(response);
 
 
