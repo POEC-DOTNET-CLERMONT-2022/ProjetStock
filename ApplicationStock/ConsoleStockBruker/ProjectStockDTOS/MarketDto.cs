@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace ProjectStockDTOS
 {
-    [DataContract]
     public class MarketDto
     {
         [DataMember]
