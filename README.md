@@ -18,10 +18,10 @@
 ##### Details
 Le projet permet de gérer les informations sur les actions de différentes bourses.
 Il se compose des phases suivantes :
-(phase 1- décidée pour le moment)
-- afficher les différentes variations de la valeur des stocks au fil du temps à travers des tableaux qui montrent les changements au cours d'une même journée, une semaine, un mois et 6 mois
--   (phase 2 - Facultatif) ajout d'un bot pour le trading automatique avec définition de prix par le client
- (phase 3- facultative) Ajouter d'un agent NLP qui fournit les 10 informations connexes les plus importantes pour le client en fonction de ses choix pour les actions
+- (phase 1- décidée pour le moment)
+afficher les différentes variations de la valeur des stocks au fil du temps à travers des tableaux qui montrent les changements au cours d'une même journée, une semaine, un mois et 6 mois
+- (phase 2 - Facultatif) ajout d'un bot pour le trading automatique avec définition de prix par le client
+- (phase 3- facultative) Ajouter d'un agent NLP qui fournit les 10 informations connexes les plus importantes pour le client en fonction de ses choix pour les actions
 - (phase4 - Facultatif) Ajouter d'un système de recommandation qui permet d'analyser les informations fournies par le système NLP en plus d'analyser les informations en fonction de chaque action et de définir l'intérêt possible et le niveau du risque pour une durée prédéfinie , pour le commerce , par le client
 L'application a une API CRUD avec une connexion JWT (bearer).
 
@@ -33,7 +33,7 @@ L'application a une API CRUD avec une connexion JWT (bearer).
 1. Un système pour garder les informations des actions en fonction de durée différentes pour comparer les variations de valeur par rapport à plusieurs métriques.
 2. Une interface dynamique et personnalisée en fonction des choix de l'utilisateur
 3. Liste d'actions dynamique et personnalisable par le client
-4. Gérer les informations en continu et il envoie des notifications  de rappel par email/sms
+4. Gérer les infor	mations en continu et il envoie des notifications  de rappel par email/sms
 
 ------------
 
