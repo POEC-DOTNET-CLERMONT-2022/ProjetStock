@@ -9,7 +9,7 @@ using ProjectStockLibrary;
 
 namespace ProjectStockDTOS
 {
-    [DataContract]
+
     public class CryptoDto
     {
         [DataMember]
