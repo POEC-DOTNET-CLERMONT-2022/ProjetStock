@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
 	  <TargetFramework>netstandard2.0</TargetFramework>
@@ -8,13 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProjectStockLibrary\ProjectStockLibrary.csproj" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="System.ComponentModel.DataAnnotations">
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.ComponentModel.DataAnnotations.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\ProjectStockLibrary\ProjectStockLibrary.csproj" />
   </ItemGroup>
+
 
 </Project>

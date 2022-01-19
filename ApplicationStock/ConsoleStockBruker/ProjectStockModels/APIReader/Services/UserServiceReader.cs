@@ -12,7 +12,8 @@ namespace ProjectStockModels.APIReader.Services
     internal class UserServiceReader : JsonGenericReader<UserModel, UserDto>,IUserService
     {
     
-        public UserServiceReader(HttpClient httpClient,string baseuri) : base(httpClient,baseuri)
+
+        public UserServiceReader(HttpClient httpClient) : base(httpClient,"api/User")
         {
 
         }
