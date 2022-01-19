@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using ProjectStockModels.JsonReader;
 
 namespace WPF_Application.User
 {
@@ -28,6 +29,9 @@ namespace WPF_Application.User
         {
             InitializeComponent();
             DataContext = UsersList;
+
+        
+
 
             var userModels = _mapper.Map<IEnumerable<UserModel>>(_userRepository.GetAll());
             UsersList.Users = new ObservableCollection<UserModel>(userModels);

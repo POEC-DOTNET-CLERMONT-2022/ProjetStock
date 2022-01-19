@@ -42,11 +42,12 @@ namespace WPF_Application.Stocks
         }
         public StockListControl()
         {
-            
-                InitializeComponent();
-                DataContext = StockList;
-                var stockModels = _mapper.Map<IEnumerable<StockModel>>(_stockRepository.GetAll());
-                StockList.Stocks = new ObservableCollection<OrderModel>(stockModels);
-            }
+
+            InitializeComponent();
+            DataContext = StockList;
+            var stockModels = _mapper.Map<IEnumerable<StockModel>>(_stockRepository.GetAll());
+            StockList.Stocks = new ObservableCollection<StockModel>(stockModels);
         }
+    }
+
 }

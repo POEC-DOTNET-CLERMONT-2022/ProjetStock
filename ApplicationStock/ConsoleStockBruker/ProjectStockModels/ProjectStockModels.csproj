@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ProjectStockDTOS\ProjectStockDTOS.csproj" />
     <ProjectReference Include="..\ProjectStockEntity\ProjectStockEntity.csproj" />
     <ProjectReference Include="..\ProjectStockLibrary\ProjectStockLibrary.csproj" />
   </ItemGroup>

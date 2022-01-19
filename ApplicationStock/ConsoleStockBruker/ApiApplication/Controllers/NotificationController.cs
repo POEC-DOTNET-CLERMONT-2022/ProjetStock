@@ -24,6 +24,22 @@ namespace ApiApplication.Controllers
         }
 
         // GET api/<ProjectController>/5
+        [Authorize]
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(NotificationDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<IEnumerable<NotificationDto>> GetAll()
+        {
+            var p = _context._notifs.ToList();
+            if (p == null)
+                return NotFound();
+            else
+                return Ok(p);
+
+        }
+
+
+        // GET api/<ProjectController>/5
         [HttpGet]
         [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(NotificationDto))]

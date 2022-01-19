@@ -7,6 +7,21 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Cart\CartListControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Market\MarketListsControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Order\ListsControlOrders.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Rappel\NotificationListsControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stocks\StockListControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="User\MonProfil.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -27,7 +42,22 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Cart\CartListControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Info\ContactUsControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Market\MarketListsControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Order\ListsControlOrders.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Rappel\NotificationListsControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stocks\StockListControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="User\CreateUser.xaml">

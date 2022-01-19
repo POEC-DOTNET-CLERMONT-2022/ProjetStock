@@ -23,6 +23,22 @@ namespace ApiApplicationProjectStock.Controllers
             _context = context;
         }
 
+        // GET api/<ProjectController>/5
+        [Authorize]
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MarketDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<IEnumerable<MarketDto>> GetAll()
+        {
+            var p = _context._markets.ToList();
+            if (p == null)
+                return NotFound();
+            else
+                return Ok(p);
+
+        }
+
+
         // GET api/<ProjectController>/Get
         [Authorize]
         [HttpGet]

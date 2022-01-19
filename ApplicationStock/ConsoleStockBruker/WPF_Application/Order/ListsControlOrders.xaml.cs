@@ -42,11 +42,12 @@ namespace WPF_Application.Order
         }
         public ListsControlOrders()
         {
-            
-                InitializeComponent();
-                DataContext = OrderList;
-                var orderModels = _mapper.Map<IEnumerable<OrderModel>>(_orderRepository.GetAll());
-                OrderList.Orders = new ObservableCollection<OrderModel>(orderModels);
-            
+
+            InitializeComponent();
+            DataContext = OrderList;
+            var orderModels = _mapper.Map<IEnumerable<OrderModel>>(_orderRepository.GetAll());
+            OrderList.Orders = new ObservableCollection<OrderModel>(orderModels);
+
         }
+    }
 }
