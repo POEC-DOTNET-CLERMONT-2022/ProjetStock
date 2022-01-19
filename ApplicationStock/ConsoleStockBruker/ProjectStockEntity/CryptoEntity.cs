@@ -16,7 +16,9 @@ namespace ProjectStockEntity
         
         public float _value {get; set;}
 
-        public List<Client> _listClient { get; set; }
+        public  virtual ICollection<Client> _listClient { get; set; }
+        
+
 
         public List<Market> _listMarket {get; set;}
 
