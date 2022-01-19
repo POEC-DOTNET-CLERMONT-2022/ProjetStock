@@ -1,4 +1,5 @@
-﻿using ProjectStockModels.Observable;
+﻿using ProjectStockLibrary;
+using ProjectStockModels.Observable;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,7 +33,7 @@ namespace ProjectStockModels.Model
             get { return _firstName; }
             set
             {
-                if (_firstName != null)
+                if (value != null)
                 {
                     _firstName = value;
                     OnNotifyPropertyChanged();
@@ -47,7 +48,7 @@ namespace ProjectStockModels.Model
             get { return _lastName; }
             set
             {
-                if (_lastName != null)
+                if (value != null)
                 {
                     _lastName = value;
                     OnNotifyPropertyChanged();
@@ -62,7 +63,7 @@ namespace ProjectStockModels.Model
             get { return _email; }
             set
             {
-                if (_email != null)
+                if (value != null)
                 {
                     _email = value;
                     OnNotifyPropertyChanged();
@@ -79,11 +80,12 @@ namespace ProjectStockModels.Model
             get { return _phone; }
             set
             {
-                if (_phone!= null)
+                if (value != null)
                 {
                     _phone = value;
                     OnNotifyPropertyChanged();
                 }
+                
 
             }
         }
@@ -95,9 +97,44 @@ namespace ProjectStockModels.Model
             get { return _siret; }
             set
             {
-                if (_siret!= null)
+                if (value != null)
                 {
                     _siret = value;
+                    OnNotifyPropertyChanged();
+                }
+
+            }
+        }
+
+
+        public List<Address> _addresses;
+
+
+        public List<Address> Addresses
+        {
+            get { return _addresses; }
+            set
+            {
+                if (value != null)
+                {
+                    _addresses  = value;
+                    OnNotifyPropertyChanged();
+                }
+
+            }
+        }
+
+
+        private List<Stock> _stocks;
+
+        public List<Stock> Stocks
+        {
+            get { return _stocks; }
+            set
+            {
+                if (value != null)
+                {
+                    _stocks = value;
                     OnNotifyPropertyChanged();
                 }
 

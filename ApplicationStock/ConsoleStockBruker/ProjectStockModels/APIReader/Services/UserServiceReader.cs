@@ -1,4 +1,5 @@
-﻿using ProjectStockDTOS;
+﻿using AutoMapper;
+using ProjectStockDTOS;
 using ProjectStockModels.APIReader.Interfaces;
 using ProjectStockModels.JsonReader;
 using ProjectStockModels.Model;
@@ -14,7 +15,7 @@ namespace ProjectStockModels.APIReader.Services
     {
     
 
-        public UserServiceReader(HttpClient httpClient) : base(httpClient,"api/User")
+        public UserServiceReader(HttpClient httpClient,IMapper mapper) : base(httpClient,"api/User",mapper)
         {
 
         }

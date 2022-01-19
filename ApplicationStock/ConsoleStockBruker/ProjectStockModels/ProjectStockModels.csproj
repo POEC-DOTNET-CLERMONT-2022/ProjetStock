@@ -17,4 +17,8 @@
     <ProjectReference Include="..\ProjectStockLibrary\ProjectStockLibrary.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="APIReader\Map\" />
+  </ItemGroup>
+
 </Project>

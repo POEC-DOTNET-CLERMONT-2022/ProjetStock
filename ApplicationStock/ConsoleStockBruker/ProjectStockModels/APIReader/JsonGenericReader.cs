@@ -13,6 +13,16 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using WPF_Application.JsonReader;
+using ProjectStockModels.Mapper;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Threading.Tasks;
+using System.Net;
+using ProjectStockDTOS;
+using ProjectStockModels.Model;
 
 namespace ProjectStockModels.JsonReader
 {
@@ -21,17 +31,18 @@ namespace ProjectStockModels.JsonReader
     {
 
         private HttpClient _httpClient { get; }
-        private readonly IMapper _mapper;
+        private  IMapper _mapper { get; }
         private readonly JsonSerializerOptions _options;
         private  string uri { get; set; }
 
-        public JsonGenericReader(HttpClient httpClient, string baseuri)
+        private const string AuthorizationHeader = "Authorization";
+        public JsonGenericReader(HttpClient httpClient, string baseuri, IMapper mapper)
         {
-          
+            _mapper = mapper;
+
             _httpClient = httpClient;
             // Update port # in the following line.
 
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIzNDY3Yjk5LTBmM2UtNDJkZi1hN2FjLTQzODY5YTFlMDdjMCIsIm5iZiI6MTY0MjQwNDY3MSwiZXhwIjoxNjQzMDA5NDcxLCJpYXQiOjE2NDI0MDQ2NzF9.3XvBwc9RVmZyVUGvaZqkAQX6Hh4Yn69uEhVdzFo-nAw");
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(
             new MediaTypeWithQualityHeaderValue("application/json"));
@@ -44,7 +55,8 @@ namespace ProjectStockModels.JsonReader
                     new JsonStringEnumConverter(JsonNamingPolicy.CamelCase),
                 }
             };
-            uri = "https://localhost:7336/"+ baseuri; 
+            _httpClient.DefaultRequestHeaders.Add(AuthorizationHeader, $"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIzNDY3Yjk5LTBmM2UtNDJkZi1hN2FjLTQzODY5YTFlMDdjMCIsIm5iZiI6MTY0MjQwNDY3MSwiZXhwIjoxNjQzMDA5NDcxLCJpYXQiOjE2NDI0MDQ2NzF9.3XvBwc9RVmZyVUGvaZqkAQX6Hh4Yn69uEhVdzFo-nAw");
+            uri = "https://localhost:7136/" + baseuri; 
             _httpClient.BaseAddress = new Uri(uri);
         }
 
@@ -52,93 +64,68 @@ namespace ProjectStockModels.JsonReader
 
         public virtual async Task<IEnumerable<TModel>> GetAll()
         {
-            //{
-            //    var httpRequestMessage = new HttpRequestMessage
-            //    {
-            //        Method = HttpMethod.Get,
-            //        RequestUri = _httpClient.BaseAddress
-
-            //    };
-            //    httpRequestMessage.Headers.Add("Accept", "application/json");
 
 
-            var response = await _httpClient.GetFromJsonAsync<IEnumerable<TDto>>(_httpClient.BaseAddress.ToString(), _options) ;
-            return _mapper.Map<IList<TModel>>(response);
+            var response = await _httpClient.GetFromJsonAsync<IEnumerable<TDto>>(_httpClient.BaseAddress.ToString(), _options);
+            return _mapper.Map<IList<TModel>>(_mapper.Map<TModel> (response));
 
 
         }
 
 
 
-        public async Task<TModel> Get(TModel item)
-        {
-            var dto = _mapper.Map<TDto>(item);
-            var httpRequestMessage = new HttpRequestMessage
-            {
-                Method = HttpMethod.Get,
-                RequestUri = _httpClient.BaseAddress,
-            };
-            httpRequestMessage.Headers.Add("Accept", "application/json");
+        //public async Task<TModel> Get(TModel item)
+        //{
+        //    var dto = _mapper.Map<TDto>(item);
 
+
+        //    await _httpClient.GetFromJsonAsync<IEnumerable<TDto>>(_httpClient.BaseAddress.ToString(), _options) ;
             
-            var response = await _httpClient.PostAsJsonAsync(_httpClient.BaseAddress.ToString(), dto, _options);
+        //    var response = await _httpClient.PostAsJsonAsync(_httpClient.BaseAddress.ToString(), dto, _options);
 
 
-            if (response.IsSuccessStatusCode)
-            {
+        //    if (response.IsSuccessStatusCode)
+        //    {
 
-                using var responseStream = await response.Content.ReadAsStreamAsync();
-                var res = await System.Text.Json.JsonSerializer.DeserializeAsync<TDto>(responseStream);
+        //        using var responseStream = await response.Content.ReadAsStreamAsync();
+        //        var res = await System.Text.Json.JsonSerializer.DeserializeAsync<TDto>(responseStream);
 
-                return item;
-            }
-            return null;
+        //        return item;
+        //    }
+        //    return null;
 
 
-        }
+        //}
 
-        public async Task<TModel> Update(TModel item)
+        public async Task<int> Update(TModel item)
         {
-            var dto = _mapper.Map<TDto>(item);
-            var httpRequestMessage = new HttpRequestMessage
+
+            var item_ = item;
+            try
             {
-                Method = HttpMethod.Put,
-                RequestUri = _httpClient.BaseAddress,
-            };
-            httpRequestMessage.Headers.Add("Accept", "application/json");
-           
-            var response = await _httpClient.PutAsJsonAsync(_httpClient.BaseAddress.ToString(), dto, _options);
+                var map = _mapper.Map<TDto>(item);
 
+                var response = await _httpClient.PutAsJsonAsync(uri, map);
+                return StatusCodes.Status200OK;
 
-
-
-            if (response.IsSuccessStatusCode)
-            {
-
-                using var responseStream = await response.Content.ReadAsStreamAsync();
-                var res = await System.Text.Json.JsonSerializer.DeserializeAsync<TDto>(responseStream);
 
 
             }
+            catch (Exception e)
+            {
+                return StatusCodes.Status400BadRequest;
+            }
+           
 
-            return item;
+           
         }
 
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<int> Delete(TModel item)
         {
-            var dto = _mapper.Map<TDto>(item);
-            var httpRequestMessage = new HttpRequestMessage
-            {
-                Method = HttpMethod.Delete,
-                RequestUri = _httpClient.BaseAddress
-            };
+           
 
-            httpRequestMessage.Headers.Add("Accept", "application/json");
-
-
-            var response = await _httpClient.DeleteAsync(_httpClient.BaseAddress.ToString());
-
+            var response = await _httpClient.DeleteAsync(uri);
 
 
             if (!response.IsSuccessStatusCode)
@@ -156,26 +143,24 @@ namespace ProjectStockModels.JsonReader
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<int> Add(TModel item)
         {
-            var dto = _mapper.Map<TDto>(item);
-            var httpRequestMessage = new HttpRequestMessage
+
+
+            var item_ = item;
+            try
             {
-                Method = HttpMethod.Post,
-                RequestUri = _httpClient.BaseAddress,
-                Content = new StringContent(JsonConvert.SerializeObject(dto))
-            };
-            httpRequestMessage.Headers.Add("Accept", "application/json");
-
-            var response = await _httpClient.DeleteAsync((httpRequestMessage.RequestUri).ToString());
-
-
-
-            if (!response.IsSuccessStatusCode)
-            {
+                var map = _mapper.Map<TDto>(item);
+              
+                var response =  await _httpClient.PostAsJsonAsync(uri,map);
                 return StatusCodes.Status200OK;
 
 
+
             }
-            return StatusCodes.Status400BadRequest;
+            catch (Exception e)
+            {
+                return StatusCodes.Status400BadRequest;
+            }
+           
 
         }
     }

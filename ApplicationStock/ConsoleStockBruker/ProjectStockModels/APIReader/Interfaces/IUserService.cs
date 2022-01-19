@@ -12,7 +12,7 @@ namespace ProjectStockModels.APIReader.Interfaces
         Task<IEnumerable<UserModel>> GetAll();
         Task<UserModel> Get(UserModel item);
 
-        Task<UserModel> Update(UserModel item);
+        Task<int> Update(UserModel item);
 
 
         Task<int> Delete(UserModel item);

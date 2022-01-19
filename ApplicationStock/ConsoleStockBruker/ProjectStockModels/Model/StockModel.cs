@@ -22,7 +22,7 @@ namespace ProjectStockModels.Model
             get { return _id; }
             set
             {
-                if (_id != null)
+                if (value != null)
                 {
                     _id = value;
                     OnNotifyPropertyChanged();
@@ -34,7 +34,7 @@ namespace ProjectStockModels.Model
             get { return _value; }
             set
             {
-                if (_value != null)
+                if (value != null)
                 {
                     _value = value;
                     OnNotifyPropertyChanged();
@@ -46,7 +46,7 @@ namespace ProjectStockModels.Model
             get { return _clients; }
             set
             {
-                if (_clients != null)
+                if (value != null)
                 {
                     _clients = value;
                     OnNotifyPropertyChanged();
@@ -61,7 +61,7 @@ namespace ProjectStockModels.Model
             get { return _entrepriseName; }
             set
             {
-                if (_entrepriseName != null)
+                if (value != null)
                 {
                     _entrepriseName = value;
                     OnNotifyPropertyChanged();

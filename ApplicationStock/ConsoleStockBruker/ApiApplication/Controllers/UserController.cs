@@ -33,19 +33,19 @@ namespace ApiApplicationProjectStock.Controllers
 
 
         //// GET api/<ProjectController>/GetAll
-        //[Authorize]
-        //[HttpGet]
-        //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddressDto))]
-        //[ProducesResponseType(StatusCodes.Status404NotFound)]
-        //public ActionResult<IEnumerable<UserDto>> GetAll()
-        //{
-        //    var p = _context._users.ToList();
-        //    if (p == null)
-        //        return NotFound();
-        //    else
-        //        return Ok(p);
+        [Authorize]
+        [HttpGet("all")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddressDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<IEnumerable<UserDto>> GetAll()
+        {
+           var p = _context._users.ToList();
+           if (p == null)
+               return NotFound();
+           else
+               return Ok(p);
 
-        //}
+        }
 
 
         [HttpPost("authenticate")]
@@ -146,12 +146,7 @@ namespace ApiApplicationProjectStock.Controllers
             var p = userDto.ToModel();
             try
             {
-                foreach (var _address in p._addresses)
-                {
-                   _context._addresses.Add(_address);
-                   _context.SaveChanges();
-
-                }
+              
                 _context._users.Add(p);
             } 
             catch (Exception ex)

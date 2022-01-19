@@ -19,7 +19,7 @@ namespace ProjectStockModels.Model
             get { return _id; }
             set
             {
-                if (_id != null)
+                if (value != null)
                 {
                     _id = value;
                     OnNotifyPropertyChanged();
@@ -32,7 +32,7 @@ namespace ProjectStockModels.Model
             get { return _textRappel; }
             set
             {
-                if (_textRappel != null)
+                if (value != null)
                 {
                     _textRappel = value;
                     OnNotifyPropertyChanged();
@@ -45,7 +45,7 @@ namespace ProjectStockModels.Model
             get { return _sendAt; }
             set
             {
-                if (_sendAt != null)
+                if (value != null)
                 {
                     _sendAt = value;
                     OnNotifyPropertyChanged();

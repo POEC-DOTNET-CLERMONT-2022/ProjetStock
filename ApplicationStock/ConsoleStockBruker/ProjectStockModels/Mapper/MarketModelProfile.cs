@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ProjectStockLibrary;
+using ProjectStockModels.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace ProjectStockModels.Mapper
     {
         public MarketModelProfile()
         {
-            CreateMap<MarketModelProfile, Market>().ReverseMap();
+            CreateMap<MarketModel, Market>().ReverseMap();
         }
     }
 }

@@ -18,7 +18,7 @@ namespace ProjectStockModels.Model
             get { return _id; }
             set
             {
-                if (_id != null)
+                if (value != null)
                 {
                     _id = value;
                     OnNotifyPropertyChanged();
@@ -31,7 +31,7 @@ namespace ProjectStockModels.Model
             get { return _name; }
             set
             {
-                if (_name != null)
+                if (value != null)
                 {
                     _name = value;
                     OnNotifyPropertyChanged();
@@ -57,7 +57,7 @@ namespace ProjectStockModels.Model
             get { return _closingDate; }
             set
             {
-                if (_closingDate != null)
+                if (value != null)
                 {
                     _closingDate = value;
                     OnNotifyPropertyChanged();

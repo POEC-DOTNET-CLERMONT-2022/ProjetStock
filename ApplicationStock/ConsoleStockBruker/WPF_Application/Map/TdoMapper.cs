@@ -1,22 +1,20 @@
-﻿using ProjectStockLibrary;
+﻿using AutoMapper;
+using ProjectStockDTOS;
+using ProjectStockModels.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AutoMapper;
-using ProjectStockEntity;
-using ProjectStockModels.Model;
-using ProjectStockDTOS;
 
-namespace ProjectStockModels.Mapper
+namespace WPF_Application.Map
 {
-   public class UserModelProfile : Profile
+    public class TdoMapper : AutoMapper.Profile 
+                                                  
     {
-        public UserModelProfile()
+        public TdoMapper()
         {
-            CreateMap<UserModel,Client>().ReverseMap();
-            CreateMap<UserDto, UserModel>().ReverseMap();
+            
             CreateMap<UserModel, UserDto>().ReverseMap();
             CreateMap<NotificationModel, NotificationDto>().ReverseMap();
             CreateMap<MarketModel, MarketDto>().ReverseMap();
