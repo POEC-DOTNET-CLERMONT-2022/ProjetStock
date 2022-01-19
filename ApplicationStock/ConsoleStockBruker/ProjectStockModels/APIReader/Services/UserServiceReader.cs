@@ -1,6 +1,7 @@
 ﻿using ProjectStockDTOS;
 using ProjectStockModels.APIReader.Interfaces;
 using ProjectStockModels.JsonReader;
+using ProjectStockModels.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ProjectStockModels.APIReader.Services
 {
-    internal class UserServiceReader : JsonGenericReader<UserModel, UserDto> , IUserService
+    public class UserServiceReader : JsonGenericReader<UserModel, UserDto> , IUserService
     {
     
 

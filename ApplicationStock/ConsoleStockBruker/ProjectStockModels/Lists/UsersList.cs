@@ -1,4 +1,5 @@
-﻿using ProjectStockModels.Observable;
+﻿using ProjectStockModels.Model;
+using ProjectStockModels.Observable;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

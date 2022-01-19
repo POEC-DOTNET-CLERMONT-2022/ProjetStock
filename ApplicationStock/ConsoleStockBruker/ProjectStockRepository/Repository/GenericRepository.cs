@@ -15,38 +15,36 @@ using ProjectStockDTOS;
 
 namespace ProjectStockRepository.Repository
 {
-    public class GenericRepository<T,TDto> :  IGenericRepository<T> where T : class,new ()
-                                                                    where TDto : class
-                                                                  
+    public class GenericRepository<T> : IGenericRepository<T> where T : class, new()
     {
         public IMapper _mapper { get; }
 
         private SqlDbContext SqlContext { get; }
 
-        private  List<T, TDto> _listEntity { get; set; }
+        private List<T> _listEntity { get; set; }
 
         private readonly Fixture _fixture = new Fixture();
 
 
         public GenericRepository()
         {
-             SqlContext = new SqlDbContext();
-             _listEntity  = new List<T>();
+            SqlContext = new SqlDbContext();
+            _listEntity = new List<T>();
             // var configuration = new MapperConfiguration(cfg => cfg.AddMaps(typeof(WPF_Application.App)));
             //_mapper = new Mapper(configuration);
         }
-        
+
         public T? Update(T entity)
         {
 
 
-           
+
             if (entity == null)
             {
                 return null;
             }
 
-            SqlContext.Set<T>().Update(entity); 
+            SqlContext.Set<T>().Update(entity);
             SqlContext.SaveChanges();
 
             return entity;
@@ -58,7 +56,7 @@ namespace ProjectStockRepository.Repository
 
 
             SqlContext.Set<T>().Add(entity);
-            
+
             _listEntity.Add(entity);
             //SqlContext.SaveChanges();
             return entity;
@@ -68,7 +66,7 @@ namespace ProjectStockRepository.Repository
         {
             _listEntity.Remove(entity);
             SqlContext.Set<T>().Remove(entity);
-            if(SqlContext.SaveChanges() == 1)
+            if (SqlContext.SaveChanges() == 1)
             {
                 return SqlContext.SaveChanges() == 1;
             }
@@ -76,17 +74,15 @@ namespace ProjectStockRepository.Repository
             {
                 return SqlContext.SaveChanges() == 0;
             }
-           
-        }
 
-        public IEnumerable<T> GetAll()
+        }
+        public IEnumerable<T>  GetAll()
         {
-            HttpClient httpClient = new HttpClient();
-            JsonGenericReader<T, TDto> _userJsonReader = new JsonGenericReader<T, TDto>(httpClient,"api/User");
-            _listEntity = _userJsonReader<T, TDto>.GetAll();
             return _listEntity;
         }
 
-
+            
     }
 }
+
+

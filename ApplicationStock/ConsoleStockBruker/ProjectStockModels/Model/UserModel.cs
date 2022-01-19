@@ -1,13 +1,14 @@
 ﻿using ProjectStockModels.Observable;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectStockModels
+namespace ProjectStockModels.Model
 {
-    public class UserModel : INotifyPropertyChanged
+    public class UserModel : ObservableObject
     {
         private Guid _id;
 

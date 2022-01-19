@@ -32,20 +32,20 @@ namespace ApiApplicationProjectStock.Controllers
         }
 
 
-        // GET api/<ProjectController>/GetAll
-        [Authorize]
-        [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddressDto))]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<IEnumerable<UserDto>> GetAll()
-        {
-            var p = _context._users.ToList();
-            if (p == null)
-                return NotFound();
-            else
-                return Ok(p);
+        //// GET api/<ProjectController>/GetAll
+        //[Authorize]
+        //[HttpGet]
+        //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddressDto))]
+        //[ProducesResponseType(StatusCodes.Status404NotFound)]
+        //public ActionResult<IEnumerable<UserDto>> GetAll()
+        //{
+        //    var p = _context._users.ToList();
+        //    if (p == null)
+        //        return NotFound();
+        //    else
+        //        return Ok(p);
 
-        }
+        //}
 
 
         [HttpPost("authenticate")]

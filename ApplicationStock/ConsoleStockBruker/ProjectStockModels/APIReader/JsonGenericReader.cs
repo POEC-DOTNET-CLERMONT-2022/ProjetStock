@@ -23,13 +23,14 @@ namespace ProjectStockModels.JsonReader
         private HttpClient _httpClient { get; }
         private readonly IMapper _mapper;
         private readonly JsonSerializerOptions _options;
-        private readonly string uri;
+        private  string uri { get; set; }
 
         public JsonGenericReader(HttpClient httpClient, string baseuri)
         {
           
             _httpClient = httpClient;
-            // Update port # in the following line
+            // Update port # in the following line.
+
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIzNDY3Yjk5LTBmM2UtNDJkZi1hN2FjLTQzODY5YTFlMDdjMCIsIm5iZiI6MTY0MjQwNDY3MSwiZXhwIjoxNjQzMDA5NDcxLCJpYXQiOjE2NDI0MDQ2NzF9.3XvBwc9RVmZyVUGvaZqkAQX6Hh4Yn69uEhVdzFo-nAw");
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(
@@ -43,8 +44,8 @@ namespace ProjectStockModels.JsonReader
                     new JsonStringEnumConverter(JsonNamingPolicy.CamelCase),
                 }
             };
-            uri = baseuri; 
-            _httpClient.BaseAddress = new Uri("https://localhost:7336" +this.uri);
+            uri = "https://localhost:7336/"+ baseuri; 
+            _httpClient.BaseAddress = new Uri(uri);
         }
 
 

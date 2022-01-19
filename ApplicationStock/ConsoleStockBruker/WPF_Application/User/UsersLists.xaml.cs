@@ -12,6 +12,10 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using ProjectStockModels.JsonReader;
+using ProjectStockDTOS;
+using System.Net.Http;
+using ProjectStockModels.APIReader.Services;
+using ProjectStockModels.Model;
 
 namespace WPF_Application.User
 {
@@ -24,15 +28,14 @@ namespace WPF_Application.User
         private readonly IGenericRepository<UserEntity> _userRepository = ((App)Application.Current).userRepository;
         private readonly IMapper _mapper  = ((App)Application.Current).Mapper;
 
+        private readonly JsonGenericReader<UserModel,UserDto> jsonGenericReader = new UserServiceReader(new HttpClient());
+
         public UsersList UsersList { get; set; } = new UsersList();
+
         public UsersLists()
         {
             InitializeComponent();
             DataContext = UsersList;
-
-        
-
-
             var userModels = _mapper.Map<IEnumerable<UserModel>>(_userRepository.GetAll());
             UsersList.Users = new ObservableCollection<UserModel>(userModels);
         }
@@ -41,7 +44,8 @@ namespace WPF_Application.User
         {
             var newUser = new UserModel() { FirstName = TbUserName.Text };
             var userEntity = _mapper.Map<UserEntity>(newUser);
-            _userRepository.Add(userEntity);
+         
+            jsonGenericReader.Add(newUser);
             UsersList.Users.Add(newUser);
             //UsersList.Users = new ObservableCollection<UserModel>();
         }

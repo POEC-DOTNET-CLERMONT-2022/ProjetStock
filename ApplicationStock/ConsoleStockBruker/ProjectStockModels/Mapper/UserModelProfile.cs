@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using ProjectStockEntity;
+using ProjectStockModels.Model;
 
 namespace ProjectStockModels.Mapper
 {

@@ -23,20 +23,20 @@ namespace ApiApplication.Controllers
             _context = context;
         }
 
-        // GET api/<ProjectController>/GetAll
-        [Authorize]
-        [HttpGet("GetAll")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(NotificationDto))]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<IEnumerable<NotificationDto>> GetAll()
-        {
-            var p = _context._notifs.ToList();
-            if (p == null)
-                return NotFound();
-            else
-                return Ok(p);
+        //// GET api/<ProjectController>/GetAll
+        //[Authorize]
+        //[HttpGet("GetAll")]
+        //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(NotificationDto))]
+        //[ProducesResponseType(StatusCodes.Status404NotFound)]
+        //public ActionResult<IEnumerable<NotificationDto>> GetAll()
+        //{
+        //    var p = _context._notifs.ToList();
+        //    if (p == null)
+        //        return NotFound();
+        //    else
+        //        return Ok(p);
 
-        }
+        //}
 
 
         // GET api/<ProjectController>/5
