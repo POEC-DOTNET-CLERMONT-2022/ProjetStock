@@ -11,7 +11,7 @@ namespace ProjectStockModels.Model
     {
         private Guid _id;
         private string _textRappel;
-        public DateTime _sendAt { get; set; }
+        private DateTime _sendAt { get; set; }
 
 
         public Guid Id
