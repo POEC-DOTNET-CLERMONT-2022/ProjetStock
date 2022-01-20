@@ -10,12 +10,12 @@ namespace ProjectStockModels.APIReader.Interfaces
     public interface IUserService
     {
         Task<IEnumerable<UserModel>> GetAll();
-        Task<UserModel> Get(UserModel item);
 
+        Task<UserModel> Get(Guid id);
         Task<int> Update(UserModel item);
 
 
-        Task<int> Delete(UserModel item);
+        Task<int> Delete(Guid id);
         Task<int> Add(UserModel item);
     }
 }

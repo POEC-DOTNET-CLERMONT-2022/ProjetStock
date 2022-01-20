@@ -24,17 +24,30 @@
             </StackPanel>
             <StackPanel Grid.Column="1">
                 <WrapPanel>
-                    <TextBlock Text="Modifier le nom :" />
-                    <TextBox Width="500" Text="{Binding CurrentUser.FirstName, UpdateSourceTrigger=PropertyChanged}"  />
-                </WrapPanel>
+                    <TextBlock Text="Modifier l'utilisateur :" />
+                <StackPanel>
+                    <Button Content="Ajouter un utilsateur " Width="200" HorizontalAlignment="Left" Click="Button_Click_1"/>
+                   
+                </StackPanel>
+                <StackPanel>
+                    <Button Content="Supprimer un utilisateur" Width="200" HorizontalAlignment="Left" Click="Button_Click_2"/>                 
+                    <TextBox x:Name="TxtGuid" Width="50"  Visibility="Hidden" Text="{Binding CurrentUser.Id}" />
+                </StackPanel>
+            </WrapPanel>
             </StackPanel>
         <ListBox Grid.ColumnSpan="2" SelectedItem="{Binding CurrentUser}" ItemsSource="{Binding Users}" Grid.Row="1" x:Name="ListUser">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
+                        <TextBlock Text="ID :"/>
+                        <TextBlock Text="{Binding Id}"/>
+                        <TextBlock Text="LastName :"/>
+                            <TextBlock Text="{Binding LastName}"/>
                             <TextBlock Text="Name :"/>
                             <TextBlock Text="{Binding FirstName}"/>
-                        </StackPanel>
+                            <TextBlock Text="Email :"/>
+                            <TextBlock Text="{Binding Email}"/>
+                    </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>

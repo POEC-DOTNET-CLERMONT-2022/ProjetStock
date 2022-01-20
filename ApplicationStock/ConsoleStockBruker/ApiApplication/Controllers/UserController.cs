@@ -35,7 +35,7 @@ namespace ApiApplicationProjectStock.Controllers
         //// GET api/<ProjectController>/GetAll
         [Authorize]
         [HttpGet("all")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddressDto))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<IEnumerable<UserDto>> GetAll()
         {
@@ -143,10 +143,10 @@ namespace ApiApplicationProjectStock.Controllers
         public ActionResult<UserDto> Post(UserDto userDto)
         {
 
-            var p = userDto.ToModel();
             try
             {
-              
+
+                var p = userDto.ToModel();
                 _context._users.Add(p);
             } 
             catch (Exception ex)
@@ -154,7 +154,7 @@ namespace ApiApplicationProjectStock.Controllers
                 return BadRequest(ex.Message);
             }
             _context.SaveChanges();
-            return Ok(p);
+            return Ok();
         }
 
         // GET api/<ProjectController>/5

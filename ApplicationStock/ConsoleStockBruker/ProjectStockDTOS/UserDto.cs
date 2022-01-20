@@ -39,13 +39,13 @@ namespace ProjectStockDTOS
 
         [JsonIgnore]
         [DataMember]
-        [Required]
+
         public string _token { get; set; }
 
-        [JsonIgnore]
-        [DataMember]
-        [Required]
-        public DateTime _expireToken { get; set; }
+        //[JsonIgnore]
+        //[DataMember]
+    
+        //public DateTime _expireToken { get; set; }
 
         [DataMember]
         [Required]

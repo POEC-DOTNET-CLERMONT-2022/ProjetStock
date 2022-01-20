@@ -11,14 +11,15 @@ namespace ProjectStockModels.Model
 {
     public class UserModel : ObservableObject
     {
-        private Guid _id;
+        public Guid _id;
+        public string _lastName;
 
         public Guid Id
         {
             get { return _id; }
             set
             {
-                if (_id != null)
+                if (value != null)
                 {
                     _id = value;
                     OnNotifyPropertyChanged();
@@ -26,7 +27,7 @@ namespace ProjectStockModels.Model
                    
             }
         }
-        private string _firstName;
+        public string _firstName;
 
         public string FirstName
         {
@@ -41,7 +42,7 @@ namespace ProjectStockModels.Model
                     
             }
         }
-        private string _lastName;
+       
 
         public string LastName
         {
@@ -56,7 +57,7 @@ namespace ProjectStockModels.Model
 
             }
         }
-        private string _email;
+        public string _email;
 
         public string Email
         {
@@ -73,7 +74,7 @@ namespace ProjectStockModels.Model
         }
 
 
-        private string _phone;
+        public string _phone;
 
         public string Phone
         {
@@ -125,7 +126,7 @@ namespace ProjectStockModels.Model
         }
 
 
-        private List<Stock> _stocks;
+        public  List<Stock> _stocks;
 
         public List<Stock> Stocks
         {
