@@ -9,10 +9,14 @@ namespace ProjectStockModels.Model
 {
     public class MarketModel : ObservableObject
     {
+
         public Guid _id;
         public string _name;
         public DateTime _openingDate;
         public DateTime _closingDate;
+
+
+
         public Guid Id
         {
             get { return _id; }

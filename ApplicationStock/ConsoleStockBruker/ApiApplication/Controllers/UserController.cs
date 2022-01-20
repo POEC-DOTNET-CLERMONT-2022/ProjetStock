@@ -143,16 +143,14 @@ namespace ApiApplicationProjectStock.Controllers
         public ActionResult<UserDto> Post(UserDto userDto)
         {
 
-            try
-            {
 
                 var p = userDto.ToModel();
                 _context._users.Add(p);
-            } 
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            //} 
+            //catch (Exception ex)
+            //{
+            //    return BadRequest(ex.Message);
+            //}
             _context.SaveChanges();
             return Ok();
         }

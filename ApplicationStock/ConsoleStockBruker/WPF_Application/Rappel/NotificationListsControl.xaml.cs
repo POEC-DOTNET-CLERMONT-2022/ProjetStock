@@ -1,5 +1,8 @@
 ﻿using AutoMapper;
+using ProjectStockDTOS;
 using ProjectStockEntity;
+using ProjectStockModels.APIReader.Services;
+using ProjectStockModels.JsonReader;
 using ProjectStockModels.Lists;
 using ProjectStockModels.Model;
 using ProjectStockRepository.Interfaces;
@@ -7,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -29,29 +33,112 @@ namespace WPF_Application.Rappel
 
         private readonly IGenericRepository<NotificationEntity> _notifsRepository = ((App)Application.Current).notificationRepository;
         private readonly IMapper _mapper = ((App)Application.Current).Mapper;
-
+        private JsonGenericReader<NotificationModel,NotificationDto> jsonGenericReader { get; }
+        private static ObservableCollection<NotificationModel> _lists { get; set; }
         public NotificationLists NotifsLists { get; set; } = new NotificationLists();
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var newOrder = new NotificationModel() {  TextRappel  = TbUserName.Text };
-            var notifEntity = _mapper.Map<NotificationEntity>(newOrder);
-            _notifsRepository.Add(notifEntity);
-            NotifsLists.Notifs.Add(newOrder);
-            NotifsLists.Notifs.Add(newOrder);
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    var newOrder = new NotificationModel() {  TextRappel  = TbUserName.Text };
+        //    var notifEntity = _mapper.Map<NotificationEntity>(newOrder);
+        //    _notifsRepository.Add(notifEntity);
+        //    NotifsLists.Notifs.Add(newOrder);
+        //    NotifsLists.Notifs.Add(newOrder);
 
-            //UsersList.Users = new ObservableCollection<UserModel>();
-        }
+        //    //UsersList.Users = new ObservableCollection<UserModel>();
+        //}
 
         public NotificationListsControl()
 
         {
             InitializeComponent();
             DataContext = NotifsLists;
-            var orderModels = _mapper.Map<IEnumerable<NotificationModel>>(_notifsRepository.GetAll());
-            NotifsLists.Notifs = new ObservableCollection<NotificationModel>(orderModels);
+            jsonGenericReader = new NotificationServiceReader(new HttpClient(), _mapper);
+            _lists = new ObservableCollection<NotificationModel>();
+            loadNotif(jsonGenericReader);
+         
+                NotifsLists.Notifs = _lists;
+            
+           
         }
-       
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+            var newUser = new NotificationModel() { Id = Guid.NewGuid(), SendAt = DateTime.Now, TextRappel = TbText.Text };
+            addUser(jsonGenericReader, newUser);
+            //NotifsLists.Notifs.Add(newUser);
+
+        }
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var _id = TxtGuid.Text;
+            var newUser = new NotificationModel() { Id = Guid.NewGuid(), SendAt = DateTime.Now, TextRappel = TbText.Text };
+            updateUser(jsonGenericReader,  newUser);
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+
+            deleteUser(jsonGenericReader, new Guid(TxtGuid.Text));
+
+        }
+
+
+        private async void loadNotif(JsonGenericReader<NotificationModel, NotificationDto> jsonGenericReader)
+        {
+            try
+            {
+                var result = await jsonGenericReader.GetAll();
+                foreach (var item in result)
+                    _lists.Add(item);
+            }catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            
+        }
+        private async void addUser(JsonGenericReader<NotificationModel, NotificationDto> jsonGenericReader, NotificationModel newUser)
+        {
+            await jsonGenericReader.Add(newUser);
+
+        }
+
+
+        private async void updateUser(JsonGenericReader<NotificationModel, NotificationDto> jsonGenericReader, NotificationModel newUser)
+        {
+            await jsonGenericReader.Update(newUser);
+
+        }
+
+        private async void deleteUser(JsonGenericReader<NotificationModel, NotificationDto> jsonGenericReader, Guid id)
+        {
+            int _return = await jsonGenericReader.Delete(id);
+
+
+            if (_return == 200)
+            {
+                //suppression de l'affichage
+                foreach (var _item in _lists)
+                {
+                    if (_item.Id == id)
+                    {
+                        _lists.Remove(_item);
+                        break;
+                    }
+
+                }
+            }
+
+
+        }
+
+
+      
+
+    
     }
+
+
 }
+

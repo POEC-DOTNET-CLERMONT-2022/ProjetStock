@@ -81,7 +81,7 @@ namespace ProjectStockModels.JsonReader
             return _model;
         }
 
-        //La fonction get update ?
+        //La fonction get update : works all but on in client
         public async Task<int> Update(TModel item)
         {
             var item_ = item;
@@ -89,13 +89,9 @@ namespace ProjectStockModels.JsonReader
             {
                 var map = _mapper.Map<TDto>(item);
 
-                var request = new HttpRequestMessage
-                {
-                    Method = HttpMethod.Put,
-                    RequestUri = new Uri(uri),
-                    Content = new StringContent(JsonConvert.SerializeObject(map), Encoding.UTF8, "application/json")
-                };
-                var response = await _httpClient.SendAsync(request);
+                var response =  await _httpClient.PutAsJsonAsync(uri, map);
+
+              
                 return StatusCodes.Status200OK;
 
 
@@ -140,7 +136,7 @@ namespace ProjectStockModels.JsonReader
         }
 
 
-        //La fonction add : ?
+        //La fonction add : works all but on in client
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<int> Add(TModel item)
         {
@@ -153,7 +149,7 @@ namespace ProjectStockModels.JsonReader
 
                 var request = new HttpRequestMessage
                 {
-                    Method = HttpMethod.Put,
+                    Method = HttpMethod.Post,
                     RequestUri = new Uri(uri),
                     Content = new StringContent(JsonConvert.SerializeObject(map), Encoding.UTF8, "application/json")
                 };

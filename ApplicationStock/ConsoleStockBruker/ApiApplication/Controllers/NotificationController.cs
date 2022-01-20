@@ -24,19 +24,19 @@ namespace ApiApplication.Controllers
         }
 
         //// GET api/<ProjectController>/GetAll
-        //[Authorize]
-        //[HttpGet("GetAll")]
-        //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(NotificationDto))]
-        //[ProducesResponseType(StatusCodes.Status404NotFound)]
-        //public ActionResult<IEnumerable<NotificationDto>> GetAll()
-        //{
-        //    var p = _context._notifs.ToList();
-        //    if (p == null)
-        //        return NotFound();
-        //    else
-        //        return Ok(p);
+        [Authorize]
+        [HttpGet("all")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(NotificationDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<IEnumerable<NotificationDto>> GetAll()
+        {
+            var p = _context._notifs.ToList();
+            if (p == null)
+                return NotFound();
+            else
+                return Ok(p);
 
-        //}
+        }
 
 
         // GET api/<ProjectController>/5
@@ -78,9 +78,12 @@ namespace ApiApplication.Controllers
                 if (mapProj == null)
                     return NotFound();
                 else
+                {
                     _context._notifs.Add(p);
                     _context.SaveChanges();
                     return Ok(mapProj);
+                }
+                  
 
               
             }

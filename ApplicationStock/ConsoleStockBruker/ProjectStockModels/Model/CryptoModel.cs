@@ -8,16 +8,13 @@ using System.Threading.Tasks;
 
 namespace ProjectStockModels.Model
 {
-    public class StockModel : ObservableObject
+    public class CryptoModel : ObservableObject
     {
-
-        public Guid _id;
-        public string _name;
-        public float _value;
-        public string _entrepriseName;
-
-
-        public List<Client> _clients;
+        private Guid _id;
+        private string _name;
+        private float _value;
+        private List<Client> _clients;
+        private List<Market> _markets;
 
         public Guid Id
         {
@@ -31,48 +28,53 @@ namespace ProjectStockModels.Model
                 }
             }
         }
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                if(value != null)
+                {
+                    _name = value;
+                    OnNotifyPropertyChanged();
+                } 
+            }
+        }
         public float Value
         {
             get { return _value; }
             set
             {
-                if (value != null)
+                if (value != null )
                 {
                     _value = value;
                     OnNotifyPropertyChanged();
                 }
             }
         }
-        public List<Client> Client
+        public List<Client> Clients
         {
             get { return _clients; }
             set
             {
-                if (value != null)
+                if(value != null)
                 {
                     _clients = value;
                     OnNotifyPropertyChanged();
                 }
             }
         }
-
-
-
-        public string EntrepriseName
+        public List <Market> Markets
         {
-            get { return _entrepriseName; }
+            get { return _markets; }
             set
             {
-                if (value != null)
+                if(value != null)
                 {
-                    _entrepriseName = value;
+                    _markets = value;
                     OnNotifyPropertyChanged();
                 }
             }
         }
-
-
-       
-
     }
 }

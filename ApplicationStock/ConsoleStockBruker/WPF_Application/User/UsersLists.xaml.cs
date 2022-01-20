@@ -43,9 +43,9 @@ namespace WPF_Application.User
                     _lists.Add(item);
         }
 
-        private async  void updateUser(JsonGenericReader<UserModel, UserDto> jsonGenericReader, IMapper _mapper, UserModel newUser)
+        private async  void updateUser(JsonGenericReader<UserModel, UserDto> jsonGenericReader, UserModel newUser)
         {
-             await jsonGenericReader.Add(newUser);
+             await jsonGenericReader.Update(newUser);
 
         }
 
@@ -84,18 +84,19 @@ namespace WPF_Application.User
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            var _id = TxtGuid.Text;
 
-          
-            var newUser = new UserModel() { FirstName = TbUserName.Text, Id = new Guid("4A134ABA-BDAA-4A1F-BAFB-B5EA1F1D82FE"), LastName = TbUserName.Text, Email = "gsg@gmail.fr", Phone = "test", Addresses = new List<Address>(), Stocks = new List<Stock>() };
-            updateUser(jsonGenericReader, _mapper, newUser);
-            UsersList.Users.Add(newUser);
+            var newUser = new UserModel() { FirstName = TbUserFirstName.Text, Id = new Guid(TxtGuid.Text), LastName = TbUserName.Text, Email = TbEmail.Text, Phone = TbPhone.Text, Addresses = new List<Address>(), Stocks = new List<Stock>() };
+            updateUser(jsonGenericReader, newUser);
+           UsersList.Users.Add(newUser);
          
         }
 
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var newUser = new UserModel() { FirstName = TbUserName.Text, Id = new Guid(TxtGuid.Text), LastName = TbUserName.Text, Email = "gsg@gmail.fr", Phone = "test", Addresses = new List<Address>(), Stocks = new List<Stock>() };
-            updateUser(jsonGenericReader, _mapper, newUser);
+            var _id = TxtGuid.Text;
+            var newUser = new UserModel() { FirstName = TbUserFirstName.Text, Id = new Guid(TxtGuid.Text), LastName = TbUserName.Text, Email = TbEmail.Text, Phone = TbPhone.Text, Addresses = new List<Address>(), Stocks = new List<Stock>() };
+           //addUser(jsonGenericReader,  newUser);
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)

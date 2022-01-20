@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF_Application.Rappel;
 using WPF_Application.User;
 
 
@@ -53,8 +54,14 @@ namespace WPF_Application
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
-          UsersLists app_lists_user = new UsersLists();
-          user.Content = app_lists_user;
+            UsersLists app_lists_user = new UsersLists();
+            user.Content = app_lists_user;
+        }
+
+        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
+        {
+            NotificationListsControl _rappel = new NotificationListsControl();
+            user.Content = _rappel;
         }
     }
 }

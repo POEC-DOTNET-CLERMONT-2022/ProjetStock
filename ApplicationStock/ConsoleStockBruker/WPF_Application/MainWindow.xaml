@@ -14,9 +14,10 @@
                         <MenuItem Header="Connection" Click="MenuItem_Click_Connection"></MenuItem>
                         <MenuItem Header="Listes de commandes"  Click="MenuItem_Click_1"></MenuItem>
                             <MenuItem Header="Listes des actions" Click="MenuItem_Click_2"></MenuItem>
+                        <MenuItem Header="Listes des notifications" Click="MenuItem_Click_3">
+                    </MenuItem>
 
-                          
-                        <MenuItem Header="Market">
+                    <MenuItem Header="Market">
                             <MenuItem Header="MarketA">
                                 <MenuItem Header="StockA1" ></MenuItem>
                                 <MenuItem Header="StockA2" ></MenuItem>

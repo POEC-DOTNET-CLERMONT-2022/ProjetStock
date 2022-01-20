@@ -30,20 +30,21 @@ namespace ApiApplicationProjectStock.Controllers
            
         }
 
-        //// GET api/<ProjectController>/GetAll
-        //[Authorize]
-        //[HttpGet]
-        //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(StockDto))]
-        //[ProducesResponseType(StatusCodes.Status404NotFound)]
-        //public ActionResult<IEnumerable<StockDto>> GetAll()
-        //{
-        //    var p = _context._stocks.ToList();
-        //    if (p == null)
-        //        return NotFound();
-        //    else
-        //        return Ok(p);
 
-        //}
+        //// GET api/<ProjectController>/GetAll
+        [Authorize]
+        [HttpGet("all")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(StockDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<IEnumerable<StockDto>> GetAll()
+        {
+            var p = _context._stocks.ToList();
+            if (p == null)
+                return NotFound();
+            else
+                return Ok(p);
+
+        }
 
 
         // GET api/<ProjectController>/5
