@@ -22,7 +22,8 @@ using System.Net;
 using ProjectStockDTOS;
 using ProjectStockModels.Model;
 using ApiApplication.Models;
-
+using ApiApplication.Service.Interfaces;
+using ProjectStockModels.APIReader.ServiceSpe;
 
 namespace ProjectStockModels.JsonReader
 {
@@ -34,6 +35,8 @@ namespace ProjectStockModels.JsonReader
         private  IMapper _mapper { get; }
         private readonly JsonSerializerOptions _options;
         private  string uri { get; set; }
+
+        private IPasswordHasherService _userPasswordHasher { get; }
 
         private const string AuthorizationHeader = "Authorization";
         public JsonGenericReader(HttpClient httpClient, string baseuri, IMapper mapper)
@@ -59,6 +62,60 @@ namespace ProjectStockModels.JsonReader
             uri = "https://localhost:7136/" + baseuri; 
             _httpClient.BaseAddress = new Uri(uri);
 
+            _userPasswordHasher = new PassworsHasherService();
+
+
+        }
+
+
+
+        public async Task<int> Connect(AuthenticateRequest create)
+        {
+            try
+            {
+
+                create._password = _userPasswordHasher.GetPasswordHasher(create._password);
+                HttpClient httpClient_ = new HttpClient();
+                var request = new HttpRequestMessage
+                {
+                    Method = HttpMethod.Post,
+                    RequestUri = new Uri(uri + "/authenticate"),
+                    Content = new StringContent(JsonConvert.SerializeObject(create), Encoding.UTF8, "application/json")
+                };
+
+                var response = await httpClient_.SendAsync(request);
+                return StatusCodes.Status200OK;
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCodes.Status400BadRequest;
+            }
+        }
+
+        public async Task<int> CreateAccount(CreateResult create)
+        {
+            try
+            {
+
+                create._password = _userPasswordHasher.GetPasswordHasher(create._password);
+                HttpClient httpClient_ = new HttpClient();
+                var request = new HttpRequestMessage
+                {
+                    Method = HttpMethod.Post,
+                    RequestUri = new Uri(uri + "/register"),
+                    Content = new StringContent(JsonConvert.SerializeObject(create), Encoding.UTF8, "application/json")
+                };
+                var response = await _httpClient.SendAsync(request);
+
+
+                return StatusCodes.Status200OK;
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCodes.Status400BadRequest;
+            }
 
         }
 
