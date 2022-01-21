@@ -1,7 +1,9 @@
-﻿using ApiApplication.Helpers;
+﻿using ApiApplication.Controllers.Services;
+using ApiApplication.Helpers;
 using ApiApplication.Interface;
 using ApiApplication.Model;
 using ApiApplication.Models;
+using ApiApplication.Service.Interfaces;
 using AutoMapper;
 
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +11,9 @@ using Microsoft.AspNetCore.Mvc;
 using ProjectStockDTOS;
 using ProjectStockLibrary;
 using ProjectStockPatternsLibrary;
+
+using System.Security.Cryptography;
+using System.Text;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -24,12 +29,18 @@ namespace ApiApplicationProjectStock.Controllers
 
         private IUserService _userService;
 
+        private IPasswordHasherService _userPasswordHasher { get; }
+
         public UserController(IMapper mapper, APIContext context, IUserService userService)
         {
             _mapper = mapper;
             _context = context;
+            _userPasswordHasher = new PasswordHasherService();
             _userService = userService;
+
         }
+
+
 
 
         //// GET api/<ProjectController>/GetAll
@@ -51,11 +62,13 @@ namespace ApiApplicationProjectStock.Controllers
         [HttpPost("authenticate")]
         public IActionResult Authenticate(AuthenticateRequest model)
         {
+
+            model._password = _userPasswordHasher.GetPasswordHasher(model._password);
             var response = _userService.Authenticate(model);
 
             if (response == null)
                 return BadRequest(new { message = "Username or password is incorrect" });
-
+    
             return Ok(response);
         }
         
@@ -64,8 +77,10 @@ namespace ApiApplicationProjectStock.Controllers
         public IActionResult Register(CreateResult create)
         {
             Client _client = new Client();
+
+            var _pass =_userPasswordHasher.GetPasswordHasher(create._password); 
             _client._email = create._email;
-            _client._password = create._password;
+            _client._password = _pass;
             _client._lastName = create._lastName;
             _client._firstName = create._firstName;
             try
@@ -101,6 +116,7 @@ namespace ApiApplicationProjectStock.Controllers
 
                 if (client == null)
                     return BadRequest(new { message = "No connected user" });
+              
                 else
                 {
                     client.setToken("");
@@ -146,6 +162,7 @@ namespace ApiApplicationProjectStock.Controllers
 
                 var p = userDto.ToModel();
                 _context._users.Add(p);
+
             //} 
             //catch (Exception ex)
             //{
