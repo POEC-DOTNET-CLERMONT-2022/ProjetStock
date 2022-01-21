@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ProjectStockDTOS;
+using ProjectStockModels.APIReader.Interfaces;
 using ProjectStockModels.JsonReader;
 using ProjectStockModels.Model;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ProjectStockModels.APIReader.Services
 {
-    public class MarketServiceReader : JsonGenericReader<MarketModel, MarketDto>
+    public class MarketServiceReader : JsonGenericReader<MarketModel, MarketDto>, IMarketService
     {
 
 
