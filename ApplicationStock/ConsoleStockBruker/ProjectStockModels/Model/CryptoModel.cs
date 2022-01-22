@@ -11,10 +11,10 @@ namespace ProjectStockModels.Model
     public class CryptoModel : ObservableObject
     {
         private Guid _id;
-        private string _name;
+        private string? _name;
         private float _value;
-        private List<Client> _clients;
-        private List<Market> _markets;
+        private List<Client>? _clients;
+        private List<Market>? _markets;
 
         public Guid Id
         {

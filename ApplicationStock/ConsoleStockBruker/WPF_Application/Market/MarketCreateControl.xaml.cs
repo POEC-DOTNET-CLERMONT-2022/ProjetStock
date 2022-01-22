@@ -29,7 +29,7 @@ namespace WPF_Application.Market
     /// </summary>
     public partial class MarketCreateControl : UserControl
     {
-        private readonly IGenericRepository<MarketEntity> _marketRepository = ((App)Application.Current).marketRepository;
+        
         private readonly IMapper _mapper = ((App)Application.Current).Mapper;
         private JsonGenericReader<MarketModel, MarketDto> _json{ get; }
         private static ObservableCollection<MarketModel> _lists { get; set; }
@@ -58,7 +58,7 @@ namespace WPF_Application.Market
 
         }
 
-        private async void addMarket(JsonGenericReader<MarketModel, MarketDto> jsonGenericReader, MarketModel newUser)
+        private async Task addMarket(JsonGenericReader<MarketModel, MarketDto> jsonGenericReader, MarketModel newUser)
         {
             await jsonGenericReader.Add(newUser);
 

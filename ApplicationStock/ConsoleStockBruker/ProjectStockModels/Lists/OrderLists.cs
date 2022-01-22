@@ -11,11 +11,11 @@ namespace ProjectStockModels.Lists
 {
     public class OrderLists : ObservableObject
     {
-        private ObservableCollection<OrderModel> _Orders;
+        private ObservableCollection<OrderModel>? _Orders;
 
 
 
-        private OrderModel _Order;
+        private OrderModel? _Order;
 
         public OrderModel Order
         {

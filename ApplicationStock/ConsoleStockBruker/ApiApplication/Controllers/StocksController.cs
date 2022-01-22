@@ -106,6 +106,8 @@ namespace ApiApplicationProjectStock.Controllers
 
 
             var p = _context._stocks.Find(stockDto._id);
+            if (p == null)
+                return BadRequest();
 
             p._entrepriseName = stockDto._entrepriseName;
             p._value = stockDto._value;

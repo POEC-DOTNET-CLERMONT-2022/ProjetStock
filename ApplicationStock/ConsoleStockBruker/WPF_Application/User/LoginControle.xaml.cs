@@ -29,7 +29,7 @@ namespace WPF_Application
     /// </summary>
     public partial class LoginControle : UserControl
     {
-        private readonly IGenericRepository<UserEntity> _userRepository = ((App)Application.Current).userRepository;
+      
         private readonly IMapper _mapper = ((App)Application.Current).Mapper;
 
         private JsonGenericReader<UserModel, UserDto> jsonGenericReader { get; }
@@ -40,13 +40,9 @@ namespace WPF_Application
             jsonGenericReader = new UserServiceReader(new HttpClient(),_mapper);
         }
 
-        private void MenuItem_Click_Recover(object sender, RoutedEventArgs e)
-        {
- 
+   
 
-        }
-
-        private async void Connect(AuthenticateRequest create)
+        private async Task Connect(AuthenticateRequest create)
         {
 
              await this.jsonGenericReader.Connect(create);

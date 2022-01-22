@@ -28,7 +28,7 @@ namespace WPF_Application
     /// </summary>
     public partial class CreateUser : UserControl
     {
-        private readonly IGenericRepository<UserEntity> _userRepository = ((App)Application.Current).userRepository;
+       
         private readonly IMapper _mapper = ((App)Application.Current).Mapper;
 
         private JsonGenericReader<UserModel, UserDto> jsonGenericReader { get; }
@@ -58,14 +58,14 @@ namespace WPF_Application
 
         }
 
-        private async void Create(ApiApplication.Models.CreateResult create)
+        private async Task Create(ApiApplication.Models.CreateResult create)
         {
             try
             {
                  await this.jsonGenericReader.CreateAccount(create);
             }catch (Exception ex)
             {
-                MessageBox.Show("Erreur creation compte");
+                MessageBox.Show("Erreur creation compte" + ex.ToString());
             }
             
         }

@@ -31,7 +31,7 @@ namespace WPF_Application.Order
     /// </summary>
     public partial class ListsControlOrders : UserControl
     {
-        private readonly IGenericRepository<OrderEntity> _orderRepository = ((App)Application.Current).orderRepository;
+        
         private readonly IMapper _mapper = ((App)Application.Current).Mapper;
 
         public OrderLists OrderList { get; set; } = new OrderLists();
@@ -41,7 +41,7 @@ namespace WPF_Application.Order
 
 
         private static ObservableCollection<OrderModel> _lists { get; set; }
-        private async void loadOrder(JsonGenericReader<OrderModel, OrderDto> jsonGenericReader)
+        private async Task loadOrder(JsonGenericReader<OrderModel, OrderDto> jsonGenericReader)
         {
             var result = await jsonGenericReader.GetAll();
             foreach (var item in result)
@@ -61,7 +61,7 @@ namespace WPF_Application.Order
 
        
 
-        private async void updateOrder(JsonGenericReader<OrderModel, OrderDto> jsonGenericReader, OrderModel order)
+        private async Task updateOrder(JsonGenericReader<OrderModel, OrderDto> jsonGenericReader, OrderModel order)
         {
             await jsonGenericReader.Update(order);
 

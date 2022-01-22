@@ -106,7 +106,8 @@ namespace ApiApplication.Controllers
 
 
             var p = _context._notifs.Find(notificationDto._id);
-
+            if (p == null)
+                return BadRequest();
             p._textRappel = notificationDto.textRappel;
             p._sendAt = notificationDto.sendAt;
 

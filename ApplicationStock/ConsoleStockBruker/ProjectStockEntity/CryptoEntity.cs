@@ -9,19 +9,19 @@ using System.Threading.Tasks;
 namespace ProjectStockEntity
 {
     [Table("Crypto")]
-    public class CryptoEntity:IEquatable<CryptoEntity>
+    public sealed class CryptoEntity:IEquatable<CryptoEntity>
     {
         [Key]
         public Guid _id {get; private set;}
-        public string _name {get; set;}
+        public string? _name {get; set;}
         
         public float _value {get; set;}
 
-        public  virtual ICollection<Client> _listClient { get; set; }
+        public  ICollection<Client>? _listClient { get; set; }
         
 
 
-        public List<Market> _listMarket {get; set;}
+        public List<Market>? _listMarket {get; set;}
 
         public bool Equals(CryptoEntity? other)
         {

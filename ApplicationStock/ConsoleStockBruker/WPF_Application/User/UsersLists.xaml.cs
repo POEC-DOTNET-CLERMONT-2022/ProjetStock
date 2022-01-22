@@ -17,6 +17,7 @@ using System.Net.Http;
 using ProjectStockModels.APIReader.Services;
 using ProjectStockModels.Model;
 using System;
+using System.Threading.Tasks;
 
 namespace WPF_Application.User
 {
@@ -36,20 +37,20 @@ namespace WPF_Application.User
         public UsersList UsersList { get; set; } = new UsersList();
 
 
-        private async void loadUser(JsonGenericReader<UserModel,UserDto> jsonGenericReader)
+        private async Task loadUser(JsonGenericReader<UserModel,UserDto> jsonGenericReader)
         {
                 var result = await jsonGenericReader.GetAll();
                 foreach (var item in result)
                     _lists.Add(item);
         }
 
-        private async  void updateUser(JsonGenericReader<UserModel, UserDto> jsonGenericReader, UserModel newUser)
+        private async  Task updateUser(JsonGenericReader<UserModel, UserDto> jsonGenericReader, UserModel newUser)
         {
              await jsonGenericReader.Update(newUser);
 
         }
 
-        private async void deleteUser(JsonGenericReader<UserModel, UserDto> jsonGenericReader, Guid id)
+        private async Task deleteUser(JsonGenericReader<UserModel, UserDto> jsonGenericReader, Guid id)
         {
             int _return = await jsonGenericReader.Delete(id);
 

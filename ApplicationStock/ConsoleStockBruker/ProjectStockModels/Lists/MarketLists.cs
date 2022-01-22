@@ -11,9 +11,9 @@ namespace ProjectStockModels.Lists
 {
     public class MarketLists : ObservableObject
     {
-        private ObservableCollection<MarketModel> _Markets;
+        private ObservableCollection<MarketModel>? _Markets;
 
-        private MarketModel _market;
+        private MarketModel? _market;
 
         
         public MarketModel currentMarket

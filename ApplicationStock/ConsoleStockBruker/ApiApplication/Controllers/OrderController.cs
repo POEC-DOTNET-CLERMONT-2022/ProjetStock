@@ -94,6 +94,8 @@ namespace ApiApplication.Controllers
         {
 
             var p = _context._orders.Find(orderDto._id);
+            if(p == null) 
+                return NotFound();
             p._orderName = orderDto._orderName;
             p._orderDate = orderDto._orderDate;
             p._nbStock = orderDto._nbStock;

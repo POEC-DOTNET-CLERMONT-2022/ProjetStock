@@ -38,7 +38,7 @@ namespace WPF_Application.Stocks
             _stockRepository.Add(stockEntity);
             StockList.Stocks.Add(newOrder);
 
-            //UsersList.Users = new ObservableCollection<UserModel>();
+            
         }
         public StockListControl()
         {

@@ -57,9 +57,13 @@ namespace ApiApplicationProjectStock.Controllers
                 if (p == null)
                     return NotFound();
                 else
+                {
                     _context._cryptos.Add(p);
                     _context.SaveChanges();
                     return Ok(p);
+                }
+                   
+            
             }
             catch (Exception ex)
             {
@@ -78,7 +82,8 @@ namespace ApiApplicationProjectStock.Controllers
 
            
             var p = _context._cryptos.Find(cryptoDto._id);
-
+            if (p == null)
+                return BadRequest();
            
             p._name = cryptoDto._name;
             p._value = cryptoDto._value;

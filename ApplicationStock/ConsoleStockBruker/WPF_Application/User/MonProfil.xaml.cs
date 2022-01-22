@@ -30,12 +30,12 @@ namespace WPF_Application
     public partial class MonProfil : UserControl
     {
 
-        private readonly IGenericRepository<UserEntity> _userRepository = ((App)Application.Current).userRepository;
+       
         private readonly IMapper _mapper = ((App)Application.Current).Mapper;
         private JsonGenericReader<UserModel, UserDto> _json { get; set; }
-        private static ObservableCollection<UserModel> _lists { get; set; }
+        private ObservableCollection<UserModel> _lists { get; set; }
 
-        private async void loadUser(JsonGenericReader<UserModel, UserDto> _json, Guid id)
+        private async Task loadUser(JsonGenericReader<UserModel, UserDto> _json, Guid id)
         {
             var result = await _json.Get(id);
             _lists.Add(result);

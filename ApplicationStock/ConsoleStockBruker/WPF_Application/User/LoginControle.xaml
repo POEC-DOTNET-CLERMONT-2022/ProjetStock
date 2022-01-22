@@ -33,7 +33,7 @@
                 </TextBlock>
 
                 <TextBlock FontSize="10">
-                <Button  x:Name="recover" Click="MenuItem_Click_Recover">Recover a account </Button>
+            
                 </TextBlock>
 
             </DockPanel>

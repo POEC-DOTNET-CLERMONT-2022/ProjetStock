@@ -27,7 +27,7 @@ namespace ApiApplicationProjectStock.Controllers
 
         private readonly APIContext _context;
 
-        private IUserService _userService;
+        private  readonly IUserService _userService;
 
         private IPasswordHasherService _userPasswordHasher { get; }
 
@@ -143,7 +143,7 @@ namespace ApiApplicationProjectStock.Controllers
 
             var p = _context._users.Find(id);
 
-            var mapProj = _mapper.Map<UserDto>(p);
+       
             if (p == null)
                 return NotFound();
             else
@@ -160,14 +160,11 @@ namespace ApiApplicationProjectStock.Controllers
         {
 
 
-                var p = userDto.ToModel();
-                _context._users.Add(p);
+            var p = userDto.ToModel();
+            if (p == null)
+                return BadRequest();
+            _context._users.Add(p);
 
-            //} 
-            //catch (Exception ex)
-            //{
-            //    return BadRequest(ex.Message);
-            //}
             _context.SaveChanges();
             return Ok();
         }
@@ -182,7 +179,8 @@ namespace ApiApplicationProjectStock.Controllers
 
 
             var p = _context._users.Find(userDto._id);
-
+            if (p == null)
+                return BadRequest();
             p._siret = userDto._siret;
             p._phone = userDto._phone;
             p._lastName = userDto._lastName;

@@ -24,21 +24,7 @@ namespace ApiApplication.Controllers
         }
 
 
-        // get api/<projectcontroller>/ 
-        [Authorize]
-        [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddressDto))]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<IEnumerable<AddressDto>> GetAll()
-        {
-            var p = _context._addresses.ToList();
-            if (p == null)
-                return NotFound();
-            else
-                return Ok(p);
-
-        }
-
+ 
 
 
         // GET api/<ProjectController>/5
@@ -74,8 +60,12 @@ namespace ApiApplication.Controllers
                 if (p == null)
                     return NotFound();
                 else
+                {
+
                     _context._addresses.Add(p);
                     _context.SaveChanges();
+                }
+                 
                     return Ok(mapProj);
 
             }
@@ -95,6 +85,11 @@ namespace ApiApplication.Controllers
         public ActionResult<AddressDto> Put(AddressDto addressDto)
         {
             var p = _context._addresses.Find(addressDto._id);
+            if(p == null)
+            {
+                return BadRequest();
+            }
+
             p._address_line_1 = addressDto._address_line_1;
             p._address_line_2 = addressDto._address_line_2;
             p._city = addressDto._city;

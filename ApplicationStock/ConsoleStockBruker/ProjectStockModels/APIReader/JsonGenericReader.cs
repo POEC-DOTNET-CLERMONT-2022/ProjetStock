@@ -16,7 +16,6 @@ using WPF_Application.JsonReader;
 using ProjectStockModels.Mapper;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Net.Http.Json;
 using System.Threading.Tasks;
 using System.Net;
 using ProjectStockDTOS;
@@ -89,6 +88,7 @@ namespace ProjectStockModels.JsonReader
             }
             catch (Exception ex)
             {
+
                 return StatusCodes.Status400BadRequest;
             }
         }
