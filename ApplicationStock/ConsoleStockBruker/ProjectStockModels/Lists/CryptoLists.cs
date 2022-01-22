@@ -18,11 +18,11 @@ namespace ProjectStockModels.Lists
 
         public CryptoModel currentCrypto
         {
-            get { return currentCrypto; }
+            get { return _crypto; }
             set
             {
 
-                if (currentCrypto != value)
+                if (_crypto != value)
                 {
                     currentCrypto = value;
                     OnNotifyPropertyChanged();

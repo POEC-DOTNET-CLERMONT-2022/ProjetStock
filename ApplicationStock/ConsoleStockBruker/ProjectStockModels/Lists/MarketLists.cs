@@ -18,10 +18,10 @@ namespace ProjectStockModels.Lists
         
         public MarketModel currentMarket
         {
-            get { return currentMarket; }
+            get { return _market; }
             set { 
 
-                if (currentMarket != value)
+                if (_market != value)
                 {
                     currentMarket = value;
                     OnNotifyPropertyChanged();

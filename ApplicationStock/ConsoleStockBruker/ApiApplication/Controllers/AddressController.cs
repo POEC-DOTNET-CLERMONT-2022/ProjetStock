@@ -14,9 +14,9 @@ namespace ApiApplication.Controllers
     [ApiController]
     public class AddressController : ControllerBase
     {
-        private IMapper _mapper;
+        private readonly IMapper _mapper;
 
-        private APIContext _context;
+        private readonly APIContext _context;
         public AddressController(IMapper mapper, APIContext context)
         {
             _mapper = mapper;
@@ -24,20 +24,20 @@ namespace ApiApplication.Controllers
         }
 
 
-        //// GET api/<ProjectController>/ 
-        //[Authorize]
-        //[HttpGet]
-        //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddressDto))]
-        //[ProducesResponseType(StatusCodes.Status404NotFound)]
-        //public ActionResult<IEnumerable<AddressDto>> GetAll()
-        //{
-        //    var p = _context._addresses.ToList();
-        //    if (p == null)
-        //        return NotFound();
-        //    else
-        //        return Ok(p);
+        // get api/<projectcontroller>/ 
+        [authorize]
+        [httpget]
+        [producesresponsetype(statuscodes.status200ok, type = typeof(addressdto))]
+        [producesresponsetype(statuscodes.status404notfound)]
+        public actionresult<ienumerable<addressdto>> getall()
+        {
+            var p = _context._addresses.tolist();
+            if (p == null)
+                return notfound();
+            else
+                return ok(p);
 
-        //}
+        }
 
 
 

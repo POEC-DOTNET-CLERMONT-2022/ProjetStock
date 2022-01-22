@@ -23,9 +23,9 @@ namespace ApiApplicationProjectStock.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private IMapper _mapper;
+        private readonly IMapper _mapper;
 
-        private APIContext _context { get; }
+        private readonly APIContext _context;
 
         private IUserService _userService;
 

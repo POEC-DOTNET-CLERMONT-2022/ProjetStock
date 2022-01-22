@@ -15,9 +15,9 @@ namespace ApiApplication.Controllers
     public class OrderController : ControllerBase
     {
 
-        private IMapper _mapper;
+        private readonly IMapper _mapper;
 
-        private APIContext _context;
+        private readonly APIContext _context;
         public OrderController(IMapper mapper, APIContext context)
         {
             _mapper = mapper;

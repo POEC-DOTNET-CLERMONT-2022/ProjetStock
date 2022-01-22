@@ -14,9 +14,9 @@ namespace ApiApplicationProjectStock.Controllers
     [ApiController]
     public class MarketController : ControllerBase
     {
-        private IMapper _mapper;
+        private readonly IMapper _mapper;
 
-        private APIContext _context;
+        private readonly APIContext _context;
         public MarketController(IMapper mapper, APIContext context)
         {
             _mapper = mapper;
