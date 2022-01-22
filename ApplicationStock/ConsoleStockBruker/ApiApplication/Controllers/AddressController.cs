@@ -25,17 +25,17 @@ namespace ApiApplication.Controllers
 
 
         // get api/<projectcontroller>/ 
-        [authorize]
-        [httpget]
-        [producesresponsetype(statuscodes.status200ok, type = typeof(addressdto))]
-        [producesresponsetype(statuscodes.status404notfound)]
-        public actionresult<ienumerable<addressdto>> getall()
+        [Authorize]
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddressDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<IEnumerable<AddressDto>> GetAll()
         {
-            var p = _context._addresses.tolist();
+            var p = _context._addresses.ToList();
             if (p == null)
-                return notfound();
+                return NotFound();
             else
-                return ok(p);
+                return Ok(p);
 
         }
 
