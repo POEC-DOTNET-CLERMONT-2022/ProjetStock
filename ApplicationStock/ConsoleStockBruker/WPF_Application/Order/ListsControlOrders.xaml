@@ -60,11 +60,12 @@
                 <StackPanel>
                    
                     <Button Content="Modifier une commande " Width="200" HorizontalAlignment="Left" Click="Button_Click_1"/>
-
+                    <TextBox x:Name="TxtGuid" Width="50"  Visibility="Hidden" Text="{Binding CurrentUser.Id}" />
                 </StackPanel>
                 <StackPanel>
                     <Button Content="Supprimer une commande" Width="200" HorizontalAlignment="Left" Click="Button_Click_2"/>
-                    <TextBox x:Name="TxtGuid" Width="50"  Visibility="Hidden" Text="{Binding CurrentUser.Id}" />
+                   
+    
                 </StackPanel>
             </WrapPanel>
         </StackPanel>

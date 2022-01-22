@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF_Application.Order;
 using WPF_Application.Rappel;
 using WPF_Application.User;
 
@@ -47,7 +48,7 @@ namespace WPF_Application
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-            ListOrderControl app_list = new ListOrderControl();
+            ListsControlOrders app_list = new ListsControlOrders();
             user.Content = app_list;
 
         }

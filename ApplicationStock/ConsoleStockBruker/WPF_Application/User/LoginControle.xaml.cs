@@ -42,8 +42,7 @@ namespace WPF_Application
 
         private void MenuItem_Click_Recover(object sender, RoutedEventArgs e)
         {
-            SendMailReceoverPassword app_recover = new SendMailReceoverPassword();
-            userMenu.Content = app_recover;
+ 
 
         }
 
