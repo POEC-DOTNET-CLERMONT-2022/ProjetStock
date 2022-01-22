@@ -14,7 +14,7 @@ namespace ApiApplicationProjectStock.Controllers
     [ApiController]
     public class Cryptocontroller : ControllerBase
     {
-        private readonly IMapper _mapper ;
+        private readonly IMapper _mapper;
 
         private readonly APIContext _context;
 

@@ -38,7 +38,7 @@ namespace WPF_Application.Market
 
         private JsonGenericReader<MarketModel, MarketDto> jsonGenericReader { get; }
 
-        private static ObservableCollection<MarketModel> _lists { get; set; }
+        private static ObservableCollection<MarketModel> _lists { get; }
 
         public MarketLists MarketsLists { get; set; } = new MarketLists();
 
@@ -99,8 +99,6 @@ namespace WPF_Application.Market
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var _id = TxtGuid.Text;
-
             var market = new MarketModel() { Id = Guid.NewGuid() , Name = TxtNom.Text, OpeningDate = DateTime.UtcNow, ClosingDate = DateTime.Now };
             addMarket(jsonGenericReader, market);
 

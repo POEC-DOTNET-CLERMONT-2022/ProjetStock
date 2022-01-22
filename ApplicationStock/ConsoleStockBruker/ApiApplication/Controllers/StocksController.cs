@@ -84,7 +84,7 @@ namespace ApiApplicationProjectStock.Controllers
             {
                 var p = stockDto.ToModelStock();
 
-                var mapProj = _mapper.Map<StockDto>(p);
+             
                 _context._stocks.Add(p);
                 _context.SaveChanges();
                 return Ok(p);

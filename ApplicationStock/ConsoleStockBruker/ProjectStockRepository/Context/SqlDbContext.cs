@@ -21,12 +21,6 @@ namespace ProjectStockRepository.Context
 
             optionsBuilder.UseSqlServer(ConnectionString);
         }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-        }
-
         public override DbSet<TEntity> Set<TEntity>()
         {
             ChangeTracker.LazyLoadingEnabled = false;

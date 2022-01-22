@@ -49,7 +49,7 @@ namespace WPF_Application
         private async void Connect(AuthenticateRequest create)
         {
 
-            var connection = await this.jsonGenericReader.Connect(create);
+             await this.jsonGenericReader.Connect(create);
         }
 
         private void Create_button_Click(object sender, RoutedEventArgs e)

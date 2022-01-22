@@ -72,7 +72,7 @@ namespace WPF_Application.Rappel
         }
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var _id = TxtGuid.Text;
+         
             var newUser = new NotificationModel() { Id = Guid.NewGuid(), SendAt = DateTime.Now, TextRappel = TbText.Text };
             updateUser(jsonGenericReader,  newUser);
         }

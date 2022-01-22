@@ -91,7 +91,7 @@ namespace WPF_Application.Order
 
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var _id = TxtGuid.Text;
+         
             var newUser = new OrderModel() { Id = new Guid(TxtGuid.Text), OrderName = TxtNom.Text, NbStock = int.Parse(TxtQte.Text), Stock = new Stock() };
             updateOrder(jsonGenericReader,  newUser);
         }

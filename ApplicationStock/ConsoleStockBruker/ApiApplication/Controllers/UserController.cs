@@ -192,10 +192,10 @@ namespace ApiApplicationProjectStock.Controllers
             p._password = userDto._password;
            
 
-            var mapProj = _mapper.Map<UserDto>(p);
+        
             _context._users.Update(p);
             _context.SaveChanges();
-            return Ok(mapProj);
+            return Ok(p);
         }
 
         // DELETE api/<ProjectController>/5

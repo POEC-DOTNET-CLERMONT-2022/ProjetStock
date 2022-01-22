@@ -62,7 +62,7 @@ namespace WPF_Application
         {
             try
             {
-                var connection = await this.jsonGenericReader.CreateAccount(create);
+                 await this.jsonGenericReader.CreateAccount(create);
             }catch (Exception ex)
             {
                 MessageBox.Show("Erreur creation compte");

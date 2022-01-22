@@ -83,7 +83,7 @@ namespace ProjectStockModels.JsonReader
                     Content = new StringContent(JsonConvert.SerializeObject(create), Encoding.UTF8, "application/json")
                 };
 
-                var response = await httpClient_.SendAsync(request);
+                await httpClient_.SendAsync(request);
                 return StatusCodes.Status200OK;
 
             }
@@ -99,14 +99,14 @@ namespace ProjectStockModels.JsonReader
             {
 
                 create._password = _userPasswordHasher.GetPasswordHasher(create._password);
-                HttpClient httpClient_ = new HttpClient();
+  
                 var request = new HttpRequestMessage
                 {
                     Method = HttpMethod.Post,
                     RequestUri = new Uri(uri + "/register"),
                     Content = new StringContent(JsonConvert.SerializeObject(create), Encoding.UTF8, "application/json")
                 };
-                var response = await _httpClient.SendAsync(request);
+                await _httpClient.SendAsync(request);
 
 
                 return StatusCodes.Status200OK;
@@ -141,12 +141,12 @@ namespace ProjectStockModels.JsonReader
         //La fonction get update : works all but on in client
         public async Task<int> Update(TModel item)
         {
-            var item_ = item;
+        
             try
             {
                 var map = _mapper.Map<TDto>(item);
 
-                var response =  await _httpClient.PutAsJsonAsync(uri, map);
+                await _httpClient.PutAsJsonAsync(uri, map);
 
               
                 return StatusCodes.Status200OK;
@@ -199,7 +199,7 @@ namespace ProjectStockModels.JsonReader
         {
 
 
-            var item_ = item;
+           
             try
             {
                 var map = _mapper.Map<TDto>(item);
@@ -210,7 +210,7 @@ namespace ProjectStockModels.JsonReader
                     RequestUri = new Uri(uri),
                     Content = new StringContent(JsonConvert.SerializeObject(map), Encoding.UTF8, "application/json")
                 };
-                var response = await _httpClient.SendAsync(request);
+                await _httpClient.SendAsync(request);
                 return StatusCodes.Status200OK;
 
 

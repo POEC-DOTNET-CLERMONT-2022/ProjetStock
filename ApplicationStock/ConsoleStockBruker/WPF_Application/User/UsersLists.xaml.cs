@@ -84,7 +84,7 @@ namespace WPF_Application.User
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var _id = TxtGuid.Text;
+        
 
             var newUser = new UserModel() { FirstName = TbUserFirstName.Text, Id = new Guid(TxtGuid.Text), LastName = TbUserName.Text, Email = TbEmail.Text, Phone = TbPhone.Text, Addresses = new List<Address>(), Stocks = new List<Stock>() };
             updateUser(jsonGenericReader, newUser);
@@ -94,9 +94,9 @@ namespace WPF_Application.User
 
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var _id = TxtGuid.Text;
+          
             var newUser = new UserModel() { FirstName = TbUserFirstName.Text, Id = new Guid(TxtGuid.Text), LastName = TbUserName.Text, Email = TbEmail.Text, Phone = TbPhone.Text, Addresses = new List<Address>(), Stocks = new List<Stock>() };
-           //addUser(jsonGenericReader,  newUser);
+            //addUser(jsonGenericReader,  newUser);
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
