@@ -75,7 +75,7 @@ namespace WPF_Application.Market
 
         }
 
-        private async void deleteMarket(JsonGenericReader<MarketModel, MarketDto> jsonGenericReader, Guid id)
+        private async Task deleteMarket(JsonGenericReader<MarketModel, MarketDto> jsonGenericReader, Guid id)
         {
             int _return = await jsonGenericReader.Delete(id);
 

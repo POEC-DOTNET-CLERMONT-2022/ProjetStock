@@ -67,7 +67,7 @@ namespace WPF_Application.Order
 
         }
 
-        private async void deleteOrder(JsonGenericReader<OrderModel, OrderDto> jsonGenericReader, Guid id)
+        private async Task  deleteOrder(JsonGenericReader<OrderModel, OrderDto> jsonGenericReader, Guid id)
         {
             int _return = await jsonGenericReader.Delete(id);
 
