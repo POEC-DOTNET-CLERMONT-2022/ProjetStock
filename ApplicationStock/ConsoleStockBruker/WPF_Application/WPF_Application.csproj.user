@@ -63,9 +63,6 @@
     <Page Update="User\CreateUser.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Order\ListOrderControl.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="User\LoginControle.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -73,9 +70,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="User\RecoverControler.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="User\SendMailReceoverPassword.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Cart\UserCart.xaml">

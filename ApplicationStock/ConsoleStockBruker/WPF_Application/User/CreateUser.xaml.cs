@@ -40,7 +40,7 @@ namespace WPF_Application
         private void login_button_create_Click(object sender, RoutedEventArgs e)
         {  
             userMenu.Content = null;
-         ApiApplication.Models.CreateResult _user = new ApiApplication.Models.CreateResult();
+            ApiApplication.Models.CreateResult _user = new ApiApplication.Models.CreateResult();
             _user._firstName = "user";
             _user._lastName = "user";
             _user._password = TxtPassword.Text;

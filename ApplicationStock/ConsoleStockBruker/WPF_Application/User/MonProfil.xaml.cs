@@ -46,7 +46,8 @@ namespace WPF_Application
           
             _json= new UserServiceReader(new HttpClient(), _mapper);
             _lists = new ObservableCollection<UserModel>();
-            loadUser(_json);
+            Guid _id = Guid.NewGuid();
+            loadUser(_json,_id);
      
         }
     }
