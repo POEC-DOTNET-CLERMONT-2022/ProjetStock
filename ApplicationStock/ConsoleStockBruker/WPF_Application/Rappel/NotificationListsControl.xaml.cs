@@ -95,7 +95,7 @@ namespace WPF_Application.Rappel
 
         }
 
-
+        
         private async Task  updateUser(JsonGenericReader<NotificationModel, NotificationDto> jsonGenericReader, NotificationModel newUser)
         {
             await jsonGenericReader.Update(newUser);
