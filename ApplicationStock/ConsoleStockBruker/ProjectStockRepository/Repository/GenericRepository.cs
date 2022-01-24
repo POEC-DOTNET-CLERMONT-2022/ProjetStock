@@ -23,42 +23,39 @@ namespace ProjectStockRepository.Repository
 
         private List<T> _listEntity { get; set; }
 
-        private readonly Fixture _fixture = new Fixture();
+      
 
 
         public GenericRepository()
         {
             SqlContext = new SqlDbContext();
             _listEntity = new List<T>();
-            // var configuration = new MapperConfiguration(cfg => cfg.AddMaps(typeof(WPF_Application.App)));
-            //_mapper = new Mapper(configuration);
+  
         }
 
-        public T? Update(T entity)
+        public T? Update(T notifentity)
         {
 
 
 
-            if (entity == null)
+            if (notifentity == null)
             {
                 return null;
             }
 
-            SqlContext.Set<T>().Update(entity);
+            SqlContext.Set<T>().Update(notifentity);
             SqlContext.SaveChanges();
 
-            return entity;
+            return notifentity;
         }
 
         public T Add(T entity)
         {
-            //T _entity = SqlContext.Add(entity).Entity;
-
-
+           
             SqlContext.Set<T>().Add(entity);
 
             _listEntity.Add(entity);
-            //SqlContext.SaveChanges();
+         
             return entity;
         }
 

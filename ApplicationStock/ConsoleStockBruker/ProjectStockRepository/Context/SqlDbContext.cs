@@ -10,7 +10,7 @@ namespace ProjectStockRepository.Context
     { 
         private string ConnectionString { get; }
 
-        public SqlDbContext(string connectionString = null)
+        public SqlDbContext()
         {
             ConnectionString = "Server=(localdb)\\mssqllocaldb;Database=BDProjectStock;Trusted_Connection=True;MultipleActiveResultSets=true";
         }
@@ -21,12 +21,6 @@ namespace ProjectStockRepository.Context
 
             optionsBuilder.UseSqlServer(ConnectionString);
         }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-        }
-
         public override DbSet<TEntity> Set<TEntity>()
         {
             ChangeTracker.LazyLoadingEnabled = false;
@@ -36,9 +30,6 @@ namespace ProjectStockRepository.Context
             return base.Set<TEntity>();
         }
 
-
-
-        //public DbSet<T> _Items { get; set; }
 
         public DbSet<Market> _markets { get; set; }
 

@@ -31,7 +31,7 @@ namespace WPF_Application.Order
     /// </summary>
     public partial class ListsControlOrders : UserControl
     {
-        private readonly IGenericRepository<OrderEntity> _orderRepository = ((App)Application.Current).orderRepository;
+        
         private readonly IMapper _mapper = ((App)Application.Current).Mapper;
 
         public OrderLists OrderList { get; set; } = new OrderLists();
@@ -41,7 +41,7 @@ namespace WPF_Application.Order
 
 
         private static ObservableCollection<OrderModel> _lists { get; set; }
-        private async void loadOrder(JsonGenericReader<OrderModel, OrderDto> jsonGenericReader)
+        private async Task loadOrder(JsonGenericReader<OrderModel, OrderDto> jsonGenericReader)
         {
             var result = await jsonGenericReader.GetAll();
             foreach (var item in result)
@@ -61,13 +61,13 @@ namespace WPF_Application.Order
 
        
 
-        private async void updateOrder(JsonGenericReader<OrderModel, OrderDto> jsonGenericReader, OrderModel order)
+        private async Task updateOrder(JsonGenericReader<OrderModel, OrderDto> jsonGenericReader, OrderModel order)
         {
             await jsonGenericReader.Update(order);
 
         }
 
-        private async void deleteOrder(JsonGenericReader<OrderModel, OrderDto> jsonGenericReader, Guid id)
+        private async Task  deleteOrder(JsonGenericReader<OrderModel, OrderDto> jsonGenericReader, Guid id)
         {
             int _return = await jsonGenericReader.Delete(id);
 
@@ -91,8 +91,8 @@ namespace WPF_Application.Order
 
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var _id = TxtGuid.Text;
-            var newUser = new OrderModel() { Id = new Guid(TxtGuid.Text), OrderName = TxtNom.Text, NbStock = int.Parse(TxtQte.Text), Stock = new Stock() }
+         
+            var newUser = new OrderModel() { Id = new Guid(TxtGuid.Text), OrderName = TxtNom.Text, NbStock = int.Parse(TxtQte.Text), Stock = new Stock() };
             updateOrder(jsonGenericReader,  newUser);
         }
 

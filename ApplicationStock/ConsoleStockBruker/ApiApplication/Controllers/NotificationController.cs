@@ -14,9 +14,9 @@ namespace ApiApplication.Controllers
     [ApiController]
     public class NotificationController : ControllerBase
     {
-        private IMapper _mapper;
+        private readonly IMapper _mapper;
 
-        private APIContext _context;
+        private readonly APIContext _context;
         public NotificationController(IMapper mapper, APIContext context)
         {
             _mapper = mapper;
@@ -106,9 +106,10 @@ namespace ApiApplication.Controllers
 
 
             var p = _context._notifs.Find(notificationDto._id);
-
+            if (p == null)
+                return BadRequest();
             p._textRappel = notificationDto.textRappel;
-            p._sendAt = p._sendAt;
+            p._sendAt = notificationDto.sendAt;
 
             var mapProj = _mapper.Map<NotificationDto>(p);
             _context._notifs.Update(p);

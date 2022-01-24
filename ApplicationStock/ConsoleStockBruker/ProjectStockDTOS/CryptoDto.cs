@@ -19,7 +19,7 @@ namespace ProjectStockDTOS
 
         [DataMember]
         [Required]
-        public string _name {get; set;}
+        public string? _name {get; set;}
 
         [DataMember]
         
@@ -27,11 +27,11 @@ namespace ProjectStockDTOS
 
         [DataMember]
         [Required]
-        public List<Client> _listClient {get; set;}
+        public List<Client>? _listClient {get; set;}
 
         [DataMember]
         [Required]
-        public List<Market> _listMarker {get; set;}
+        public List<Market>? _listMarker {get; set;}
 
 
     }

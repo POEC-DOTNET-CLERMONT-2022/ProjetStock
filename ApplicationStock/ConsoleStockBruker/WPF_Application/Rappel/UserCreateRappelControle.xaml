@@ -19,7 +19,7 @@
                 <Label x:Name="login" HorizontalAlignment="Center"  FontSize="18"  VerticalAlignment="Center" >Create Rappel</Label>
                 <DockPanel x:Name="user_message" Margin="0,30,0,0">
                     <Label x:Name="name" Margin="0,0,0,0">Name :</Label>
-                    <TextBox  x:Name="nom"="" Height="17" Width="200" Margin="1"/>
+                    <TextBox  x:Name="nom" Height="17" Width="200" Margin="1"/>
                     <Label x:Name="password" Margin="0,0,0,0">Send date :</Label>
                     <TextBox x:Name="TxtDaysplUS" Text="" Height="17" Width="200" Margin="1"/>
 

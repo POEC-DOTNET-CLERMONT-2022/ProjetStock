@@ -42,12 +42,12 @@ namespace WPF_Application
         private JsonGenericReader<UserModel, UserDto> _json { get; set; }
         private static ObservableCollection<OrderModel> _lists { get; set; }
         private static ObservableCollection<StockModel> _listsStocks { get; set; }
-        private async void loadOrder(JsonGenericReader<OrderModel, OrderDto> jsonGenericReader)
+        private async Task loadOrder(JsonGenericReader<OrderModel, OrderDto> jsonGenericReader)
         {
-    
-           // var result = await jsonGenericReader.Get(Guid id);
-            //foreach (var item in result)
-            //    _lists.Add(item);
+            Guid _id = Guid.NewGuid();
+            var result = await jsonGenericReader.Get(_id);
+          
+                _lists.Add(result);
         }
 
         public UserCommandeControl()
@@ -60,13 +60,13 @@ namespace WPF_Application
             OrderList.Orders = _lists;
         }
 
-        private async void updateOrder(JsonGenericReader<OrderModel, OrderDto> jsonGenericReader, OrderModel order)
+        private async Task updateOrder(JsonGenericReader<OrderModel, OrderDto> jsonGenericReader, OrderModel order)
         {
             await jsonGenericReader.Update(order);
 
         }
 
-        private async void deleteOrder(JsonGenericReader<OrderModel, OrderDto> jsonGenericReader, Guid id)
+        private async Task deleteOrder(JsonGenericReader<OrderModel, OrderDto> jsonGenericReader, Guid id)
         {
             int _return = await jsonGenericReader.Delete(id);
 
@@ -90,7 +90,7 @@ namespace WPF_Application
 
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var _id = TxtGuid.Text;
+          
             var newUser = new OrderModel() { Id = new Guid(TxtGuid.Text), OrderName = TxtNom.Text, NbStock = int.Parse(TxtQte.Text), Stock = new Stock() };
             updateOrder(jsonGenericReader, newUser);
         }

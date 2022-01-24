@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ProjectStockDTOS;
 using ProjectStockEntity;
+using ProjectStockModels.APIReader.Services;
 using ProjectStockModels.JsonReader;
 using ProjectStockModels.Model;
 using ProjectStockRepository.Interfaces;
@@ -8,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -27,7 +29,7 @@ namespace WPF_Application.Market
     /// </summary>
     public partial class MarketCreateControl : UserControl
     {
-        private readonly IGenericRepository<MarketEntity> _marketRepository = ((App)Application.Current).marketRepository;
+        
         private readonly IMapper _mapper = ((App)Application.Current).Mapper;
         private JsonGenericReader<MarketModel, MarketDto> _json{ get; }
         private static ObservableCollection<MarketModel> _lists { get; set; }
@@ -35,6 +37,8 @@ namespace WPF_Application.Market
         public MarketCreateControl()
         {
             InitializeComponent();
+            HttpClient _client = new HttpClient();
+            _json = new MarketServiceReader(_client, _mapper);
         }
 
 
@@ -54,7 +58,7 @@ namespace WPF_Application.Market
 
         }
 
-        private async void addMarket(JsonGenericReader<MarketModel, MarketDto> jsonGenericReader, MarketModel newUser)
+        private async Task addMarket(JsonGenericReader<MarketModel, MarketDto> jsonGenericReader, MarketModel newUser)
         {
             await jsonGenericReader.Add(newUser);
 

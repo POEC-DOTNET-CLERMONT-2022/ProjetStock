@@ -11,9 +11,9 @@ namespace ProjectStockModels.Lists
 {
     public class NotificationLists : ObservableObject
     {
-        private ObservableCollection<NotificationModel> _Notifs;
+        private ObservableCollection<NotificationModel>? _Notifs;
 
-        private NotificationModel _Notif;
+        private NotificationModel? _Notif;
 
         public  NotificationModel Notif
         {

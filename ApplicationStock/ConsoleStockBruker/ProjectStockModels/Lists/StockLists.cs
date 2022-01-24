@@ -11,9 +11,9 @@ namespace ProjectStockModels.Lists
 {
     public class StockLists : ObservableObject
     {
-        private ObservableCollection<StockModel> _Stocks;
+        private ObservableCollection<StockModel>? _Stocks;
 
-        private StockModel _Stock;
+        private StockModel? _Stock;
 
         public StockModel Stock
         {

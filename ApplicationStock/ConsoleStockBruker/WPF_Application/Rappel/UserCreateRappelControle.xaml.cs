@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ProjectStockDTOS;
 using ProjectStockEntity;
+using ProjectStockModels.APIReader.Services;
 using ProjectStockModels.JsonReader;
 using ProjectStockModels.Lists;
 using ProjectStockModels.Model;
@@ -9,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -28,14 +30,16 @@ namespace WPF_Application
     /// </summary>
     public partial class UserCreateRappelControle : UserControl
     {
-        private readonly IGenericRepository<NotificationEntity> _notifsRepository = ((App)Application.Current).notificationRepository;
+        
         private readonly IMapper _mapper = ((App)Application.Current).Mapper;
         private JsonGenericReader<NotificationModel, NotificationDto> jsonGenericReader { get; }
-        private static ObservableCollection<NotificationModel> _lists { get; set; }
+        private ObservableCollection<NotificationModel> _lists { get; set; }
         public NotificationLists NotifsLists { get; set; } = new NotificationLists();
         public UserCreateRappelControle()
         {
             InitializeComponent();
+            HttpClient _client = new HttpClient();
+            jsonGenericReader = new NotificationServiceReader(new HttpClient(), _mapper);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -54,7 +58,7 @@ namespace WPF_Application
 
         }
 
-        private async void addNotification(JsonGenericReader<NotificationModel, NotificationDto> jsonGenericReader, NotificationModel newUser)
+        private async Task addNotification(JsonGenericReader<NotificationModel, NotificationDto> jsonGenericReader, NotificationModel newUser)
         {
             await jsonGenericReader.Add(newUser);
 

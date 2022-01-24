@@ -10,6 +10,9 @@
     <Compile Update="Cart\CartListControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Market\MarketCreateControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Market\MarketListsControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -46,6 +49,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Info\ContactUsControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Market\MarketCreateControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Market\MarketListsControl.xaml">

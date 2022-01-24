@@ -17,7 +17,7 @@ namespace ProjectStockDTOS
         public Guid _id { get; set; }
         [DataMember]
         [Required]
-        public  string textRappel { get; set; }
+        public  string? textRappel { get; set; }
         [DataMember]
         [Required]
         public DateTime sendAt { get; set; }

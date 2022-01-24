@@ -17,6 +17,7 @@ using System.Net.Http;
 using ProjectStockModels.APIReader.Services;
 using ProjectStockModels.Model;
 using System;
+using System.Threading.Tasks;
 
 namespace WPF_Application.User
 {
@@ -36,20 +37,20 @@ namespace WPF_Application.User
         public UsersList UsersList { get; set; } = new UsersList();
 
 
-        private async void loadUser(JsonGenericReader<UserModel,UserDto> jsonGenericReader)
+        private async Task loadUser(JsonGenericReader<UserModel,UserDto> jsonGenericReader)
         {
                 var result = await jsonGenericReader.GetAll();
                 foreach (var item in result)
                     _lists.Add(item);
         }
 
-        private async  void updateUser(JsonGenericReader<UserModel, UserDto> jsonGenericReader, UserModel newUser)
+        private async  Task updateUser(JsonGenericReader<UserModel, UserDto> jsonGenericReader, UserModel newUser)
         {
              await jsonGenericReader.Update(newUser);
 
         }
 
-        private async void deleteUser(JsonGenericReader<UserModel, UserDto> jsonGenericReader, Guid id)
+        private async Task deleteUser(JsonGenericReader<UserModel, UserDto> jsonGenericReader, Guid id)
         {
             int _return = await jsonGenericReader.Delete(id);
 
@@ -84,7 +85,7 @@ namespace WPF_Application.User
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var _id = TxtGuid.Text;
+        
 
             var newUser = new UserModel() { FirstName = TbUserFirstName.Text, Id = new Guid(TxtGuid.Text), LastName = TbUserName.Text, Email = TbEmail.Text, Phone = TbPhone.Text, Addresses = new List<Address>(), Stocks = new List<Stock>() };
             updateUser(jsonGenericReader, newUser);
@@ -94,9 +95,9 @@ namespace WPF_Application.User
 
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var _id = TxtGuid.Text;
+          
             var newUser = new UserModel() { FirstName = TbUserFirstName.Text, Id = new Guid(TxtGuid.Text), LastName = TbUserName.Text, Email = TbEmail.Text, Phone = TbPhone.Text, Addresses = new List<Address>(), Stocks = new List<Stock>() };
-           //addUser(jsonGenericReader,  newUser);
+            //addUser(jsonGenericReader,  newUser);
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)

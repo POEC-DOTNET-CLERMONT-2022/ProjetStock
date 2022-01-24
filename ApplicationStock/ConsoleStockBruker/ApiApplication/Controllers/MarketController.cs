@@ -14,9 +14,9 @@ namespace ApiApplicationProjectStock.Controllers
     [ApiController]
     public class MarketController : ControllerBase
     {
-        private IMapper _mapper;
+        private readonly IMapper _mapper;
 
-        private APIContext _context;
+        private readonly APIContext _context;
         public MarketController(IMapper mapper, APIContext context)
         {
             _mapper = mapper;
@@ -75,9 +75,12 @@ namespace ApiApplicationProjectStock.Controllers
                 if (mapProj == null)
                     return NotFound();
                 else
+                {
                     _context._markets.Add(p);
                     _context.SaveChanges();
                     return Ok(mapProj);
+                }
+                    
             }
             catch (Exception ex)
             {
@@ -96,7 +99,10 @@ namespace ApiApplicationProjectStock.Controllers
 
 
             var p = _context._markets.Find(marketDto._id);
-
+            if( p == null)
+            {
+                return BadRequest();
+            }
            
             p._name = marketDto._name;
             p._openingDate = marketDto._openingDate;

@@ -31,22 +31,12 @@ namespace WPF_Application.Rappel
     public partial class NotificationListsControl : UserControl
     {
 
-        private readonly IGenericRepository<NotificationEntity> _notifsRepository = ((App)Application.Current).notificationRepository;
+        
         private readonly IMapper _mapper = ((App)Application.Current).Mapper;
         private JsonGenericReader<NotificationModel,NotificationDto> jsonGenericReader { get; }
-        private static ObservableCollection<NotificationModel> _lists { get; set; }
+        private ObservableCollection<NotificationModel> _lists { get; set; }
         public NotificationLists NotifsLists { get; set; } = new NotificationLists();
 
-        //private void Button_Click(object sender, RoutedEventArgs e)
-        //{
-        //    var newOrder = new NotificationModel() {  TextRappel  = TbUserName.Text };
-        //    var notifEntity = _mapper.Map<NotificationEntity>(newOrder);
-        //    _notifsRepository.Add(notifEntity);
-        //    NotifsLists.Notifs.Add(newOrder);
-        //    NotifsLists.Notifs.Add(newOrder);
-
-        //    //UsersList.Users = new ObservableCollection<UserModel>();
-        //}
 
         public NotificationListsControl()
 
@@ -67,12 +57,12 @@ namespace WPF_Application.Rappel
 
             var newUser = new NotificationModel() { Id = Guid.NewGuid(), SendAt = DateTime.Now, TextRappel = TbText.Text };
             addUser(jsonGenericReader, newUser);
-            //NotifsLists.Notifs.Add(newUser);
+         
 
         }
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var _id = TxtGuid.Text;
+         
             var newUser = new NotificationModel() { Id = Guid.NewGuid(), SendAt = DateTime.Now, TextRappel = TbText.Text };
             updateUser(jsonGenericReader,  newUser);
         }
@@ -85,33 +75,34 @@ namespace WPF_Application.Rappel
         }
 
 
-        private async void loadNotif(JsonGenericReader<NotificationModel, NotificationDto> jsonGenericReader)
+        private async Task loadNotif(JsonGenericReader<NotificationModel, NotificationDto> jsonGenericReader)
         {
             try
             {
                 var result = await jsonGenericReader.GetAll();
                 foreach (var item in result)
                     _lists.Add(item);
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 MessageBox.Show(e.Message);
             }
-            
+
         }
-        private async void addUser(JsonGenericReader<NotificationModel, NotificationDto> jsonGenericReader, NotificationModel newUser)
+        private async Task addUser(JsonGenericReader<NotificationModel, NotificationDto> jsonGenericReader, NotificationModel newUser)
         {
             await jsonGenericReader.Add(newUser);
 
         }
 
-
-        private async void updateUser(JsonGenericReader<NotificationModel, NotificationDto> jsonGenericReader, NotificationModel newUser)
+        
+        private async Task  updateUser(JsonGenericReader<NotificationModel, NotificationDto> jsonGenericReader, NotificationModel newUser)
         {
             await jsonGenericReader.Update(newUser);
 
         }
 
-        private async void deleteUser(JsonGenericReader<NotificationModel, NotificationDto> jsonGenericReader, Guid id)
+        private async Task deleteUser(JsonGenericReader<NotificationModel, NotificationDto> jsonGenericReader, Guid id)
         {
             int _return = await jsonGenericReader.Delete(id);
 

@@ -20,9 +20,9 @@ namespace ApiApplicationProjectStock.Controllers
     [ApiController]
     public class StocksController : ControllerBase
     {
-        private IMapper _mapper;
+        private readonly IMapper _mapper;
 
-        private APIContext _context { get; }
+        private readonly APIContext _context;
         public StocksController(IMapper mapper, APIContext context)
         {
             _mapper = mapper;
@@ -84,7 +84,7 @@ namespace ApiApplicationProjectStock.Controllers
             {
                 var p = stockDto.ToModelStock();
 
-                var mapProj = _mapper.Map<StockDto>(p);
+             
                 _context._stocks.Add(p);
                 _context.SaveChanges();
                 return Ok(p);
@@ -106,6 +106,8 @@ namespace ApiApplicationProjectStock.Controllers
 
 
             var p = _context._stocks.Find(stockDto._id);
+            if (p == null)
+                return BadRequest();
 
             p._entrepriseName = stockDto._entrepriseName;
             p._value = stockDto._value;

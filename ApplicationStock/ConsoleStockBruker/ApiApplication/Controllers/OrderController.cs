@@ -15,9 +15,9 @@ namespace ApiApplication.Controllers
     public class OrderController : ControllerBase
     {
 
-        private IMapper _mapper;
+        private readonly IMapper _mapper;
 
-        private APIContext _context;
+        private readonly APIContext _context;
         public OrderController(IMapper mapper, APIContext context)
         {
             _mapper = mapper;
@@ -94,6 +94,8 @@ namespace ApiApplication.Controllers
         {
 
             var p = _context._orders.Find(orderDto._id);
+            if(p == null) 
+                return NotFound();
             p._orderName = orderDto._orderName;
             p._orderDate = orderDto._orderDate;
             p._nbStock = orderDto._nbStock;

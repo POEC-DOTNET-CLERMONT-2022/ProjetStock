@@ -14,9 +14,9 @@ namespace ApiApplicationProjectStock.Controllers
     [ApiController]
     public class Cryptocontroller : ControllerBase
     {
-        private IMapper _mapper ;
+        private readonly IMapper _mapper;
 
-        private APIContext _context;
+        private readonly APIContext _context;
 
         public Cryptocontroller (IMapper mapper , APIContext context)
         {
@@ -24,23 +24,23 @@ namespace ApiApplicationProjectStock.Controllers
             _context = context;
 
         }
-        
+
         //// GET api/<ProjectController>/5
-        //[Authorize]
-        //[HttpGet]
-        //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CryptoDto))]
-        //[ProducesResponseType(StatusCodes.Status404NotFound)]
-        //public ActionResult<CryptoDto> Get([FromQuery]Guid id)
-        //{
-        //        var p = _context._cryptos.Find(id);
+        [Authorize]
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CryptoDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<CryptoDto> Get([FromQuery] Guid id)
+        {
+            var p = _context._cryptos.Find(id);
 
-            
-        //        if (p == null)
-        //            return NotFound();
 
-        //        return Ok(p);
-            
-        //}
+            if (p == null)
+                return NotFound();
+
+            return Ok(p);
+
+        }
 
 
         // GET api/<ProjectController>/5
@@ -57,9 +57,13 @@ namespace ApiApplicationProjectStock.Controllers
                 if (p == null)
                     return NotFound();
                 else
+                {
                     _context._cryptos.Add(p);
                     _context.SaveChanges();
                     return Ok(p);
+                }
+                   
+            
             }
             catch (Exception ex)
             {
@@ -78,7 +82,8 @@ namespace ApiApplicationProjectStock.Controllers
 
            
             var p = _context._cryptos.Find(cryptoDto._id);
-
+            if (p == null)
+                return BadRequest();
            
             p._name = cryptoDto._name;
             p._value = cryptoDto._value;

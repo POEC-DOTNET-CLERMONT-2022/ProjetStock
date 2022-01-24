@@ -38,7 +38,7 @@ namespace WPF_Application.Market
 
         private JsonGenericReader<MarketModel, MarketDto> jsonGenericReader { get; }
 
-        private static ObservableCollection<MarketModel> _lists { get; set; }
+        private static ObservableCollection<MarketModel> _lists { get; } = new ObservableCollection<MarketModel>();
 
         public MarketLists MarketsLists { get; set; } = new MarketLists();
 
@@ -55,27 +55,27 @@ namespace WPF_Application.Market
         }
 
 
-        private async void loadMarket(JsonGenericReader<MarketModel, MarketDto> jsonGenericReader)
+        private async Task loadMarket(JsonGenericReader<MarketModel, MarketDto> jsonGenericReader)
         {
             var result = await jsonGenericReader.GetAll();
             foreach (var item in result)
                 _lists.Add(item);
         }
 
-        private async void updateMarket(JsonGenericReader<MarketModel, MarketDto> jsonGenericReader, MarketModel market)
+        private async Task updateMarket(JsonGenericReader<MarketModel, MarketDto> jsonGenericReader, MarketModel market)
         {
             await jsonGenericReader.Update(market);
 
         }
 
 
-        private async void addMarket(JsonGenericReader<MarketModel, MarketDto> jsonGenericReader, MarketModel market)
+        private async Task addMarket(JsonGenericReader<MarketModel, MarketDto> jsonGenericReader, MarketModel market)
         {
             await jsonGenericReader.Update(market);
 
         }
 
-        private async void deleteMarket(JsonGenericReader<MarketModel, MarketDto> jsonGenericReader, Guid id)
+        private async Task deleteMarket(JsonGenericReader<MarketModel, MarketDto> jsonGenericReader, Guid id)
         {
             int _return = await jsonGenericReader.Delete(id);
 
@@ -99,8 +99,6 @@ namespace WPF_Application.Market
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var _id = TxtGuid.Text;
-
             var market = new MarketModel() { Id = Guid.NewGuid() , Name = TxtNom.Text, OpeningDate = DateTime.UtcNow, ClosingDate = DateTime.Now };
             addMarket(jsonGenericReader, market);
 

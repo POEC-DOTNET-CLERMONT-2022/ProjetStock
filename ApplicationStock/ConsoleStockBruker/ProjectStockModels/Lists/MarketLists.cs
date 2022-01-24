@@ -11,17 +11,17 @@ namespace ProjectStockModels.Lists
 {
     public class MarketLists : ObservableObject
     {
-        private ObservableCollection<MarketModel> _Markets;
+        private ObservableCollection<MarketModel>? _Markets;
 
-        private MarketModel _market;
+        private MarketModel? _market;
 
         
         public MarketModel currentMarket
         {
-            get { return currentMarket; }
+            get { return _market; }
             set { 
 
-                if (currentMarket != value)
+                if (_market != value)
                 {
                     currentMarket = value;
                     OnNotifyPropertyChanged();

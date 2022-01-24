@@ -11,20 +11,20 @@ namespace ProjectStockModels.Lists
 {
     public class CryptoLists : ObservableObject
     {
-        private ObservableCollection<CryptoModel> _Cryptos;
+        private ObservableCollection<CryptoModel>? _Cryptos;
 
-        private CryptoModel _crypto;
+        private CryptoModel? _Crypto;
 
 
-        public CryptoModel currentCrypto
+        public CryptoModel Crypto
         {
-            get { return currentCrypto; }
+            get { return _Crypto; }
             set
             {
 
-                if (currentCrypto != value)
+                if (_Crypto != value)
                 {
-                    currentCrypto = value;
+                    _Crypto = value;
                     OnNotifyPropertyChanged();
                 }
             }
