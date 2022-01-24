@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Projet Stock</a>
+  <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+   
+      <li class="nav-item active">
+        <a class="nav-link" *ngIf=" isConnected === true">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  [routerLink]="urlUser" >Users</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"*ngIf=" isConnected === true">Orders</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link"*ngIf=" isConnected === true">Markets</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"*ngIf=" isConnected === true">Notifications</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"*ngIf=" isConnected === true">Stocks</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link"  [routerLink]="urlLogin" *ngIf=" isConnected === false" >{{ sliceUrl(urlLogin)|titlecase }}</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link"  [routerLink]="urlRegister" *ngIf=" isConnected === false" >Register</a>
+        </li>
+     
+        <li class="nav-item active">
+          <a class="nav-link"   *ngIf=" isConnected === true" [routerLink]="urlLogOut" >Logout</a>
+        </li>
+    </ul>
+  </div>
+</nav>
