@@ -16,16 +16,23 @@ import { DataService } from 'src/services/Data-service/data-service';
 })
 
 export class LoginComponent implements OnInit {
+  
+    
+  static pathregister: string = 'register';
+  urlRegister : string = '/' + NavbarComponent.pathregister;
+
     form: any = {
        email: null,
         password: null
       };
       isLoggedIn = false;
       isLoginFailed = false;
+      isEmail : boolean = false;
       errorMessage = '';
       roles: string[] = [];
       public dataService : DataService = new DataService();
       constructor(private authService: AuthService, private tokenStorage: TokenStorageService , public formBuilder : FormBuilder,) {
+ 
       }
     
       
@@ -37,7 +44,7 @@ export class LoginComponent implements OnInit {
           this.dataService.isLoggedIn = true;
           this.roles = this.tokenStorage.getUser().roles;
           this.roles = ['user'];
-          console.log(this.roles);
+
         }
    
         
@@ -45,11 +52,15 @@ export class LoginComponent implements OnInit {
     
       onSubmit(): void {
         const { email, password } = this.form;
+        const regularExpression = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        this.isEmail = regularExpression.test(String(email).toLowerCase());
         this.authService.login(email,password).subscribe(
           
             data => {
                 
-            
+              console.log(this.isEmail);
+              if( password != null || this.isEmail == true)
+              {
                 this.tokenStorage.saveToken(data.accessToken);
                 this.tokenStorage.saveUser(data);
         
@@ -61,7 +72,8 @@ export class LoginComponent implements OnInit {
                 this.roles = this.tokenStorage.getUser().roles;
                 
                 this.reloadPage();
-                
+              }
+             
             
             },
             err => {
@@ -74,6 +86,17 @@ export class LoginComponent implements OnInit {
                 this.errorMessage = err.error.message;
                 this.tokenStorage.deleteToken();
             
+              }
+              if( this.isEmail == false){
+                this.isLoggedIn = false;
+                this.isLoginFailed = true;
+                this.errorMessage = "Error email";
+                
+              }
+              else{
+                   this.isLoggedIn = false;
+                this.isLoginFailed = true;
+                this.errorMessage = "Error authentication";
               }
 
              
