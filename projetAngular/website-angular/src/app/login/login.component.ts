@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
       constructor(private authService: AuthService, private tokenStorage: TokenStorageService , public formBuilder : FormBuilder,) {
       }
     
+      
       ngOnInit(): void {
         this.form = this.formBuilder.group({});
         this.authService.setIsLog(true);
@@ -35,8 +36,10 @@ export class LoginComponent implements OnInit {
           this.isLoggedIn = true;
           this.dataService.isLoggedIn = true;
           this.roles = this.tokenStorage.getUser().roles;
+          this.roles = ['user'];
+          console.log(this.roles);
         }
-        console.log(this.dataService.isLoggedIn);
+   
         
       }
     
@@ -54,7 +57,9 @@ export class LoginComponent implements OnInit {
                 this.isLoggedIn = true;
       
                 this.authService.setIsLog(true);
+                this.roles = ['user'];
                 this.roles = this.tokenStorage.getUser().roles;
+                
                 this.reloadPage();
                 
             
@@ -62,13 +67,15 @@ export class LoginComponent implements OnInit {
             err => {
               if(err.status == 400)
               {
-                console.log(err);
+              
                 this.isLoggedIn = false;
+                this.isLoginFailed = true;
                 this.authService.setIsLog(false);
                 this.errorMessage = err.error.message;
                 this.tokenStorage.deleteToken();
-                this.reloadPage();
+            
               }
+
              
             }
           );

@@ -22,6 +22,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  
   onSubmit(): void {
     const { firstName,lastName, email, password } = this.form;
 

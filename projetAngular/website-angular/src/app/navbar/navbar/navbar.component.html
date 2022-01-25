@@ -6,11 +6,8 @@
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
    
-      <li class="nav-item active">
-        <a class="nav-link" *ngIf=" isConnected === true">Home <span class="sr-only">(current)</span></a>
-      </li>
       <li class="nav-item">
-        <a class="nav-link"  [routerLink]="urlUser" >Users</a>
+        <a class="nav-link"  [routerLink]="urlUser"  *ngIf=" isConnected">Users</a>
       </li>
       <li class="nav-item">
         <a class="nav-link"*ngIf=" isConnected === true">Orders</a>
@@ -30,7 +27,8 @@
         <li class="nav-item active">
           <a class="nav-link"  [routerLink]="urlRegister" *ngIf=" isConnected === false" >Register</a>
         </li>
-     
+
+  
         <li class="nav-item active">
           <a class="nav-link"   *ngIf=" isConnected === true" [routerLink]="urlLogOut" >Logout</a>
         </li>

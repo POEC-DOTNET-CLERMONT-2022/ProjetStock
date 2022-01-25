@@ -8,13 +8,29 @@ import { Router } from '@angular/router';
 })
 export class LogoutComponent implements OnInit {
 
-  constructor(private router :Router) { }
+  constructor(private router :Router) {
+
+   }
 
   ngOnInit(): void {
     
     window.sessionStorage.clear();
-    this.router.navigate(['home']);
-
+    this.reloadPage();
+    this.router.navigate(['']);
+ 
+   
+   
   }
 
+    
+  reloadPage(): void {
+    
+    if (!localStorage.getItem('foo')) { 
+      localStorage.setItem('foo', 'no reload') 
+      location.reload() 
+    } else {
+      localStorage.removeItem('foo') 
+    }
+  
+  }
 }

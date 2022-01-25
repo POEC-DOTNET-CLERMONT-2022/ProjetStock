@@ -34,6 +34,7 @@ export class AuthService {
       _password
     }, httpOptions);
   }
+  
 
   register(_lastName : string , _firstName :string , _email: string, _password: string): Observable<any> {
     

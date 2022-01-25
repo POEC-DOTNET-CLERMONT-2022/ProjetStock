@@ -1,9 +1,12 @@
 
 <div class="container">
     <div class="row">
+    <br>
         <div class="col-md-12">
+          
             <div class="card card-container">
-              
+              <h1 class="text-center" *ngIf="!isLoggedIn">Log in</h1>
+              <br *ngIf="isLoggedIn">
               <form
                 *ngIf="!isLoggedIn"
                 name="form"
@@ -21,13 +24,7 @@
                     required
                     #username="ngModel"
                   />
-                  <div
-                    class="alert alert-danger"
-                    role="alert"
-                    *ngIf="username.errors && f.submitted"
-                  >
-                    Email is required!
-                  </div>
+                
                 </div>
                 <div class="form-group">
                   <label for="password">Password</label>
@@ -40,34 +37,33 @@
                     minlength="6"
                     #password="ngModel"
                   />
-                  <div
-                    class="alert alert-danger"
-                    role="alert"
-                    *ngIf="password.errors && f.submitted"
-                  >
-                    
-                  </div>
+                  
+                  <br>
                 </div>
                 <div class="form-group">
+                  <div
+                    class="alert alert-danger text-center"
+                    role="alert"
+                    *ngIf="isLoginFailed"
+                  >
+                       {{ errorMessage }}
+                  </div>
+                </div>
+         
+                <div class="form-group text-center">
                   <button class="btn btn-primary btn-block">
                     Login
                   </button>
                 </div>
-                <div class="form-group">
-                  <div
-                    class="alert alert-danger"
-                    role="alert"
-                    *ngIf="f.submitted && isLoginFailed"
-                  >
-                    Login failed: {{ errorMessage }}
-                  </div>
-                </div>
+                <br>
+               
               </form>
               
-              <div class="alert alert-success" *ngIf="isLoggedIn">
-                Logged in
+              <div class="alert alert-success text-center" *ngIf="isLoggedIn">
+                You are logging in
               </div>
             </div>
           </div>
+          <br>
 </div>
 </div>
