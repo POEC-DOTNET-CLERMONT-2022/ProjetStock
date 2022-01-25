@@ -15,6 +15,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DataService } from 'src/services/Data-service/data-service';
 import { LogoutComponent } from './logout/logout.component';
 import { RegisterComponent } from './register/register.component';
+import { ProfilComponentComponent } from './profil/profil-component/profil-component.component';
 @NgModule({
   
   declarations: [
@@ -25,7 +26,8 @@ import { RegisterComponent } from './register/register.component';
     
     UserComponentComponent,
           LogoutComponent,
-          RegisterComponent
+          RegisterComponent,
+          ProfilComponentComponent
 
   ],
   imports: [

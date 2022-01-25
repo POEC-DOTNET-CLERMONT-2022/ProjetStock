@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
       errorMessage = '';
       roles: string[] = [];
       public dataService : DataService = new DataService();
-      constructor(private authService: AuthService, private tokenStorage: TokenStorageService , public formBuilder : FormBuilder,) {
+      constructor(private authService: AuthService, private tokenStorage: TokenStorageService , public formBuilder : FormBuilder,public router : Router) {
  
       }
     
@@ -64,14 +64,16 @@ export class LoginComponent implements OnInit {
                 this.tokenStorage.saveToken(data.accessToken);
                 this.tokenStorage.saveUser(data);
         
+                
                 this.isLoginFailed = false;
                 this.isLoggedIn = true;
       
                 this.authService.setIsLog(true);
                 this.roles = ['user'];
                 this.roles = this.tokenStorage.getUser().roles;
-                
+      
                 this.reloadPage();
+                this.router.navigate(['']);
               }
              
             

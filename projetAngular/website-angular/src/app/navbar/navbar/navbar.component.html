@@ -28,6 +28,10 @@
           <a class="nav-link"  [routerLink]="urlRegister" *ngIf=" isConnected === false" >Register</a>
         </li>
 
+        <li class="nav-item active">
+          <a class="nav-link" *ngIf=" isConnected === true" [routerLink]="urlProfile" >Profile</a>
+        </li>
+  
   
         <li class="nav-item active">
           <a class="nav-link"   *ngIf=" isConnected === true" [routerLink]="urlLogOut" >Logout</a>

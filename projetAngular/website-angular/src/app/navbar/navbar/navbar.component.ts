@@ -15,7 +15,7 @@ export class NavbarComponent {
 
   isConnected : boolean = false;
 
-
+  
   user = new User(Guid.createEmpty(),'','','','','','') || undefined;
   static pathlogin: string = 'login';
   urlLogin: string = '/' + NavbarComponent.pathlogin;
@@ -30,6 +30,9 @@ export class NavbarComponent {
   urlMarket : string = '/' + NavbarComponent.pathmarket;
   
  
+  static pathProfile: string = 'profile';
+  urlProfile : string = '/' + NavbarComponent.pathProfile;
+  
   
   static pathregister: string = 'register';
   urlRegister : string = '/' + NavbarComponent.pathregister;
@@ -41,9 +44,18 @@ export class NavbarComponent {
        this.isConnected = true;
 
     
-      
+     
        this.user = JSON.parse(window.sessionStorage.getItem('auth-user')!);
-  
+     
+        var json = JSON.stringify(this.user)
+       
+ 
+        //var data =data_array.split('}');
+
+       
+        
+        
+    // console.log(data);
        
      
     }

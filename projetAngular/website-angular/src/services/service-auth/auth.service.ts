@@ -45,4 +45,16 @@ export class AuthService {
       _password
     }, httpOptions);
   }
+
+
+  // updateAccount(user : User): Observable<any> {
+    
+  //   return this.http.post('https://localhost:7136/api/user/register', {
+  //     user._id,
+  //    _lastName,
+  //     _firstName,
+  //     _email,
+  //     _password
+  //   }, httpOptions);
+  // }
 }
