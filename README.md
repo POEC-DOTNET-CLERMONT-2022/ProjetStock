@@ -33,7 +33,7 @@ Afficher les différentes variations de la valeur des stocks au fil du temps à 
 1. Un système pour garder les informations des actions en fonction de durée différentes pour comparer les variations de valeur par rapport à plusieurs métriques.
 2. Une interface dynamique et personnalisée en fonction des choix de l'utilisateur
 3. Liste d'actions dynamique et personnalisable par le client
-4. Gérer les infor	mations en continu et il envoie des notifications  de rappel par email/sms
+4. Gérer les informations en continu et il envoie des notifications  de rappel par email/sms
 
 ------------
 
