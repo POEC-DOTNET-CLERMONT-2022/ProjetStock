@@ -1,0 +1,37 @@
+
+<div class="container">
+    <br>
+
+
+
+<div class="row alert alert-success" *ngIf="isApiHave">
+    <h2>Your api key</h2>
+    
+    <div class="row">
+
+    <h6 class="font" style ="font-size: 18px;">{{api_key}}</h6>
+    </div>
+    <div clas="container">
+        <br>
+        <button class="btn btn-primary text-center">Regenerate</button>
+    </div>
+  
+
+</div>
+
+<div class="row alert alert-success" *ngIf="!isApiHave">
+    <h2>Your api key</h2>
+    
+    <div class="row">
+
+    <h6 class="font" style ="font-size: 18px;"> Generate apikey</h6>
+    </div>
+    <div clas="container">
+        <br>
+        <button class="btn btn-primary text-center">Generate</button>
+    </div>
+  
+
+</div>
+
+</div>

@@ -4,10 +4,11 @@ import { Form, FormBuilder, FormGroup,Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { AuthService } from 'src/services/service-auth/auth.service';
-
+import { User } from 'src/models/User';
 import { TokenStorageService } from 'src/services/service-auth/token-storage.service';
 import { NavbarComponent } from '../navbar/navbar/navbar.component';
 import { DataService } from 'src/services/Data-service/data-service';
+import { Guid } from 'guid-typescript';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,8 +18,10 @@ import { DataService } from 'src/services/Data-service/data-service';
 
 export class LoginComponent implements OnInit {
   
-    
-  static pathregister: string = 'register';
+  user : User  = new User(Guid.createEmpty(),'','','','','','');
+
+  user_email : string = '';
+  static pathr1egister: string = 'register';
   urlRegister : string = '/' + NavbarComponent.pathregister;
 
     form: any = {
@@ -44,6 +47,20 @@ export class LoginComponent implements OnInit {
           this.dataService.isLoggedIn = true;
           this.roles = this.tokenStorage.getUser().roles;
           this.roles = ['user'];
+          
+       this.user = JSON.parse(window.sessionStorage.getItem('auth-user')!);
+    
+       var json = JSON.stringify(this.user)
+      
+
+       var data =json.split(':');
+      
+
+      console.log(data);
+
+      
+       
+       this.user_email  = data[3].split(',')[0];
 
         }
    

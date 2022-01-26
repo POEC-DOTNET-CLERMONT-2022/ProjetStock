@@ -16,6 +16,7 @@ import { DataService } from 'src/services/Data-service/data-service';
 import { LogoutComponent } from './logout/logout.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfilComponentComponent } from './profil/profil-component/profil-component.component';
+import { ApiComponent } from './api/api.component';
 @NgModule({
   
   declarations: [
@@ -27,7 +28,8 @@ import { ProfilComponentComponent } from './profil/profil-component/profil-compo
     UserComponentComponent,
           LogoutComponent,
           RegisterComponent,
-          ProfilComponentComponent
+          ProfilComponentComponent,
+          ApiComponent
 
   ],
   imports: [

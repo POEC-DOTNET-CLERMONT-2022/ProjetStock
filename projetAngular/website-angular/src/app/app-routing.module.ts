@@ -10,13 +10,15 @@ import { TokenStorageService } from 'src/services/service-auth/token-storage.ser
 import { RegisterComponent } from './register/register.component';
 import { MyGuard } from './helpers/auth.guard';
 import { ProfilComponentComponent } from './profil/profil-component/profil-component.component';
+import { ApiComponent } from './api/api.component';
 
 const routes: Routes = [
   { path : NavbarComponent.pathlogin, component: LoginComponent,},
   { path  : NavbarComponent.pathuser, component: UserComponentComponent, canActivate: [MyGuard],data: {roles: ['user']}},
   { path  : NavbarComponent.pathlogOut, component:LogoutComponent},
   {path : NavbarComponent.pathregister, component: RegisterComponent},
-  {path : NavbarComponent.pathProfile,component: ProfilComponentComponent, canActivate: [MyGuard],data: {roles: ['user']}}
+  {path : NavbarComponent.pathProfile,component: ProfilComponentComponent, canActivate: [MyGuard],data: {roles: ['user']}},
+  {path : NavbarComponent.pathApi, component:ApiComponent, canActivate: [MyGuard],data: {roles: ['user']}}
 ];
 
 @NgModule({

@@ -14,13 +14,16 @@ import {ILogin} from 'src/models/login/i-login';
 export class NavbarComponent {
 
   isConnected : boolean = false;
-
+  user_email : string = '';
   
   user = new User(Guid.createEmpty(),'','','','','','') || undefined;
   static pathlogin: string = 'login';
   urlLogin: string = '/' + NavbarComponent.pathlogin;
   static pathlogOut: string = 'logout';
   urlLogOut: string = '/' + NavbarComponent.pathlogOut;
+
+  static pathApi: string = 'api';
+  urlApi: string = '/' + NavbarComponent.pathApi;
 
   static pathuser: string = 'users';
   urlUser: string = '/' + NavbarComponent.pathuser;
@@ -45,10 +48,21 @@ export class NavbarComponent {
 
     
      
+   
        this.user = JSON.parse(window.sessionStorage.getItem('auth-user')!);
-     
-        var json = JSON.stringify(this.user)
+    
+       var json = JSON.stringify(this.user)
+      
+
+       var data =json.split(':');
+      
+
+      
+
+      
        
+       this.user_email  = data[3].split(',')[0];
+
  
         //var data =data_array.split('}');
 

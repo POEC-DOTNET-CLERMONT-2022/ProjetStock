@@ -33,9 +33,22 @@
         </li>
   
   
+
+        
+        <li class="nav-item active">
+          <a class="nav-link"   *ngIf=" isConnected === true"  ></a>
+        </li>
+        
+        <li class="nav-item active">
+          <a class="nav-link"   *ngIf=" isConnected === true">API</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link"   *ngIf=" isConnected === true" >Log as {{ user_email }}</a>
+        </li>
         <li class="nav-item active">
           <a class="nav-link"   *ngIf=" isConnected === true" [routerLink]="urlLogOut" >Logout</a>
         </li>
+
     </ul>
   </div>
 </nav>
