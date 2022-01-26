@@ -22,6 +22,13 @@ import { UserModifyComponent } from './users/user-modify/user-modify/user-modify
 import { UserAddComponent } from './users/user-add/user-add/user-add.component';
 import { OrdersComponent } from './orders/orders.component';
 import { MarketsComponent } from './markets/markets.component';
+import { MarketAddComponent } from './markets/market-add/market-add.component';
+import { MarketUpdateComponent } from './markets/market-update/market-update.component';
+import { MarketDeleteComponent } from './markets/market-delete/market-delete.component';
+import { OrdersModifyComponent } from './orders/orders-modify/orders-modify.component';
+import { NotifsComponentComponent } from './notifs/notifs-component/notifs-component.component';
+import { NotifsAddComponent } from './notifs/notifs-add/notifs-add.component';
+import { NotifsModifyComponent } from './notifs/notifs-modify/notifs-modify.component';
 @NgModule({
   
   declarations: [
@@ -39,7 +46,14 @@ import { MarketsComponent } from './markets/markets.component';
           UserModifyComponent,
           UserAddComponent,
           OrdersComponent,
-          MarketsComponent
+          MarketsComponent,
+          MarketAddComponent,
+          MarketUpdateComponent,
+          MarketDeleteComponent,
+          OrdersModifyComponent,
+          NotifsComponentComponent,
+          NotifsAddComponent,
+          NotifsModifyComponent
 
   ],
   imports: [

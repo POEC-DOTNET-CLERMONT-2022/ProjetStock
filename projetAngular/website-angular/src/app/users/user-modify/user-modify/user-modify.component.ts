@@ -9,6 +9,7 @@ import { TokenStorageService } from 'src/services/service-auth/token-storage.ser
 import { Router } from '@angular/router';
 import { Stock } from 'src/models/Stock';
 import { Address } from 'src/models/Adress';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-user-modify',
   templateUrl: './user-modify.component.html',
@@ -17,7 +18,7 @@ import { Address } from 'src/models/Adress';
 export class UserModifyComponent implements OnInit {
 
   user : User  = new User(Guid.createEmpty(),'','','','','','');
-
+  _user :User =  new User(Guid.createEmpty(),'','','','','','');
 
     form: any = {
        firstname : null,
@@ -32,13 +33,15 @@ export class UserModifyComponent implements OnInit {
       isEmail : boolean = false;
       errorMessage = '';
       roles: string[] = [];
+      id : string = '';
       public dataService : DataService = new DataService();
-      constructor(private authService: AuthService, private tokenStorage: TokenStorageService , public formBuilder : FormBuilder,public router : Router) {
- 
+      constructor(private authService: AuthService, private tokenStorage: TokenStorageService , public formBuilder : FormBuilder,public router : Router,private route: ActivatedRoute) {
+       console.log("test");
       }
     
       
       ngOnInit(): void {
+        
         this.form = this.formBuilder.group({});
         this.authService.setIsLog(true);
         if (this.tokenStorage.getToken()) {
@@ -51,9 +54,8 @@ export class UserModifyComponent implements OnInit {
     
        var json = JSON.stringify(this.user)
       
-
-       var data =json.split(':');
-      
+       this.id = this.route.snapshot.params['id'];
+       console.log(this.id)
 
     
 
@@ -61,64 +63,71 @@ export class UserModifyComponent implements OnInit {
 
 
         }
+
+        this.authService.getUser(this.id).subscribe((user : User) =>{
+       
+         this._user = user;
+        
+        })
+        
    
         
       }
     
       onSubmit(): void {
         const { firstname, lastname,email,phone, siret,password } = this.form;
-        const regularExpression = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        this.isEmail = regularExpression.test(String(email).toLowerCase());
-        this.authService.updateAccount(Guid.create(),lastname,firstname,email,password,[], [],siret,phone).subscribe(
+        this.id = this.route.snapshot.paramMap.get('id')!;
+        this.authService.updateAccount(Guid.parse(this.id.toString()),this.form.lastName,this.form.FirstName,this.form.email,this._user.Password,[],[],this.form.siret,phone,'',new Date()).subscribe(
           
-            data => {
-                
-              console.log(this.isEmail);
-              if( password != null || this.isEmail == true)
-              {
-                this.tokenStorage.saveToken(data.accessToken);
-                this.tokenStorage.saveUser(data);
-        
-                
-                this.isLoginFailed = false;
-                this.isLoggedIn = true;
-      
-                this.authService.setIsLog(true);
-                this.roles = ['user'];
-                this.roles = this.tokenStorage.getUser().roles;
-      
-                this.reloadPage();
-                this.router.navigate(['']);
-              }
-             
-            
-            },
-            err => {
-              if(err.status == 400)
-              {
+          data => {
               
-                this.isLoggedIn = false;
-                this.isLoginFailed = true;
-                this.authService.setIsLog(false);
-                this.errorMessage = err.error.message;
-                this.tokenStorage.deleteToken();
-            
-              }
-              if( this.isEmail == false){
-                this.isLoggedIn = false;
-                this.isLoginFailed = true;
-                this.errorMessage = "Error email";
-                
-              }
-              else{
-                   this.isLoggedIn = false;
-                this.isLoginFailed = true;
-                this.errorMessage = "Error authentication";
-              }
-
-             
+            console.log(this.isEmail);
+            if( password != null || this.isEmail == true)
+            {
+              this.tokenStorage.saveToken(data.accessToken);
+              this.tokenStorage.saveUser(data);
+      
+              
+              this.isLoginFailed = false;
+              this.isLoggedIn = true;
+    
+              this.authService.setIsLog(true);
+              this.roles = ['user'];
+              this.roles = this.tokenStorage.getUser().roles;
+    
+           
+              this.router.navigate(['/users']);
             }
-          );
+           
+          
+          },
+          err => {
+            if(err.status == 400)
+            {
+            
+              this.isLoggedIn = false;
+              this.isLoginFailed = true;
+              this.authService.setIsLog(false);
+              this.errorMessage = err.error.message;
+              this.tokenStorage.deleteToken();
+          
+            }
+            if( this.isEmail == false){
+              this.isLoggedIn = false;
+              this.isLoginFailed = true;
+              this.errorMessage = "Error email";
+              
+            }
+            else{
+                 this.isLoggedIn = false;
+              this.isLoginFailed = true;
+              this.errorMessage = "Error authentication";
+            }
+
+           
+          }
+        );
+     
        
       
         

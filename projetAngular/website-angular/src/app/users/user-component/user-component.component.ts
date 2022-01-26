@@ -10,6 +10,7 @@ import { CanActivate } from '@angular/router';
 import { MyGuard } from 'src/app/helpers/auth.guard';
 import { UrlTree } from '@angular/router';
 import { Router } from '@angular/router';
+import { NavbarComponent } from 'src/app/navbar/navbar/navbar.component';
 
 @Component({
   selector: 'app-user-component',
@@ -20,6 +21,10 @@ export class UserComponentComponent implements OnInit{
   _users : User[];
   _user : User[] ;
   i : number = 0;
+  static pathAjoutUser: string = 'ajout_user';
+  urlAjoutUser : string = '/' + NavbarComponent.pathAjoutUser;
+  
+
   constructor(private activateRoute : ActivatedRoute,public UserService : UserService,private router:Router) {
 
     this._users =[];
@@ -27,12 +32,11 @@ export class UserComponentComponent implements OnInit{
     this.callApi();
   
   }
-
+  
   ngOnInit(): void {
 
 
   }
-
 
 
 

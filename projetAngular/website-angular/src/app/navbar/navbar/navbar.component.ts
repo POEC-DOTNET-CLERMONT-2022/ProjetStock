@@ -24,6 +24,8 @@ export class NavbarComponent {
 
   static pathApi: string = 'api';
   urlApi: string = '/' + NavbarComponent.pathApi;
+  static pathNotifs: string = 'notifs';
+  urlNotifs: string = '/' + NavbarComponent.pathNotifs;
 
   static pathuser: string = 'users';
   urlUser: string = '/' + NavbarComponent.pathuser;
@@ -34,9 +36,29 @@ export class NavbarComponent {
   static pathmarket: string = 'market';
   urlMarket : string = '/' + NavbarComponent.pathmarket;
   
+  static pathAjoutNotifs: string = 'ajout_notif';
+  urlAjoutNotifs : string = '/' + NavbarComponent.pathAjoutNotifs;
+
+  static pathModifNotif: string = 'modify_notifs';
+  urlNotif : string = '/' + NavbarComponent.pathModifNotif+ '/:id';
+
   static pathModifUsers: string = 'modify_user';
-  urlModif : string = '/' + NavbarComponent.pathModifUsers;
+  urlModif : string = '/' + NavbarComponent.pathModifUsers+ '/:id';
+
+  static pathModifOrder: string = 'modify_order';
+  urlOrder : string = '/' + NavbarComponent.pathModifOrder+ '/:id';
  
+  static pathUpdateMarket: string = 'modifier_market';
+  urlUpdateMarket : string = '/' + NavbarComponent.pathUpdateMarket + '/:id';
+
+
+  static pathAjoutUser: string = 'ajout_user';
+  urlAjoutUser : string = '/' + NavbarComponent.pathAjoutUser;
+
+  static pathAjoutMarket: string = 'ajout_market';
+  urlAjoutMarket : string = '/' + NavbarComponent.pathAjoutMarket;
+
+  
   static pathProfile: string = 'profile';
   urlProfile : string = '/' + NavbarComponent.pathProfile;
   

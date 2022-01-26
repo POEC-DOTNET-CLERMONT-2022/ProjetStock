@@ -14,6 +14,13 @@ import { ApiComponent } from './api/api.component';
 import { UserModifyComponent } from './users/user-modify/user-modify/user-modify.component';
 import { OrdersComponent } from './orders/orders.component';
 import { MarketsComponent } from './markets/markets.component';
+import { UserAddComponent } from './users/user-add/user-add/user-add.component';
+import { MarketAddComponent } from './markets/market-add/market-add.component';
+import { MarketUpdateComponent } from './markets/market-update/market-update.component';
+import { OrdersModifyComponent } from './orders/orders-modify/orders-modify.component';
+import { NotifsComponentComponent } from './notifs/notifs-component/notifs-component.component';
+import { NotifsModifyComponent } from './notifs/notifs-modify/notifs-modify.component';
+import { NotifsAddComponent } from './notifs/notifs-add/notifs-add.component';
 const routes: Routes = [
   { path : NavbarComponent.pathlogin, component: LoginComponent,},
   { path  : NavbarComponent.pathuser, component: UserComponentComponent, canActivate: [MyGuard],data: {roles: ['user']}},
@@ -21,9 +28,16 @@ const routes: Routes = [
   { path : NavbarComponent.pathregister, component: RegisterComponent},
   { path : NavbarComponent.pathProfile,component: ProfilComponentComponent, canActivate: [MyGuard],data: {roles: ['user']}},
   { path : NavbarComponent.pathApi, component:ApiComponent, canActivate: [MyGuard],data: {roles: ['user']}},
-  { path:NavbarComponent.pathModifUsers,component:UserModifyComponent,canActivate:[MyGuard], data:{roles: ['user']}},
+  { path:NavbarComponent.pathAjoutUser,component:UserAddComponent,canActivate:[MyGuard], data:{roles: ['user']}},
+  {path : NavbarComponent.pathModifUsers + '/:id',component:UserModifyComponent,canActivate:[MyGuard],data:{roles:['user']}},
+  {path : NavbarComponent.pathModifOrder + '/:id',component:OrdersModifyComponent,canActivate:[MyGuard],data:{roles:['user']}},
+  { path:NavbarComponent.pathAjoutMarket,component:MarketAddComponent,canActivate:[MyGuard], data:{roles: ['user']}},
   {path: NavbarComponent.pathOrders,component:OrdersComponent,canActivate:[MyGuard],data:{roles:['user']}},
-  {path : NavbarComponent.pathmarket,component:MarketsComponent,canActivate:[MyGuard],data:{roles:['user']}}
+  {path : NavbarComponent.pathmarket,component:MarketsComponent,canActivate:[MyGuard],data:{roles:['user']}},
+  {path : NavbarComponent.pathUpdateMarket + '/:id',component:MarketUpdateComponent,canActivate:[MyGuard],data:{roles:['user']}},
+  { path  : NavbarComponent.pathNotifs, component: NotifsComponentComponent, canActivate: [MyGuard],data: {roles: ['user']}},
+  {path : NavbarComponent.pathModifNotif + '/:id',component:NotifsModifyComponent,canActivate:[MyGuard],data:{roles:['user']}},
+  {path : NavbarComponent.pathAjoutNotifs ,component:NotifsAddComponent,canActivate:[MyGuard],data:{roles:['user']}}
 ];
 
 @NgModule({

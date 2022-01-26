@@ -1,0 +1,37 @@
+
+<br>
+<div class="container">
+    <button class="btn btn-success text-center" [routerLink]="urlAjoutNotifs">Ajouter</button>
+  <br>
+
+  <table class="table table-striped table-bordered"  id="example" >
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Text rappel</th>
+        <th scope="col"> sent date</th>
+        
+        <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of _notifs">
+   
+        <td *ngIf="user['_id'] != null">{{user['_id']}}</td>
+        <td *ngIf="user['_id'] == null">Null</td>
+       
+        
+        <td *ngIf="user['_textRappel'] != null">{{user['_textRappel']}}</td>
+        <td *ngIf="user['_textRappel'] == null">Null</td>
+           
+        <td *ngIf="user['_sendAt'] != null">{{user['_sendAt']}}</td>
+        <td *ngIf="user['_sendAt'] == null">Null</td>
+
+        <td><button class="btn btn-secondary">Remove</button><button class="btn btn-primary" [routerLink]="['/modify_notifs/', user['_id'].toString()]">Modify</button></td>
+      </tr>
+     
+    </tbody>
+  </table>
+
+    
+</div>

@@ -58,6 +58,9 @@ export class Market{
     public get Stocks(){
         return this._stocks;
     }
+    public set Stocks(value : Stock[]){
+        this._stocks = value;
+    }
     public unStock(int : number){
       return this._stocks[int];
     }
