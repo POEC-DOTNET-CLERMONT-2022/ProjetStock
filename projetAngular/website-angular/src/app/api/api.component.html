@@ -25,7 +25,13 @@
 </div>
 <div class="container border">
     <br>
-    <h2>Generate new key</h2>
+    <div *ngIf="isApiHave">
+        <h2>Regenerate  api key</h2>
+    </div>
+    <div *ngIf="!isApiHave">
+        <h2>Generate api key</h2>
+    </div>
+   
     
 
     <br>
@@ -75,23 +81,21 @@
       </div>
     
       <div class="form-group text-center">
-        <button class="btn btn-primary btn-block">
-          Generate
+        <button class="btn btn-primary btn-block" *ngIf="isApiHave">
+            
+          Regenerate
         </button>
+        <button class="btn btn-primary btn-block" *ngIf="!isApiHave">
+            
+            Generate
+          </button>
+
       </div>
       <br>
       </div>
    
 
     </form>
-   
-
-<div class="container">
-    <br>
-  
-      
-    
-    </div>
    
 
 
