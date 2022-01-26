@@ -1,0 +1,35 @@
+<br>
+<div class="container">
+  <button class="btn btn-success text-center">Ajouter</button>
+  <br>
+
+  <table class="table table-striped table-bordered"  id="example" >
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Opening Date</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of _markets">
+   
+        <td *ngIf="user['_id'] != null">{{user['_id']}}</td>
+        <td *ngIf="user['_id'] == null">Null</td>
+   
+          <td *ngIf="user['_name'] != null">{{user['_name']}}</td>
+        <td *ngIf="user['_name'] == null">Null</td>
+
+        <td *ngIf="user['_openingDate'] != null">{{user['_openingDate']}}</td>
+        <td *ngIf="user['_openingDate'] == null">Null</td>
+
+        
+        <td><button class="btn btn-secondary">Remove</button><button class="btn btn-primary">Modify</button></td>
+      </tr>
+     
+    </tbody>
+  </table>
+
+    
+</div>

@@ -25,25 +25,24 @@ export class UserComponentComponent implements OnInit{
     this._users =[];
     this._user =[];
     this.callApi();
-    console.log(this._users);
- ;
-    for (var product of this._users) {
-      console.log(product) }
-
+  
   }
 
   ngOnInit(): void {
-   
+
+
   }
 
 
-  callApi() : void{ 
 
-  this.UserService.getUsers().subscribe((user: User) =>{
-    this._users.push(user);
-  })
 
-  
+  callApi() :void{ 
+
+
+   this.UserService.getUsers().subscribe((user : User[]) =>{
+     this._users = user;
+   
+   })
 
 
   }

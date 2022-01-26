@@ -48,10 +48,6 @@ export class ApiComponent implements OnInit {
         this._email = data[3].split(',')[0];
      
        }
-   
-
-      
-    
 
         }
   }
@@ -59,7 +55,12 @@ export class ApiComponent implements OnInit {
 
   onSubmit() :void {
     const { password_confirm, password } = this.form;
-    this._email = this._email.split('"')[1];
+    if(this._email != null)
+    {
+      this._email = this._email.split('"')[1];
+    }
+   
+    console.log(this._email);
     this.authService.generateApiKey(this._email,password).subscribe(
       
         data => {
@@ -67,29 +68,23 @@ export class ApiComponent implements OnInit {
           {
             this.tokenStorage.saveToken(data.accessToken);
             this.tokenStorage.saveUser(data);
-    
-            
             this.isLoginFailed = false;
             this.isLoggedIn = true;
-  
             this.authService.setIsLog(true);
             this.roles = ['user'];
             this.roles = this.tokenStorage.getUser().roles;
-  
             this.reloadPage();
             this.router.navigate(['api']);
           }
-         
         
         },
         err => {
           if(err.status == 400)
           {
-          
             this.isLoggedIn = false;
             this.isSendFailed = true;
             this.errorMessage = "No generate";
-        
+            this.reloadPage();
           }
          
         }

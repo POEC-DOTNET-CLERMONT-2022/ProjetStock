@@ -10,10 +10,10 @@
         <a class="nav-link"  [routerLink]="urlUser"  *ngIf=" isConnected">Users</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"*ngIf=" isConnected === true">Orders</a>
+        <a class="nav-link"*ngIf=" isConnected === true" [routerLink]="urlOrders">Orders</a>
       </li>
       <li class="nav-item">
-          <a class="nav-link"*ngIf=" isConnected === true">Markets</a>
+          <a class="nav-link"*ngIf=" isConnected === true" [routerLink]=" urlMarket">Markets</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"*ngIf=" isConnected === true">Notifications</a>
@@ -29,21 +29,28 @@
         </li>
 
         <li class="nav-item active">
-          <a class="nav-link" *ngIf=" isConnected === true" [routerLink]="urlProfile" >Profile</a>
+          <a class="nav-link" *ngIf=" isConnected === true" >              </a>
         </li>
   
   
-
-        
-        <li class="nav-item active">
-          <a class="nav-link"   *ngIf=" isConnected === true"  ></a>
-        </li>
-        
+       
         <li class="nav-item active">
           <a class="nav-link"   *ngIf=" isConnected === true" [routerLink]="urlApi">API</a>
         </li>
+
+      
+        <li class="nav-item active ">
+          <a class="nav-link"   *ngIf=" isConnected === true" >|</a>
+        </li>
         <li class="nav-item active">
           <a class="nav-link"   *ngIf=" isConnected === true" >Log as {{ user_email }}</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" *ngIf=" isConnected === true" [routerLink]="urlProfile" >Profile</a>
+        </li>
+             
+        <li class="nav-item active ">
+          <a class="nav-link"   *ngIf=" isConnected === true" >|</a>
         </li>
         <li class="nav-item active">
           <a class="nav-link"   *ngIf=" isConnected === true" [routerLink]="urlLogOut" >Logout</a>

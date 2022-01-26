@@ -1,4 +1,6 @@
 import { Guid } from "guid-typescript";
+import { Address } from "./Adress";
+import { Stock } from "./Stock";
 
 
 export class User{
@@ -14,7 +16,7 @@ export class User{
     private _password :string = '';
     private _token : string = '';
 
-
+    private _stocks :Stock[] = [];
 
     constructor(_id : Guid,  _firstName : string ,_lastName : string ,_email : string, _phone: string,_siret : string, _token : string){
         this._id = _id;
@@ -24,7 +26,44 @@ export class User{
         this._phone = this._phone;
         this._siret = _siret;
         this._token = _token;
+        this._addresses = [];
+        this._stocks = [];
     }
+    
+
+
+    /**
+     * Getter addresses
+     * @return {Address[] }
+     */
+	public get addresses(): Address[]  {
+		return this._addresses;
+	}
+
+    /**
+     * Setter addresses
+     * @param {Address[] } value
+     */
+	public set addresses(value: Address[] ) {
+		this._addresses = value;
+	}
+    private _addresses : Address[] = [];
+
+    /**
+     * Getter stocks
+     * @return {Stock[] }
+     */
+	public get stocks(): Stock[]  {
+		return this._stocks;
+	}
+
+    /**
+     * Setter stocks
+     * @param {Stock[] } value
+     */
+	public set stocks(value: Stock[] ) {
+		this._stocks = value;
+	}
      /**
      * Setter siret
      * @param {srting } value
@@ -50,6 +89,22 @@ public get Password(): string  {
      this._password= value;
 }
 
+
+    /**
+     * Getter phone
+     * @return {string }
+     */
+	public get phone(): string  {
+		return this._phone;
+	}
+
+    /**
+     * Setter phone
+     * @param {string } value
+     */
+	public set phone(value: string ) {
+		this._phone = value;
+	}
 
       /**
 * Getter email

@@ -17,6 +17,11 @@ import { LogoutComponent } from './logout/logout.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfilComponentComponent } from './profil/profil-component/profil-component.component';
 import { ApiComponent } from './api/api.component';
+import { UserDeleteComponent } from './users/user-delete/user-delete/user-delete.component';
+import { UserModifyComponent } from './users/user-modify/user-modify/user-modify.component';
+import { UserAddComponent } from './users/user-add/user-add/user-add.component';
+import { OrdersComponent } from './orders/orders.component';
+import { MarketsComponent } from './markets/markets.component';
 @NgModule({
   
   declarations: [
@@ -29,7 +34,12 @@ import { ApiComponent } from './api/api.component';
           LogoutComponent,
           RegisterComponent,
           ProfilComponentComponent,
-          ApiComponent
+          ApiComponent,
+          UserDeleteComponent,
+          UserModifyComponent,
+          UserAddComponent,
+          OrdersComponent,
+          MarketsComponent
 
   ],
   imports: [

@@ -28,10 +28,14 @@ export class NavbarComponent {
   static pathuser: string = 'users';
   urlUser: string = '/' + NavbarComponent.pathuser;
 
+  static pathOrders: string = 'orders';
+  urlOrders: string = '/' + NavbarComponent.pathOrders;
 
   static pathmarket: string = 'market';
   urlMarket : string = '/' + NavbarComponent.pathmarket;
   
+  static pathModifUsers: string = 'modify_user';
+  urlModif : string = '/' + NavbarComponent.pathModifUsers;
  
   static pathProfile: string = 'profile';
   urlProfile : string = '/' + NavbarComponent.pathProfile;

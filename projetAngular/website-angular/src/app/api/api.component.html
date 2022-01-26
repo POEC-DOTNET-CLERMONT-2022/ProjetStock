@@ -43,7 +43,20 @@
       novalidate
     >
 
-      <div class="form-group container">
+    <div class="form-group container">
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          [(ngModel)]="form.password_confirm"
+          required
+          minlength="6"
+          #password_confirm="ngModel"
+        />
+        
+ 
         <label for="password">Confirm Password</label>
         <input
           type="password"
@@ -54,19 +67,6 @@
           minlength="6"
           #password="ngModel"
         />
-        
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input
-          type="password_confirm"
-          class="form-control"
-          name="password"
-          [(ngModel)]="form.password_confirm"
-          required
-          minlength="6"
-          #password_confirm="ngModel"
-        />
-        
       
       <br>
       </div>

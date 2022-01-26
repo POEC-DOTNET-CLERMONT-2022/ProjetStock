@@ -1,7 +1,10 @@
 
+<br>
+<div class="container">
+  <button class="btn btn-success text-center">Ajouter</button>
+  <br>
 
-  
-  <table class="table">
+  <table class="table table-striped table-bordered"  id="example" >
     <thead class="thead-light">
       <tr>
         <th scope="col">Id</th>
@@ -15,12 +18,29 @@
     </thead>
     <tbody>
       <tr *ngFor="let user of _users">
-        <th scope="row"></th>
-        <td>{{user.id}}</td>
-        <td>{{user.firstName}}</td>
-        <td>{{user.lastName}}</td>
-        <td></td>
+   
+        <td *ngIf="user['_id'] != null">{{user['_id']}}</td>
+        <td *ngIf="user['_id'] == null">Null</td>
+   
+        <td *ngIf="user['_email'] != null">{{user['_email']}}</td>
+        <td *ngIf="user['_email'] == null">Null</td>
+        <td *ngIf="user['_lastName'] != null">{{user['_lastName']}}</td>
+        <td *ngIf="user['_lastName'] == null">Null</td>
+
+        <td *ngIf="user['_firstName'] != null">{{user['_firstName']}}</td>
+        <td *ngIf="user['_firstName'] == null">Null</td>
+
+        <td *ngIf="user['_phone'] != null && user['_phone'] != '' ">{{user['_phone']}}</td>
+        <td *ngIf="user['_phone'] == null || user['_phone'] == ''">Null</td>
+
+        <td *ngIf="user['_siret'] != null && user['_phone'] != ''">{{user['_siret']}}</td>
+        <td *ngIf="user['_siret'] == null || user['_phone'] == ''">Null</td>
+        
+        <td><button class="btn btn-secondary">Remove</button><button class="btn btn-primary">Modify</button></td>
       </tr>
      
     </tbody>
   </table>
+
+    
+</div>

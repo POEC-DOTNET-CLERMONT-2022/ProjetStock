@@ -1,0 +1,39 @@
+
+<br>
+<div class="container">
+  <button class="btn btn-success text-center">Ajouter</button>
+  <br>
+
+  <table class="table table-striped table-bordered"  id="example" >
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">OrderName</th>
+        <th scope="col">NbStock</th>
+        <th scope="col">OrderDate</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of _orders">
+   
+        <td *ngIf="user['_id'] != null">{{user['_id']}}</td>
+        <td *ngIf="user['_id'] == null">Null</td>
+   
+        <td *ngIf="user['_orderName'] != null">{{user['_orderName']}}</td>
+        <td *ngIf="user['_orderName'] == null">Null</td>
+        <td *ngIf="user['_nbStock'] != null">{{user['_nbStock']}}</td>
+        <td *ngIf="user['_nbStock'] == null">Not defined</td>
+        <td *ngIf="user['_orderDate'] != null">{{user['_orderDate']}}</td>
+        <td *ngIf="user['_orderDate'] == null">Null</td>
+       
+        
+        
+        <td><button class="btn btn-secondary">Remove</button><button class="btn btn-primary">Modify</button></td>
+      </tr>
+     
+    </tbody>
+  </table>
+
+    
+</div>
