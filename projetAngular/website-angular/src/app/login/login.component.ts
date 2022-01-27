@@ -54,10 +54,7 @@ export class LoginComponent implements OnInit {
       
 
        var data =json.split(':');
-      
-
-      console.log(data);
-
+    
       
        
        this.user_email  = data[3].split(',')[0];

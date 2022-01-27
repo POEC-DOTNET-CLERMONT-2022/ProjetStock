@@ -122,8 +122,8 @@ export class AuthService {
   getUser(id : string) : Observable<User>{  
     return this.http.get<User>('https://localhost:7136/api/User?id='+ id );
   }
-  getUserEmail(email : string) : Observable<User>{  
-    return this.http.get<User>('https://localhost:7136/api/User/email?email='+ email );
+  getUserEmail(email : string) : Observable<User[]>{  
+    return this.http.get<User[]>('https://localhost:7136/api/User/email?email='+ email );
   }
 
   getMarket(id : string) : Observable<Market>{  

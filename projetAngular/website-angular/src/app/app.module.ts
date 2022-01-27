@@ -31,6 +31,7 @@ import { NotifsAddComponent } from './notifs/notifs-add/notifs-add.component';
 import { NotifsModifyComponent } from './notifs/notifs-modify/notifs-modify.component';
 import { NotifsDeleteComponent } from './notifs/notifs-delete/notifs-delete.component';
 import { OrdersDelteComponent } from './orders/orders-delte/orders-delte.component';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
   
   declarations: [
@@ -57,7 +58,8 @@ import { OrdersDelteComponent } from './orders/orders-delte/orders-delte.compone
           NotifsAddComponent,
           NotifsModifyComponent,
           NotifsDeleteComponent,
-          OrdersDelteComponent
+          OrdersDelteComponent,
+          FooterComponent
 
   ],
   imports: [
