@@ -27,7 +27,7 @@
         <td *ngIf="user['_sendAt'] != null">{{user['_sendAt']}}</td>
         <td *ngIf="user['_sendAt'] == null">Null</td>
 
-        <td><button class="btn btn-secondary">Remove</button><button class="btn btn-primary" [routerLink]="['/modify_notifs/', user['_id'].toString()]">Modify</button></td>
+        <td><button class="btn btn-secondary" [routerLink]="['/delete_notifs/', user['_id'].toString()]">Remove</button><button class="btn btn-primary" [routerLink]="['/modify_notifs/', user['_id'].toString()]">Modify</button></td>
       </tr>
      
     </tbody>

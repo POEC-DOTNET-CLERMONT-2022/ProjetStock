@@ -19,6 +19,11 @@ export class NotifsComponentComponent implements OnInit {
   static pathModifNotif: string = 'modify_notifs';
   urlNotif : string = '/' + NavbarComponent.pathModifNotif+ '/:id';
  
+
+  
+  static pathSupNotif: string = 'delete_notifs';
+  urlSupNotif : string = '/' + NavbarComponent.pathSupNotif+ '/:id';
+ 
   i : number = 0;
   constructor(private activateRoute : ActivatedRoute,public UserService : UserService,private router:Router) {
 

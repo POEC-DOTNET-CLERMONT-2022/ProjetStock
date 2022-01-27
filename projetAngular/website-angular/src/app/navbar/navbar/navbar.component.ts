@@ -66,6 +66,8 @@ export class NavbarComponent {
   static pathregister: string = 'register';
   urlRegister : string = '/' + NavbarComponent.pathregister;
 
+  static pathSupNotif: string = 'delete_notifs';
+  urlSupNotif : string = '/' + NavbarComponent.pathSupNotif+ '/:id';
  
   constructor(private router: Router, public auth : AuthService) {
 

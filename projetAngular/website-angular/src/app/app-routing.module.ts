@@ -21,6 +21,7 @@ import { OrdersModifyComponent } from './orders/orders-modify/orders-modify.comp
 import { NotifsComponentComponent } from './notifs/notifs-component/notifs-component.component';
 import { NotifsModifyComponent } from './notifs/notifs-modify/notifs-modify.component';
 import { NotifsAddComponent } from './notifs/notifs-add/notifs-add.component';
+import { NotifsDeleteComponent } from './notifs/notifs-delete/notifs-delete.component';
 const routes: Routes = [
   { path : NavbarComponent.pathlogin, component: LoginComponent,},
   { path  : NavbarComponent.pathuser, component: UserComponentComponent, canActivate: [MyGuard],data: {roles: ['user']}},
@@ -37,7 +38,9 @@ const routes: Routes = [
   {path : NavbarComponent.pathUpdateMarket + '/:id',component:MarketUpdateComponent,canActivate:[MyGuard],data:{roles:['user']}},
   { path  : NavbarComponent.pathNotifs, component: NotifsComponentComponent, canActivate: [MyGuard],data: {roles: ['user']}},
   {path : NavbarComponent.pathModifNotif + '/:id',component:NotifsModifyComponent,canActivate:[MyGuard],data:{roles:['user']}},
-  {path : NavbarComponent.pathAjoutNotifs ,component:NotifsAddComponent,canActivate:[MyGuard],data:{roles:['user']}}
+  {path : NavbarComponent.pathAjoutNotifs ,component:NotifsAddComponent,canActivate:[MyGuard],data:{roles:['user']}},
+  {path : NavbarComponent.pathSupNotif + '/:id' , component:NotifsDeleteComponent,canActivate:[MyGuard],data:{roles:['user']}},
+  
 ];
 
 @NgModule({

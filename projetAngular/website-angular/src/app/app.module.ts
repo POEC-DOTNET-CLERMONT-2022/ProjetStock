@@ -29,6 +29,7 @@ import { OrdersModifyComponent } from './orders/orders-modify/orders-modify.comp
 import { NotifsComponentComponent } from './notifs/notifs-component/notifs-component.component';
 import { NotifsAddComponent } from './notifs/notifs-add/notifs-add.component';
 import { NotifsModifyComponent } from './notifs/notifs-modify/notifs-modify.component';
+import { NotifsDeleteComponent } from './notifs/notifs-delete/notifs-delete.component';
 @NgModule({
   
   declarations: [
@@ -53,7 +54,8 @@ import { NotifsModifyComponent } from './notifs/notifs-modify/notifs-modify.comp
           OrdersModifyComponent,
           NotifsComponentComponent,
           NotifsAddComponent,
-          NotifsModifyComponent
+          NotifsModifyComponent,
+          NotifsDeleteComponent
 
   ],
   imports: [

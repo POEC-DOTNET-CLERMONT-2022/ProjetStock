@@ -26,11 +26,9 @@ export class ProfilComponentComponent implements OnInit {
       var data =json.split(':');
      
 
-     console.log(data);
 
 
-
-      console.log(data[4]);
+      console.log(data);
       
     
    }
