@@ -37,7 +37,7 @@
         
         
           <li class="nav-item dropdown" *ngIf=" isConnected === true" [routerLink]="urlProfile">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
+            <a class="nav-link dropdown-toggle" id="dropdown05" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown05">
               <li><a class="dropdown-item" *ngIf=" isConnected === true">Log as {{ user_email }}</a></li>
             
