@@ -16,6 +16,9 @@ export class OrdersComponent implements OnInit {
   static pathModifOrder: string = 'modify_order';
   urlOrder : string = '/' + NavbarComponent.pathModifOrder+ '/:id';
  
+  static pathSupOrder: string = 'delete_order';
+  urlSupOrder : string = '/' + NavbarComponent.pathSupOrder;
+  
   i : number = 0;
   constructor(private activateRoute : ActivatedRoute,public UserService : UserService,private router:Router) {
 

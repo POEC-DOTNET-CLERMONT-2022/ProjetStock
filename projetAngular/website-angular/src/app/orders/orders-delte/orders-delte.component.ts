@@ -11,14 +11,18 @@ import { NavbarComponent } from 'src/app/navbar/navbar/navbar.component';
 import { Notification } from 'src/models/Notification';
 import { User } from 'src/models/User';
 
+
 @Component({
-  selector: 'app-notifs-delete',
-  templateUrl: './notifs-delete.component.html',
-  styleUrls: ['./notifs-delete.component.scss']
+  selector: 'app-orders-delte',
+  templateUrl: './orders-delte.component.html',
+  styleUrls: ['./orders-delte.component.scss']
 })
-export class NotifsDeleteComponent implements OnInit {
+export class OrdersDelteComponent implements OnInit {
+
+
   message : string  = '';
-  notif : Notification = new Notification(Guid.createEmpty(),'',new Date());
+  
+
   id : string = 'mon_id_notif';
   user : User  = new User(Guid.createEmpty(),'','','','','','');
   
@@ -29,7 +33,7 @@ export class NotifsDeleteComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.id = this.route.snapshot.paramMap.get('id')!;
+   
 
     this.authService.setIsLog(true);
     if (this.tokenStorage.getToken()) {
@@ -38,22 +42,21 @@ export class NotifsDeleteComponent implements OnInit {
 
    var json = JSON.stringify(this.user)
   
-   this.id = this.route.snapshot.params['id'];
+   this.id = this.route.snapshot.params['id']!;
 
    
     }
     try{
       
-     this.authService.deleteNotification(this.id).subscribe();
+     this.authService.deleteOrder(this.id).subscribe();
     }
     catch{
       console.log("ok");
     }
 
-    this.router.navigate(['/notifs']);
+    this.router.navigate(['/orders']);
 
  
  
   }
-
 }

@@ -22,6 +22,9 @@ import { NotifsComponentComponent } from './notifs/notifs-component/notifs-compo
 import { NotifsModifyComponent } from './notifs/notifs-modify/notifs-modify.component';
 import { NotifsAddComponent } from './notifs/notifs-add/notifs-add.component';
 import { NotifsDeleteComponent } from './notifs/notifs-delete/notifs-delete.component';
+import { UserDeleteComponent } from './users/user-delete/user-delete/user-delete.component';
+import { MarketDeleteComponent } from './markets/market-delete/market-delete.component';
+import { OrdersDelteComponent } from './orders/orders-delte/orders-delte.component';
 const routes: Routes = [
   { path : NavbarComponent.pathlogin, component: LoginComponent,},
   { path  : NavbarComponent.pathuser, component: UserComponentComponent, canActivate: [MyGuard],data: {roles: ['user']}},
@@ -40,6 +43,9 @@ const routes: Routes = [
   {path : NavbarComponent.pathModifNotif + '/:id',component:NotifsModifyComponent,canActivate:[MyGuard],data:{roles:['user']}},
   {path : NavbarComponent.pathAjoutNotifs ,component:NotifsAddComponent,canActivate:[MyGuard],data:{roles:['user']}},
   {path : NavbarComponent.pathSupNotif + '/:id' , component:NotifsDeleteComponent,canActivate:[MyGuard],data:{roles:['user']}},
+  {path: NavbarComponent.pathSupUser + '/:id',component: UserDeleteComponent,canActivate:[MyGuard],data:{roles : ['user']}},
+  {path:NavbarComponent.pathDeleteMarket + '/:id', component:MarketDeleteComponent,canActivate:[MyGuard],data : {roles : ['user']}},
+  {path:NavbarComponent.pathSupOrder + '/:id',component:OrdersDelteComponent,canActivate:[MyGuard],data : {roles :['user']}}
   
 ];
 

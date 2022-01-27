@@ -20,6 +20,9 @@ export class MarketsComponent implements OnInit {
 
   static pathUpdateMarket: string = 'modifier_market';
   urlUpdateMarket : string = '/' + NavbarComponent.pathUpdateMarket;
+
+  static pathDeleteMarket: string = 'delete_market';
+  urlDeleteMarket : string = '/' + NavbarComponent.pathDeleteMarket;
   i : number = 0;
   constructor(private activateRoute : ActivatedRoute,public UserService : UserService,private router:Router) {
 

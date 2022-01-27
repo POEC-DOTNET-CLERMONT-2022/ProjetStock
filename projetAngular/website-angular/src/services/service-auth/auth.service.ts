@@ -188,15 +188,15 @@ export class AuthService {
     
    }
 
-   deleteMarket(id : string) : void {
-    this.http.delete("https://localhost:7136/api/Market/id?id="+ id);
+   deleteMarket(id : string)  : Observable<any> {
+    return this.http.delete("https://localhost:7136/api/Market/id?id="+ id);
    }
 
-   deleteOrder(id : string ) : void {
-     this.http.delete("https://localhost:7136/api/order/id?id="+ id);
+   deleteOrder(id : string )  : Observable<any> {
+    return this.http.delete("https://localhost:7136/api/order/id?id="+ id);
    }
 
-   deleteUser(id : string ) : void {
-     this.http.delete("https://localhost:7136/api/order/id?id="+ id);
+   deleteUser(id : string )  : Observable<any>{
+    return this.http.delete("https://localhost:7136/api/user/id?id="+ id);
    }
 }

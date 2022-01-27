@@ -17,57 +17,45 @@ import { NavbarComponent } from 'src/app/navbar/navbar/navbar.component';
   styleUrls: ['./market-delete.component.scss']
 })
 export class MarketDeleteComponent implements OnInit {
-
-  user : User  = new User(Guid.createEmpty(),'','','','','','');
-
+  message : string  = '';
+  
   market : Market = new Market(Guid.createEmpty(),'', new Date(),new Date());
 
-   isLoggedIn = false;
-   isLoginFailed = false;
-   errorMessage = '';
-   roles: string[] = [];
-   id : string = 'test';
-   public dataService : DataService = new DataService();
-   constructor(private authService: AuthService, private tokenStorage: TokenStorageService , public formBuilder : FormBuilder,public router : Router,private route: ActivatedRoute) {
- 
-   }
- 
-   
-   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id')!;
+  id : string = 'mon_id_notif';
+  user : User  = new User(Guid.createEmpty(),'','','','','','');
   
-
-    
-     this.authService.setIsLog(true);
-     if (this.tokenStorage.getToken()) {
-       this.isLoggedIn = true;
-       this.dataService.isLoggedIn = true;
-       this.roles = this.tokenStorage.getUser().roles;
-       this.roles = ['user'];
-       
-    this.user = JSON.parse(window.sessionStorage.getItem('auth-user')!);
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService , public formBuilder : FormBuilder,public router : Router,private route: ActivatedRoute) {
  
-    var json = JSON.stringify(this.user)
-   
-    this.id = this.route.snapshot.params['id'];
+  }
 
+
+  ngOnInit(): void {
+
+    this.id = this.route.snapshot.paramMap.get('id')!;
+
+    this.authService.setIsLog(true);
+    if (this.tokenStorage.getToken()) {
+
+   this.user = JSON.parse(window.sessionStorage.getItem('auth-user')!);
+
+   var json = JSON.stringify(this.user)
+  
+   this.id = this.route.snapshot.params['id'];
+
+   
+    }
+    try{
+      
+     this.authService.deleteMarket(this.id).subscribe();
+    }
+    catch{
+      console.log("ok");
+    }
+
+    this.router.navigate(['/market']);
 
  
-
-   
-
-
-     }
-     this.authService.getMarket(this.id).subscribe((market : Market) =>{
-       
-       this.market = market;
-       this.market.Name = market.Name;
-       this.market.OpeningDate = market.OpeningDate;
-       this.market.ClosingDate = market.ClosingDate;
-       this.market.Stocks =  market.Stocks;
-     
-     })
-     
-   }
+ 
+  }
  
   }

@@ -23,6 +23,8 @@ export class UserComponentComponent implements OnInit{
   i : number = 0;
   static pathAjoutUser: string = 'ajout_user';
   urlAjoutUser : string = '/' + NavbarComponent.pathAjoutUser;
+  static pathSupUser: string = 'delete_user';
+  urlSupUser : string = '/' + NavbarComponent.pathSupUser;
   
 
   constructor(private activateRoute : ActivatedRoute,public UserService : UserService,private router:Router) {

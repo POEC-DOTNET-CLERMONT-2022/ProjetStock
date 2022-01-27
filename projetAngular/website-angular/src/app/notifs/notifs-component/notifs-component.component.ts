@@ -46,7 +46,7 @@ export class NotifsComponentComponent implements OnInit {
 
    this.UserService.getNotifs().subscribe((notif : Notification[]) =>{
      this._notifs = notif;
-     console.log(this._notifs)
+    
   
 
    })

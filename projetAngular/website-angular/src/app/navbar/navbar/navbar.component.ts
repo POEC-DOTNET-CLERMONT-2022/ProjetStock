@@ -69,6 +69,16 @@ export class NavbarComponent {
   static pathSupNotif: string = 'delete_notifs';
   urlSupNotif : string = '/' + NavbarComponent.pathSupNotif+ '/:id';
  
+  static pathDeleteMarket: string = 'delete_market';
+  urlDeleteMarket : string = '/' + NavbarComponent.pathDeleteMarket;
+
+  static pathSupUser: string = 'delete_user';
+  urlSupUser : string = '/' + NavbarComponent.pathSupUser;
+
+  static pathSupOrder: string = 'delete_order';
+  urlSupOrder : string = '/' + NavbarComponent.pathSupOrder;
+  
+  
   constructor(private router: Router, public auth : AuthService) {
 
     if(window.sessionStorage.getItem('auth-user')){
@@ -92,13 +102,7 @@ export class NavbarComponent {
        this.user_email  = data[3].split(',')[0];
 
  
-        //var data =data_array.split('}');
-
-       
-        
-        
-    // console.log(data);
-       
+   
      
     }
     
