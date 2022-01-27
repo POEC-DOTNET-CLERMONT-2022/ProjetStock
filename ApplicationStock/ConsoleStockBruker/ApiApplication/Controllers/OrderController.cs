@@ -125,5 +125,24 @@ namespace ApiApplication.Controllers
             return Ok(p);
 
         }
+
+        [Authorize]
+        [HttpDelete("id")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(OrderDto))]
+        public ActionResult<OrderDto> DeleteById(Guid id)
+        {
+            var p = _context._orders.Find(id);
+            if (p != null)
+            {
+                _context._orders.Remove(p);
+                _context.SaveChanges();
+
+            }
+            else
+                return NotFound();
+
+            return Ok(p);
+
+        }
     }
 }
