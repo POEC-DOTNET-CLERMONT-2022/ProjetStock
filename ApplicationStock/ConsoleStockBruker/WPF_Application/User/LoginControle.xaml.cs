@@ -56,11 +56,21 @@ namespace WPF_Application
 
         private void Login_button_Click(object sender, RoutedEventArgs e)
         {
-            AuthenticateRequest app_create = new AuthenticateRequest();
 
-            app_create._password = TxtPassword.Text;
-            app_create._email = TxtEmail.Text;
-            Connect(app_create);
+            try
+            {
+
+                AuthenticateRequest app_create = new AuthenticateRequest();
+
+                app_create._password = TxtPassword.Text;
+                app_create._email = TxtEmail.Text;
+                Connect(app_create);
+            }catch(Exception ew)
+            {
+                MessageBox.Show("Informations invalids" + ew.ToString(),"Error",MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+
         }
     }
 }

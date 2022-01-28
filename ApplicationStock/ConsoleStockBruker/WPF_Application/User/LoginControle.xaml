@@ -22,21 +22,13 @@
                 <Label x:Name="password" Margin="0,0,0,0">Password</Label>
                 <TextBox Margin="0,10,0,0" x:Name="TxtPassword" Height="17"/>
             </DockPanel>
-            <DockPanel Margin="10">
+         
                 <TextBlock x:Name="link_create" FontSize="10">
-                <Button  x:Name="create"   Click="Create_button_Click">Create a account </Button>
-                </TextBlock>
-            </DockPanel>
-            <DockPanel Margin="10">
-                <TextBlock FontSize="10">
-                    Forgot Password ?
-                </TextBlock>
-
-                <TextBlock FontSize="10">
+                    </TextBlock>
+                    <Button  x:Name="create"   Click="Create_button_Click">Create a account </Button>
+          
+           
             
-                </TextBlock>
-
-            </DockPanel>
             <DockPanel Margin="10" Visibility="Hidden" x:Name="message_error">
                 <TextBlock FontSize="20">
                     Error

@@ -1,12 +1,10 @@
 ﻿using AutoMapper;
 using ProjectStockDTOS;
-using ProjectStockEntity;
 using ProjectStockLibrary;
 using ProjectStockModels.APIReader.Services;
 using ProjectStockModels.JsonReader;
 using ProjectStockModels.Lists;
 using ProjectStockModels.Model;
-using ProjectStockRepository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,14 +22,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WPF_Application.Order
+namespace WPF_Application.User
 {
     /// <summary>
-    /// Logique d'interaction pour ListsControlOrders.xaml
+    /// Logique d'interaction pour UserOrders.xaml
     /// </summary>
-    public partial class ListsControlOrders : UserControl
+    public partial class UserOrders : UserControl
     {
-        
+      
         private readonly IMapper _mapper = ((App)Application.Current).Mapper;
 
         public OrderLists OrderLists { get; set; } = new OrderLists();
@@ -45,13 +43,15 @@ namespace WPF_Application.Order
         {
             var result = await jsonGenericReader.GetAll();
             foreach (var item in result)
-                
+
                 _lists.Add(item);
         }
 
 
-        public ListsControlOrders()
+        public UserOrders()
         {
+            InitializeComponent();
+
             InitializeComponent();
             DataContext = OrderLists;
             jsonGenericReader = new OrderServiceReader(new HttpClient(), _mapper);
@@ -59,8 +59,8 @@ namespace WPF_Application.Order
             loadOrder(jsonGenericReader);
             OrderLists.Orders = _lists;
         }
+      
 
-       
 
         private async Task updateOrder(JsonGenericReader<OrderModel, OrderDto> jsonGenericReader, OrderModel order)
         {
@@ -68,7 +68,7 @@ namespace WPF_Application.Order
 
         }
 
-        private async Task  deleteOrder(JsonGenericReader<OrderModel, OrderDto> jsonGenericReader, Guid id)
+        private async Task deleteOrder(JsonGenericReader<OrderModel, OrderDto> jsonGenericReader, Guid id)
         {
             int _return = await jsonGenericReader.Delete(id);
 
@@ -92,9 +92,9 @@ namespace WPF_Application.Order
 
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
-         
+
             var newUser = new OrderModel() { Id = new Guid(TxtGuid.Text), OrderName = TxtNom.Text, NbStock = int.Parse(TxtQte.Text), Stock = new Stock() };
-            updateOrder(jsonGenericReader,  newUser);
+            updateOrder(jsonGenericReader, newUser);
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)

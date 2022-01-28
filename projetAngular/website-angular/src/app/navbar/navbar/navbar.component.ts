@@ -17,6 +17,20 @@ export class NavbarComponent {
   user_email : string = '';
   
   user = new User(Guid.createEmpty(),'','','','','','') || undefined;
+
+  static pathModStock: string = 'modify_stock';
+  urlModStock : string = '/' + NavbarComponent.pathModStock;
+  
+
+  static pathStockAdd: string = 'ajout_stocks';
+  urlAjoutStock : string = '/' + NavbarComponent.pathStockAdd;
+  static pathSupStock: string = 'delete_stock';
+  urlSupStock : string = '/' + NavbarComponent.pathSupStock;
+    
+
+  static pathStock: string = 'stocks';
+  urlStock: string = '/' + NavbarComponent.pathStock;
+
   static pathlogin: string = 'login';
   urlLogin: string = '/' + NavbarComponent.pathlogin;
   static pathlogOut: string = 'logout';

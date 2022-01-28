@@ -7,53 +7,53 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Margin="0,75,0,0">
-            <Grid.RowDefinitions>
+        <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="3*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <StackPanel>
-                <WrapPanel>
-                <StackPanel>
-                    <TextBlock Text="Saisir un nom :"/>
-                    <TextBox x:Name="TbUserName" Width="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
-                </StackPanel>
-                <StackPanel>
-                    <TextBlock Text="Saisir un prenom :"/>
-                    <TextBox x:Name="TbUserFirstName" Width="200"/>
-
-                </StackPanel>
-
-                
-               
-            </WrapPanel>
+        
+        
+        <StackPanel Grid.Column="0">
             <WrapPanel>
-              
+                <StackPanel>
+                    <TextBlock Text="Saisir un phone :"/>
+                    <TextBox x:Name="TbPhone" Width="200" HorizontalAlignment="Left"/>
+                    <TextBlock Text="Saisir un email :"/>
+                    <TextBox x:Name="TbEmail" Width="200"  HorizontalAlignment="Left"/>
+
+                </StackPanel>
+
             </WrapPanel>
-            <StackPanel Grid.Column="0">
-
-                <WrapPanel>
-                    <StackPanel>
-                        <TextBlock Text="Saisir un email :"/>
-                        <TextBox x:Name="TbEmail" Width="200"/>
-
-                    </StackPanel>
-
-                    <StackPanel>
-                        <TextBlock Text="Saisir un phone :"/>
-                        <TextBox x:Name="TbPhone" Width="200"/>
-
-                    </StackPanel>
-
-                </WrapPanel>
-            </StackPanel>
         </StackPanel>
-            <StackPanel Grid.Column="1">
-                <WrapPanel>
+        <StackPanel Grid.Column="1">
+            <WrapPanel>
+
+
+
+
+                <StackPanel>
+
+                    <TextBlock Text="Saisir un nom :"/>
+                    <TextBox x:Name="TbUserName" Width="200" HorizontalAlignment="Left"/>
+
+                    <TextBlock Text="Saisir un prenom :"/>
+                    <TextBox x:Name="TbUserFirstName" Width="200" HorizontalAlignment="Left"/>
+
+
+                </StackPanel>
+            </WrapPanel>
+        </StackPanel>
+
+
+
+        <StackPanel Grid.Column="2">
+            <WrapPanel>
                     
         
                 <StackPanel>
@@ -67,7 +67,8 @@
                 </StackPanel>
             </WrapPanel>
             </StackPanel>
-        <ListBox Grid.ColumnSpan="2" SelectedItem="{Binding CurrentUser}" ItemsSource="{Binding Users}" Grid.Row="1" x:Name="ListUser">
+      
+        <ListBox Grid.ColumnSpan="3" SelectedItem="{Binding CurrentUser}" ItemsSource="{Binding Users}" Grid.Row="1" x:Name="ListUser">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>

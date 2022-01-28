@@ -11,14 +11,12 @@ import { NavbarComponent } from 'src/app/navbar/navbar/navbar.component';
 import { Notification } from 'src/models/Notification';
 import { User } from 'src/models/User';
 
-
 @Component({
-  selector: 'app-orders-delte',
-  templateUrl: './orders-delte.component.html',
-  styleUrls: ['./orders-delte.component.scss']
+  selector: 'app-stocks-delete',
+  templateUrl: './stocks-delete.component.html',
+  styleUrls: ['./stocks-delete.component.scss']
 })
-export class OrdersDelteComponent implements OnInit {
-
+export class StocksDeleteComponent implements OnInit {
 
   message : string  = '';
   
@@ -48,16 +46,17 @@ export class OrdersDelteComponent implements OnInit {
     }
     try{
       
-     this.authService.deleteOrder(this.id).subscribe();
+     this.authService.deleteStock(this.id).subscribe();
     }
     catch{
       console.log("ok");
     }
 
-    this.router.navigate(['/orders']);
+    this.router.navigate(['/stocks']);
    
 
  
  
   }
+
 }

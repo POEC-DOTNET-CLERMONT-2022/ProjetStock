@@ -6,6 +6,7 @@ import { ILogin } from 'src/models/login/i-login';
 import { Order } from 'src/models/Order';
 import { Market } from 'src/models/Market';
 import { Notification } from 'src/models/Notification';
+import { Stock } from 'src/models/Stock';
 @Injectable({
   providedIn: 'root'
 })
@@ -31,6 +32,10 @@ export class UserService {
   }
   getMarkets() : Observable<Market[]>{  
     return this._httpClient.get<Market[]>(this._baseurl_market);
+  }
+
+  getStocks() : Observable<Stock[]>{  
+    return this._httpClient.get<Stock[]>('https://localhost:7136/api/stocks/all');
   }
   getUserById(id : string ) : Observable<User[]>{
 

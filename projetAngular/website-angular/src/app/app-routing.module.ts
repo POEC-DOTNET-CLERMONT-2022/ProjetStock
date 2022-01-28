@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthService } from 'src/services/service-auth/auth.service';
 import { AppComponent } from './app.component';
@@ -25,6 +25,10 @@ import { NotifsDeleteComponent } from './notifs/notifs-delete/notifs-delete.comp
 import { UserDeleteComponent } from './users/user-delete/user-delete/user-delete.component';
 import { MarketDeleteComponent } from './markets/market-delete/market-delete.component';
 import { OrdersDelteComponent } from './orders/orders-delte/orders-delte.component';
+import { StocksDeleteComponent } from './stocks/stocks-delete/stocks-delete.component';
+import { StocksAddComponent } from './stocks/stocks-add/stocks-add.component';
+import { StocksUpdateComponent } from './stocks/stocks-update/stocks-update.component';
+import { StocksComponentComponent } from './stocks/stocks-component/stocks-component.component';
 const routes: Routes = [
   { path : NavbarComponent.pathlogin, component: LoginComponent,},
   { path  : NavbarComponent.pathuser, component: UserComponentComponent, canActivate: [MyGuard],data: {roles: ['user']}},
@@ -45,7 +49,11 @@ const routes: Routes = [
   {path : NavbarComponent.pathSupNotif + '/:id' , component:NotifsDeleteComponent,canActivate:[MyGuard],data:{roles:['user']}},
   {path: NavbarComponent.pathSupUser + '/:id',component: UserDeleteComponent,canActivate:[MyGuard],data:{roles : ['user']}},
   {path:NavbarComponent.pathDeleteMarket + '/:id', component:MarketDeleteComponent,canActivate:[MyGuard],data : {roles : ['user']}},
-  {path:NavbarComponent.pathSupOrder + '/:id',component:OrdersDelteComponent,canActivate:[MyGuard],data : {roles :['user']}}
+  {path:NavbarComponent.pathSupOrder + '/:id',component:OrdersDelteComponent,canActivate:[MyGuard],data : {roles :['user']}},
+  {path:NavbarComponent.pathSupStock +'/:id',component:StocksDeleteComponent,canActivate:[MyGuard],data : {roles :['user']}},
+  {path:NavbarComponent.pathStockAdd,component:StocksAddComponent,canActivate:[MyGuard],data : {roles :['user']}},
+  {path:NavbarComponent.pathModStock +'/:id',component:StocksUpdateComponent,canActivate:[MyGuard],data : {roles :['user']}},
+  {path:NavbarComponent.pathStock,component:StocksComponentComponent,canActivate:[MyGuard],data : {roles :['user']}}
   
 ];
 

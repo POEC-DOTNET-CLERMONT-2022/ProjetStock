@@ -114,6 +114,25 @@ export class AuthService {
      '_stocks' : []
     }, httpOptions);
   }
+
+  addStock(_id : Guid,_name :string,_value : number,_entrepriseName : string): Observable<any> {
+    
+    return this.http.post('https://localhost:7136/api/stocks/', {
+     '_id' : _id.toString(),
+     '_name' : _name,
+     '_value' : _value,
+     '_entrepriseName' : _entrepriseName
+    }, httpOptions);
+  }
+  putStock(_id : Guid,_name :string,_value : number,_entrepriseName : string): Observable<any> {
+    
+    return this.http.put('https://localhost:7136/api/stocks/', {
+     '_id' : _id,
+     '_name' : _name,
+     '_value' : _value,
+     '_entrepriseName' : _entrepriseName
+    }, httpOptions);
+  }
   
   getOrder(id : string) : Observable<Order>{  
     return this.http.get<Order>('https://localhost:7136/api/Order?id='+ id );
@@ -128,6 +147,9 @@ export class AuthService {
 
   getMarket(id : string) : Observable<Market>{  
     return this.http.get<Market>('https://localhost:7136/api/Market?id='+ id );
+  }
+  getStock(id : string) : Observable<Stock>{  
+    return this.http.get<Stock>('https://localhost:7136/api/Stocks?id='+ id );
   }
   getNotif(id : string) : Observable<Notification>{  
     return this.http.get<Notification>('https://localhost:7136/api/Notification?id='+ id );
@@ -201,5 +223,9 @@ export class AuthService {
 
    deleteUser(id : string )  : Observable<any>{
     return this.http.delete("https://localhost:7136/api/user/id?id="+ id);
+   }
+
+   deleteStock(id : string )  : Observable<any>{
+    return this.http.delete("https://localhost:7136/api/stocks/id?id="+ id);
    }
 }

@@ -53,7 +53,7 @@ export class UserDeleteComponent implements OnInit {
     }
 
     this.router.navigate(['/users']);
-
+ 
  
  
   }

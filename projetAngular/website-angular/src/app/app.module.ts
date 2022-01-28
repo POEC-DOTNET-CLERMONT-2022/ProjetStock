@@ -32,6 +32,10 @@ import { NotifsModifyComponent } from './notifs/notifs-modify/notifs-modify.comp
 import { NotifsDeleteComponent } from './notifs/notifs-delete/notifs-delete.component';
 import { OrdersDelteComponent } from './orders/orders-delte/orders-delte.component';
 import { FooterComponent } from './footer/footer.component';
+import { StocksComponentComponent } from './stocks/stocks-component/stocks-component.component';
+import { StocksAddComponent } from './stocks/stocks-add/stocks-add.component';
+import { StocksDeleteComponent } from './stocks/stocks-delete/stocks-delete.component';
+import { StocksUpdateComponent } from './stocks/stocks-update/stocks-update.component';
 @NgModule({
   
   declarations: [
@@ -59,7 +63,11 @@ import { FooterComponent } from './footer/footer.component';
           NotifsModifyComponent,
           NotifsDeleteComponent,
           OrdersDelteComponent,
-          FooterComponent
+          FooterComponent,
+          StocksComponentComponent,
+          StocksAddComponent,
+          StocksDeleteComponent,
+          StocksUpdateComponent
 
   ],
   imports: [

@@ -53,7 +53,6 @@ export class NotifsDeleteComponent implements OnInit {
     this.router.navigate(['/notifs']);
 
  
- 
   }
 
 }

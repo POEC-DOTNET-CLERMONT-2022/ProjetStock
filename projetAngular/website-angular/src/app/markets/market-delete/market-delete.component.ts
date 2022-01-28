@@ -53,8 +53,6 @@ export class MarketDeleteComponent implements OnInit {
     }
 
     this.router.navigate(['/market']);
-
- 
  
   }
  

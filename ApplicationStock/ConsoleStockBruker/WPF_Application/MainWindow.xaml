@@ -12,43 +12,70 @@
                 <Menu DockPanel.Dock="Top">
                     <MenuItem Header="Menu"  Height="50">
                         <MenuItem Header="Connection" Click="MenuItem_Click_Connection"></MenuItem>
-                        <MenuItem Header="Listes de commandes"  Click="MenuItem_Click_1"></MenuItem>
-                            <MenuItem Header="Listes des actions" Click="MenuItem_Click_2"></MenuItem>
-                        <MenuItem Header="Listes des notifications" Click="MenuItem_Click_3">
-                    </MenuItem>
-
-                    <MenuItem Header="Market">
-                            <MenuItem Header="MarketA">
-                                <MenuItem Header="StockA1" ></MenuItem>
-                                <MenuItem Header="StockA2" ></MenuItem>
-                                <MenuItem Header="StockA3" ></MenuItem>
-                                <MenuItem Header="StockA4" ></MenuItem>
-                            </MenuItem>
-                            <MenuItem Header="MarketB">
-                                <MenuItem Header="StockB1" ></MenuItem>
-                                <MenuItem Header="StockB2" ></MenuItem>
-                                <MenuItem Header="StockB3" ></MenuItem>
-                                <MenuItem Header="StockB4" ></MenuItem>
-                            </MenuItem>
-
-                            <MenuItem Header="MarketC">
-                                <MenuItem Header="StockC1" ></MenuItem>
-                                <MenuItem Header="StockC2" ></MenuItem>
-                                <MenuItem Header="StockC3" ></MenuItem>
-                                <MenuItem Header="StockC4"></MenuItem>
-                            </MenuItem>
-
-                            <MenuItem Header="MarketD">
-                                <MenuItem Header="StockD1"></MenuItem>
-                                <MenuItem Header="StockD2" ></MenuItem>
-                                <MenuItem Header="StockD3"></MenuItem>
-                                <MenuItem Header="StockD4" ></MenuItem>
-                            </MenuItem>
-                        </MenuItem>
+                        <MenuItem Header="Mon Profil" ></MenuItem>
                         <MenuItem Header="Contact us">
                             <MenuItem Header="Direct Message" Click="MenuItem_Click_Contact"></MenuItem>
                             <MenuItem Header="Email: email@admin.com"></MenuItem>
                             <MenuItem Header="Tel: XXXXXXXX"></MenuItem>
+                        </MenuItem>
+                        
+                
+                    </MenuItem>
+
+                    <MenuItem Header="Lists"  Height="50">
+                   
+                        <MenuItem Header="Lists of Cryptomonnaies"></MenuItem>
+                        <MenuItem Header="Lists of  Stocks"  Click="MenuItem_Click"/>
+                        <MenuItem Header="Lists of orders"  Click="MenuItem_Click_1"></MenuItem>
+                            <MenuItem Header="Lists of users" Click="MenuItem_Click_2"></MenuItem>
+                            <MenuItem Header="Lists of notifications" Click="MenuItem_Click_3">
+                            </MenuItem>
+                        </MenuItem>
+                            <MenuItem Header="Market">
+                           
+                      
+                 
+                        <MenuItem Header="MarketA">
+                            <MenuItem Header="StockA1" ></MenuItem>
+                            <MenuItem Header="StockA2" ></MenuItem>
+                            <MenuItem Header="StockA3" ></MenuItem>
+                            <MenuItem Header="StockA4" ></MenuItem>
+                        </MenuItem>
+                        <MenuItem Header="MarketB">
+                            <MenuItem Header="StockB1" ></MenuItem>
+                            <MenuItem Header="StockB2" ></MenuItem>
+                            <MenuItem Header="StockB3" ></MenuItem>
+                            <MenuItem Header="StockB4" ></MenuItem>
+                        </MenuItem>
+
+                        <MenuItem Header="MarketC">
+                            <MenuItem Header="StockC1" ></MenuItem>
+                            <MenuItem Header="StockC2" ></MenuItem>
+                            <MenuItem Header="StockC3" ></MenuItem>
+                            <MenuItem Header="StockC4"></MenuItem>
+                        </MenuItem>
+
+                        <MenuItem Header="MarketD">
+                            <MenuItem Header="StockD1"></MenuItem>
+                            <MenuItem Header="StockD2" ></MenuItem>
+                            <MenuItem Header="StockD3"></MenuItem>
+                            <MenuItem Header="StockD4" ></MenuItem>
+                        </MenuItem>
+                                
+                                
+
+                    </MenuItem>
+
+                    <MenuItem Header="Cart"  Height="50">
+                    </MenuItem>
+
+                    <MenuItem Header="My informations"  Height="50">
+
+                        <MenuItem Header="My profile" Click="Profile_click"></MenuItem>
+                        <MenuItem Header="My orders" Click="Orders_click"/>
+                        <MenuItem Header="My notification" Click="Notifications_Click"></MenuItem>
+                        <MenuItem Header="Sell or Buy orders"></MenuItem>
+                        <MenuItem Header="Disconnect">
                         </MenuItem>
                     </MenuItem>
                 </Menu>
