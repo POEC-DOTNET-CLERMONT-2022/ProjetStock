@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ProjectStockDTOS;
 using ProjectStockEntity;
 using ProjectStockLibrary;
 using ProjectStockModels.Model;

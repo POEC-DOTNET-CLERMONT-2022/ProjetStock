@@ -23,7 +23,7 @@ namespace ProjectStockRepository.Repository
 
         private List<T> _listEntity { get; set; } = new List<T>();
 
-
+   
         public T? Update(T notifentity)
         {
 

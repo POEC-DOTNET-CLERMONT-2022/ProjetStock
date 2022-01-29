@@ -31,6 +31,11 @@ namespace ProjectStockLibrary
             _clients = new List<Client>();
         }
 
+        public object ToDto()
+        {
+            throw new NotImplementedException();
+        }
+
         public Stock(Guid _id,string name, float value, string entrepriseName)
         {
             _id = Guid.NewGuid();

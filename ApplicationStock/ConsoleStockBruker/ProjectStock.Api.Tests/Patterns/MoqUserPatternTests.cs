@@ -54,7 +54,7 @@ namespace ProjectStock.Api.Tests.Patterns
             UserDto userDto = new UserDto() { _id = id, _addresses = new List<Address>(), _stocks = new List<Stock>(), _email = "test" };
             Client client = new Client(id) { _email = "test" };
 
-            var mapped = userDto.ToModel():
+            var mapped = userDto.ToModel();
 
             Assert.IsNotNull(mapped);
             Assert.IsInstanceOfType(typeof(Client), mapped.GetType());
