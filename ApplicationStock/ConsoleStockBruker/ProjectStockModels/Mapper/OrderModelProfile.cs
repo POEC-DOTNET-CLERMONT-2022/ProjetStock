@@ -14,6 +14,7 @@ namespace ProjectStockModels.Mapper
         public OrderModelProfile()
         {
             CreateMap<OrderModel,Order>().ReverseMap();
+            
         }
     }
 }
