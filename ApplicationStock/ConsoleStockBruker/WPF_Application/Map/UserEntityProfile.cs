@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using ProjectStockEntity;
 using ProjectStockModels;
+using ProjectStockModels.Model;
 
 namespace WPF_Application.Map
 {

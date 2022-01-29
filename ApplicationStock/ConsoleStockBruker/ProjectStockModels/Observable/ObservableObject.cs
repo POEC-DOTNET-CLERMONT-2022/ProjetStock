@@ -12,7 +12,7 @@ namespace ProjectStockModels.Observable
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        protected virtual void OnNotifyPropertyChanged([CallerMemberName] string propertyname = "")
+        protected virtual void OnNotifyPropertyChanged([CallerMemberName] string propertyname  = "")
         {
             if (PropertyChanged != null)
             {

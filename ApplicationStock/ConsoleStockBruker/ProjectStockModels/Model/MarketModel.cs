@@ -9,16 +9,20 @@ namespace ProjectStockModels.Model
 {
     public class MarketModel : ObservableObject
     {
-        public Guid _id { get; set; }
-        public string _name { get; set; }
-        public DateTime _openingDate { get; set; }
-        public DateTime _closingDate { get; set; }
+
+        private Guid _id;
+        public string _name;
+        public DateTime _openingDate;
+        public DateTime _closingDate;
+
+
+
         public Guid Id
         {
             get { return _id; }
             set
             {
-                if (_id != null)
+                if (value != null)
                 {
                     _id = value;
                     OnNotifyPropertyChanged();
@@ -31,7 +35,7 @@ namespace ProjectStockModels.Model
             get { return _name; }
             set
             {
-                if (_name != null)
+                if (value != null)
                 {
                     _name = value;
                     OnNotifyPropertyChanged();
@@ -57,7 +61,7 @@ namespace ProjectStockModels.Model
             get { return _closingDate; }
             set
             {
-                if (_closingDate != null)
+                if (value != null)
                 {
                     _closingDate = value;
                     OnNotifyPropertyChanged();

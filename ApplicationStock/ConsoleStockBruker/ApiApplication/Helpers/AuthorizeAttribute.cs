@@ -14,7 +14,7 @@ namespace ApiApplication.Helpers
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class AuthorizeAttribute : Attribute, IAuthorizationFilter
     {
-        private APIContext _context;
+        private readonly APIContext _context;
 
         public AuthorizeAttribute()
         {
@@ -25,6 +25,7 @@ namespace ApiApplication.Helpers
         {
             var token = context.HttpContext.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
             var p = _context._users.Where(x => x._token == token);
+
             Client client = null;
             foreach(var user in p)
             {

@@ -13,15 +13,15 @@ namespace ProjectStockModels.Model
         public Guid _id;
         public string _orderName;
         public DateTime _orderDate;
-        private Stock _stock;
-        private int _nbStock;
+        public Stock _stock;
+        public int _nbStock;
 
         public Guid Id
         {
             get { return _id; }
             set
             {
-                if (_id != null)
+                if (value != null)
                 {
                     _id = value;
                     OnNotifyPropertyChanged();
@@ -35,7 +35,7 @@ namespace ProjectStockModels.Model
             get { return _orderName; }
             set
             {
-                if (_orderName != null)
+                if (value != null)
                 {
                     _orderName = value;
                     OnNotifyPropertyChanged();
@@ -48,7 +48,7 @@ namespace ProjectStockModels.Model
             get { return _stock; }
             set
             {
-                if (_stock != null)
+                if (value != null)
                 {
                     _stock = value;
                     OnNotifyPropertyChanged();
@@ -61,7 +61,7 @@ namespace ProjectStockModels.Model
             get { return _orderDate; }
             set
             {
-                if (_orderDate != null)
+                if (value != null)
                 {
                     _orderDate = value;
                     OnNotifyPropertyChanged();
@@ -73,7 +73,7 @@ namespace ProjectStockModels.Model
             get { return _nbStock; }
             set
             {
-                if (_nbStock != null)
+                if (value != null)
                 {
                     _nbStock = value;
                     OnNotifyPropertyChanged();

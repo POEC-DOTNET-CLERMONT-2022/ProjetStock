@@ -64,6 +64,9 @@ namespace ApiApplication.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("Crypto_id")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("_email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -96,13 +99,36 @@ namespace ApiApplication.Migrations
 
                     b.HasKey("_id");
 
+                    b.HasIndex("Crypto_id");
+
                     b.ToTable("_users");
+                });
+
+            modelBuilder.Entity("ProjectStockLibrary.Crypto", b =>
+                {
+                    b.Property<Guid>("_id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("_name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("_value")
+                        .HasColumnType("real");
+
+                    b.HasKey("_id");
+
+                    b.ToTable("_cryptos");
                 });
 
             modelBuilder.Entity("ProjectStockLibrary.Market", b =>
                 {
                     b.Property<Guid>("_id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("Crypto_id")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("_closingDate")
@@ -116,6 +142,8 @@ namespace ApiApplication.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("_id");
+
+                    b.HasIndex("Crypto_id");
 
                     b.ToTable("_markets");
                 });
@@ -193,6 +221,20 @@ namespace ApiApplication.Migrations
                         .HasForeignKey("Address");
                 });
 
+            modelBuilder.Entity("ProjectStockLibrary.Client", b =>
+                {
+                    b.HasOne("ProjectStockLibrary.Crypto", null)
+                        .WithMany("_listClient")
+                        .HasForeignKey("Crypto_id");
+                });
+
+            modelBuilder.Entity("ProjectStockLibrary.Market", b =>
+                {
+                    b.HasOne("ProjectStockLibrary.Crypto", null)
+                        .WithMany("_listMarket")
+                        .HasForeignKey("Crypto_id");
+                });
+
             modelBuilder.Entity("ProjectStockLibrary.Stock", b =>
                 {
                     b.HasOne("ProjectStockLibrary.Market", null)
@@ -203,6 +245,13 @@ namespace ApiApplication.Migrations
             modelBuilder.Entity("ProjectStockLibrary.Client", b =>
                 {
                     b.Navigation("_addresses");
+                });
+
+            modelBuilder.Entity("ProjectStockLibrary.Crypto", b =>
+                {
+                    b.Navigation("_listClient");
+
+                    b.Navigation("_listMarket");
                 });
 
             modelBuilder.Entity("ProjectStockLibrary.Market", b =>

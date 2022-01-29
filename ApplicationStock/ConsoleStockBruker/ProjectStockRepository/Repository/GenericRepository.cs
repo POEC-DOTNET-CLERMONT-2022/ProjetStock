@@ -7,45 +7,55 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
+using ProjectStockLibrary;
+using ProjectStockModels;
+using ProjectStockModels.JsonReader;
+using ProjectStockDTOS;
 
 namespace ProjectStockRepository.Repository
 {
-    public class GenericRepository<T> :  IGenericRepository<T> where T : class,new ()
+    public class GenericRepository<T> : IGenericRepository<T> where T : class, new()
     {
- 
+        public IMapper _mapper { get; }
+
         private SqlDbContext SqlContext { get; }
 
-        private  List<T> _listEntity { get; set; }
+        private List<T> _listEntity { get; set; }
 
-        private readonly Fixture _fixture = new Fixture();
+      
 
 
         public GenericRepository()
         {
             SqlContext = new SqlDbContext();
-             _listEntity  = new List<T>();
+            _listEntity = new List<T>();
+  
         }
 
-        public T? Update(T entity)
+        public T? Update(T notifentity)
         {
-           
-            if (entity == null)
+
+
+
+            if (notifentity == null)
             {
                 return null;
             }
 
-            SqlContext.Update(entity);
+            SqlContext.Set<T>().Update(notifentity);
             SqlContext.SaveChanges();
 
-            return entity;
+            return notifentity;
         }
 
         public T Add(T entity)
         {
-            //T _entity = SqlContext.Add(entity).Entity;
-            
+           
+            SqlContext.Set<T>().Add(entity);
+
             _listEntity.Add(entity);
-            //SqlContext.SaveChanges();
+         
             return entity;
         }
 
@@ -53,7 +63,7 @@ namespace ProjectStockRepository.Repository
         {
             _listEntity.Remove(entity);
             SqlContext.Set<T>().Remove(entity);
-            if(SqlContext.SaveChanges() == 1)
+            if (SqlContext.SaveChanges() == 1)
             {
                 return SqlContext.SaveChanges() == 1;
             }
@@ -61,17 +71,15 @@ namespace ProjectStockRepository.Repository
             {
                 return SqlContext.SaveChanges() == 0;
             }
-           
+
         }
-
-        public IEnumerable<T> GetAll()
+        public IEnumerable<T>  GetAll()
         {
-            _listEntity
-
-
             return _listEntity;
         }
 
-
+            
     }
 }
+
+

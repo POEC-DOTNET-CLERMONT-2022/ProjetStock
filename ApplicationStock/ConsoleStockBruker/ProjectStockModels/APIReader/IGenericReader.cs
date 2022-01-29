@@ -8,6 +8,7 @@ namespace WPF_Application.JsonReader
 {
     internal interface IGenericReader<T> where T : class
     {
+      
         Task<T> Get(T item);
 
         Task<T> Update(T item);

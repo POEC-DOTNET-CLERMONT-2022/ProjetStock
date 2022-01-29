@@ -11,7 +11,7 @@ using ProjectStockLibrary;
 
 namespace ProjectStockDTOS
 {
-    [DataContract]
+  
     public class UserDto
     {
         [DataMember]
@@ -19,41 +19,41 @@ namespace ProjectStockDTOS
         public Guid _id { get; set; }
         [DataMember]
         [Required]
-        public string _firstName { get; set; }
+        public string? _firstName { get; set; }
         [DataMember]
         [Required]
-        public string _lastName { get; set; }
+        public string? _lastName { get; set; }
         [DataMember]
 
-        public string _email { get; set; }
+        public string? _email { get; set; }
         [DataMember]
         [Required]
-        public string _phone { get; set; }
+        public string? _phone { get; set; }
         [DataMember]
         [Required]
-        public string _siret { get; set; }
-
+        public string? _siret { get; set; }
+        
         [DataMember]
         [Required]
-        public string _password { get; set; }
-
-        [JsonIgnore]
-        [DataMember]
-        [Required]
-        public string _token { get; set; }
+        public string? _password { get; set; }
 
         [JsonIgnore]
         [DataMember]
-        [Required]
-        public DateTime _expireToken { get; set; }
+
+        public string? _token { get; set; }
+
+        [JsonIgnore]
+        [DataMember]
+    
+        public DateTime? _expireToken { get; set; }
 
         [DataMember]
         [Required]
-        public List<Address> _addresses { get; set; }
+        public List<Address>? _addresses { get; set; }
 
         [DataMember]
         [Required]
-        public List<Stock> _stocks { get; set; }
+        public List<Stock>? _stocks { get; set; }
 
 
     }

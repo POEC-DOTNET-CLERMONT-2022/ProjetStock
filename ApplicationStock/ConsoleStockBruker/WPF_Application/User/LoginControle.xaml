@@ -15,28 +15,20 @@
 
             <Label x:Name="login" HorizontalAlignment="Center"  FontSize="18"  VerticalAlignment="Center" >Login</Label>
             <DockPanel x:Name="user_message">
-                <Label x:Name="username" Margin="0,0,0,0">Username</Label>
-                <TextBox  Text="" Height="17"/>
+                    <Label x:Name="username" Margin="0,0,0,0">Email</Label>
+                <TextBox  x:Name="TxtEmail" Height="17"/>
             </DockPanel>
             <DockPanel  x:Name="pass_message"  >
                 <Label x:Name="password" Margin="0,0,0,0">Password</Label>
-                <TextBox Margin="0,10,0,0" Text="" Height="17"/>
+                <TextBox Margin="0,10,0,0" x:Name="TxtPassword" Height="17"/>
             </DockPanel>
-            <DockPanel Margin="10">
+         
                 <TextBlock x:Name="link_create" FontSize="10">
-                <Hyperlink NavigateUri="Page1.xaml#contentpanel" x:Name="create"   Click="MenuItem_Click_Create">Create a account </Hyperlink>
-                </TextBlock>
-            </DockPanel>
-            <DockPanel Margin="10">
-                <TextBlock FontSize="10">
-                    Forgot Password ?
-                </TextBlock>
-
-                <TextBlock FontSize="10">
-                <Hyperlink NavigateUri="Page1.xaml#contentpanel"   x:Name="recover" Click="MenuItem_Click_Recover">Recover a account </Hyperlink>
-                </TextBlock>
-
-            </DockPanel>
+                    </TextBlock>
+                    <Button  x:Name="create"   Click="Create_button_Click">Create a account </Button>
+          
+           
+            
             <DockPanel Margin="10" Visibility="Hidden" x:Name="message_error">
                 <TextBlock FontSize="20">
                     Error
@@ -48,7 +40,7 @@
             <DockPanel Margin="10">
 
 
-                <Button Height="30" BorderThickness="3"  x:Name="login_button" Width="304" >Connexion</Button>
+                <Button Height="30" BorderThickness="3"  x:Name="login_button" Width="304" Click="Login_button_Click" >Connexion</Button>
 
             </DockPanel>
 

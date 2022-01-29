@@ -1,4 +1,5 @@
-﻿using ProjectStockModels.Observable;
+﻿using ProjectStockModels.Model;
+using ProjectStockModels.Observable;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,7 +13,7 @@ namespace ProjectStockModels.Lists
     {
         private ObservableCollection<UserModel> _users;
 
-        private UserModel _CurrentUser;
+        private UserModel? _CurrentUser;
 
         public UserModel CurrentUser
         {
@@ -28,7 +29,7 @@ namespace ProjectStockModels.Lists
         }
 
 
-        public ObservableCollection<UserModel> Users
+        public ObservableCollection<UserModel>? Users
         {
             get { return _users; }
             set

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace ProjectStockDTOS
 {
-    [DataContract]
+    
    public class OrderDto
     {
         [DataMember]
@@ -15,13 +15,13 @@ namespace ProjectStockDTOS
         public Guid _id { get; set; }
         [DataMember]
         [Required]
-        public string _orderName { get;  set; }
+        public string? _orderName { get;  set; }
         [DataMember]
         [Required]
         public DateTime _orderDate { get; set; }
         [DataMember]
         [Required]
-        public Stock _stock { get; set; }
+        public Stock? _stock { get; set; }
         [DataMember]
         [Required]
         public int _nbStock { get;  set; }
