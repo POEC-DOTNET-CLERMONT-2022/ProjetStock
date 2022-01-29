@@ -106,6 +106,8 @@ export class StocksUpdateComponent implements OnInit {
         
       }
     );
+
+  
  
 
    }

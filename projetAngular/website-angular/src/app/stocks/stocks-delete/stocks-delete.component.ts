@@ -54,7 +54,7 @@ export class StocksDeleteComponent implements OnInit {
 
     this.router.navigate(['/stocks']);
    
-
+     
  
  
   }
