@@ -12,13 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ApiApplication\ApiApplication.csproj" />
     <ProjectReference Include="..\ProjectStockDTOS\ProjectStockDTOS.csproj" />
     <ProjectReference Include="..\ProjectStockEntity\ProjectStockEntity.csproj" />
     <ProjectReference Include="..\ProjectStockLibrary\ProjectStockLibrary.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="APIReader\Map\" />
   </ItemGroup>
 
 </Project>

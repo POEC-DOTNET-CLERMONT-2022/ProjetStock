@@ -21,10 +21,7 @@ namespace ApiApplication.Model
             optionsBuilder.UseSqlServer(ConnectionString);
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-        }
+    
 
 
         public override DbSet<TEntity> Set<TEntity>()

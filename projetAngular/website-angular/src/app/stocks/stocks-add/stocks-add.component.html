@@ -1,0 +1,60 @@
+<div class="container mt-5 border" >
+
+    <form (ngSubmit)="onSubmit()" #formUse="ngForm">
+      <h3 class="text-center">Add Stock</h3>
+      <div class="row">
+        <div  class="col-6 mx-auto">
+          <input class="form-control"
+                 placeholder="name"
+                 type="text"
+                 required
+                 minlength="3"
+                 pattern="[a-zA-Z'\-'\s]*"
+                 [(ngModel)]="form.name"
+                 [name]="'name'"
+                 #nameInput="ngModel"
+          >
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="col-6 mx-auto">
+          <input class="form-control"
+                 placeholder="EntrepriseName"
+                 type="text"
+                 required
+                 pattern="[a-zA-Z'\-'\s]*"
+                 [(ngModel)]="form.entreprisename"
+                 [name]="'entreprisename'"
+           
+                 #entreprisenameInput="ngModel"
+          >
+        </div>
+       
+      </div>
+     
+      <div class="row">
+        <div class="col-6 mx-auto">
+          <input class="form-control"
+                 placeholder="_value"
+                 type="text"
+                 required
+                 [(ngModel)]="form._value"
+                 [name]="'_value'"
+          
+                 #valueInput="ngModel"
+          >
+        </div>
+        
+     
+     
+      
+      <div class="text-center">
+        <br>
+        <button class="btn btn-primary" [disabled]="form.invalid">
+          Send
+        </button>
+      </div>
+      </div>
+    </form>
+  </div>

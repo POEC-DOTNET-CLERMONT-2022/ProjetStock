@@ -14,9 +14,9 @@ namespace ApiApplication.Controllers
     [ApiController]
     public class NotificationController : ControllerBase
     {
-        private IMapper _mapper;
+        private readonly IMapper _mapper;
 
-        private APIContext _context;
+        private readonly APIContext _context;
         public NotificationController(IMapper mapper, APIContext context)
         {
             _mapper = mapper;
@@ -24,19 +24,19 @@ namespace ApiApplication.Controllers
         }
 
         //// GET api/<ProjectController>/GetAll
-        //[Authorize]
-        //[HttpGet("GetAll")]
-        //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(NotificationDto))]
-        //[ProducesResponseType(StatusCodes.Status404NotFound)]
-        //public ActionResult<IEnumerable<NotificationDto>> GetAll()
-        //{
-        //    var p = _context._notifs.ToList();
-        //    if (p == null)
-        //        return NotFound();
-        //    else
-        //        return Ok(p);
+        [Authorize]
+        [HttpGet("all")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(NotificationDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<IEnumerable<NotificationDto>> GetAll()
+        {
+            var p = _context._notifs.ToList();
+            if (p == null)
+                return NotFound();
+            else
+                return Ok(p);
 
-        //}
+        }
 
 
         // GET api/<ProjectController>/5
@@ -78,9 +78,12 @@ namespace ApiApplication.Controllers
                 if (mapProj == null)
                     return NotFound();
                 else
+                {
                     _context._notifs.Add(p);
                     _context.SaveChanges();
                     return Ok(mapProj);
+                }
+                  
 
               
             }
@@ -103,9 +106,10 @@ namespace ApiApplication.Controllers
 
 
             var p = _context._notifs.Find(notificationDto._id);
-
+            if (p == null)
+                return BadRequest();
             p._textRappel = notificationDto.textRappel;
-            p._sendAt = p._sendAt;
+            p._sendAt = notificationDto.sendAt;
 
             var mapProj = _mapper.Map<NotificationDto>(p);
             _context._notifs.Update(p);
@@ -126,6 +130,24 @@ namespace ApiApplication.Controllers
                 _context.SaveChanges();
 
             }    
+            else
+                return NotFound();
+
+            return Ok(p);
+        }
+
+        [Authorize]
+        [HttpDelete("id")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(NotificationDto))]
+        public ActionResult<NotificationDto> DeleteByGuid(Guid id)
+        {
+            var p = _context._notifs.Find(id);
+            if (p != null)
+            {
+                _context._notifs.Remove(p);
+                _context.SaveChanges();
+
+            }
             else
                 return NotFound();
 

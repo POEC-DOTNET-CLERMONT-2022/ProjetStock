@@ -13,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WPF_Application
+namespace WPF_Application.Crypto
 {
     /// <summary>
-    /// Logique d'interaction pour SendMailReceoverPassword.xaml
+    /// Logique d'interaction pour CryptoListsUserControl.xaml
     /// </summary>
-    public partial class SendMailReceoverPassword : UserControl
+    public partial class CryptoListsUserControl : UserControl
     {
-        public SendMailReceoverPassword()
+        public CryptoListsUserControl()
         {
             InitializeComponent();
         }
-
     }
 }

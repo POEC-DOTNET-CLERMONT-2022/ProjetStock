@@ -13,7 +13,7 @@ namespace ProjectStockModels.Lists
     {
         private ObservableCollection<UserModel> _users;
 
-        private UserModel _CurrentUser;
+        private UserModel? _CurrentUser;
 
         public UserModel CurrentUser
         {
@@ -29,7 +29,7 @@ namespace ProjectStockModels.Lists
         }
 
 
-        public ObservableCollection<UserModel> Users
+        public ObservableCollection<UserModel>? Users
         {
             get { return _users; }
             set

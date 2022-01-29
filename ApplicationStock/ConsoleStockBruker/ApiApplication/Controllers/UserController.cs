@@ -1,7 +1,9 @@
-﻿using ApiApplication.Helpers;
+﻿using ApiApplication.Controllers.Services;
+using ApiApplication.Helpers;
 using ApiApplication.Interface;
 using ApiApplication.Model;
 using ApiApplication.Models;
+using ApiApplication.Service.Interfaces;
 using AutoMapper;
 
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +11,9 @@ using Microsoft.AspNetCore.Mvc;
 using ProjectStockDTOS;
 using ProjectStockLibrary;
 using ProjectStockPatternsLibrary;
+
+using System.Security.Cryptography;
+using System.Text;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -18,24 +23,30 @@ namespace ApiApplicationProjectStock.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private IMapper _mapper;
+        private readonly IMapper _mapper;
 
-        private APIContext _context { get; }
+        private readonly APIContext _context;
 
-        private IUserService _userService;
+        private  readonly IUserService _userService;
+
+        private IPasswordHasherService _userPasswordHasher { get; }
 
         public UserController(IMapper mapper, APIContext context, IUserService userService)
         {
             _mapper = mapper;
             _context = context;
+            _userPasswordHasher = new PasswordHasherService();
             _userService = userService;
+
         }
+
+
 
 
         //// GET api/<ProjectController>/GetAll
         [Authorize]
         [HttpGet("all")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddressDto))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<IEnumerable<UserDto>> GetAll()
         {
@@ -51,11 +62,13 @@ namespace ApiApplicationProjectStock.Controllers
         [HttpPost("authenticate")]
         public IActionResult Authenticate(AuthenticateRequest model)
         {
+
+            model._password = _userPasswordHasher.GetPasswordHasher(model._password);
             var response = _userService.Authenticate(model);
 
             if (response == null)
                 return BadRequest(new { message = "Username or password is incorrect" });
-
+    
             return Ok(response);
         }
         
@@ -64,8 +77,10 @@ namespace ApiApplicationProjectStock.Controllers
         public IActionResult Register(CreateResult create)
         {
             Client _client = new Client();
+
+            var _pass =_userPasswordHasher.GetPasswordHasher(create._password); 
             _client._email = create._email;
-            _client._password = create._password;
+            _client._password = _pass;
             _client._lastName = create._lastName;
             _client._firstName = create._firstName;
             try
@@ -101,6 +116,7 @@ namespace ApiApplicationProjectStock.Controllers
 
                 if (client == null)
                     return BadRequest(new { message = "No connected user" });
+              
                 else
                 {
                     client.setToken("");
@@ -127,7 +143,25 @@ namespace ApiApplicationProjectStock.Controllers
 
             var p = _context._users.Find(id);
 
-            var mapProj = _mapper.Map<UserDto>(p);
+       
+            if (p == null)
+                return NotFound();
+            else
+                return Ok(p);
+        }
+
+
+        // GET api/<ProjectController>/5
+        [Authorize]
+        [HttpGet("email")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<UserDto> Get([FromQuery] string email)
+        {
+            var p = _context._users.Where(x => x._email == email);
+         
+
+
             if (p == null)
                 return NotFound();
             else
@@ -143,18 +177,14 @@ namespace ApiApplicationProjectStock.Controllers
         public ActionResult<UserDto> Post(UserDto userDto)
         {
 
+
             var p = userDto.ToModel();
-            try
-            {
-              
-                _context._users.Add(p);
-            } 
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            if (p == null)
+                return BadRequest();
+            _context._users.Add(p);
+
             _context.SaveChanges();
-            return Ok(p);
+            return Ok();
         }
 
         // GET api/<ProjectController>/5
@@ -167,7 +197,8 @@ namespace ApiApplicationProjectStock.Controllers
 
 
             var p = _context._users.Find(userDto._id);
-
+            if (p == null)
+                return BadRequest();
             p._siret = userDto._siret;
             p._phone = userDto._phone;
             p._lastName = userDto._lastName;
@@ -177,10 +208,10 @@ namespace ApiApplicationProjectStock.Controllers
             p._password = userDto._password;
            
 
-            var mapProj = _mapper.Map<UserDto>(p);
+        
             _context._users.Update(p);
             _context.SaveChanges();
-            return Ok(mapProj);
+            return Ok(p);
         }
 
         // DELETE api/<ProjectController>/5
@@ -196,6 +227,25 @@ namespace ApiApplicationProjectStock.Controllers
                 _context.SaveChanges();
             }
             
+            else
+                return NotFound();
+
+            return Ok();
+        }
+
+        // DELETE api/<ProjectController>/5
+        [Authorize]
+        [HttpDelete("id")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDto))]
+        public ActionResult<UserDto> DeleteById(Guid id)
+        {
+            var p = _context._users.Find(id);
+            if (p != null)
+            {
+                _context._users.Remove(p);
+                _context.SaveChanges();
+            }
+
             else
                 return NotFound();
 

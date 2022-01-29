@@ -15,17 +15,13 @@
                 <Label x:Name="login" HorizontalAlignment="Center"  FontSize="18"  VerticalAlignment="Center" >Create an account</Label>
                 <DockPanel x:Name="user_message">
                     <Label x:Name="username" Margin="0,0,0,0">Email</Label>
-                    <TextBox  Text="" Height="24" Width="414"/>
+                    <TextBox  Text="" Height="24" Width="414" x:Name="EMail"></TextBox>
                 </DockPanel>
                 <DockPanel  x:Name="pass_message"  >
                     <Label x:Name="password"  Width="136">Password</Label>
-                    <TextBox  Text="" Height="21" Width="358"/>
+                    <TextBox  Text="" Height="21" Width="358" x:Name="TxtPassword"></TextBox>
                 </DockPanel>
-                <DockPanel  x:Name="pass_message_confirm"  >
-                    <Label x:Name="password_confirm" Margin="0,0,0,0" Width="136">Confirm Password</Label>
-
-                    <TextBox  Text="" Height="22" Width="361"/>
-                </DockPanel>
+            
 
 
                 <DockPanel Margin="10" Visibility="Hidden" x:Name="message_error">

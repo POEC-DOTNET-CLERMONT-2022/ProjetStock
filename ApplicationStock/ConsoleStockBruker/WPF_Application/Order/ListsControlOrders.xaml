@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:WPF_Application.Order"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <Grid Margin="0,75,0,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="3*"/>
@@ -14,26 +14,71 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <StackPanel>
             <WrapPanel>
-                <TextBlock Text="Saisir un nom :"/>
-                <TextBox x:Name="TbUserName" Width="50"/>
+                
+
+
+
             </WrapPanel>
-            <Button Content="Ajouter une Order" Width="200" HorizontalAlignment="Left" Click="Button_Click"/>
+            <WrapPanel>
+
+            </WrapPanel>
+            <StackPanel Grid.Column="0">
+
+                <WrapPanel>
+
+                    <StackPanel>
+                        <TextBlock Text="Saisir un nom :"/>
+                        <TextBox x:Name="TxtNom" Width="200"/>
+
+                    </StackPanel>
+
+
+                </WrapPanel>
+            </StackPanel>
         </StackPanel>
         <StackPanel Grid.Column="1">
             <WrapPanel>
-                <TextBlock Text="Modifier une order :" />
-                <TextBox Width="500" Text="{Binding CurrentOrder.Ordername, UpdateSourceTrigger=PropertyChanged}"  />
+
+                <StackPanel>
+                    <TextBlock Text="Saisir une qte :"/>
+                    <TextBox x:Name="TxtQte" Width="200"/>
+
+                </StackPanel>
+
             </WrapPanel>
         </StackPanel>
-        <ListBox Grid.ColumnSpan="2" SelectedItem="{Binding CurrentOrder}" ItemsSource="{Binding Orders}" Grid.Row="1" x:Name="ListOrder">
+        <StackPanel Grid.Column="2">
+            <WrapPanel>
+
+
+                <StackPanel>
+                   
+                    <Button Content="Modifier une commande " Width="200" HorizontalAlignment="Left" Click="Button_Click_1"/>
+                    <TextBox x:Name="TxtGuid" Width="50"  Visibility="Hidden" Text="{Binding CurrentOrder.Id}" />
+                </StackPanel>
+                <StackPanel>
+                    <Button Content="Supprimer une commande" Width="200" HorizontalAlignment="Left" Click="Button_Click_2"/>
+                   
+    
+                </StackPanel>
+            </WrapPanel>
+        </StackPanel>
+        <ListBox Grid.ColumnSpan="3" SelectedItem="{Binding CurrentOrder}" ItemsSource="{Binding _Orders}" Grid.Row="1" x:Name="ListOrders">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="OrderName :"/>
-                        <TextBlock Text="{Binding OrderName}"/>
+                        <TextBlock Text="ID :"/>
+                        <TextBlock Text="{Binding _Id}"/>
+                        <TextBlock Text="Name :"/>
+                        <TextBlock Text="{Binding orderName}"/>
+                        <TextBlock Text="Order date :"/>
+                        <TextBlock Text="{Binding orderDate}"/>
+                        <TextBlock Text="Nb Stock :"/>
+                        <TextBlock Text="{Binding nbStock}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using ApiApplication.Models;
+using AutoMapper;
 using ProjectStockDTOS;
 using ProjectStockModels.Model;
 using System;
@@ -20,12 +21,15 @@ namespace WPF_Application.Map
             CreateMap<MarketModel, MarketDto>().ReverseMap();
             CreateMap<StockModel, StockDto>().ReverseMap();
 
+
             CreateMap<UserDto, UserModel>().ReverseMap();
             CreateMap<NotificationDto, NotificationModel>().ReverseMap();
             CreateMap<MarketDto, MarketModel>().ReverseMap();
             CreateMap<StockDto, StockModel>().ReverseMap();
 
-        }
+            CreateMap<UserModel, DeleteClass>().ReverseMap();
+         
+        }   
 
     }
 }

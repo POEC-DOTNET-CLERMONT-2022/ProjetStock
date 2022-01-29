@@ -14,9 +14,9 @@ namespace ApiApplicationProjectStock.Controllers
     [ApiController]
     public class MarketController : ControllerBase
     {
-        private IMapper _mapper;
+        private readonly IMapper _mapper;
 
-        private APIContext _context;
+        private readonly APIContext _context;
         public MarketController(IMapper mapper, APIContext context)
         {
             _mapper = mapper;
@@ -24,19 +24,19 @@ namespace ApiApplicationProjectStock.Controllers
         }
 
         //// GET api/<ProjectController>/
-        //[Authorize]
-        //[HttpGet("GetAll")]
-        //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MarketDto))]
-        //[ProducesResponseType(StatusCodes.Status404NotFound)]
-        //public ActionResult<IEnumerable<MarketDto>> GetAll()
-        //{
-        //    var p = _context._markets.ToList();
-        //    if (p == null)
-        //        return NotFound();
-        //    else
-        //        return Ok(p);
+        [Authorize]
+        [HttpGet("all")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MarketDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<IEnumerable<MarketDto>> GetAll()
+        {
+            var p = _context._markets.ToList();
+            if (p == null)
+                return NotFound();
+            else
+                return Ok(p);
 
-        //}
+        }
 
 
         // GET api/<ProjectController>/Get
@@ -75,9 +75,12 @@ namespace ApiApplicationProjectStock.Controllers
                 if (mapProj == null)
                     return NotFound();
                 else
+                {
                     _context._markets.Add(p);
                     _context.SaveChanges();
                     return Ok(mapProj);
+                }
+                    
             }
             catch (Exception ex)
             {
@@ -96,7 +99,10 @@ namespace ApiApplicationProjectStock.Controllers
 
 
             var p = _context._markets.Find(marketDto._id);
-
+            if( p == null)
+            {
+                return BadRequest();
+            }
            
             p._name = marketDto._name;
             p._openingDate = marketDto._openingDate;
@@ -122,6 +128,24 @@ namespace ApiApplicationProjectStock.Controllers
           
             }
            
+            else
+                return NotFound();
+            return Ok(p);
+        }
+
+        // DELETE api/<ProjectController>/5
+        [Authorize]
+        [HttpDelete("id")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MarketDto))]
+        public ActionResult<MarketDto> DeleteById(Guid id)
+        {
+            var p = _context._markets.Find(id);
+            if (p != null)
+            {
+                _context._markets.Remove(p);
+
+            }
+
             else
                 return NotFound();
             return Ok(p);

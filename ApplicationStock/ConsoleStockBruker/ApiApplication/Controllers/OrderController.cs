@@ -15,9 +15,9 @@ namespace ApiApplication.Controllers
     public class OrderController : ControllerBase
     {
 
-        private IMapper _mapper;
+        private readonly IMapper _mapper;
 
-        private APIContext _context;
+        private readonly APIContext _context;
         public OrderController(IMapper mapper, APIContext context)
         {
             _mapper = mapper;
@@ -25,19 +25,19 @@ namespace ApiApplication.Controllers
         }
 
         //// GET api/<ProjectController>/GetAll
-        //[Authorize]
-        //[HttpGet("GetAll")]
-        //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(OrderDto))]
-        //[ProducesResponseType(StatusCodes.Status404NotFound)]
-        //public ActionResult<IEnumerable<OrderDto>> GetAll()
-        //{
-        //    var p = _context._orders.ToList();
-        //    if (p == null)
-        //        return NotFound();
-        //    else
-        //        return Ok(p);
+        [Authorize]
+        [HttpGet("all")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(OrderDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<IEnumerable<OrderDto>> GetAll()
+        {
+            var p = _context._orders.ToList();
+            if (p == null)
+                return NotFound();
+            else
+                return Ok(p);
 
-        //}
+        }
 
 
         // GET api/<ProjectController>/5
@@ -94,6 +94,8 @@ namespace ApiApplication.Controllers
         {
 
             var p = _context._orders.Find(orderDto._id);
+            if(p == null) 
+                return NotFound();
             p._orderName = orderDto._orderName;
             p._orderDate = orderDto._orderDate;
             p._nbStock = orderDto._nbStock;
@@ -111,6 +113,25 @@ namespace ApiApplication.Controllers
         public ActionResult<OrderDto> Delete(DeleteClass delete)
         {
             var p = _context._orders.Find(delete._id);
+            if (p != null)
+            {
+                _context._orders.Remove(p);
+                _context.SaveChanges();
+
+            }
+            else
+                return NotFound();
+
+            return Ok(p);
+
+        }
+
+        [Authorize]
+        [HttpDelete("id")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(OrderDto))]
+        public ActionResult<OrderDto> DeleteById(Guid id)
+        {
+            var p = _context._orders.Find(id);
             if (p != null)
             {
                 _context._orders.Remove(p);

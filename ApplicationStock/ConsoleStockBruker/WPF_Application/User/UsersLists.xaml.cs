@@ -17,6 +17,7 @@ using System.Net.Http;
 using ProjectStockModels.APIReader.Services;
 using ProjectStockModels.Model;
 using System;
+using System.Threading.Tasks;
 
 namespace WPF_Application.User
 {
@@ -29,28 +30,81 @@ namespace WPF_Application.User
         private readonly IGenericRepository<UserEntity> _userRepository = ((App)Application.Current).userRepository;
         private readonly IMapper _mapper  = ((App)Application.Current).Mapper;
 
-        private readonly JsonGenericReader<UserModel, UserDto> jsonGenericReader;
+        private JsonGenericReader<UserModel, UserDto> jsonGenericReader { get; }
+
+
+        private static ObservableCollection<UserModel> _lists { get; set; }
         public UsersList UsersList { get; set; } = new UsersList();
+
+
+        private async Task loadUser(JsonGenericReader<UserModel,UserDto> jsonGenericReader)
+        {
+                var result = await jsonGenericReader.GetAll();
+                foreach (var item in result)
+                    _lists.Add(item);
+        }
+
+        private async  Task updateUser(JsonGenericReader<UserModel, UserDto> jsonGenericReader, UserModel newUser)
+        {
+             await jsonGenericReader.Update(newUser);
+
+        }
+
+        private async Task deleteUser(JsonGenericReader<UserModel, UserDto> jsonGenericReader, Guid id)
+        {
+            int _return = await jsonGenericReader.Delete(id);
+
+
+            if(_return == 200)
+            {
+                //suppression de l'affichage
+                foreach (var _item in _lists)
+                {
+                    if (_item.Id == id)
+                    {
+                        _lists.Remove(_item);
+                        break;
+                    }
+
+                }
+            }
+           
+           
+        }
 
         public UsersLists()
         {
             InitializeComponent();
             DataContext = UsersList;
-            var userModels = _mapper.Map<IEnumerable<UserModel>>(_userRepository.GetAll());
-            jsonGenericReader = new UserServiceReader(new HttpClient(), this._mapper);
-           // var valeur = jsonGenericReader.GetAll();
-            UsersList.Users = new ObservableCollection<UserModel>(userModels);
-           
+            jsonGenericReader = new UserServiceReader(new HttpClient(), _mapper);
+            _lists = new ObservableCollection<UserModel>();
+            loadUser(jsonGenericReader);
+            UsersList.Users = _lists;
 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var newUser = new UserModel() { FirstName = TbUserName.Text, Id = Guid.NewGuid(), LastName = TbUserName.Text, Email = "gsg@gmail.fr",Phone="test" };
+        
+
+            var newUser = new UserModel() { FirstName = TbUserFirstName.Text, Id = new Guid(TxtGuid.Text), LastName = TbUserName.Text, Email = TbEmail.Text, Phone = TbPhone.Text, Addresses = new List<Address>(), Stocks = new List<Stock>() };
+            updateUser(jsonGenericReader, newUser);
+           UsersList.Users.Add(newUser);
+         
+        }
+
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+          
+            var newUser = new UserModel() { FirstName = TbUserFirstName.Text, Id = new Guid(TxtGuid.Text), LastName = TbUserName.Text, Email = TbEmail.Text, Phone = TbPhone.Text, Addresses = new List<Address>(), Stocks = new List<Stock>() };
+            //addUser(jsonGenericReader,  newUser);
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+           
+            deleteUser(jsonGenericReader, new Guid(TxtGuid.Text));
             
-            jsonGenericReader.Add(newUser);
-            UsersList.Users.Add(newUser);
-            //UsersList.Users = new ObservableCollection<UserModel>();
         }
     }
 }

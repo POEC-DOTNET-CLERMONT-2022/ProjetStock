@@ -7,36 +7,40 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="3*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <StackPanel>
-            <WrapPanel>
-                <TextBlock Text="Saisir un nom  de market:"/>
-                <TextBox x:Name="TbUserName" Width="50"/>
-            </WrapPanel>
-            <Button Content="Ajouter une Market" Width="200" HorizontalAlignment="Left" Click="Button_Click"/>
-        </StackPanel>
-        <StackPanel Grid.Column="1">
-            <WrapPanel>
-                <TextBlock Text="Modifier une order :" />
-                <TextBox Width="500" Text="{Binding CurrentMarket.Name, UpdateSourceTrigger=PropertyChanged}"  />
-            </WrapPanel>
-        </StackPanel>
-        <ListBox Grid.ColumnSpan="2" SelectedItem="{Binding CurrentMarket}" ItemsSource="{Binding Markets}" Grid.Row="1" x:Name="ListOrder">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="OrderName :"/>
-                        <TextBlock Text="{Binding Name}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <ContentControl x:Name="userMenu"></ContentControl>
+        <DockPanel>
+            <Image Height="86" Width="71"></Image>
+        </DockPanel>
+        <DockPanel>
+
+
+            <StackPanel  Width="600" DockPanel.Dock="top" Background="#FFCEC0C0" Height="309" >
+
+                <Label x:Name="login" HorizontalAlignment="Center"  FontSize="18"  VerticalAlignment="Center" >Create Rappel</Label>
+                <DockPanel x:Name="user_message" Margin="0,30,0,0">
+                    <Label x:Name="name" Margin="0,0,0,0">Name :</Label>
+                    <TextBox  x:Name="TxtNom" Height="17" Width="200" Margin="1"/>
+                    <TextBox x:Name="TxtGuid" Width="50"  Visibility="Hidden" Text="{Binding CurrentUser.Id}" />
+
+
+                </DockPanel>
+
+
+
+
+           
+                <DockPanel >
+
+
+                    <Button Height="30" BorderThickness="3"  x:Name="modify_button_Click" Width="100"   Margin="0,0,25,0">Modify</Button>
+
+                </DockPanel>
+
+
+            </StackPanel>
+
+        </DockPanel>
+
+
     </Grid>
 </UserControl>

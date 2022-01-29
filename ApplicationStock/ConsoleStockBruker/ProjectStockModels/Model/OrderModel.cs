@@ -10,11 +10,11 @@ namespace ProjectStockModels.Model
 {
     public class OrderModel : ObservableObject
     {
-        private Guid _id;
-        private string _orderName;
-        private DateTime _orderDate;
-        private Stock _stock;
-        private int _nbStock;
+        public Guid _id;
+        public string _orderName;
+        public DateTime _orderDate;
+        public Stock _stock;
+        public int _nbStock;
 
         public Guid Id
         {
