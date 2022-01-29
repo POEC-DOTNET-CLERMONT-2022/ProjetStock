@@ -124,12 +124,14 @@ export class AuthService {
      '_entrepriseName' : _entrepriseName
     }, httpOptions);
   }
+
+
   putStock(_id : Guid,_name :string,_value : number,_entrepriseName : string): Observable<any> {
     
     return this.http.put('https://localhost:7136/api/stocks/', {
      '_id' : _id,
      '_name' : _name,
-     '_value' : _value,
+     '_value' : Number(_value),
      '_entrepriseName' : _entrepriseName
     }, httpOptions);
   }

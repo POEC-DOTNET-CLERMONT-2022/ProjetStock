@@ -77,7 +77,7 @@ export class StocksUpdateComponent implements OnInit {
    onSubmit(): void {
     this.id = this.route.snapshot.params['id']!;
 
-    this.authService.putStock(this.stock.id,this.form.name,Number(this.form.value),this.form.entreprisename).subscribe(
+    this.authService.putStock(this.stock.id,this.form.name,this.form.value,this.form.entreprisename).subscribe(
        
       data => {
           
