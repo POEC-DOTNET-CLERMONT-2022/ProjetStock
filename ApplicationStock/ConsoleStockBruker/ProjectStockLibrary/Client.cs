@@ -89,6 +89,21 @@ namespace ProjectStockLibrary
             _id = id;
             
         }
+
+
+
+        public Client(Guid _id)
+        {
+            _id = _id;
+            _firstName = "";
+            _lastName = "";
+            _email = "";
+            _siret = "";
+            _phone = "";
+            _addresses = new List<Address>();
+            _stocks = new List<Stock>();
+            _password = "";
+        }
         public Client()
         {
             _id = Guid.NewGuid();
