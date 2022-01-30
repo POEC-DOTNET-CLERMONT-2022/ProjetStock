@@ -24,15 +24,11 @@ namespace ApiApplication.Controllers
         }
 
 
-<<<<<<< HEAD
-        //// GET api/<ProjectController>/
+
         [Authorize]
         [HttpGet("all")]
-=======
-        // get api/<projectcontroller>/ 
-        [Authorize]
-        [HttpGet]
->>>>>>> 50bc341 (patch addresscontroller)
+
+
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddressDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<IEnumerable<AddressDto>> GetAll()
