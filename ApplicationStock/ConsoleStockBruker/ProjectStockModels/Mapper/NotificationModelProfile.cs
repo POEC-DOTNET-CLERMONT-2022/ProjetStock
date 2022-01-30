@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using ProjectStockDTOS;
+using ProjectStockEntity;
 using ProjectStockLibrary;
 using ProjectStockModels.Model;
 using System;
@@ -14,6 +16,7 @@ namespace ProjectStockModels.Mapper
         public NotificationModelProfile()
         {
             CreateMap<NotificationModel, Notification>().ReverseMap();
+            CreateMap<NotificationEntity, NotificationDto>().ReverseMap();
         }
     }
 }

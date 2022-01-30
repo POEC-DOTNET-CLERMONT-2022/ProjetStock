@@ -19,20 +19,11 @@ namespace ProjectStockRepository.Repository
     {
         public IMapper _mapper { get; }
 
-        private SqlDbContext SqlContext { get; }
+        private SqlDbContext SqlContext { get; } = new SqlDbContext();
 
-        private List<T> _listEntity { get; set; }
+        private List<T> _listEntity { get; set; } = new List<T>();
 
-      
-
-
-        public GenericRepository()
-        {
-            SqlContext = new SqlDbContext();
-            _listEntity = new List<T>();
-  
-        }
-
+   
         public T? Update(T notifentity)
         {
 

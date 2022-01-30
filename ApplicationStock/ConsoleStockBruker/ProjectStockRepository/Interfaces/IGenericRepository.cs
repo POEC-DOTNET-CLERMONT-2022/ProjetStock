@@ -15,5 +15,7 @@ namespace ProjectStockRepository.Interfaces
         bool Delete(T entity);
 
         IEnumerable<T> GetAll();
+
+       
     }
 }
