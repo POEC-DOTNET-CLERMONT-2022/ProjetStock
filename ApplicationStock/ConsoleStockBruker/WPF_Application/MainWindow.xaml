@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:WPF_Application"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+
     <Grid>
-        <WrapPanel Height="50" Width="auto" VerticalAlignment="Top" Background="LightGray">
+        <WrapPanel Height="50" Width="auto" VerticalAlignment="Top" Background="LightGray"  >
             <DockPanel>
-                <Menu DockPanel.Dock="Top">
+                <Menu DockPanel.Dock="Top" Visibility="Hidden" x:Name="_loginModalControl">
                     <MenuItem Header="Menu"  Height="50">
-                        <MenuItem Header="Connection" Click="MenuItem_Click_Connection"></MenuItem>
-                        <MenuItem Header="Mon Profil" ></MenuItem>
+                        <MenuItem Header="Mon Profil" Name="profile" Visibility="Hidden" ></MenuItem>
                         <MenuItem Header="Contact us">
                             <MenuItem Header="Direct Message" Click="MenuItem_Click_Contact"></MenuItem>
                             <MenuItem Header="Email: email@admin.com"></MenuItem>
@@ -24,13 +24,14 @@
 
                     <MenuItem Header="Lists"  Height="50">
                    
-                        <MenuItem Header="Lists of Cryptomonnaies"></MenuItem>
                         <MenuItem Header="Lists of  Stocks"  Click="MenuItem_Click"/>
-                        <MenuItem Header="Lists of orders"  Click="MenuItem_Click_1"></MenuItem>
+                        <!--<MenuItem Header="Lists of orders"  Click="MenuItem_Click_1"></MenuItem>-->
                             <MenuItem Header="Lists of users" Click="MenuItem_Click_2"></MenuItem>
                             <MenuItem Header="Lists of notifications" Click="MenuItem_Click_3">
                             </MenuItem>
-                        </MenuItem>
+                        <MenuItem Header="Lists of markets" Click="MenuItem_Click_Markets"/>
+
+                    </MenuItem>
                             <MenuItem Header="Market">
                            
                       
@@ -72,10 +73,10 @@
                     <MenuItem Header="My informations"  Height="50">
 
                         <MenuItem Header="My profile" Click="Profile_click"></MenuItem>
-                        <MenuItem Header="My orders" Click="Orders_click"/>
-                        <MenuItem Header="My notification" Click="Notifications_Click"></MenuItem>
+                        <!--<MenuItem Header="My orders" Click="Orders_click"/>-->
+                        <MenuItem Header="My notification" ></MenuItem>
                         <MenuItem Header="Sell or Buy orders"></MenuItem>
-                        <MenuItem Header="Disconnect">
+                        <MenuItem Header="Exit" Click="Disconnect_Click">
                         </MenuItem>
                     </MenuItem>
                 </Menu>

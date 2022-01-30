@@ -1,6 +1,8 @@
-﻿using ProjectStockModels.Lists;
+﻿using ProjectStockLibrary;
+using ProjectStockModels.Lists;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,12 +15,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF_Application.Model;
 using WPF_Application.Order;
 using WPF_Application.Rappel;
 using WPF_Application.Stocks;
 using WPF_Application.User;
 using WPF_Application.UserControls;
 using WPF_Application.Utils;
+
+using WPF_Application.Model;
+using WPF_Application.Market;
 
 namespace WPF_Application
 {
@@ -27,6 +33,13 @@ namespace WPF_Application
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        public Client User {private get; set;}
+
+        public bool isLogged { get; set; } = false;
+
+       
+
         public INavigator Navigator { get; set; } = ((App)Application.Current).Navigator;
         public UsersList UsersList { get; set; } = new UsersList();
 
@@ -35,8 +48,17 @@ namespace WPF_Application
             InitializeComponent();
             Navigator.NavigateTo(typeof(MarketDetailUC));
             Navigator.NavigateTo(typeof(StockDetailUC));
-        
+
+
+    
+
+            LoginControle page_connection = new LoginControle();
+            user.Content = page_connection;
+
         }
+
+
+     
 
 
         private void MenuItem_Click_Connection(object sender, RoutedEventArgs e)
@@ -53,12 +75,12 @@ namespace WPF_Application
             user.Content = app_contact;
         }
 
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
-        {
-            ListsControlOrders app_list = new ListsControlOrders();
-            user.Content = app_list;
+        //private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        //{
+        //    ListsControlOrders app_list = new ListsControlOrders();
+        //    user.Content = app_list;
 
-        }
+        //}
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
@@ -73,6 +95,13 @@ namespace WPF_Application
         }
 
 
+        private void MenuItem_Click_Markets(object sender, RoutedEventArgs e)
+        {
+            MarketListsControl _lists = new MarketListsControl();
+           user.Content = _lists;
+        }
+
+
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             StockListControl _listStock = new StockListControl();
@@ -84,7 +113,7 @@ namespace WPF_Application
             Navigator.NavigateTo(typeof(StockUcxaml));
         }
 
-
+       
         private void Profile_click(object sender, RoutedEventArgs e)
         {
             MonProfil _profil = new MonProfil();
@@ -111,6 +140,18 @@ namespace WPF_Application
             Navigator.Back();
         }
 
-       
+        private void MenuItem_Click_4(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Disconnect_Click(object sender, RoutedEventArgs e)
+        {
+
+            this.Visibility = Visibility.Hidden;
+
+            LoginControle _login = new LoginControle();
+            user.Content = _login;
+        }
     }
 }

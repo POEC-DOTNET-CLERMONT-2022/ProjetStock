@@ -15,7 +15,7 @@ namespace ProjectStockModels.APIReader.Services
     {
 
 
-        public StockServiceReader(HttpClient httpClient, IMapper mapper) : base(httpClient, "api/Stock", mapper)
+        public StockServiceReader(HttpClient httpClient, IMapper mapper) : base(httpClient, "api/Stocks", mapper)
         {
 
         }

@@ -6,41 +6,79 @@
              xmlns:local="clr-namespace:WPF_Application.Market"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <ContentControl x:Name="userMenu"></ContentControl>
-        <DockPanel>
-            <Image Height="86" Width="71"></Image>
-        </DockPanel>
-        <DockPanel>
-
-
-            <StackPanel  Width="600" DockPanel.Dock="top" Background="#FFCEC0C0" Height="309" >
-
-                <Label x:Name="login" HorizontalAlignment="Center"  FontSize="18"  VerticalAlignment="Center" >Create Rappel</Label>
-                <DockPanel x:Name="user_message" Margin="0,30,0,0">
-                    <Label x:Name="name" Margin="0,0,0,0">Name :</Label>
-                    <TextBox  x:Name="TxtNom" Height="17" Width="200" Margin="1"/>
-                    <TextBox x:Name="TxtGuid" Width="50"  Visibility="Hidden" Text="{Binding CurrentUser.Id}" />
-
-
-                </DockPanel>
+    <Grid Margin="0,50,0,0" Background="LightGray" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
 
 
+        <StackPanel Grid.Column="0">
+            <WrapPanel>
+                <StackPanel>
+                    <TextBlock Text="Saisir un name :"/>
+                    <TextBox x:Name="TbName" Width="200" HorizontalAlignment="Left"/>
+                    <TextBlock Text="Saisir une value :"/>
+                    <TextBox x:Name="TbValue" Width="200"  HorizontalAlignment="Left"/>
 
+                </StackPanel>
+
+            </WrapPanel>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <WrapPanel>
+
+
+
+
+                <StackPanel>
+
+                    <TextBlock Text="Saisir un nom :"/>
+                    <TextBox x:Name="TxtNom" Width="200" HorizontalAlignment="Left"/>
+
+
+                </StackPanel>
+            </WrapPanel>
+        </StackPanel>
+
+
+
+        <StackPanel Grid.Column="2">
+            <WrapPanel>
+
+
+                <StackPanel>
+                    <Button Content="Ajouter un market" Width="200" HorizontalAlignment="Left" Click="Button_Click"/>
+                    <Button Content="Modifier un market " Width="200" HorizontalAlignment="Left" Click="Button_Click_1"/>
+
+                </StackPanel>
+                <StackPanel>
+                    <Button Content="Supprimer un market" Width="200" HorizontalAlignment="Left" Click="Button_Click_2"/>
+                    <TextBox x:Name="TxtGuid" Width="50"  Visibility="Hidden" Text="{Binding CurrentUser.Id}"/>
+                </StackPanel>
+            </WrapPanel>
+        </StackPanel>
+
+        <ListBox Grid.ColumnSpan="3" SelectedItem="{Binding CurrentUser }" ItemsSource="{Binding Markets}" Grid.Row="1" x:Name="ListUser">
            
-                <DockPanel >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="ID :"/>
+                        <TextBlock Text="{Binding Id}"/>
+                    
+                        <TextBlock Text="LastName :"/>
+                        <TextBlock Text="{Binding Name}"/>
 
-
-                    <Button Height="30" BorderThickness="3"  x:Name="modify_button_Click" Width="100"   Margin="0,0,25,0">Modify</Button>
-
-                </DockPanel>
-
-
-            </StackPanel>
-
-        </DockPanel>
-
-
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </UserControl>

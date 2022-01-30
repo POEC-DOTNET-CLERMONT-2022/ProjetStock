@@ -29,4 +29,8 @@
     <ProjectReference Include="..\ProjectStockRepository\ProjectStockRepository.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="MenuLog\" />
+  </ItemGroup>
+
 </Project>

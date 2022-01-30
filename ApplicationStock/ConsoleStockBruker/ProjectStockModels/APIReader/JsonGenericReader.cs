@@ -68,12 +68,11 @@ namespace ProjectStockModels.JsonReader
 
 
 
-        public async Task<int> Connect(AuthenticateRequest create)
+        public async Task<HttpResponseMessage> Connect(AuthenticateRequest create)
         {
-            try
-            {
+           
 
-                create._password = _userPasswordHasher.GetPasswordHasher(create._password);
+               
                 HttpClient httpClient_ = new HttpClient();
                 var request = new HttpRequestMessage
                 {
@@ -82,15 +81,11 @@ namespace ProjectStockModels.JsonReader
                     Content = new StringContent(JsonConvert.SerializeObject(create), Encoding.UTF8, "application/json")
                 };
 
-                await httpClient_.SendAsync(request);
-                return StatusCodes.Status200OK;
+              
+                return _httpClient.SendAsync(request).Result;
 
-            }
-            catch (Exception ex)
-            {
-
-                return StatusCodes.Status400BadRequest;
-            }
+    
+           
         }
 
         public async Task<int> CreateAccount(CreateResult create)
@@ -98,18 +93,14 @@ namespace ProjectStockModels.JsonReader
             try
             {
 
-                create._password = _userPasswordHasher.GetPasswordHasher(create._password);
-  
+          
                 var request = new HttpRequestMessage
                 {
                     Method = HttpMethod.Post,
                     RequestUri = new Uri(uri + "/register"),
                     Content = new StringContent(JsonConvert.SerializeObject(create), Encoding.UTF8, "application/json")
                 };
-                await _httpClient.SendAsync(request);
-
-
-                return StatusCodes.Status200OK;
+                return (int)_httpClient.SendAsync(request).Result.StatusCode;
 
             }
             catch (Exception ex)
@@ -210,8 +201,8 @@ namespace ProjectStockModels.JsonReader
                     RequestUri = new Uri(uri),
                     Content = new StringContent(JsonConvert.SerializeObject(map), Encoding.UTF8, "application/json")
                 };
-                await _httpClient.SendAsync(request);
-                return StatusCodes.Status200OK;
+               
+                return (int)_httpClient.SendAsync(request).Result.StatusCode;
 
 
 

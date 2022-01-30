@@ -1,4 +1,5 @@
-﻿using ProjectStockModels.Observable;
+﻿using ProjectStockLibrary;
+using ProjectStockModels.Observable;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +11,12 @@ namespace ProjectStockModels.Model
     public class MarketModel : ObservableObject
     {
 
-        private Guid _id;
+        public Guid _id;
         public string _name;
         public DateTime _openingDate;
         public DateTime _closingDate;
 
-
+        public List<Stock> _stocks;
 
         public Guid Id
         {
@@ -29,6 +30,20 @@ namespace ProjectStockModels.Model
                 }
             }
         }
+
+        public List<Stock> Stocks
+        {
+            get { return _stocks; }
+            set
+            {
+                if (value != null)
+                {
+                    _stocks = value;
+                    OnNotifyPropertyChanged();
+                }
+            }
+        }
+
 
         public string Name
         {

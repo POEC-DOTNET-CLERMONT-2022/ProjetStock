@@ -10,7 +10,7 @@
         <ContentControl x:Name="userMenu"></ContentControl>
         <DockPanel>
 
-            <StackPanel  Width="556" DockPanel.Dock="top" Background="#FFCEC0C0" Height="234" >
+            <StackPanel  Width="556" DockPanel.Dock="top" Background="LightGray" Height="234" >
 
                 <Label x:Name="login" HorizontalAlignment="Center"  FontSize="18"  VerticalAlignment="Center" >Create an account</Label>
                 <DockPanel x:Name="user_message">
@@ -19,7 +19,7 @@
                 </DockPanel>
                 <DockPanel  x:Name="pass_message"  >
                     <Label x:Name="password"  Width="136">Password</Label>
-                    <TextBox  Text="" Height="21" Width="358" x:Name="TxtPassword"></TextBox>
+                    <PasswordBox Height="21" Width="358" x:Name="TxtPassword"></PasswordBox>
                 </DockPanel>
             
 

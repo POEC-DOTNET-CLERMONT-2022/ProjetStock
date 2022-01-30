@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WPF_Application.Stocks"
+             xmlns:local="clr-namespace:WPF_Application.Stocks" xmlns:lists="clr-namespace:ProjectStockModels.Lists;assembly=ProjectStockModels" d:DataContext="{d:DesignInstance Type=lists:StockLists}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Margin="0,75,0,0">
+    <Grid Margin="0,50,0,0" Background="LightGray" >
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="3*"/>
@@ -23,7 +23,7 @@
             <WrapPanel>
                 <StackPanel>
                     <TextBlock Text="Saisir un name :"/>
-                    <TextBox x:Name="TbName" Width="200" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="TbNam" Width="200" HorizontalAlignment="Left"/>
                     <TextBlock Text="Saisir une value :"/>
                     <TextBox x:Name="TbValue" Width="200"  HorizontalAlignment="Left"/>
 
@@ -42,6 +42,7 @@
                     <TextBlock Text="Saisir un nom entreprise :"/>
                     <TextBox x:Name="TbEntrepriseName" Width="200" HorizontalAlignment="Left"/>
 
+                    
 
                 </StackPanel>
             </WrapPanel>
@@ -54,12 +55,12 @@
 
 
                 <StackPanel>
-                    <Button Content="Ajouter un utilisateur" Width="200" HorizontalAlignment="Left" Click="Button_Click"/>
-                    <Button Content="Modifier un utilsateur " Width="200" HorizontalAlignment="Left" Click="Button_Click_1"/>
+                    <Button Content="Ajouter un titre" Width="200" HorizontalAlignment="Left" Click="Button_Click"/>
+                    <Button Content="Modifier un titre " Width="200" HorizontalAlignment="Left" Click="Button_Click_1"/>
 
                 </StackPanel>
                 <StackPanel>
-                    <Button Content="Supprimer un utilisateur" Width="200" HorizontalAlignment="Left" Click="Button_Click_2"/>
+                    <Button Content="Supprimer un titre" Width="200" HorizontalAlignment="Left" Click="Button_Click_2"/>
                     <TextBox x:Name="TxtGuid" Width="50"  Visibility="Hidden" Text="{Binding CurrentStock.Id}" />
                 </StackPanel>
             </WrapPanel>
@@ -69,14 +70,15 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
+                        
                         <TextBlock Text="ID :"/>
                         <TextBlock Text="{Binding Id}"/>
                         <TextBlock Text="LastName :"/>
-                        <TextBlock Text="{Binding LastName}"/>
-                        <TextBlock Text="Name :"/>
-                        <TextBlock Text="{Binding FirstName}"/>
+                        <TextBlock Text="{Binding Name}"/>
+                        <TextBlock Text="Value :"/>
+                        <TextBlock Text="{Binding Value}"/>
                         <TextBlock Text="Email :"/>
-                        <TextBlock Text="{Binding Email}"/>
+                        <TextBlock Text="{Binding EntrepriseName}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

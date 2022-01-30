@@ -32,7 +32,7 @@ namespace ApiApplicationProjectStock.Controllers
 
 
         //// GET api/<ProjectController>/GetAll
-        [Authorize]
+
         [HttpGet("all")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(StockDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

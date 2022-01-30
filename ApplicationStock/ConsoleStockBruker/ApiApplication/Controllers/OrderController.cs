@@ -32,6 +32,7 @@ namespace ApiApplication.Controllers
         public ActionResult<IEnumerable<OrderDto>> GetAll()
         {
             var p = _context._orders.ToList();
+
             if (p == null)
                 return NotFound();
             else

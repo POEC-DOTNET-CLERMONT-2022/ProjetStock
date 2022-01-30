@@ -21,6 +21,8 @@ namespace WPF_Application
     /// </summary>
     public partial class App : Application
     {
+
+
         public INavigator Navigator { get; } = new Navigator();
 
         public IGenericRepository<UserEntity> userRepository { get; } = new GenericRepository<UserEntity>();

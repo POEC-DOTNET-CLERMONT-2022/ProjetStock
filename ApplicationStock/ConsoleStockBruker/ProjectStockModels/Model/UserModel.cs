@@ -13,6 +13,10 @@ namespace ProjectStockModels.Model
     {
         public Guid _id;
         public string _lastName;
+        public string _firstName;
+
+
+        public string _email;
 
         public Guid Id
         {
@@ -27,7 +31,7 @@ namespace ProjectStockModels.Model
                    
             }
         }
-        public string _firstName;
+       
 
         public string FirstName
         {
@@ -57,7 +61,6 @@ namespace ProjectStockModels.Model
 
             }
         }
-        public string _email;
 
         public string Email
         {
@@ -142,6 +145,55 @@ namespace ProjectStockModels.Model
             }
         }
 
+
+        public string _token;
+
+        public string Token
+        {
+            get { return _token; }
+            set
+            {
+                if (value != null)
+                {
+                    _token = value;
+                    OnNotifyPropertyChanged();
+                }
+
+            }
+        }
+
+
+        public string _password;
+
+        public string Password
+        {
+            get { return _password; }
+            set
+            {
+                if (value != null)
+                {
+                    _password = value;
+                    OnNotifyPropertyChanged();
+                }
+
+            }
+        }
+
+        public DateTime _expireToken;
+
+        public DateTime ExpireToken
+        {
+            get { return _expireToken; }
+            set
+            {
+                if (value != null)
+                {
+                    _expireToken = value;
+                    OnNotifyPropertyChanged();
+                }
+
+            }
+        }
 
     }
 }

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ProjectStockDTOS;
+using ProjectStockLibrary;
 using ProjectStockModels.Model;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,10 @@ namespace ProjectStockModels.Mapper
             CreateMap<MarketDto, MarketModel>().ReverseMap();
             CreateMap<StockDto, StockModel>().ReverseMap();
 
+            CreateMap<OrderModel, Order>().ReverseMap();
+            CreateMap<OrderModel, OrderDto>().ReverseMap();
+            CreateMap<OrderDto, OrderModel>().ReverseMap();
+            CreateMap<Order, OrderModel>().ReverseMap();
         }
 
     }

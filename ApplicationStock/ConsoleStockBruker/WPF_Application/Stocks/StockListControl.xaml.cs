@@ -52,7 +52,14 @@ namespace WPF_Application.Stocks
 
         private async Task updateStock(JsonGenericReader<StockModel, StockDto> jsonGenericReader, StockModel newUser)
         {
+            
             await jsonGenericReader.Update(newUser);
+
+        }
+
+        private async Task addStock(JsonGenericReader<StockModel, StockDto> jsonGenericReader, StockModel newUser)
+        {
+            await jsonGenericReader.Add(newUser);
 
         }
 
@@ -61,8 +68,7 @@ namespace WPF_Application.Stocks
             int _return = await jsonGenericReader.Delete(id);
 
 
-            if (_return == 200)
-            {
+        
                 //suppression de l'affichage
                 foreach (var _item in _lists)
                 {
@@ -73,7 +79,7 @@ namespace WPF_Application.Stocks
                     }
 
                 }
-            }
+            
 
 
         }
@@ -92,24 +98,40 @@ namespace WPF_Application.Stocks
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-
-            var newUser = new StockModel() { Id = new Guid(TxtGuid.Text), EntrepriseName = TbEntrepriseName.Text, Value = int.Parse(TbValue.Text), Client = new List<Client>() };
-            updateStock(jsonGenericReader, newUser);
+            var newUser = new StockModel() { Id = Guid.NewGuid(), EntrepriseName = TbEntrepriseName.Text, Value = int.Parse(TbValue.Text), Name = TbNam.Text };
+            addStock(jsonGenericReader, newUser);
             StocksList.Stocks.Add(newUser);
 
         }
 
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            if(TxtGuid.Text == null)
+            {
+                MessageBox.Show("Erreur pas selectionner", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
 
-            var newUser = new StockModel() { Id = new Guid(TxtGuid.Text), EntrepriseName = TbEntrepriseName.Text,Value = int.Parse(TbValue.Text), Client = new List<Client>() };
-          
+                var newUser = new StockModel() { Id = new Guid(TxtGuid.Text), EntrepriseName = TbEntrepriseName.Text, Value = int.Parse(TbValue.Text), Name = TbNam.Text };
+                updateStock(jsonGenericReader, newUser);
+            }
+
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            if(TxtGuid.Text == null)
+            {
+                MessageBox.Show("Erreur pas selectionner", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                deleteStock(jsonGenericReader, new Guid(TxtGuid.Text));
 
-            deleteStock(jsonGenericReader, new Guid(TxtGuid.Text));
+            }
+
+           
 
         }
     }

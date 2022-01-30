@@ -40,11 +40,12 @@ namespace WPF_Application.Order
         private JsonGenericReader<OrderModel, OrderDto> jsonGenericReader { get; }
 
 
-        private static ObservableCollection<OrderModel> _lists { get; set; }
+        private  ObservableCollection<OrderModel> _lists { get; set; }
+
         private async Task loadOrder(JsonGenericReader<OrderModel, OrderDto> jsonGenericReader)
         {
             var result = await jsonGenericReader.GetAll();
-            foreach (var item in result)
+            foreach (var item in result)  
                 
                 _lists.Add(item);
         }
@@ -90,11 +91,14 @@ namespace WPF_Application.Order
 
         }
 
-        private async void Button_Click_1(object sender, RoutedEventArgs e)
+      
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
          
             var newUser = new OrderModel() { Id = new Guid(TxtGuid.Text), OrderName = TxtNom.Text, NbStock = int.Parse(TxtQte.Text), Stock = new Stock() };
             updateOrder(jsonGenericReader,  newUser);
+            
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)

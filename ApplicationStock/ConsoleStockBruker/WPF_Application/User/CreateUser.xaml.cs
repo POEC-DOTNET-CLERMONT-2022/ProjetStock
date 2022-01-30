@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using ApiApplication.Models;
+using AutoMapper;
 using ProjectStockDTOS;
 using ProjectStockEntity;
 using ProjectStockModels.APIReader.Services;
@@ -36,6 +37,9 @@ namespace WPF_Application
         {
             InitializeComponent();
             jsonGenericReader = new UserServiceReader(new HttpClient(), _mapper);
+
+            MainWindow parentWindow = Window.GetWindow(this) as MainWindow;
+            
         }
         private void login_button_create_Click(object sender, RoutedEventArgs e)
         {  
@@ -43,13 +47,14 @@ namespace WPF_Application
             ApiApplication.Models.CreateResult _user = new ApiApplication.Models.CreateResult();
             _user._firstName = "user";
             _user._lastName = "user";
-            _user._password = TxtPassword.Text;
+            _user._password = TxtPassword.Password;
+
+
             _user._email = EMail.Text;
             try
             {
-                Create(_user);
-                LoginControle loginControle = new LoginControle();
-                userMenu.Content = loginControle;
+                Create(_user,sender);
+                
 
             }catch (Exception ex)
             {
@@ -58,16 +63,41 @@ namespace WPF_Application
 
         }
 
-        private async Task Create(ApiApplication.Models.CreateResult create)
+
+
+
+        private async Task Create(CreateResult create, object sender)
         {
-            try
+            var result = await this.jsonGenericReader.CreateAccount(create);
+
+            if (result == 200)
             {
-                 await this.jsonGenericReader.CreateAccount(create);
-            }catch (Exception ex)
-            {
-                MessageBox.Show("Erreur creation compte" + ex.ToString());
+                MessageBox.Show("Your account is not register", "Register", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.loggedIn_Completed(sender, new EventArgs());
+
+                
+             
+
             }
-            
+            else
+            {
+                MessageBox.Show("Your account is not register", "Error Connection", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }
+    
+       
+        private void loggedIn_Completed(object sender, EventArgs e)
+        {
+            MainWindow parentWindow = Window.GetWindow(this) as MainWindow;
+            if (parentWindow != null)
+            {
+                parentWindow._loginModalControl.Visibility = Visibility.Visible;
+                LoginControle loginControle = new LoginControle();
+                parentWindow.Content = loginControle;
+
+               
+            }
         }
 
     }
