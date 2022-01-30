@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace WPF_Application.Map
 {
     public class TdoMapper : AutoMapper.Profile 
@@ -28,7 +29,11 @@ namespace WPF_Application.Map
             CreateMap<StockDto, StockModel>().ReverseMap();
 
             CreateMap<UserModel, DeleteClass>().ReverseMap();
-         
+ 
+            CreateMap<OrderModel, OrderDto>().ReverseMap();
+            CreateMap<OrderDto, OrderModel>().ReverseMap();
+            
+
         }   
 
     }

@@ -34,17 +34,23 @@ namespace WPF_Application.Order
         
         private readonly IMapper _mapper = ((App)Application.Current).Mapper;
 
-        public OrderLists OrderList { get; set; } = new OrderLists();
+        public OrderLists OrderLists { get; set; } = new OrderLists();
 
 
         private JsonGenericReader<OrderModel, OrderDto> jsonGenericReader { get; }
 
 
+<<<<<<< HEAD
         private static ObservableCollection<OrderModel> _lists { get; set; }
+=======
+        private  ObservableCollection<OrderModel> _lists { get; set; }
+
+>>>>>>> f299a31ae1595ef19471a46b84a8fb59aa5b88d0
         private async Task loadOrder(JsonGenericReader<OrderModel, OrderDto> jsonGenericReader)
         {
             var result = await jsonGenericReader.GetAll();
-            foreach (var item in result)
+            foreach (var item in result)  
+                
                 _lists.Add(item);
         }
 
@@ -52,11 +58,11 @@ namespace WPF_Application.Order
         public ListsControlOrders()
         {
             InitializeComponent();
-            DataContext = OrderList;
+            DataContext = OrderLists;
             jsonGenericReader = new OrderServiceReader(new HttpClient(), _mapper);
             _lists = new ObservableCollection<OrderModel>();
             loadOrder(jsonGenericReader);
-            OrderList.Orders = _lists;
+            OrderLists.Orders = _lists;
         }
 
        
@@ -89,11 +95,14 @@ namespace WPF_Application.Order
 
         }
 
-        private async void Button_Click_1(object sender, RoutedEventArgs e)
+      
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
          
             var newUser = new OrderModel() { Id = new Guid(TxtGuid.Text), OrderName = TxtNom.Text, NbStock = int.Parse(TxtQte.Text), Stock = new Stock() };
             updateOrder(jsonGenericReader,  newUser);
+            
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)

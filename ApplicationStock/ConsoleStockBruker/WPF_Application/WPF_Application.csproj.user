@@ -10,6 +10,12 @@
     <Compile Update="Cart\CartListControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+<<<<<<< HEAD
+=======
+    <Compile Update="Crypto\CryptoListsUserControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+>>>>>>> f299a31ae1595ef19471a46b84a8fb59aa5b88d0
     <Compile Update="Market\MarketCreateControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -22,7 +28,19 @@
     <Compile Update="Rappel\NotificationListsControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="State\ProjectVisualState.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Stocks\StockListControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stocks\StockUcxaml.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\MarketDetailUC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\StockDetailUC.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="User\MonProfil.xaml.cs">
@@ -40,12 +58,21 @@
     <Compile Update="User\UserInfoControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="User\UserNotificationControle.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="User\UserOrders.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="User\UsersLists.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Cart\CartListControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Crypto\CryptoListsUserControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Info\ContactUsControl.xaml">
@@ -63,7 +90,19 @@
     <Page Update="Rappel\NotificationListsControl.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="State\ProjectVisualState.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Stocks\StockListControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stocks\StockUcxaml.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\MarketDetailUC.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\StockDetailUC.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="User\CreateUser.xaml">
@@ -88,6 +127,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="User\UserInfoControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="User\UserNotificationControle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="User\UserOrders.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="User\UsersLists.xaml">

@@ -11,7 +11,7 @@
     
     <DockPanel>
 
-        <StackPanel  Width="557" DockPanel.Dock="top" Background="#FFCEC0C0" Height="309" >
+            <StackPanel  Width="557" DockPanel.Dock="top" Background="LightGray" Height="309" >
 
             <Label x:Name="login" HorizontalAlignment="Center"  FontSize="18"  VerticalAlignment="Center" >Login</Label>
             <DockPanel x:Name="user_message">
@@ -20,10 +20,11 @@
             </DockPanel>
             <DockPanel  x:Name="pass_message"  >
                 <Label x:Name="password" Margin="0,0,0,0">Password</Label>
-                <TextBox Margin="0,10,0,0" x:Name="TxtPassword" Height="17"/>
+                <PasswordBox Margin="0,10,0,0" x:Name="TxtPassword" Height="17"/>
             </DockPanel>
-            <DockPanel Margin="10">
+         
                 <TextBlock x:Name="link_create" FontSize="10">
+<<<<<<< HEAD
                 <Button  x:Name="create"   Click="Create_button_Click">Create a account </Button>
                 </TextBlock>
             </DockPanel>
@@ -37,6 +38,13 @@
                 </TextBlock>
 
             </DockPanel>
+=======
+                    </TextBlock>
+                    <Button  x:Name="create"   Click="Create_button_Click">Create a account </Button>
+          
+           
+            
+>>>>>>> f299a31ae1595ef19471a46b84a8fb59aa5b88d0
             <DockPanel Margin="10" Visibility="Hidden" x:Name="message_error">
                 <TextBlock FontSize="20">
                     Error

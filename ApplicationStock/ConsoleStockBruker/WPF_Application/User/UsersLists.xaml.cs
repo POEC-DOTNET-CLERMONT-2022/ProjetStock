@@ -50,6 +50,16 @@ namespace WPF_Application.User
 
         }
 
+<<<<<<< HEAD
+=======
+        private async Task addUser(JsonGenericReader<UserModel,UserDto> jsonGenericReader, UserModel newUser)
+        {
+            await jsonGenericReader.Add(newUser);
+
+        }
+
+
+>>>>>>> f299a31ae1595ef19471a46b84a8fb59aa5b88d0
         private async Task deleteUser(JsonGenericReader<UserModel, UserDto> jsonGenericReader, Guid id)
         {
             int _return = await jsonGenericReader.Delete(id);
@@ -83,27 +93,51 @@ namespace WPF_Application.User
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
         
+<<<<<<< HEAD
+=======
+            if(TxtGuid.Text != null)
+            {
+                var newUser = new UserModel() { FirstName = TbUserFirstName.Text, Id = new Guid(TxtGuid.Text), LastName = TbUserName.Text, Email = TbEmail.Text, Phone = TbPhone.Text, Addresses = new List<Address>(), Stocks = new List<Stock>(),ExpireToken = DateTime.Now,Token = "",Password = TxtPassword.Password,Siret = TbSriret.Text };
+                updateUser(jsonGenericReader, newUser);
+               
+            }
+      
+>>>>>>> f299a31ae1595ef19471a46b84a8fb59aa5b88d0
 
-            var newUser = new UserModel() { FirstName = TbUserFirstName.Text, Id = new Guid(TxtGuid.Text), LastName = TbUserName.Text, Email = TbEmail.Text, Phone = TbPhone.Text, Addresses = new List<Address>(), Stocks = new List<Stock>() };
-            updateUser(jsonGenericReader, newUser);
-           UsersList.Users.Add(newUser);
+         
          
         }
 
-        private async void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
           
+<<<<<<< HEAD
             var newUser = new UserModel() { FirstName = TbUserFirstName.Text, Id = new Guid(TxtGuid.Text), LastName = TbUserName.Text, Email = TbEmail.Text, Phone = TbPhone.Text, Addresses = new List<Address>(), Stocks = new List<Stock>() };
             //addUser(jsonGenericReader,  newUser);
+=======
+            var newUser = new UserModel() { FirstName = TbUserFirstName.Text, Id = Guid.NewGuid(), LastName = TbUserName.Text, Email = TbEmail.Text, Phone = TbPhone.Text, Addresses = new List<Address>(), Stocks = new List<Stock>(), ExpireToken = DateTime.Now, Token = "", Password = TxtPassword.Password,Siret = TbSriret.Text };
+            addUser(jsonGenericReader,  newUser);
+            _lists.Add(newUser);
+>>>>>>> f299a31ae1595ef19471a46b84a8fb59aa5b88d0
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            if(TxtGuid.Text == null)
+            {
+                MessageBox.Show("Erreur pas selectionner", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            }
+            else
+            {
+                deleteUser(jsonGenericReader, new Guid(TxtGuid.Text));
+
+            }
            
-            deleteUser(jsonGenericReader, new Guid(TxtGuid.Text));
+            
             
         }
     }

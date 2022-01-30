@@ -135,5 +135,23 @@ namespace ApiApplication.Controllers
 
             return Ok(p);
         }
+
+        [Authorize]
+        [HttpDelete("id")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(NotificationDto))]
+        public ActionResult<NotificationDto> DeleteByGuid(Guid id)
+        {
+            var p = _context._notifs.Find(id);
+            if (p != null)
+            {
+                _context._notifs.Remove(p);
+                _context.SaveChanges();
+
+            }
+            else
+                return NotFound();
+
+            return Ok(p);
+        }
     }
 }

@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:WPF_Application.Rappel"
              mc:Ignorable="d" 
              d:DesignHeight="880" d:DesignWidth="800">
-    <Grid Margin="0,75,0,0" >
+    <Grid Margin="0,50,0,0" Background="LightGray" >
+    
         <Grid.RowDefinitions>
             
             <RowDefinition Height="1*"/>
@@ -15,23 +16,36 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <StackPanel>
+       
+        <StackPanel Grid.Column="0">
+            <TextBlock Text="Lists of Notification"/>
             <WrapPanel>
                 <TextBlock Text="Saisir un nom :"/>
                 <TextBox x:Name="TbUserName" Width="150"/>
                
             </WrapPanel>
-            <TextBlock Text="Saisir un text :"/>
-            <TextBox x:Name="TbText" Width="350"/>
-           
-            
+        
         </StackPanel>
         <StackPanel Grid.Column="1">
             <WrapPanel>
+
+
+                <StackPanel>
+                    <TextBlock Text="Saisir un text :"/>
+                    <TextBox x:Name="TbText" Width="350"/>
+
+
+                </StackPanel>
+               
+            </WrapPanel>
+        </StackPanel>
+        <StackPanel Grid.Column="2">
+            <WrapPanel>
                 <Button Content="Ajouter une notification" Width="200" HorizontalAlignment="Left" Click="Button_Click"/>
-                <Button Content="Modifier une notification" Width="200" HorizontalAlignment="Left" Click="Button_Click"/>
-            
+                <Button Content="Modifier une notification" Width="200" HorizontalAlignment="Left" Click="Button_Click_1"/>
+
                 <StackPanel>
                    
 
@@ -43,7 +57,8 @@
                 </StackPanel>
             </WrapPanel>
         </StackPanel>
-        <ListBox Grid.ColumnSpan="2" SelectedItem="{Binding CurrentUser}" ItemsSource="{Binding Notifs}" Grid.Row="1" x:Name="ListNotifs">
+       
+        <ListBox Grid.ColumnSpan="3" SelectedItem="{Binding CurrentUser}" ItemsSource="{Binding Notifs}" Grid.Row="1" x:Name="ListNotifs">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>

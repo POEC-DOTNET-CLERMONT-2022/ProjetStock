@@ -19,10 +19,11 @@ namespace ProjectStockRepository.Repository
     {
         public IMapper _mapper { get; }
 
-        private SqlDbContext SqlContext { get; }
+        private SqlDbContext SqlContext { get; } = new SqlDbContext();
 
-        private List<T> _listEntity { get; set; }
+        private List<T> _listEntity { get; set; } = new List<T>();
 
+<<<<<<< HEAD
       
 
 
@@ -33,6 +34,9 @@ namespace ProjectStockRepository.Repository
   
         }
 
+=======
+   
+>>>>>>> f299a31ae1595ef19471a46b84a8fb59aa5b88d0
         public T? Update(T notifentity)
         {
 

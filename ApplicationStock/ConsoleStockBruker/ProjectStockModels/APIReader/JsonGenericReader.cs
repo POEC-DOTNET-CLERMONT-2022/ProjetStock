@@ -68,12 +68,11 @@ namespace ProjectStockModels.JsonReader
 
 
 
-        public async Task<int> Connect(AuthenticateRequest create)
+        public async Task<HttpResponseMessage> Connect(AuthenticateRequest create)
         {
-            try
-            {
+           
 
-                create._password = _userPasswordHasher.GetPasswordHasher(create._password);
+               
                 HttpClient httpClient_ = new HttpClient();
                 var request = new HttpRequestMessage
                 {
@@ -82,6 +81,7 @@ namespace ProjectStockModels.JsonReader
                     Content = new StringContent(JsonConvert.SerializeObject(create), Encoding.UTF8, "application/json")
                 };
 
+<<<<<<< HEAD
                 await httpClient_.SendAsync(request);
                 return StatusCodes.Status200OK;
 
@@ -91,6 +91,13 @@ namespace ProjectStockModels.JsonReader
 
                 return StatusCodes.Status400BadRequest;
             }
+=======
+              
+                return _httpClient.SendAsync(request).Result;
+
+    
+           
+>>>>>>> f299a31ae1595ef19471a46b84a8fb59aa5b88d0
         }
 
         public async Task<int> CreateAccount(CreateResult create)
@@ -98,18 +105,26 @@ namespace ProjectStockModels.JsonReader
             try
             {
 
+<<<<<<< HEAD
                 create._password = _userPasswordHasher.GetPasswordHasher(create._password);
   
+=======
+          
+>>>>>>> f299a31ae1595ef19471a46b84a8fb59aa5b88d0
                 var request = new HttpRequestMessage
                 {
                     Method = HttpMethod.Post,
                     RequestUri = new Uri(uri + "/register"),
                     Content = new StringContent(JsonConvert.SerializeObject(create), Encoding.UTF8, "application/json")
                 };
+<<<<<<< HEAD
                 await _httpClient.SendAsync(request);
 
 
                 return StatusCodes.Status200OK;
+=======
+                return (int)_httpClient.SendAsync(request).Result.StatusCode;
+>>>>>>> f299a31ae1595ef19471a46b84a8fb59aa5b88d0
 
             }
             catch (Exception ex)
@@ -210,8 +225,13 @@ namespace ProjectStockModels.JsonReader
                     RequestUri = new Uri(uri),
                     Content = new StringContent(JsonConvert.SerializeObject(map), Encoding.UTF8, "application/json")
                 };
+<<<<<<< HEAD
                 await _httpClient.SendAsync(request);
                 return StatusCodes.Status200OK;
+=======
+               
+                return (int)_httpClient.SendAsync(request).Result.StatusCode;
+>>>>>>> f299a31ae1595ef19471a46b84a8fb59aa5b88d0
 
 
 

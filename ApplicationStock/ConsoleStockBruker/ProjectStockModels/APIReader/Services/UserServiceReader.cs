@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ProjectStockModels.APIReader.Services
 {
-    public class UserServiceReader : JsonGenericReader<UserModel, UserDto> , IUserService
+    public class UserServiceReader : JsonGenericReader<UserModel, UserDto> 
     {
     
 

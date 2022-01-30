@@ -22,6 +22,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ProjectStockModels.APIReader.Services;
 using System.Net.Http;
+using ProjectStockLibrary;
 
 namespace WPF_Application.Market
 {
@@ -71,10 +72,15 @@ namespace WPF_Application.Market
 
         private async Task addMarket(JsonGenericReader<MarketModel, MarketDto> jsonGenericReader, MarketModel market)
         {
-            await jsonGenericReader.Update(market);
+            await jsonGenericReader.Add(market);
 
         }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> f299a31ae1595ef19471a46b84a8fb59aa5b88d0
         private async Task deleteMarket(JsonGenericReader<MarketModel, MarketDto> jsonGenericReader, Guid id)
         {
             int _return = await jsonGenericReader.Delete(id);
@@ -99,7 +105,11 @@ namespace WPF_Application.Market
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
             var market = new MarketModel() { Id = Guid.NewGuid() , Name = TxtNom.Text, OpeningDate = DateTime.UtcNow, ClosingDate = DateTime.Now };
+=======
+            var market = new MarketModel() { Id = Guid.NewGuid() , Name = TxtNom.Text, OpeningDate = DateTime.UtcNow, ClosingDate = DateTime.Now ,Stocks = new List<Stock>() };
+>>>>>>> f299a31ae1595ef19471a46b84a8fb59aa5b88d0
             addMarket(jsonGenericReader, market);
 
 
@@ -108,14 +118,40 @@ namespace WPF_Application.Market
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
-            var market = new MarketModel() { Id = new Guid(TxtGuid.Text), Name = TxtNom.Text, OpeningDate = DateTime.UtcNow, ClosingDate = DateTime.Now };
-            updateMarket(jsonGenericReader,  market);
+            if(TxtGuid.Text == null)
+            {
+
+                MessageBox.Show("Erreur pas selectionner", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+
+            }
+            else
+            {
+                var market = new MarketModel() { Id = new Guid(TxtGuid.Text), Name = TxtNom.Text, OpeningDate = DateTime.UtcNow, ClosingDate = DateTime.Now ,Stocks = new List<Stock>()};
+                updateMarket(jsonGenericReader, market);
+
+            }
+          
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
 
-            deleteMarket(jsonGenericReader, new Guid(TxtGuid.Text));
+
+            if (TxtGuid.Text == null)
+            {
+
+                MessageBox.Show("Erreur pas selectionner", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+
+            }
+            else
+            {
+                deleteMarket(jsonGenericReader, new Guid(TxtGuid.Text));
+
+            }
+
+           
 
         }
     }

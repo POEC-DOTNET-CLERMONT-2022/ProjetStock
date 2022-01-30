@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using ProjectStockRepository.Repository;
 using ProjectStockLibrary;
+using WPF_Application.Utils;
+using WPF_Application.Stocks;
+using WPF_Application.UserControls;
 
 namespace WPF_Application
 {
@@ -18,6 +21,10 @@ namespace WPF_Application
     /// </summary>
     public partial class App : Application
     {
+
+
+        public INavigator Navigator { get; } = new Navigator();
+
         public IGenericRepository<UserEntity> userRepository { get; } = new GenericRepository<UserEntity>();
 
         public IGenericRepository<OrderEntity> orderRepository { get;} = new GenericRepository<OrderEntity>();
@@ -37,10 +44,19 @@ namespace WPF_Application
         {
             InitializeComponent();
 
-                var configuration = new MapperConfiguration(cfg => cfg.AddMaps(typeof(App)));
+            var configuration = new MapperConfiguration(cfg => cfg.AddMaps(typeof(App)));
             Mapper = new Mapper(configuration);
-            
-            
+
+          
+
+        }
+
+
+        private void App_OnStartup( object sender,StartupEventArgs e)
+        {
+            Navigator.RegisterView(new MarketDetailUC());
+            Navigator.RegisterView(new StockDetailUC());
+
         }
     }
 }

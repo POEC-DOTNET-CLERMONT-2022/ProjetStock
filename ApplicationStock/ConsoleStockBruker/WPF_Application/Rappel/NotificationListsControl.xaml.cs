@@ -60,17 +60,40 @@ namespace WPF_Application.Rappel
          
 
         }
-        private async void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
          
             var newUser = new NotificationModel() { Id = Guid.NewGuid(), SendAt = DateTime.Now, TextRappel = TbText.Text };
             updateUser(jsonGenericReader,  newUser);
+=======
+
+            if (TxtGuid.Text.Length > 0 || TxtGuid.Text == null)
+            {
+                MessageBox.Show("Erreur pas selectionner", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            }
+            else
+            {
+                var newUser = new NotificationModel() { Id = Guid.NewGuid(), SendAt = DateTime.Now, TextRappel = TbText.Text };
+                updateUser(jsonGenericReader, newUser);
+            }
+           
+>>>>>>> f299a31ae1595ef19471a46b84a8fb59aa5b88d0
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
 
-            deleteUser(jsonGenericReader, new Guid(TxtGuid.Text));
+            if (TxtGuid.Text.Length > 0 || TxtGuid.Text == null)
+            {
+                MessageBox.Show("Erreur pas selectionner", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                deleteUser(jsonGenericReader, new Guid(TxtGuid.Text));
+            }
+            
 
         }
 

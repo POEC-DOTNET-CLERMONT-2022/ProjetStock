@@ -32,6 +32,7 @@ namespace ApiApplication.Controllers
         public ActionResult<IEnumerable<OrderDto>> GetAll()
         {
             var p = _context._orders.ToList();
+
             if (p == null)
                 return NotFound();
             else
@@ -113,6 +114,25 @@ namespace ApiApplication.Controllers
         public ActionResult<OrderDto> Delete(DeleteClass delete)
         {
             var p = _context._orders.Find(delete._id);
+            if (p != null)
+            {
+                _context._orders.Remove(p);
+                _context.SaveChanges();
+
+            }
+            else
+                return NotFound();
+
+            return Ok(p);
+
+        }
+
+        [Authorize]
+        [HttpDelete("id")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(OrderDto))]
+        public ActionResult<OrderDto> DeleteById(Guid id)
+        {
+            var p = _context._orders.Find(id);
             if (p != null)
             {
                 _context._orders.Remove(p);

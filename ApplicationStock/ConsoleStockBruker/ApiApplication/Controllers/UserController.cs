@@ -144,6 +144,27 @@ namespace ApiApplicationProjectStock.Controllers
             var p = _context._users.Find(id);
 
        
+<<<<<<< HEAD
+=======
+            if (p == null)
+                return NotFound();
+            else
+                return Ok(p);
+        }
+
+
+        // GET api/<ProjectController>/5
+        [Authorize]
+        [HttpGet("email")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<UserDto> Get([FromQuery] string email)
+        {
+            var p = _context._users.Where(x => x._email == email);
+         
+
+
+>>>>>>> f299a31ae1595ef19471a46b84a8fb59aa5b88d0
             if (p == null)
                 return NotFound();
             else
@@ -209,6 +230,25 @@ namespace ApiApplicationProjectStock.Controllers
                 _context.SaveChanges();
             }
             
+            else
+                return NotFound();
+
+            return Ok();
+        }
+
+        // DELETE api/<ProjectController>/5
+        [Authorize]
+        [HttpDelete("id")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDto))]
+        public ActionResult<UserDto> DeleteById(Guid id)
+        {
+            var p = _context._users.Find(id);
+            if (p != null)
+            {
+                _context._users.Remove(p);
+                _context.SaveChanges();
+            }
+
             else
                 return NotFound();
 

@@ -132,5 +132,23 @@ namespace ApiApplicationProjectStock.Controllers
                 return NotFound();
             return Ok(p);
         }
+
+        // DELETE api/<ProjectController>/5
+        [Authorize]
+        [HttpDelete("id")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MarketDto))]
+        public ActionResult<MarketDto> DeleteById(Guid id)
+        {
+            var p = _context._markets.Find(id);
+            if (p != null)
+            {
+                _context._markets.Remove(p);
+
+            }
+
+            else
+                return NotFound();
+            return Ok(p);
+        }
     }
 }

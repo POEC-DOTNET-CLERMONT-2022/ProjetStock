@@ -32,7 +32,7 @@ namespace ApiApplicationProjectStock.Controllers
 
 
         //// GET api/<ProjectController>/GetAll
-        [Authorize]
+
         [HttpGet("all")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(StockDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -138,10 +138,26 @@ namespace ApiApplicationProjectStock.Controllers
               
             else
                 return NotFound();
+        }
 
-     
 
-          
+        [Authorize]
+        [HttpDelete("id")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(StockDto))]
+        public ActionResult<StockDto> DeleteById(Guid id)
+        {
+            var p = _context._stocks.Find(id);
+            if (p != null)
+            {
+                _context._stocks.Remove(p);
+                _context.SaveChanges();
+                return Ok(p);
+
+            }
+
+            else
+                return NotFound();
+
         }
     }
 }

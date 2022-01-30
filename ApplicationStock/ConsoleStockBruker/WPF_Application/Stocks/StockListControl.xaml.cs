@@ -1,5 +1,9 @@
 ﻿using AutoMapper;
+using ProjectStockDTOS;
 using ProjectStockEntity;
+using ProjectStockLibrary;
+using ProjectStockModels.APIReader.Services;
+using ProjectStockModels.JsonReader;
 using ProjectStockModels.Lists;
 using ProjectStockModels.Model;
 using ProjectStockRepository.Interfaces;
@@ -7,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,6 +23,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF_Application.Utils;
+
 
 namespace WPF_Application.Stocks
 {
@@ -29,24 +36,107 @@ namespace WPF_Application.Stocks
         private readonly IGenericRepository<StockEntity> _stockRepository = ((App)Application.Current).stockRepository;
         private readonly IMapper _mapper = ((App)Application.Current).Mapper;
 
-        public StockLists StockList { get; set; } = new StockLists();
+        private JsonGenericReader<StockModel, StockDto> jsonGenericReader { get; }
+
+
+        private static ObservableCollection<StockModel> _lists { get; set; }
+        public StockLists StocksList { get; set; } = new StockLists();
+
+
+        private async Task loadStock(JsonGenericReader<StockModel, StockDto> jsonGenericReader)
+        {
+            var result = await jsonGenericReader.GetAll();
+            foreach (var item in result)
+                _lists.Add(item);
+        }
+
+        private async Task updateStock(JsonGenericReader<StockModel, StockDto> jsonGenericReader, StockModel newUser)
+        {
+            
+            await jsonGenericReader.Update(newUser);
+
+        }
+
+        private async Task addStock(JsonGenericReader<StockModel, StockDto> jsonGenericReader, StockModel newUser)
+        {
+            await jsonGenericReader.Add(newUser);
+
+        }
+
+        private async Task deleteStock(JsonGenericReader<StockModel, StockDto> jsonGenericReader, Guid id)
+        {
+            int _return = await jsonGenericReader.Delete(id);
+
+
+        
+                //suppression de l'affichage
+                foreach (var _item in _lists)
+                {
+                    if (_item.Id == id)
+                    {
+                        _lists.Remove(_item);
+                        break;
+                    }
+
+                }
+            
+
+
+        }
+
+        public StockListControl()
+        {
+            InitializeComponent();
+            DataContext = StocksList;
+            jsonGenericReader = new StockServiceReader(new HttpClient(), _mapper);
+            _lists = new ObservableCollection<StockModel>();
+            loadStock(jsonGenericReader);
+            StocksList.Stocks = _lists;
+
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var newOrder = new StockModel() { EntrepriseName = TbUserName.Text };
-            var stockEntity = _mapper.Map<StockEntity>(newOrder);
-            _stockRepository.Add(stockEntity);
-            StockList.Stocks.Add(newOrder);
 
+<<<<<<< HEAD
             
-        }
-        public StockListControl()
-        {
+=======
+            var newUser = new StockModel() { Id = Guid.NewGuid(), EntrepriseName = TbEntrepriseName.Text, Value = int.Parse(TbValue.Text), Name = TbNam.Text };
+            addStock(jsonGenericReader, newUser);
+            StocksList.Stocks.Add(newUser);
 
-            InitializeComponent();
-            DataContext = StockList;
-            var stockModels = _mapper.Map<IEnumerable<StockModel>>(_stockRepository.GetAll());
-            StockList.Stocks = new ObservableCollection<StockModel>(stockModels);
+>>>>>>> f299a31ae1595ef19471a46b84a8fb59aa5b88d0
+        }
+
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if(TxtGuid.Text == null)
+            {
+                MessageBox.Show("Erreur pas selectionner", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+
+                var newUser = new StockModel() { Id = new Guid(TxtGuid.Text), EntrepriseName = TbEntrepriseName.Text, Value = int.Parse(TbValue.Text), Name = TbNam.Text };
+                updateStock(jsonGenericReader, newUser);
+            }
+
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            if(TxtGuid.Text == null)
+            {
+                MessageBox.Show("Erreur pas selectionner", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                deleteStock(jsonGenericReader, new Guid(TxtGuid.Text));
+
+            }
+
+           
+
         }
     }
 
