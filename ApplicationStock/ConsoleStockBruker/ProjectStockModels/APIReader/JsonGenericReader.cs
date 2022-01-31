@@ -129,6 +129,29 @@ namespace ProjectStockModels.JsonReader
             return _model;
         }
 
+
+        public virtual async Task<TModel> GetByEmail(string email)
+        {
+
+
+            var uri_ = new Uri(uri + "/email?email=" + email);
+            TDto response = await _httpClient.GetFromJsonAsync<TDto>(uri_, _options);
+            TModel _model = _mapper.Map<TModel>(response);
+            return _model;
+        }
+
+
+
+        public virtual async Task<TModel> GetByToken(string token)
+        {
+
+
+            var uri_ = new Uri(uri + "/token?token="+token);
+            TDto response = await _httpClient.GetFromJsonAsync<TDto>(uri_, _options);
+            TModel _model = _mapper.Map<TModel>(response);
+            return _model;
+        }
+
         //La fonction get update : works all but on in client
         public async Task<int> Update(TModel item)
         {

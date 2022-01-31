@@ -13,6 +13,8 @@ using ProjectStockLibrary;
 using WPF_Application.Utils;
 using WPF_Application.Stocks;
 using WPF_Application.UserControls;
+using WPF_Application.Service.Interfaces;
+using WPF_Application.Service.Services;
 
 namespace WPF_Application
 {
@@ -24,6 +26,9 @@ namespace WPF_Application
 
 
         public INavigator Navigator { get; } = new Navigator();
+
+        
+        public IServiceUserAppCurrent _serviceUserApp { get; set; } = new ServiceClientCurrent();
 
         public IGenericRepository<UserEntity> userRepository { get; } = new GenericRepository<UserEntity>();
 
@@ -58,5 +63,8 @@ namespace WPF_Application
             Navigator.RegisterView(new StockDetailUC());
 
         }
+
+
+
     }
 }

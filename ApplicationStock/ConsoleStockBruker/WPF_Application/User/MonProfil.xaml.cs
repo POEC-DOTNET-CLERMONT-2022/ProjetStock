@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ProjectStockDTOS;
 using ProjectStockEntity;
+using ProjectStockLibrary;
 using ProjectStockModels.APIReader.Services;
 using ProjectStockModels.JsonReader;
 using ProjectStockModels.Model;
@@ -21,6 +22,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF_Application.Service.Interfaces;
 
 namespace WPF_Application
 {
@@ -29,16 +31,20 @@ namespace WPF_Application
     /// </summary>
     public partial class MonProfil : UserControl
     {
+        private IServiceUserAppCurrent serviceUserAppCurrent { get; } = ((App)Application.Current)._serviceUserApp;
 
-       
         private readonly IMapper _mapper = ((App)Application.Current).Mapper;
         private JsonGenericReader<UserModel, UserDto> _json { get; set; }
         private ObservableCollection<UserModel> _lists { get; set; }
 
-        private async Task loadUser(JsonGenericReader<UserModel, UserDto> _json, Guid id)
+        private async Task loadUser(JsonGenericReader<UserModel, UserDto> _json, string email)
         {
-            var result = await _json.Get(id);
+            var result = await _json.GetByEmail(email);
             _lists.Add(result);
+
+            TbEmail.Text = _lists[0].Email;
+            TbNom.Text = _lists[0].LastName;
+           
         }
         public MonProfil()
         {
@@ -46,8 +52,8 @@ namespace WPF_Application
           
             _json= new UserServiceReader(new HttpClient(), _mapper);
             _lists = new ObservableCollection<UserModel>();
-            Guid _id = Guid.NewGuid();
-            loadUser(_json,_id);
+            Client client = serviceUserAppCurrent.GetClientCurrent();
+            loadUser(_json, client._email);
      
         }
     }

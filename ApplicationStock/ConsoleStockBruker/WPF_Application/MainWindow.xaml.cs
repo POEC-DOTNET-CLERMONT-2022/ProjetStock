@@ -25,6 +25,15 @@ using WPF_Application.Utils;
 
 using WPF_Application.Model;
 using WPF_Application.Market;
+using System.Collections.ObjectModel;
+using ProjectStockModels.Model;
+using ProjectStockModels.JsonReader;
+using ProjectStockDTOS;
+using System.Net.Http;
+using ProjectStockModels.APIReader.Services;
+using AutoMapper;
+using WPF_Application.Service.Interfaces;
+using WPF_Application.Service.Services;
 
 namespace WPF_Application
 {
@@ -34,6 +43,7 @@ namespace WPF_Application
     public partial class MainWindow : Window
     {
 
+        private IServiceUserAppCurrent serviceUserAppCurrent { get; } = ((App)Application.Current)._serviceUserApp;
         public Client User {private get; set;}
 
         public bool isLogged { get; set; } = false;
@@ -43,17 +53,44 @@ namespace WPF_Application
         public INavigator Navigator { get; set; } = ((App)Application.Current).Navigator;
         public UsersList UsersList { get; set; } = new UsersList();
 
+        private IMapper _mapper { get; set; } =   ((App)Application.Current).Mapper;
+
+
+        private JsonGenericReader<MarketModel, MarketDto> jsonGenericReader { get; }
+
+
+        private ObservableCollection<MarketModel> _lists { get; set; }
+        public MarketLists MarketLists { get; set; }  = new MarketLists();
+
+
+
+        private async Task loadMarket(JsonGenericReader<MarketModel, MarketDto> jsonGenericReader)
+        {
+            var result = await jsonGenericReader.GetAll();
+            foreach (var item in result)
+                _lists.Add(item);
+        }
+
+
         public MainWindow()
         {
             InitializeComponent();
             Navigator.NavigateTo(typeof(MarketDetailUC));
             Navigator.NavigateTo(typeof(StockDetailUC));
 
+            HttpClient _client = new HttpClient();
+            jsonGenericReader = new MarketServiceReader(_client, _mapper);
+            _lists = new ObservableCollection<MarketModel>();
 
-    
 
+            loadMarket(jsonGenericReader);
+
+            MarketLists.Markets = _lists;
             LoginControle page_connection = new LoginControle();
             user.Content = page_connection;
+
+
+
 
         }
 
@@ -84,6 +121,7 @@ namespace WPF_Application
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
+            var test = serviceUserAppCurrent.GetClientCurrent();
             UsersLists app_lists_user = new UsersLists();
             user.Content = app_lists_user;
         }
@@ -116,6 +154,7 @@ namespace WPF_Application
        
         private void Profile_click(object sender, RoutedEventArgs e)
         {
+         
             MonProfil _profil = new MonProfil();
             user.Content = _profil;
         }

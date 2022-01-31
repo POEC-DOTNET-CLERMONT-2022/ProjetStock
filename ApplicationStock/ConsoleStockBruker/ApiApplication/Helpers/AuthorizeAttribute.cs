@@ -32,6 +32,7 @@ namespace ApiApplication.Helpers
                  client = user;
             }
 
+
             if (client == null || client._expireToken < DateTime.Now)
             {
                 // not logged in

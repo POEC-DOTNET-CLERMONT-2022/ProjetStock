@@ -14,14 +14,14 @@
         <DockPanel>
 
 
-            <StackPanel  Width="600" DockPanel.Dock="top" Background="#FFCEC0C0" Height="309" >
+            <StackPanel  Width="600" DockPanel.Dock="top"  Height="309" >
 
                 <Label x:Name="login" HorizontalAlignment="Center"  FontSize="18"  VerticalAlignment="Center" >Profile</Label>
                 <DockPanel x:Name="user_message" Margin="0,30,0,0">
                     <Label x:Name="name" Margin="0,0,0,0">Name :</Label>
-                    <TextBlock   Text="" Height="17" Width="200" Margin="1"/>
+                    <TextBlock x:Name="TbNom" Height="17" Width="200" Margin="1"/>
                     <Label x:Name="firstname" Margin="0,0,0,0" Width="64">Firstname :</Label>
-                    <TextBlock  Text="" Height="17" Width="200"/>
+                    <TextBlock x:Name="TbPrenom"  Text="" Height="17" Width="200"/>
                 </DockPanel>
                 <DockPanel  x:Name="pass_message"  >
                     <Label x:Name="password" Margin="0,0,0,0">Birth date :</Label>
@@ -29,14 +29,10 @@
                 </DockPanel>
                 <DockPanel x:Name="user_message_email">
                     <Label x:Name="email" >Email :</Label>
-                    <TextBlock  Text="" Height="17" Width="450" Margin="1"/>
+                    <TextBlock x:Name="TbEmail" Text="" Height="17" Width="450" Margin="1"/>
 
                 </DockPanel>
-                <DockPanel x:Name="user_message_address">
-                    <Label x:Name="adress" >Adress :</Label>
-                    <TextBlock   Text="" Height="17" Width="450" Margin="1"/>
-
-                </DockPanel>
+          
                 <DockPanel Margin="10" Visibility="Hidden" x:Name="message_error">
                     <TextBlock FontSize="20">
                     Error

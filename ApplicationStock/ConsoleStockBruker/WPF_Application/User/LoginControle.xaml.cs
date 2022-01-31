@@ -25,6 +25,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using ProjectStockLibrary;
 using Newtonsoft.Json;
+using WPF_Application.Service.Interfaces;
+using Newtonsoft.Json.Linq;
 
 namespace WPF_Application
 {
@@ -33,7 +35,9 @@ namespace WPF_Application
     /// </summary>
     public partial class LoginControle : UserControl
     {
-      
+
+        private IServiceUserAppCurrent serviceUserAppCurrent { get; } = ((App)Application.Current)._serviceUserApp;
+
         private readonly IMapper _mapper = ((App)Application.Current).Mapper;
 
         private JsonGenericReader<UserModel, UserDto> jsonGenericReader { get; }
@@ -45,16 +49,29 @@ namespace WPF_Application
           
         }
 
+
+    
         private async Task loadUser(AuthenticateRequest authenticate,object sender)
         {
             var result = await this.jsonGenericReader.Connect(authenticate);
 
-            //var object_result = await result.Content.ReadAsStringAsync();
-            //Client client = JsonConvert.DeserializeObject<Client>(object_result);
+
+            var object_result = await result.Content.ReadAsStringAsync();
+            var jObject = JObject.Parse(object_result);
+
+
+            var mapped = _mapper.Map<Client>(jObject);
+          
+
+            serviceUserAppCurrent.setClientCurrent(mapped);
+
+
             if ((int) result.StatusCode == 200)
             {
+
+
                 MessageBox.Show("You are connected", "Connected", MessageBoxButton.OK, MessageBoxImage.Information);
-               // MessageBox.Show(object_result.ToString());
+     
                 
                 this.loggedIn_Completed(sender, new EventArgs());
 
@@ -64,6 +81,17 @@ namespace WPF_Application
                 MessageBox.Show("You are not connected", "Not Connected", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
+        }
+
+        private async Task<Client> loadUserInfo(string email)
+        {
+
+           
+            var result = await this.jsonGenericReader.GetByEmail(email);
+
+          
+            var mapped_ = _mapper.Map<Client>(result);
+            return mapped_;
         }
 
 
@@ -81,8 +109,8 @@ namespace WPF_Application
         private void Login_button_Click(object sender, RoutedEventArgs e)
         {
 
-            try
-            {
+            //try
+            //{
 
                 AuthenticateRequest app_create = new AuthenticateRequest();
 
@@ -90,11 +118,15 @@ namespace WPF_Application
                 app_create._email = TxtEmail.Text;
                 loadUser(app_create,sender);
 
-            }
-            catch(Exception ew)
-            {
-                MessageBox.Show("Informations invalids" + ew.ToString(),"Error",MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+             
+  
+
+                
+            //}
+            //catch(Exception ew)
+            //{
+            //    MessageBox.Show("Informations invalids" + ew.ToString(),"Error",MessageBoxButton.OK, MessageBoxImage.Error);
+            //}
 
 
         }
