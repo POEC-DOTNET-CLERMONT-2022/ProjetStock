@@ -23,6 +23,8 @@ using ProjectStockModels.Model;
 using ApiApplication.Models;
 using ApiApplication.Service.Interfaces;
 using ProjectStockModels.APIReader.ServiceSpe;
+using Newtonsoft.Json.Linq;
+using ProjectStockLibrary;
 
 namespace ProjectStockModels.JsonReader
 {
@@ -70,9 +72,6 @@ namespace ProjectStockModels.JsonReader
 
         public async Task<HttpResponseMessage> Connect(AuthenticateRequest create)
         {
-           
-
-               
                 HttpClient httpClient_ = new HttpClient();
                 var request = new HttpRequestMessage
                 {
@@ -80,8 +79,7 @@ namespace ProjectStockModels.JsonReader
                     RequestUri = new Uri(uri + "/authenticate"),
                     Content = new StringContent(JsonConvert.SerializeObject(create), Encoding.UTF8, "application/json")
                 };
-
-              
+                            
                 return _httpClient.SendAsync(request).Result;
 
     
@@ -130,14 +128,21 @@ namespace ProjectStockModels.JsonReader
         }
 
 
-        public virtual async Task<TModel> GetByEmail(string email)
+
+      
+        public virtual async Task<HttpResponseMessage> GetByEmail(AuthenticateRequest create)
         {
+            HttpClient httpClient_ = new HttpClient();
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Post,
+                RequestUri = new Uri(uri + "/user_auth"),
+                Content = new StringContent(JsonConvert.SerializeObject(create), Encoding.UTF8, "application/json")
+            };
+
+            return _httpClient.SendAsync(request).Result;
 
 
-            var uri_ = new Uri(uri + "/email?email=" + email);
-            TDto response = await _httpClient.GetFromJsonAsync<TDto>(uri_, _options);
-            TModel _model = _mapper.Map<TModel>(response);
-            return _model;
         }
 
 
@@ -172,6 +177,8 @@ namespace ProjectStockModels.JsonReader
             {
                 return StatusCodes.Status400BadRequest;
             }
+
+
            
         }
 

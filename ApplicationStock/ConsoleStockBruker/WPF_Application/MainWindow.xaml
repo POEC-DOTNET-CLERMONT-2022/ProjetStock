@@ -12,7 +12,6 @@
             <DockPanel>
                 <Menu DockPanel.Dock="Top" Visibility="Hidden" x:Name="_loginModalControl">
                     <MenuItem Header="Menu"  Height="50">
-                        <MenuItem Header="Mon Profil" Name="profile" Visibility="Hidden" ></MenuItem>
                         <MenuItem Header="Contact us">
                             <MenuItem Header="Direct Message" Click="MenuItem_Click_Contact"></MenuItem>
                             <MenuItem Header="Email: email@admin.com"></MenuItem>
@@ -54,8 +53,8 @@
 
                         <MenuItem Header="My profile" Click="Profile_click"></MenuItem>
                         <!--<MenuItem Header="My orders" Click="Orders_click"/>-->
-                        <MenuItem Header="My notification" ></MenuItem>
-                        <MenuItem Header="Sell or Buy orders"></MenuItem>
+                        <MenuItem Header="My notification"  Click="MyNotification_Click"></MenuItem>
+                        <MenuItem Header="Sell or Buy orders" Click="MenuBuy_Click"></MenuItem>
                         <MenuItem Header="Exit" Click="Disconnect_Click">
                         </MenuItem>
                     </MenuItem>

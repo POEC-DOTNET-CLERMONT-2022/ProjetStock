@@ -10,30 +10,61 @@ namespace ProjectStockLibrary
     public class Client
     {
         [Key]
+        [JsonProperty(PropertyName = "_id")]
         public  Guid _id { get; private set; }
+        [JsonProperty(PropertyName = "_firstName")]
         public string _firstName { get;  set; }
+        [JsonProperty(PropertyName = "_lastName")]
         public string _lastName { get; set; }
+        [JsonProperty(PropertyName = "_email")]
         public string _email { get; set; }
+        [JsonProperty(PropertyName = "_phone")]
         public string _phone { get;  set; }
+        [JsonProperty(PropertyName = "_siret")]
         public string _siret { get;  set; }
 
-        [JsonIgnore]
+ 
+        [JsonProperty(PropertyName = "_token")]
         public string? _token { get; set; } = null;
 
-        [JsonIgnore]
+        [JsonProperty(PropertyName = "_expireToken")]
         public DateTime? _expireToken { get; set; } = null;
 
-        [JsonIgnore]
+
+        [JsonProperty(PropertyName = "_password")]
         public string _password { get; set; }
 
-        [ForeignKey("Address")]
+       // [ForeignKey("Address")]
+        [JsonProperty(PropertyName = "_addresses")]
+        [JsonConverter(typeof(List<Address>))]
         public List<Address> _addresses { get; private set; }
 
-        [ForeignKey("Stock")]
-        private List<Stock> _stocks { get; set; }
+       // [ForeignKey("Stock")]
 
-        [JsonConstructorAttribute]
-        public Client(string firstName, string lastName, string email, string phone, string siret ,List<Address> addresses, List<Stock> stocks)
+        [JsonProperty("_stocks")]
+        [JsonConverter(typeof(List<Stock>))]
+        private List<Stock>? _stocks { get; set; }
+
+
+        [JsonConstructor]
+        public Client(string firstName, string lastName, string email, string phone, string siret, string password, List<Address> addresses, List<Stock>? stocks)
+        {
+            _id = Guid.NewGuid();
+            _firstName = string.IsNullOrEmpty(firstName) ? throw new ArgumentNullException(nameof(firstName)) : firstName;
+            _lastName = string.IsNullOrEmpty(lastName) ? throw new ArgumentNullException(nameof(lastName)) : lastName;
+            var regex = new Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
+            _email = !regex.IsMatch(email) ? throw new Exception(nameof(email)) : email;
+            _siret = string.IsNullOrEmpty(siret) && siret.Length < 14 || siret is null ? throw new ArgumentNullException(nameof(siret)) : siret;
+            _phone = string.IsNullOrEmpty(phone) && phone.Length < 12 || phone is null ? throw new ArgumentNullException(nameof(phone)) : phone;
+            _addresses = addresses;
+            _stocks = stocks;
+            _password = password;
+
+
+
+        }
+
+        public Client(string firstName, string lastName, string email, string phone, string siret ,List<Address> addresses, List<Stock>? stocks)
         {
             _id = Guid.NewGuid();
             _firstName = string.IsNullOrEmpty(firstName) ? throw new ArgumentNullException(nameof(firstName)) : firstName;
@@ -50,6 +81,7 @@ namespace ProjectStockLibrary
 
         }
 
+      
 
         public Client(string firstName , string lastName, string email, string phone, string siret)
         {
@@ -67,7 +99,7 @@ namespace ProjectStockLibrary
 
 
         }
-        [JsonConstructor]
+       
         public Client(string firstName, string lastName, string email, string phone, string siret, string password)
         {
             _id = Guid.NewGuid();
@@ -121,6 +153,17 @@ namespace ProjectStockLibrary
         public void setToken(string token)
         {
             _token = token;
+        }
+
+        public void setStocks(List<Stock> _list)
+        {
+            this._stocks = _list;
+        }
+
+
+        public void setAddress(List<Address> _list)
+        {
+            this._addresses = _list;
         }
 
         public void setExpireDate(DateTime date)

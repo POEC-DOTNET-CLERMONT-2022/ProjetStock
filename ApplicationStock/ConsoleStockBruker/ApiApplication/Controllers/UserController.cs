@@ -66,12 +66,25 @@ namespace ApiApplicationProjectStock.Controllers
             model._password = _userPasswordHasher.GetPasswordHasher(model._password);
             var response = _userService.Authenticate(model);
 
+
             if (response == null)
                 return BadRequest(new { message = "Username or password is incorrect" });
     
+
+
             return Ok(response);
         }
-        
+
+
+        [Authorize]
+        [HttpPost("user_auth")]
+        public IActionResult GetUser(AuthenticateRequest model)
+        {
+            var p = _context._users.Where(x => x._email == model._email);
+            return Ok(p);
+        }
+
+
 
         [HttpPost("register")]
         public IActionResult Register(CreateResult create)

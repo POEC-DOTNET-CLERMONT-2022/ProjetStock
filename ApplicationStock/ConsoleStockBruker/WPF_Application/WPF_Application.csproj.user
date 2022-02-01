@@ -7,13 +7,16 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Buy_Sell\BuyControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Buy_Sell\SellControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Cart\CartListControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Crypto\CryptoListsUserControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Market\MarketCreateControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Market\MarketListsControl.xaml.cs">
@@ -29,9 +32,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Stocks\StockListControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Stocks\StockUcxaml.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="UserControls\MarketDetailUC.xaml.cs">
@@ -52,9 +52,6 @@
     <Compile Update="Rappel\UserCreateRappelControle.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="User\UserInfoControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="User\UserNotificationControle.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -66,6 +63,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Buy_Sell\BuyControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Buy_Sell\SellControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Cart\CartListControl.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -73,9 +76,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Info\ContactUsControl.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Market\MarketCreateControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Market\MarketListsControl.xaml">
@@ -93,9 +93,6 @@
     <Page Update="Stocks\StockListControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Stocks\StockUcxaml.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="UserControls\MarketDetailUC.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -111,9 +108,6 @@
     <Page Update="User\MonProfil.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="User\RecoverControler.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="Cart\UserCart.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -121,9 +115,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Rappel\UserCreateRappelControle.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="User\UserInfoControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="User\UserNotificationControle.xaml">

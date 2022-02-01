@@ -34,6 +34,7 @@ using ProjectStockModels.APIReader.Services;
 using AutoMapper;
 using WPF_Application.Service.Interfaces;
 using WPF_Application.Service.Services;
+using WPF_Application.Buy_Sell;
 
 namespace WPF_Application
 {
@@ -59,16 +60,27 @@ namespace WPF_Application
         private JsonGenericReader<MarketModel, MarketDto> jsonGenericReader { get; }
 
 
-        private ObservableCollection<MarketModel> _lists { get; set; }
+        private ObservableCollection<MenuItem> _menuItems = new ObservableCollection<MenuItem>();
         public MarketLists MarketLists { get; set; }  = new MarketLists();
 
 
+
+        public ObservableCollection<MenuItem> MenuItems
+        {
+            get { return _menuItems; }
+            set { _menuItems = value; }
+        }
 
         private async Task loadMarket(JsonGenericReader<MarketModel, MarketDto> jsonGenericReader)
         {
             var result = await jsonGenericReader.GetAll();
             foreach (var item in result)
-                _lists.Add(item);
+                myList.Items.Add(new MenuItem { Name = item._name, Header = item._name });
+
+
+     
+
+
         }
 
 
@@ -80,12 +92,12 @@ namespace WPF_Application
 
             HttpClient _client = new HttpClient();
             jsonGenericReader = new MarketServiceReader(_client, _mapper);
-            _lists = new ObservableCollection<MarketModel>();
+            //_lists = new ObservableCollection<MarketModel>();
 
 
             loadMarket(jsonGenericReader);
 
-            MarketLists.Markets = _lists;
+           
             LoginControle page_connection = new LoginControle();
             user.Content = page_connection;
 
@@ -131,6 +143,18 @@ namespace WPF_Application
             NotificationListsControl _rappel = new NotificationListsControl();
             user.Content = _rappel;
         }
+       
+
+        private void MyNotification_Click(object sender, RoutedEventArgs e)
+        {
+            UserNotificationControle _user_rappel = new UserNotificationControle();
+            user.Content = _user_rappel;
+        }
+        private void MenuBuy_Click(object sender, RoutedEventArgs e)
+        {
+            MenuSellBuy _menuSellBuy = new MenuSellBuy();
+            user.Content = _menuSellBuy;
+        }
 
 
         private void MenuItem_Click_Markets(object sender, RoutedEventArgs e)
@@ -146,10 +170,6 @@ namespace WPF_Application
             user.Content = _listStock;
         }
 
-        private void DisplayDetailClick(object sender, RoutedEventArgs e)
-        {
-            Navigator.NavigateTo(typeof(StockUcxaml));
-        }
 
        
         private void Profile_click(object sender, RoutedEventArgs e)

@@ -54,20 +54,41 @@ namespace WPF_Application
         private async Task loadUser(AuthenticateRequest authenticate,object sender)
         {
             var result = await this.jsonGenericReader.Connect(authenticate);
-
-
             var object_result = await result.Content.ReadAsStringAsync();
             var jObject = JObject.Parse(object_result);
 
 
             var mapped = _mapper.Map<Client>(jObject);
-          
+
 
             serviceUserAppCurrent.setClientCurrent(mapped);
 
 
+
+
             if ((int) result.StatusCode == 200)
             {
+
+                //var getuser = await this.jsonGenericReader.GetByEmail(authenticate);
+
+                //var object_ = await getuser.Content.ReadAsStringAsync();
+
+               
+                //try
+                //{
+
+                //    var json = JsonConvert.DeserializeObject<Client>(object_);
+                //    var mapped_ = _mapper.Map<Client>(json);
+                //    //serviceUserAppCurrent.setClientCurrent(json);
+                  
+                //}
+                //catch (Exception e)
+                //{
+
+                //}
+
+
+
 
 
                 MessageBox.Show("You are connected", "Connected", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -83,19 +104,7 @@ namespace WPF_Application
 
         }
 
-        private async Task loadUserInfo(string email)
-        {
-
-           
-            var result = await this.jsonGenericReader.GetByEmail(email);
-
-          
-            var mapped_ = _mapper.Map<Client>(result);
-            serviceUserAppCurrent.UpdateClientCurrent(mapped_);
-        }
-
-
-
+    
         private void Create_button_Click(object sender, RoutedEventArgs e)
         {
             MainWindow parentWindow = Window.GetWindow(this) as MainWindow;
@@ -105,6 +114,19 @@ namespace WPF_Application
             parentWindow.Content = app_create;
            
         }
+        //private async void loadUserCient(JsonGenericReader<UserModel, UserDto> _json, string email)
+        //{
+        //    var _email = email;
+        //    //var result = await _json.GetByEmail(email);
+        //    var mapped = _mapper.Map<Client>(result);
+
+
+        //    serviceUserAppCurrent.setClientCurrent(mapped);
+
+          
+
+        //}
+
 
         private void Login_button_Click(object sender, RoutedEventArgs e)
         {
@@ -116,12 +138,13 @@ namespace WPF_Application
 
                 app_create._password = TxtPassword.Password;
                 app_create._email = TxtEmail.Text;
-                loadUser(app_create,sender);
+          //  loadUserCient(jsonGenericReader, app_create._email);
+            loadUser(app_create,sender);
 
              
-  
 
-                
+
+
             //}
             //catch(Exception ew)
             //{

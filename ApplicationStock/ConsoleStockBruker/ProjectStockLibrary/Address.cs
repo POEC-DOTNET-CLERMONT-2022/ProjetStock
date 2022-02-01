@@ -9,14 +9,23 @@ using System.Threading.Tasks;
 
 namespace ProjectStockLibrary
 {
+    [JsonArray]
     public class Address
     {
         [Key]
+        [JsonProperty(PropertyName = "_id")]
         public Guid _id { get; private set; }
+        [JsonProperty(PropertyName = "_address_line_1")]
         public string _address_line_1 { get; set; }
+        [JsonProperty(PropertyName = "_address_line_2")]
         public string _address_line_2 { get;  set; }
+        [JsonProperty(PropertyName = "_codePostal")]
         public string _codePostal { get;set; }
+
+        [JsonProperty(PropertyName = "_city")]
         public string _city { get; set; }
+
+        [JsonProperty(PropertyName = "_country")]
         public string _country { get; set; }
 
        [JsonConstructorAttribute]
