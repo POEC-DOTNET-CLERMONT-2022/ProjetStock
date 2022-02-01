@@ -83,7 +83,7 @@ namespace WPF_Application
 
         }
 
-        private async Task<Client> loadUserInfo(string email)
+        private async Task loadUserInfo(string email)
         {
 
            
@@ -91,7 +91,7 @@ namespace WPF_Application
 
           
             var mapped_ = _mapper.Map<Client>(result);
-            return mapped_;
+            serviceUserAppCurrent.UpdateClientCurrent(mapped_);
         }
 
 
