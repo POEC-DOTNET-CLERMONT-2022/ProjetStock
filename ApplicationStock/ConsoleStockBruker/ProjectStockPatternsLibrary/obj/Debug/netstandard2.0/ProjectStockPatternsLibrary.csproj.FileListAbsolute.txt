@@ -1,0 +1,17 @@
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockPatternsLibrary\bin\Debug\netstandard2.0\ProjectStockPatternsLibrary.deps.json
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockPatternsLibrary\bin\Debug\netstandard2.0\ProjectStockPatternsLibrary.dll
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockPatternsLibrary\bin\Debug\netstandard2.0\ProjectStockPatternsLibrary.pdb
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockPatternsLibrary\bin\Debug\netstandard2.0\PersistanceStockProjectLibrary.dll
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockPatternsLibrary\bin\Debug\netstandard2.0\ProjectStockDTOS.dll
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockPatternsLibrary\bin\Debug\netstandard2.0\ProjectStockLibrary.dll
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockPatternsLibrary\bin\Debug\netstandard2.0\PersistanceStockProjectLibrary.pdb
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockPatternsLibrary\bin\Debug\netstandard2.0\ProjectStockDTOS.pdb
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockPatternsLibrary\bin\Debug\netstandard2.0\ProjectStockLibrary.pdb
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockPatternsLibrary\obj\Debug\netstandard2.0\ProjectStockPatternsLibrary.csproj.AssemblyReference.cache
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockPatternsLibrary\obj\Debug\netstandard2.0\ProjectStockPatternsLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockPatternsLibrary\obj\Debug\netstandard2.0\ProjectStockPatternsLibrary.AssemblyInfoInputs.cache
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockPatternsLibrary\obj\Debug\netstandard2.0\ProjectStockPatternsLibrary.AssemblyInfo.cs
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockPatternsLibrary\obj\Debug\netstandard2.0\ProjectStockPatternsLibrary.csproj.CoreCompileInputs.cache
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockPatternsLibrary\obj\Debug\netstandard2.0\ProjectStockPatternsLibrary.csproj.CopyComplete
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockPatternsLibrary\obj\Debug\netstandard2.0\ProjectStockPatternsLibrary.dll
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockPatternsLibrary\obj\Debug\netstandard2.0\ProjectStockPatternsLibrary.pdb

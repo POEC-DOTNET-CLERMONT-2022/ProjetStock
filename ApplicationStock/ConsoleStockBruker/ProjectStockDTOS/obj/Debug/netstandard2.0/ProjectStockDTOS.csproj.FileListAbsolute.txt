@@ -1,0 +1,13 @@
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockDTOS\bin\Debug\netstandard2.0\ProjectStockDTOS.deps.json
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockDTOS\bin\Debug\netstandard2.0\ProjectStockDTOS.dll
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockDTOS\bin\Debug\netstandard2.0\ProjectStockDTOS.pdb
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockDTOS\bin\Debug\netstandard2.0\ProjectStockLibrary.dll
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockDTOS\bin\Debug\netstandard2.0\ProjectStockLibrary.pdb
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockDTOS\obj\Debug\netstandard2.0\ProjectStockDTOS.csproj.AssemblyReference.cache
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockDTOS\obj\Debug\netstandard2.0\ProjectStockDTOS.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockDTOS\obj\Debug\netstandard2.0\ProjectStockDTOS.AssemblyInfoInputs.cache
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockDTOS\obj\Debug\netstandard2.0\ProjectStockDTOS.AssemblyInfo.cs
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockDTOS\obj\Debug\netstandard2.0\ProjectStockDTOS.csproj.CoreCompileInputs.cache
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockDTOS\obj\Debug\netstandard2.0\ProjectStockDTOS.csproj.CopyComplete
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockDTOS\obj\Debug\netstandard2.0\ProjectStockDTOS.dll
+C:\Users\trito\ProjetStock\ApplicationStock\ConsoleStockBruker\ProjectStockDTOS\obj\Debug\netstandard2.0\ProjectStockDTOS.pdb
