@@ -53,47 +53,29 @@ namespace WPF_Application
     
         private async Task loadUser(AuthenticateRequest authenticate,object sender)
         {
-            var result = await this.jsonGenericReader.Connect(authenticate);
-            var object_result = await result.Content.ReadAsStringAsync();
-            var jObject = JObject.Parse(object_result);
+            var result = await this.jsonGenericReader.GetByEmail(authenticate);
+            var _result = await result.Content.ReadAsStringAsync();
+
+            try
+            {
+
+                JArray convertStringtoJson = JArray.Parse(_result);
+                var user_mapped = _mapper.Map<Client>(convertStringtoJson);
+                serviceUserAppCurrent.setClientCurrent(user_mapped);
 
 
-            var mapped = _mapper.Map<Client>(jObject);
-
-
-            serviceUserAppCurrent.setClientCurrent(mapped);
-
-
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error",MessageBoxButton.OK,MessageBoxImage.Error);
+            }
 
 
             if ((int) result.StatusCode == 200)
             {
 
-                //var getuser = await this.jsonGenericReader.GetByEmail(authenticate);
-
-                //var object_ = await getuser.Content.ReadAsStringAsync();
-
-               
-                //try
-                //{
-
-                //    var json = JsonConvert.DeserializeObject<Client>(object_);
-                //    var mapped_ = _mapper.Map<Client>(json);
-                //    //serviceUserAppCurrent.setClientCurrent(json);
-                  
-                //}
-                //catch (Exception e)
-                //{
-
-                //}
-
-
-
-
-
                 MessageBox.Show("You are connected", "Connected", MessageBoxButton.OK, MessageBoxImage.Information);
-     
-                
+                  
                 this.loggedIn_Completed(sender, new EventArgs());
 
             }
@@ -138,6 +120,7 @@ namespace WPF_Application
 
                 app_create._password = TxtPassword.Password;
                 app_create._email = TxtEmail.Text;
+            
           //  loadUserCient(jsonGenericReader, app_create._email);
             loadUser(app_create,sender);
 

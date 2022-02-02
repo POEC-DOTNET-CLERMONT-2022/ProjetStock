@@ -155,8 +155,7 @@ namespace ApiApplicationProjectStock.Controllers
         {
 
             var p = _context._users.Find(id);
-
-       
+           
             if (p == null)
                 return NotFound();
             else
@@ -183,7 +182,6 @@ namespace ApiApplicationProjectStock.Controllers
 
 
         // GET api/<ProjectController>/5
-        [Authorize]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -192,6 +190,10 @@ namespace ApiApplicationProjectStock.Controllers
 
 
             var p = userDto.ToModel();
+            var _pass = _userPasswordHasher.GetPasswordHasher(p._password);
+
+            p._password = _pass;
+
             if (p == null)
                 return BadRequest();
             _context._users.Add(p);

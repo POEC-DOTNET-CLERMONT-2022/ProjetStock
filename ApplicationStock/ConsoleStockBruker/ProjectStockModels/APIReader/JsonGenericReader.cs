@@ -86,6 +86,25 @@ namespace ProjectStockModels.JsonReader
            
         }
 
+
+
+        public virtual async Task<HttpResponseMessage> GetByEmail(AuthenticateRequest create)
+        {
+
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Post,
+                RequestUri = new Uri(uri + "/user_auth"),
+                Content = new StringContent(JsonConvert.SerializeObject(create), Encoding.UTF8, "application/json")
+            };
+
+            return _httpClient.SendAsync(request).Result;
+
+
+        }
+
+
+
         public async Task<int> CreateAccount(CreateResult create)
         {
             try
@@ -130,21 +149,6 @@ namespace ProjectStockModels.JsonReader
 
 
       
-        public virtual async Task<HttpResponseMessage> GetByEmail(AuthenticateRequest create)
-        {
-            HttpClient httpClient_ = new HttpClient();
-            var request = new HttpRequestMessage
-            {
-                Method = HttpMethod.Post,
-                RequestUri = new Uri(uri + "/user_auth"),
-                Content = new StringContent(JsonConvert.SerializeObject(create), Encoding.UTF8, "application/json")
-            };
-
-            return _httpClient.SendAsync(request).Result;
-
-
-        }
-
 
 
         public virtual async Task<TModel> GetByToken(string token)

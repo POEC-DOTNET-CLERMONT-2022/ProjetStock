@@ -9,7 +9,7 @@ namespace ApiApplication.Model
 
         public APIContext(DbContextOptions<APIContext> options) : base(options)
         {
-            ConnectionString = "Server=(localdb)\\mssqllocaldb;Database=BDProjectStock;Trusted_Connection=True;MultipleActiveResultSets=true";
+            ConnectionString = "Server=(localdb)\\mssqllocaldb;Database=BDProjectStock;Trusted_Connection=True";
 
 
         }
@@ -17,8 +17,10 @@ namespace ApiApplication.Model
         {
           
             base.OnConfiguring(optionsBuilder);
-
             optionsBuilder.UseSqlServer(ConnectionString);
+
+            
+          
         }
 
     
