@@ -24,6 +24,11 @@ namespace WPF_Application.User
     /// <summary>
     /// Logique d'interaction pour UsersLists.xaml
     /// </summary>
+    ///
+    //TODO : BINDING !!!!!!! 
+    //TODO : BINDING !!!!!!! 
+    //TODO : BINDING !!!!!!! 
+    //TODO : BINDING !!!!!!! 
     public partial class UsersLists : UserControl
     {
 

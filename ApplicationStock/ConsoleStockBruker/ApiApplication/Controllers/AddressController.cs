@@ -19,6 +19,7 @@ namespace ApiApplication.Controllers
         private readonly APIContext _context;
         public AddressController(IMapper mapper, APIContext context)
         {
+            //TODO : utiliser les repo plutôt que le DBContext directement
             _mapper = mapper;
             _context = context;
         }
@@ -26,6 +27,7 @@ namespace ApiApplication.Controllers
 
 
         [Authorize]
+        //TODO : attention au règle des URL => https://docs.microsoft.com/fr-fr/aspnet/core/tutorials/first-web-api?view=aspnetcore-6.0&tabs=visual-studio
         [HttpGet("all")]
 
 
@@ -33,6 +35,8 @@ namespace ApiApplication.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<IEnumerable<AddressDto>> GetAll()
         {
+            //TODO: il faut gérer les exceptions !
+            //TODO: il faut aussi logger les erreurs ! 
             var p = _context._addresses.ToList();
             if (p == null)
                 return NotFound();
@@ -85,6 +89,7 @@ namespace ApiApplication.Controllers
             }
             catch (Exception ex)
             {
+                //TODO : logger ici 
                 return BadRequest(ex.Message);
             }
         }
@@ -110,6 +115,7 @@ namespace ApiApplication.Controllers
             p._codePostal = addressDto._codePostal;
             p._country = addressDto._country; 
             var mapProj = _mapper.Map<AddressDto>(p);
+            //TODO: on fait soit le mapping à la main ou le mapping via automapper 
 
             _context._addresses.Update(p);
             _context.SaveChanges();
@@ -128,7 +134,7 @@ namespace ApiApplication.Controllers
             if (p != null)
             {
                 _context._addresses.Remove(p);
-               
+               //TODO: save ici 
             }
 
             else

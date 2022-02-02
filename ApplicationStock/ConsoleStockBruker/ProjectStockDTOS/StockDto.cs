@@ -9,6 +9,7 @@ using ProjectStockLibrary;
 
 namespace ProjectStockDTOS
 {
+    //TODO : inutile pour REST 
     [DataContract]
     public class StockDto
     {

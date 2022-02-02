@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Net;
+using System.Net.Mime;
 using ProjectStockDTOS;
 using ProjectStockModels.Model;
 using ApiApplication.Models;
@@ -25,6 +26,7 @@ using ApiApplication.Service.Interfaces;
 using ProjectStockModels.APIReader.ServiceSpe;
 using Newtonsoft.Json.Linq;
 using ProjectStockLibrary;
+using MediaTypeHeaderValue = Microsoft.Net.Http.Headers.MediaTypeHeaderValue;
 
 namespace ProjectStockModels.JsonReader
 {
@@ -50,6 +52,7 @@ namespace ProjectStockModels.JsonReader
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(
             new MediaTypeWithQualityHeaderValue("application/json"));
+            //TODO : use => MediaTypeNames.Application.Json
             _options = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true,
@@ -60,7 +63,9 @@ namespace ProjectStockModels.JsonReader
                 }
             };
             _httpClient.DefaultRequestHeaders.Add(AuthorizationHeader, "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIzNDY3Yjk5LTBmM2UtNDJkZi1hN2FjLTQzODY5YTFlMDdjMCIsIm5iZiI6MTY0MjQwNDY3MSwiZXhwIjoxNjQzMDA5NDcxLCJpYXQiOjE2NDI0MDQ2NzF9.3XvBwc9RVmZyVUGvaZqkAQX6Hh4Yn69uEhVdzFo-nAw");
+            //TODO : supprimer le token ici 
             uri = "https://localhost:7136/" + baseuri; 
+            //TODO : rendre configurable l'url => regarder app.config wpf 
             _httpClient.BaseAddress = new Uri(uri);
 
             _userPasswordHasher = new PassworsHasherService();
@@ -80,6 +85,7 @@ namespace ProjectStockModels.JsonReader
                     Content = new StringContent(JsonConvert.SerializeObject(create), Encoding.UTF8, "application/json")
                 };
                             
+                //TODO : utiliser plutôt _httpClient.PostAsJsonAsync()
                 return _httpClient.SendAsync(request).Result;
 
     
@@ -98,11 +104,13 @@ namespace ProjectStockModels.JsonReader
                     RequestUri = new Uri(uri + "/register"),
                     Content = new StringContent(JsonConvert.SerializeObject(create), Encoding.UTF8, "application/json")
                 };
+                //TODO : retourner un HttpStatusCode
                 return (int)_httpClient.SendAsync(request).Result.StatusCode;
 
             }
             catch (Exception ex)
             {
+                //TODO : Logger l'exception ici 
                 return StatusCodes.Status400BadRequest;
             }
 
@@ -150,7 +158,7 @@ namespace ProjectStockModels.JsonReader
         public virtual async Task<TModel> GetByToken(string token)
         {
 
-
+            //TODO : à supprimer 
             var uri_ = new Uri(uri + "/token?token="+token);
             TDto response = await _httpClient.GetFromJsonAsync<TDto>(uri_, _options);
             TModel _model = _mapper.Map<TModel>(response);
@@ -215,6 +223,7 @@ namespace ProjectStockModels.JsonReader
 
 
         //La fonction add : works all but on in client
+        //TODO : rien à faire ici 
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<int> Add(TModel item)
         {

@@ -5,6 +5,7 @@ using System.Text;
 
 namespace ApiApplication.Controllers.Services
 {
+    //TODO : dupliquer ! 
     internal class PasswordHasherService : IPasswordHasherService
     {
         public string GetPasswordHasher(string password_not_hashed)

@@ -16,6 +16,7 @@ namespace ProjectStockDTOS
     {
         [DataMember]
         [Required]
+        //TODO : inutile 
         [JsonProperty("_id")]
         public Guid _id { get; set; }
         [DataMember]

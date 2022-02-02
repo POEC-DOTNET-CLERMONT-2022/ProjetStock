@@ -69,6 +69,7 @@ namespace ProjectStock.Api.Tests.Controllers
 
 
             var result = AddressController.GetAll();
+            //TODO vérifier le code de retour 
             //Assert
             var entities = result.Value;
             entities.Should().NotBeNull();

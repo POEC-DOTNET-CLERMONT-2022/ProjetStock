@@ -17,6 +17,8 @@ namespace ProjectStockModels.Mapper
             CreateMap<OrderModel,Order>().ReverseMap();
 
             CreateMap<OrderModel, OrderDto>().ReverseMap();
+
+            //TODO : pas besoin si on utilise le reverse map
             CreateMap<OrderDto, OrderModel>().ReverseMap();
             CreateMap<Order, OrderModel>().ReverseMap();
 

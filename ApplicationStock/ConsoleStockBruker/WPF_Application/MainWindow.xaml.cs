@@ -131,6 +131,7 @@ namespace WPF_Application
 
         //}
 
+        //TODO : nommage des méthodes 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
             var test = serviceUserAppCurrent.GetClientCurrent();
@@ -186,6 +187,7 @@ namespace WPF_Application
         }
         private void Notifications_Click(object sender, RoutedEventArgs e)
         {
+            //TODO : utiliser la navigation avec le navigator 
             UserNotificationControle _userNotifs = new UserNotificationControle();
             user.Content = _userNotifs;
         }
@@ -201,7 +203,7 @@ namespace WPF_Application
 
         private void MenuItem_Click_4(object sender, RoutedEventArgs e)
         {
-
+            //TODO : utile ? 
         }
 
         private void Disconnect_Click(object sender, RoutedEventArgs e)

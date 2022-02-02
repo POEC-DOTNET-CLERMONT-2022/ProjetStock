@@ -45,6 +45,7 @@ namespace ProjectStockModels.Model
             get { return _value; }
             set
             {
+                //TODO : condition inutile
                 if (value != null )
                 {
                     _value = value;

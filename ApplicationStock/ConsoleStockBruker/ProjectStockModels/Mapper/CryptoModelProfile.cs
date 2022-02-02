@@ -13,6 +13,7 @@ namespace ProjectStockModels.Mapper
     {
         public CryptoModelProfile()
         {
+            //TODO : uniquement model vers DTO 
             CreateMap<CryptoModel, Crypto>().ReverseMap();
         }
     }

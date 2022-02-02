@@ -12,6 +12,7 @@ namespace ProjectStockDTOS
 
     public class CryptoDto
     {
+        //TODO : inutile pour REST
         [DataMember]
         [Required]
 

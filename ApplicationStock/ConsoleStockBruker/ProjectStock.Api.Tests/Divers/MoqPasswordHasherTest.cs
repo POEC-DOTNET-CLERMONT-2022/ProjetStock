@@ -47,7 +47,7 @@ namespace ProjectStock.Api.Tests.Divers
             
         }
 
-
+        //TODO cohérence fluent assertion ? 
         [TestMethod]
         public void TestPasswordHasher()
         {
