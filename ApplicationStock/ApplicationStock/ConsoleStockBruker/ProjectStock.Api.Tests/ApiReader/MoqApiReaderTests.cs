@@ -62,7 +62,7 @@ namespace ProjectStock.Api.Tests.ApiReader
         {
             Fixture = new Fixture();
             Orders = Fixture.CreateMany<NotificationEntity>();
-            NotificationController = new NotificationController(Mapper, APIContext);
+           // NotificationController = new NotificationController(Mapper, APIContext);
         }
 
 

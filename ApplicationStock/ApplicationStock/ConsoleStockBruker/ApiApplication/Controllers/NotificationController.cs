@@ -29,7 +29,7 @@ namespace ApiApplication.Controllers
         }
 
         //// GET api/<ProjectController>/GetAll
-        [Authorize]
+        
         [HttpGet("all")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(NotificationDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

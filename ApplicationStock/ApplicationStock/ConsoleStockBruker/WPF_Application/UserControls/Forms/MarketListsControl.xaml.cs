@@ -45,32 +45,43 @@ namespace WPF_Application.Market
 
      
 
+    
         public MarketListsControl()
         {
             InitializeComponent();
-            DataContext = MarketsLists;
-            HttpClient _client = new HttpClient();
-            jsonGenericReader = new MarketServiceReader(_client,_mapper);
-            loadMarket(jsonGenericReader);
-            MarketsLists.Markets = _lists;
+            jsonGenericReader = new MarketServiceReader(new HttpClient(), _mapper);
         }
 
 
-        private async Task loadMarket(JsonGenericReader<MarketModel, MarketDto> jsonGenericReader)
+
+
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var result = await jsonGenericReader.GetAll();
-            foreach (var item in result)
-                _lists.Add(item);
+            DataContext = this;
+            LoadMarket();
+
         }
 
-        private async Task updateMarket(JsonGenericReader<MarketModel, MarketDto> jsonGenericReader, MarketModel market)
+        public async void LoadMarket()
+        {
+
+            var userModels = await jsonGenericReader.GetAll();
+
+            MarketsLists.Markets = new ObservableCollection<MarketModel>(userModels);
+
+
+        }
+
+
+
+        private async Task updateMarket( MarketModel market)
         {
             await jsonGenericReader.Update(market);
 
         }
 
 
-        private async Task addMarket(JsonGenericReader<MarketModel, MarketDto> jsonGenericReader, MarketModel market)
+        private async Task addMarket(MarketModel market)
         {
             await jsonGenericReader.Add(market);
 
@@ -78,32 +89,16 @@ namespace WPF_Application.Market
 
 
 
-        private async Task deleteMarket(JsonGenericReader<MarketModel, MarketDto> jsonGenericReader, Guid id)
+        private async Task deleteMarket(Guid id)
         {
-            int _return = await jsonGenericReader.Delete(id);
-
-
-            if (_return == 200)
-            {
-                //suppression de l'affichage
-                foreach (var _item in _lists)
-                {
-                    if (_item.Id == id)
-                    {
-                        _lists.Remove(_item);
-                        break;
-                    }
-
-                }
-            }
-
+          await jsonGenericReader.Delete(id);
 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var market = new MarketModel() { Id = Guid.NewGuid() , Name = TxtNom.Text, OpeningDate = DateTime.UtcNow, ClosingDate = DateTime.Now ,Stocks = new List<Stock>() };
-            addMarket(jsonGenericReader, market);
+            addMarket(market);
 
 
         }
@@ -121,7 +116,7 @@ namespace WPF_Application.Market
             else
             {
                 var market = new MarketModel() { Id = new Guid(TxtGuid.Text), Name = TxtNom.Text, OpeningDate = DateTime.UtcNow, ClosingDate = DateTime.Now ,Stocks = new List<Stock>()};
-                updateMarket(jsonGenericReader, market);
+                updateMarket(market);
 
             }
           
@@ -140,7 +135,7 @@ namespace WPF_Application.Market
             }
             else
             {
-                deleteMarket(jsonGenericReader, new Guid(TxtGuid.Text));
+                deleteMarket(new Guid(TxtGuid.Text));
 
             }
 

@@ -3,18 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WPF_Application"
+             xmlns:local="clr-namespace:WPF_Application" xmlns:WPF_Application.UserControls="clr-namespace:WPF_Application.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <ContentControl x:Name="userMenu"></ContentControl>
+
+        <WPF_Application.UserControls:MenuUserControl></WPF_Application.UserControls:MenuUserControl>
         <DockPanel>
             <Image Height="86" Width="71"></Image>
         </DockPanel>
         <DockPanel>
+         
 
-
-            <StackPanel   DockPanel.Dock="top"    Background="LightGray" Height="425" Width="600" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel   Background="LightGray" Height="425" Width="450" HorizontalAlignment="Center" VerticalAlignment="Center">
 
                 <TextBlock FontSize="20">My profile</TextBlock>
                 <DockPanel Margin="10" Visibility="Hidden" x:Name="message_error">

@@ -31,7 +31,7 @@ namespace ApiApplicationProjectStock.Controllers
         }
 
         //// GET api/<ProjectController>/
-        [Authorize]
+   
         [HttpGet("all")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MarketDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

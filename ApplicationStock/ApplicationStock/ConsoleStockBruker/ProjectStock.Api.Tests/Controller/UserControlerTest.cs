@@ -40,7 +40,7 @@ namespace ProjectStock.Api.Tests.Controllers
         [TestInitialize]
         public void InitTest()
         {
-            UserController = new UserController(Mapper,APIContext , Iuserservice);
+         //   UserController = new UserController(Mapper,APIContext , Iuserservice);
         }
         [TestMethod]
         public void TestGetAllUsers_Ok()
@@ -63,7 +63,7 @@ namespace ProjectStock.Api.Tests.Controllers
         public void TestGetAllUsers_NullRepository()
         {
             //Arrange
-            UserController = new UserController(Mapper, APIContext, Iuserservice);
+           // UserController = new UserController(Mapper, APIContext, Iuserservice);
 
 
             //Act
@@ -82,7 +82,7 @@ namespace ProjectStock.Api.Tests.Controllers
         public void TestAuthenticate()
         {
             //Arrange
-            UserController = new UserController(Mapper, APIContext, Iuserservice);
+           // UserController = new UserController(Mapper, APIContext, Iuserservice);
 
 
             //Act
@@ -103,7 +103,7 @@ namespace ProjectStock.Api.Tests.Controllers
         public void TestRegister()
         {     
             //Arrange
-            UserController = new UserController(Mapper, APIContext, Iuserservice);
+          //  UserController = new UserController(Mapper, APIContext, Iuserservice);
 
 
             //Act
@@ -125,7 +125,7 @@ namespace ProjectStock.Api.Tests.Controllers
         public void TestLogout()
         {
 
-            UserController = new UserController(Mapper, APIContext, Iuserservice);
+            //UserController = new UserController(Mapper, APIContext, Iuserservice);
             var result = UserController.Logout();
             result.Should().NotBeNull();
             result.Should().Be((int)HttpStatusCode.OK);

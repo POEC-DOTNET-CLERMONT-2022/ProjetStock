@@ -27,6 +27,8 @@ using ProjectStockLibrary;
 using Newtonsoft.Json;
 using WPF_Application.Service.Interfaces;
 using Newtonsoft.Json.Linq;
+using WPF_Application.UserControls;
+using WPF_Application.Utils;
 
 namespace WPF_Application
 {
@@ -41,6 +43,7 @@ namespace WPF_Application
         private readonly IMapper _mapper = ((App)Application.Current).Mapper;
 
         private JsonGenericReader<UserModel, UserDto> jsonGenericReader { get; }
+        public INavigator Navigator { get; set; } = ((App)Application.Current).Navigator;
 
         public LoginControle()
         {
@@ -69,32 +72,12 @@ namespace WPF_Application
             if ((int) result.StatusCode == 200)
             {
 
-                //var getuser = await this.jsonGenericReader.GetByEmail(authenticate);
-
-                //var object_ = await getuser.Content.ReadAsStringAsync();
-
-               
-                //try
-                //{
-
-                //    var json = JsonConvert.DeserializeObject<Client>(object_);
-                //    var mapped_ = _mapper.Map<Client>(json);
-                //    //serviceUserAppCurrent.setClientCurrent(json);
-                  
-                //}
-                //catch (Exception e)
-                //{
-
-                //}
-
-
-
-
-
+        
                 MessageBox.Show("You are connected", "Connected", MessageBoxButton.OK, MessageBoxImage.Information);
-     
-                
-                this.loggedIn_Completed(sender, new EventArgs());
+
+
+                Navigator.NavigateTo(typeof(UserMainWindowsConnected));
+
 
             }
             else
@@ -105,65 +88,24 @@ namespace WPF_Application
         }
 
     
-        private void Create_button_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow parentWindow = Window.GetWindow(this) as MainWindow;
-            CreateUser app_create = new CreateUser();
-
-            
-            parentWindow.Content = app_create;
-           
-        }
-        //private async void loadUserCient(JsonGenericReader<UserModel, UserDto> _json, string email)
-        //{
-        //    var _email = email;
-        //    //var result = await _json.GetByEmail(email);
-        //    var mapped = _mapper.Map<Client>(result);
-
-
-        //    serviceUserAppCurrent.setClientCurrent(mapped);
-
-          
-
-        //}
+    
 
 
         private void Login_button_Click(object sender, RoutedEventArgs e)
         {
 
-            //try
-            //{
+  
 
                 AuthenticateRequest app_create = new AuthenticateRequest();
 
                 app_create._password = TxtPassword.Password;
                 app_create._email = TxtEmail.Text;
-          //  loadUserCient(jsonGenericReader, app_create._email);
-            loadUser(app_create,sender);
-
-             
-
-
-
-            //}
-            //catch(Exception ew)
-            //{
-            //    MessageBox.Show("Informations invalids" + ew.ToString(),"Error",MessageBoxButton.OK, MessageBoxImage.Error);
-            //}
-
+                loadUser(app_create,sender);
 
         }
+  
 
-        private void loggedIn_Completed(object sender, EventArgs e)
-        {
-            MainWindow parentWindow = Window.GetWindow(this) as MainWindow;
-            if (parentWindow != null)
-            {
-                parentWindow._loginModalControl.Visibility = Visibility.Visible;
-               
-          
-                this.Visibility = Visibility.Hidden;
-            }
-        }
+
+
     }
 }

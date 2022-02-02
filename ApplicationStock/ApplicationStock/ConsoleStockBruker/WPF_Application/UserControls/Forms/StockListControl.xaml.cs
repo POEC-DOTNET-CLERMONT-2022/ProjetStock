@@ -43,63 +43,58 @@ namespace WPF_Application.Stocks
         public StockLists StocksList { get; set; } = new StockLists();
 
 
-        private async Task loadStock(JsonGenericReader<StockModel, StockDto> jsonGenericReader)
-        {
-            var result = await jsonGenericReader.GetAll();
-            foreach (var item in result)
-                _lists.Add(item);
-        }
+        public StockListControl()
+         {
+                InitializeComponent();
+                jsonGenericReader = new StockServiceReader(new HttpClient(), _mapper);
+          }
 
-        private async Task updateStock(JsonGenericReader<StockModel, StockDto> jsonGenericReader, StockModel newUser)
+
+
+
+            private async void Window_Loaded(object sender, RoutedEventArgs e)
+            {
+                DataContext = this;
+                LoadStock();
+
+            }
+
+            public async void LoadStock()
+            {
+
+                var userModels = await jsonGenericReader.GetAll();
+
+                StocksList.Stocks = new ObservableCollection<StockModel>(userModels);
+
+
+            }
+
+
+        private async Task updateStock(StockModel newUser)
         {
-            
+
             await jsonGenericReader.Update(newUser);
 
         }
 
-        private async Task addStock(JsonGenericReader<StockModel, StockDto> jsonGenericReader, StockModel newUser)
+        private async Task addStock(StockModel newUser)
         {
             await jsonGenericReader.Add(newUser);
 
         }
 
-        private async Task deleteStock(JsonGenericReader<StockModel, StockDto> jsonGenericReader, Guid id)
+        private async Task deleteStock(Guid id)
         {
-            int _return = await jsonGenericReader.Delete(id);
-
-
-        
-                //suppression de l'affichage
-                foreach (var _item in _lists)
-                {
-                    if (_item.Id == id)
-                    {
-                        _lists.Remove(_item);
-                        break;
-                    }
-
-                }
-            
-
+            await jsonGenericReader.Delete(id);
 
         }
 
-        public StockListControl()
-        {
-            InitializeComponent();
-            DataContext = StocksList;
-            jsonGenericReader = new StockServiceReader(new HttpClient(), _mapper);
-            _lists = new ObservableCollection<StockModel>();
-            loadStock(jsonGenericReader);
-            StocksList.Stocks = _lists;
-
-        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
             var newUser = new StockModel() { Id = Guid.NewGuid(), EntrepriseName = TbEntrepriseName.Text, Value = int.Parse(TbValue.Text), Name = TbNam.Text };
-            addStock(jsonGenericReader, newUser);
+            addStock( newUser);
             StocksList.Stocks.Add(newUser);
 
         }
@@ -114,7 +109,8 @@ namespace WPF_Application.Stocks
             {
 
                 var newUser = new StockModel() { Id = new Guid(TxtGuid.Text), EntrepriseName = TbEntrepriseName.Text, Value = int.Parse(TbValue.Text), Name = TbNam.Text };
-                updateStock(jsonGenericReader, newUser);
+                updateStock(newUser);
+               
             }
 
         }
@@ -127,8 +123,8 @@ namespace WPF_Application.Stocks
             }
             else
             {
-                deleteStock(jsonGenericReader, new Guid(TxtGuid.Text));
-
+                deleteStock(new Guid(TxtGuid.Text));
+          
             }
 
            

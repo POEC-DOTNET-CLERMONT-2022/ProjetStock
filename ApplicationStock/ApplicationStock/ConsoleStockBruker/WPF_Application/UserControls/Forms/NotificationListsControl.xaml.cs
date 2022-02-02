@@ -38,25 +38,37 @@ namespace WPF_Application.Rappel
         public NotificationLists NotifsLists { get; set; } = new NotificationLists();
 
 
+      
         public NotificationListsControl()
-
         {
             InitializeComponent();
-            DataContext = NotifsLists;
             jsonGenericReader = new NotificationServiceReader(new HttpClient(), _mapper);
-            _lists = new ObservableCollection<NotificationModel>();
-            loadNotif(jsonGenericReader);
-         
-                NotifsLists.Notifs = _lists;
-            
-           
         }
 
+
+
+
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            DataContext = this;
+            LoadUser();
+
+        }
+
+        public async void LoadUser()
+        {
+
+            var userModels = await jsonGenericReader.GetAll();
+
+            NotifsLists.Notifs = new ObservableCollection<NotificationModel>(userModels);
+
+
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
             var newUser = new NotificationModel() { Id = Guid.NewGuid(), SendAt = DateTime.Now, TextRappel = TbText.Text };
-            addUser(jsonGenericReader, newUser);
+            addNotfi(newUser);
          
 
         }
@@ -71,7 +83,7 @@ namespace WPF_Application.Rappel
             else
             {
                 var newUser = new NotificationModel() { Id = Guid.NewGuid(), SendAt = DateTime.Now, TextRappel = TbText.Text };
-                updateUser(jsonGenericReader, newUser);
+                updateUser(newUser);
             }
            
         }
@@ -85,58 +97,29 @@ namespace WPF_Application.Rappel
             }
             else
             {
-                deleteUser(jsonGenericReader, new Guid(TxtGuid.Text));
+                deleteUser(new Guid(TxtGuid.Text));
             }
             
 
         }
 
-
-        private async Task loadNotif(JsonGenericReader<NotificationModel, NotificationDto> jsonGenericReader)
-        {
-            try
-            {
-                var result = await jsonGenericReader.GetAll();
-                foreach (var item in result)
-                    _lists.Add(item);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
-
-        }
-        private async Task addUser(JsonGenericReader<NotificationModel, NotificationDto> jsonGenericReader, NotificationModel newUser)
+        
+        private async Task addNotfi( NotificationModel newUser)
         {
             await jsonGenericReader.Add(newUser);
 
         }
 
         
-        private async Task  updateUser(JsonGenericReader<NotificationModel, NotificationDto> jsonGenericReader, NotificationModel newUser)
+        private async Task  updateUser(NotificationModel newUser)
         {
             await jsonGenericReader.Update(newUser);
 
         }
 
-        private async Task deleteUser(JsonGenericReader<NotificationModel, NotificationDto> jsonGenericReader, Guid id)
+        private async Task deleteUser(Guid id)
         {
-            int _return = await jsonGenericReader.Delete(id);
-
-
-            if (_return == 200)
-            {
-                //suppression de l'affichage
-                foreach (var _item in _lists)
-                {
-                    if (_item.Id == id)
-                    {
-                        _lists.Remove(_item);
-                        break;
-                    }
-
-                }
-            }
+           await jsonGenericReader.Delete(id);
 
 
         }

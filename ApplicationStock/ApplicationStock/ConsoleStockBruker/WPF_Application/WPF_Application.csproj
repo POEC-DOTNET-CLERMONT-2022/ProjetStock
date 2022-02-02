@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="MenuLog\**" />
+    <EmbeddedResource Remove="MenuLog\**" />
+    <None Remove="MenuLog\**" />
+    <Page Remove="MenuLog\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="11.0.0" />
     <PackageReference Include="MaterialDesignThemes" Version="4.3.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
@@ -32,10 +39,6 @@
     <ProjectReference Include="..\ProjectStockLibrary\ProjectStockLibrary.csproj" />
     <ProjectReference Include="..\ProjectStockModels\ProjectStockModels.csproj" />
     <ProjectReference Include="..\ProjectStockRepository\ProjectStockRepository.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="MenuLog\" />
   </ItemGroup>
 
 </Project>

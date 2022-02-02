@@ -23,9 +23,11 @@ namespace ApiApplication.Helpers
         }
         public void OnAuthorization(AuthorizationFilterContext context)
         {
-            //TODO : authorization header ? 
+            //TODO : authorization header ?
+            //
             var token = context.HttpContext.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
-            var p = _context._users.Where(x => x._token == token);
+            var p = _context._users.Where(x => x._token == token);  
+
 
             Client utilisateur = null;
             foreach(var user in p)

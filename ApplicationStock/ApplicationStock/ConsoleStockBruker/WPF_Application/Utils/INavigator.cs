@@ -9,7 +9,7 @@ namespace WPF_Application.Utils
 {
     public interface INavigator
     {
-        ContentControl CurrentContentControl { get; set; }
+        public ContentControl CurrentContentControl { get; set; }
 
         void RegisterView(Control view);
 

@@ -53,7 +53,7 @@ namespace WPF_Application
             _user._email = EMail.Text;
             try
             {
-                Create(_user,sender);
+              //  Create(_user,sender);
                 
 
             }catch (Exception ex)
@@ -66,39 +66,39 @@ namespace WPF_Application
 
 
 
-        private async Task Create(CreateResult create, object sender)
-        {
-            var result = await this.jsonGenericReader.CreateAccount(create);
+        //private async Task Create(CreateResult create, object sender)
+        //{
+        //    var result = await this.jsonGenericReader.CreateAccount(create);
 
-            if (result == 200)
-            {
-                MessageBox.Show("Your account is not register", "Register", MessageBoxButton.OK, MessageBoxImage.Information);
-                this.loggedIn_Completed(sender, new EventArgs());
+        //    if (result == 200)
+        //    {
+        //        MessageBox.Show("Your account is not register", "Register", MessageBoxButton.OK, MessageBoxImage.Information);
+        //        this.loggedIn_Completed(sender, new EventArgs());
 
                 
              
 
-            }
-            else
-            {
-                MessageBox.Show("Your account is not register", "Error Connection", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Your account is not register", "Error Connection", MessageBoxButton.OK, MessageBoxImage.Error);
+        //    }
 
-        }
+        //}
     
        
-        private void loggedIn_Completed(object sender, EventArgs e)
-        {
-            MainWindow parentWindow = Window.GetWindow(this) as MainWindow;
-            if (parentWindow != null)
-            {
-                parentWindow._loginModalControl.Visibility = Visibility.Visible;
-                LoginControle loginControle = new LoginControle();
-                parentWindow.Content = loginControle;
+        //private void loggedIn_Completed(object sender, EventArgs e)
+        //{
+        //    MainWindow parentWindow = Window.GetWindow(this) as MainWindow;
+        //    if (parentWindow != null)
+        //    {
+        //        parentWindow._loginModalControl.Visibility = Visibility.Visible;
+        //        LoginControle loginControle = new LoginControle();
+        //        parentWindow.Content = loginControle;
 
                
-            }
-        }
+        //    }
+        //}
 
     }
 }

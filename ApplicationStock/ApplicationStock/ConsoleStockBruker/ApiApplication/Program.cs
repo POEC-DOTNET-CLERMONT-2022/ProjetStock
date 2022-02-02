@@ -25,7 +25,8 @@ services.Configure<AppSetting>(builder.Configuration.GetSection("AppSettings"));
 // configure DI for application services
 services.AddScoped<IUserService, UserService>();
 
-
+builder.Services.AddDbContext<APIContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultContext")), ServiceLifetime.Transient);
+services.AddTransient<APIContext>();
 // Add services to the container.
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
@@ -48,7 +49,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<Microsoft.EntityFrameworkCore.DbContext, APIContext>();
-builder.Services.AddDbContext<APIContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultContext")));
 
 var app = builder.Build();
 

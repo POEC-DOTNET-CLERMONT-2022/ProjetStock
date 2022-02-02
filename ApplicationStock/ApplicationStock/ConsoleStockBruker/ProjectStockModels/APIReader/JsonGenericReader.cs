@@ -62,7 +62,7 @@ namespace ProjectStockModels.JsonReader
                     new JsonStringEnumConverter(JsonNamingPolicy.CamelCase),
                 }
             };
-            _httpClient.DefaultRequestHeaders.Add(AuthorizationHeader, "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIzNDY3Yjk5LTBmM2UtNDJkZi1hN2FjLTQzODY5YTFlMDdjMCIsIm5iZiI6MTY0MjQwNDY3MSwiZXhwIjoxNjQzMDA5NDcxLCJpYXQiOjE2NDI0MDQ2NzF9.3XvBwc9RVmZyVUGvaZqkAQX6Hh4Yn69uEhVdzFo-nAw");
+            _httpClient.DefaultRequestHeaders.Add(AuthorizationHeader, "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk2MGQ2ZTU3LWM0ZGUtNDYxZi1hMWIyLTQ1ZjUzNTQyZTA2NyIsIm5iZiI6MTY0MzgzMzA3MiwiZXhwIjoxNjQ0NDM3ODcyLCJpYXQiOjE2NDM4MzMwNzJ9.OvUMA0rh7kgxW-_qOUY4Oad_Ln17A70OTPnzapqvUgo ");
             //TODO : supprimer le token ici 
             uri = "https://localhost:7136/" + baseuri; 
             //TODO : rendre configurable l'url => regarder app.config wpf 

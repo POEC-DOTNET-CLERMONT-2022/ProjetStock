@@ -49,7 +49,7 @@ namespace ApiApplicationProjectStock.Controllers
 
 
         //// GET api/<ProjectController>/GetAll
-        [Authorize]
+      
         [HttpGet("all")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -110,6 +110,9 @@ namespace ApiApplicationProjectStock.Controllers
             _client._password = _pass;
             _client._lastName = create._lastName;
             _client._firstName = create._firstName;
+            _client._token = " ";
+            _client._expireToken = DateTime.Now ;
+            
             try
             {
                 _context._users.Add(_client);
@@ -194,13 +197,7 @@ namespace ApiApplicationProjectStock.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<UserDto> Get([FromQuery] string email)
         {
-
-
-
-
             var p = _context._users.Where(x => x._email == email);
-         
-
 
             if (p == null)
                 return NotFound();

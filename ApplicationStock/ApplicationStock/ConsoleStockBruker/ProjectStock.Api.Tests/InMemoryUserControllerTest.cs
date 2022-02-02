@@ -54,7 +54,7 @@ namespace ProjectStock.Api.Tests
             [TestInitialize]
             public void InitTest()
             {
-                UserController = new UserController( Mapper, ApiContext, IuserService);
+                //UserController = new UserController( Mapper, ApiContext, IuserService);
                 //var option = new DbContextOptionsBuilder()
                 //    .UseInMemoryDatabase("myDataBase").Options;
                 //InMemoryDbContext = new DemoDbContext(option);
@@ -86,7 +86,7 @@ namespace ProjectStock.Api.Tests
             public void TestGetAllUsers_NullRepository()
             {
                 //Arrange
-                UserController = new UserController( Mapper, ApiContext, IuserService );
+                //UserController = new UserController( Mapper, ApiContext, IuserService );
 
 
                 //Act

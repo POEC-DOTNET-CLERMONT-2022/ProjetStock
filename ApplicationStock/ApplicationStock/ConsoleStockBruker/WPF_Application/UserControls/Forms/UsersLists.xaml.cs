@@ -18,6 +18,7 @@ using ProjectStockModels.APIReader.Services;
 using ProjectStockModels.Model;
 using System;
 using System.Threading.Tasks;
+using WPF_Application.Utils;
 
 namespace WPF_Application.User
 {
@@ -35,6 +36,8 @@ namespace WPF_Application.User
         private readonly IGenericRepository<UserEntity> _userRepository = ((App)Application.Current).userRepository;
         private readonly IMapper _mapper  = ((App)Application.Current).Mapper;
 
+        public INavigator Navigator { get; set; } = ((App)Application.Current).Navigator;
+
         private JsonGenericReader<UserModel, UserDto> jsonGenericReader { get; }
 
 
@@ -42,58 +45,53 @@ namespace WPF_Application.User
         public UsersList UsersList { get; set; } = new UsersList();
 
 
-        private async Task loadUser(JsonGenericReader<UserModel,UserDto> jsonGenericReader)
-        {
-                var result = await jsonGenericReader.GetAll();
-                foreach (var item in result)
-                    _lists.Add(item);
-        }
 
-        private async  Task updateUser(JsonGenericReader<UserModel, UserDto> jsonGenericReader, UserModel newUser)
+        private async  Task updateUser(UserModel newUser)
         {
              await jsonGenericReader.Update(newUser);
 
         }
 
-        private async Task addUser(JsonGenericReader<UserModel,UserDto> jsonGenericReader, UserModel newUser)
+        private async Task addUser(UserModel newUser)
         {
             await jsonGenericReader.Add(newUser);
 
         }
 
 
-        private async Task deleteUser(JsonGenericReader<UserModel, UserDto> jsonGenericReader, Guid id)
+        private async Task deleteUser(Guid id)
         {
-            int _return = await jsonGenericReader.Delete(id);
-
-
-            if(_return == 200)
-            {
-                //suppression de l'affichage
-                foreach (var _item in _lists)
-                {
-                    if (_item.Id == id)
-                    {
-                        _lists.Remove(_item);
-                        break;
-                    }
-
-                }
-            }
-           
+            await jsonGenericReader.Delete(id); 
            
         }
 
         public UsersLists()
         {
             InitializeComponent();
-            DataContext = UsersList;
             jsonGenericReader = new UserServiceReader(new HttpClient(), _mapper);
-            _lists = new ObservableCollection<UserModel>();
-            loadUser(jsonGenericReader);
-            UsersList.Users = _lists;
-
         }
+
+
+
+
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            DataContext = this;
+            LoadUser();
+          
+        }
+
+        public async void LoadUser()
+        {
+ 
+            var userModels = await jsonGenericReader.GetAll();
+
+            UsersList.Users = new ObservableCollection<UserModel>(userModels);
+          
+           
+        }
+
+
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -101,7 +99,7 @@ namespace WPF_Application.User
             if(TxtGuid.Text != null)
             {
                 var newUser = new UserModel() { FirstName = TbUserFirstName.Text, Id = new Guid(TxtGuid.Text), LastName = TbUserName.Text, Email = TbEmail.Text, Phone = TbPhone.Text, Addresses = new List<Address>(), Stocks = new List<Stock>(), ExpireToken = DateTime.Now, Token = "", Password = TxtPassword.Password, Siret = TbSriret.Text };
-                updateUser(jsonGenericReader, newUser);
+                updateUser(newUser);
                
             }
       
@@ -114,8 +112,13 @@ namespace WPF_Application.User
         {
           
             var newUser = new UserModel() { FirstName = TbUserFirstName.Text, Id = Guid.NewGuid(), LastName = TbUserName.Text, Email = TbEmail.Text, Phone = TbPhone.Text, Addresses = new List<Address>(), Stocks = new List<Stock>(), ExpireToken = DateTime.Now, Token = "", Password = TxtPassword.Password, Siret = TbSriret.Text };
-            addUser(jsonGenericReader,  newUser);
-            _lists.Add(newUser);
+
+            addUser(newUser);
+            UsersList.Users.Add(newUser);
+         
+
+            
+            
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -127,7 +130,7 @@ namespace WPF_Application.User
             }
             else
             {
-                deleteUser(jsonGenericReader, new Guid(TxtGuid.Text));
+                deleteUser(new Guid(TxtGuid.Text));
 
             }
            
