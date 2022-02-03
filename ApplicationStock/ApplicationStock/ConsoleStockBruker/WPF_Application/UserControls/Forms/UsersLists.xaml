@@ -22,7 +22,7 @@
 
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Row="0">
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="8">
             <WPF_Application.UserControls:MenuUserControl></WPF_Application.UserControls:MenuUserControl>
 
         </StackPanel >
@@ -83,7 +83,7 @@
             </WrapPanel>
         </StackPanel>
 
-        <ListBox Grid.ColumnSpan="8" SelectedItem="{Binding  UsersList.CurrentUser}" ItemsSource="{Binding UsersList.Users}" Grid.Row="2" x:Name="ListUser">
+        <ListBox Grid.ColumnSpan="8" SelectedItem="{Binding  UsersList.CurrentUser}" ItemsSource="{Binding UsersList.Users}" Grid.Row="2" x:Name="ListUser"  Background="LightGray">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>

@@ -42,7 +42,7 @@ namespace WPF_Application.User
 
 
         private static ObservableCollection<UserModel> _lists { get; set; }
-        public UsersList UsersList { get; set; } = new UsersList();
+        public AddressList UsersList { get; set; } = new AddressList();
 
 
 

@@ -19,6 +19,7 @@ using WPF_Application.User;
 using WPF_Application.UserControls.Controls;
 using WPF_Application.Rappel;
 using WPF_Application.Market;
+using WPF_Application.UserControls.Forms;
 
 namespace WPF_Application
 {
@@ -73,6 +74,7 @@ namespace WPF_Application
             Navigator.RegisterView(new StockListControl());
             Navigator.RegisterView(new NotificationListsControl());
             Navigator.RegisterView(new MarketListsControl());
+            Navigator.RegisterView(new OrderControl());
         }
 
 

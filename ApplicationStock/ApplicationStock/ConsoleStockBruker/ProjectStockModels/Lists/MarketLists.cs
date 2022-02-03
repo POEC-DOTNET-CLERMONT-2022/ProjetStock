@@ -16,14 +16,14 @@ namespace ProjectStockModels.Lists
         private MarketModel? _market;
 
         
-        public MarketModel currentMarket
+        public MarketModel Market
         {
             get { return _market; }
             set { 
 
                 if (_market != value)
                 {
-                    currentMarket = value;
+                    _market = value;
                     OnNotifyPropertyChanged();
                 }
             }

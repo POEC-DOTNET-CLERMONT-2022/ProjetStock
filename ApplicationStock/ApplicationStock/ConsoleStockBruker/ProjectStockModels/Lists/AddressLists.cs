@@ -9,34 +9,37 @@ using System.Threading.Tasks;
 
 namespace ProjectStockModels.Lists
 {
-    public  class AddressList : ObservableObject
+    public class AddressLists : ObservableObject
     {
-        private ObservableCollection<UserModel> _users;
+        private ObservableCollection<AddressModel>? _Addresses;
 
-        private UserModel? _CurrentUser;
+        private AddressModel? _Address;
 
-        public UserModel CurrentUser
+
+        public AddressModel Address
         {
-            get { return _CurrentUser; }
+            get { return _Address; }
             set
             {
-                if(_CurrentUser != value)
+
+                if (_Address != value)
                 {
-                    _CurrentUser = value;
+                    _Address = value;
                     OnNotifyPropertyChanged();
                 }
             }
         }
 
 
-        public ObservableCollection<UserModel>? Users
+        public ObservableCollection<AddressModel> Addresses
         {
-            get { return _users; }
+            get { return _Addresses; }
             set
             {
-                if (_users != value)
+
+                if (_Addresses != value)
                 {
-                    _users = value;
+                    _Addresses = value;
                     OnNotifyPropertyChanged();
                 }
             }

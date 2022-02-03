@@ -16,6 +16,7 @@ using WPF_Application.Market;
 using WPF_Application.Rappel;
 using WPF_Application.Stocks;
 using WPF_Application.User;
+using WPF_Application.UserControls.Forms;
 using WPF_Application.Utils;
 
 namespace WPF_Application.UserControls
@@ -59,7 +60,7 @@ namespace WPF_Application.UserControls
 
         private void MyNotification_Click(object sender, RoutedEventArgs e)
         {
-            Navigator.NavigateTo(typeof(UserNotificationControle));
+            Navigator.NavigateTo(typeof(NotificationListsControl));
 
         
         }
@@ -95,7 +96,7 @@ namespace WPF_Application.UserControls
         private void Orders_Click(object sender, RoutedEventArgs e)
         {
 
-            Navigator.NavigateTo(typeof(UserOrders));
+            Navigator.NavigateTo(typeof(OrderControl));
           
         }
         private void Notifications_Click(object sender, RoutedEventArgs e)
@@ -116,15 +117,19 @@ namespace WPF_Application.UserControls
             Navigator.Back();
         }
 
-        private void MenuItem_Click_4(object sender, RoutedEventArgs e)
+        private void Orders_click(object sender, RoutedEventArgs e)
         {
-            //TODO : utile ? 
+            Navigator.NavigateTo(typeof(OrderControl));
         }
 
         private void Disconnect_Click(object sender, RoutedEventArgs e)
         {
-
+            System.Windows.Application.Current.Shutdown();
         }
 
+        private void Addresses_Click(object sender, RoutedEventArgs e)
+        {
+            Navigator.NavigateTo(typeof(OrderControl));
+        }
     }
 }

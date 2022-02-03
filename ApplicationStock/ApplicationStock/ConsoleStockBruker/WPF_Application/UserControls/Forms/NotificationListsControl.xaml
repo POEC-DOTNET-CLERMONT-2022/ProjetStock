@@ -11,7 +11,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
-                <RowDefinition Height="5*"/>
+                <RowDefinition Height="6*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -23,16 +23,16 @@
 
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Row="0">
-                <WPF_Application.UserControls:MenuUserControl></WPF_Application.UserControls:MenuUserControl>
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="8">
+            <WPF_Application.UserControls:MenuUserControl></WPF_Application.UserControls:MenuUserControl>
 
-            </StackPanel >
-            <StackPanel Grid.Row="1" Grid.Column="0">
+        </StackPanel >
+        <StackPanel Grid.Row="1" Grid.Column="8">
 
             </StackPanel>
 
 
-            <StackPanel Grid.Row="1" Grid.Column="1">
+            <StackPanel Grid.Row="1" Grid.Column="2">
                 <WrapPanel>
                     <TextBlock Text="Lists of Notification"/>
                     <WrapPanel>
@@ -44,7 +44,7 @@
 
                 </WrapPanel>
             </StackPanel>
-            <StackPanel Grid.Row="1" Grid.Column="2">
+            <StackPanel Grid.Row="1" Grid.Column="0">
                 <WrapPanel>
 
 
@@ -78,7 +78,7 @@
                     </StackPanel>
                 </WrapPanel>
             </StackPanel>
-            <ListBox Grid.ColumnSpan="8" SelectedItem="{Binding  NotifsLists.Notif}" ItemsSource="{Binding  NotifsLists.Notifs }" Grid.Row="2" x:Name="ListNotifs">
+        <ListBox Grid.ColumnSpan="8" SelectedItem="{Binding  NotifsLists.Notif}" ItemsSource="{Binding  NotifsLists.Notifs }" Grid.Row="2" x:Name="ListNotifs" Background="LightGray">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>

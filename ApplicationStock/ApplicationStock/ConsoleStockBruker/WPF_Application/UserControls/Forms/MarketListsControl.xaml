@@ -10,7 +10,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="5*"/>
+            <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -22,7 +22,7 @@
 
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Row="0">
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="8">
             <WPF_Application.UserControls:MenuUserControl></WPF_Application.UserControls:MenuUserControl>
 
         </StackPanel >
@@ -31,32 +31,19 @@
         </StackPanel>
 
 
-        <StackPanel Grid.Row="1" Grid.Column="1">
+        <StackPanel Grid.Row="1" Grid.Column="1" >
             <WrapPanel>
                 <StackPanel>
                     <TextBlock Text="Saisir un name :"/>
-                    <TextBox x:Name="TbName" Width="200" HorizontalAlignment="Left"  Text="{Binding MarketList.Market.Name}"/>
+                    <TextBox x:Name="TxtNom" Width="200" HorizontalAlignment="Left"  Text="{Binding MarketsLists.Market.Name}"/>
                     <TextBlock Text="Saisir une value :"/>
-                    <TextBox x:Name="TbValue" Width="200"  HorizontalAlignment="Left" Text="{Binding MarketList.Market.Value}"/>
+                    <TextBox x:Name="TbValue" Width="200"  HorizontalAlignment="Left" Text="{Binding MarketsLists.Market.Value}"/>
 
                 </StackPanel>
 
             </WrapPanel>
         </StackPanel>
-        <StackPanel Grid.Row="1" Grid.Column="2">
-            <WrapPanel>
-
-
-                <StackPanel>
-
-                    <TextBlock Text="Saisir un nom :"/>
-                    <TextBox x:Name="TxtNom" Width="200" HorizontalAlignment="Left"/>
-
-
-                </StackPanel>
-            </WrapPanel>
-        </StackPanel>
-
+        
 
 
         <StackPanel Grid.Column="3" Grid.Row="1">
@@ -64,7 +51,7 @@
 
 
                 <StackPanel>
-                    <TextBox x:Name="TxtGuid" Width="50"  Visibility="Visible" Text="{Binding MarketLists.Market.Id}"/>
+                    <TextBox x:Name="TxtGuid" Width="50"  Visibility="Hidden" Text="{Binding MarketsLists.Market.Id}"/>
                     <Button Content="Ajouter un market" Width="200" HorizontalAlignment="Left" Click="Button_Click"/>
                     <Button Content="Modifier un market " Width="200" HorizontalAlignment="Left" Click="Button_Click_1"/>
 
@@ -75,8 +62,8 @@
                 </StackPanel>
             </WrapPanel>
         </StackPanel>
-        
-        <ListBox Grid.ColumnSpan="8" SelectedItem="{Binding  MarketsLists.Market}" ItemsSource="{Binding  MarketsLists.Markets }" Grid.Row="2" x:Name="ListUser">
+
+        <ListBox Grid.ColumnSpan="8" SelectedItem="{Binding  MarketsLists.Market}" ItemsSource="{Binding  MarketsLists.Markets }" Grid.Row="2" x:Name="ListUser" Background="LightGray">
 
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -84,7 +71,7 @@
                         <TextBlock Text="ID :"/>
                         <TextBlock Text="{Binding Id}"/>
 
-                        <TextBlock Text="LastName :"/>
+                        <TextBlock Text="Name :"/>
                         <TextBlock Text="{Binding Name}"/>
 
                     </StackPanel>

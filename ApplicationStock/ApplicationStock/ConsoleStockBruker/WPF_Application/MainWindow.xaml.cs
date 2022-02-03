@@ -51,7 +51,7 @@ namespace WPF_Application
        
 
         public INavigator Navigator { get; set; } = ((App)Application.Current).Navigator;
-        public UsersList UsersList { get; set; } = new UsersList();
+        public AddressList UsersList { get; set; } = new AddressList();
 
         private IMapper _mapper { get; set; } =   ((App)Application.Current).Mapper;
 
