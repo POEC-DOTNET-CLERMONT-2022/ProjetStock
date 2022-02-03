@@ -41,6 +41,7 @@ namespace ProjectStockModels.JsonReader
 
         private IPasswordHasherService _userPasswordHasher { get; }
 
+
         private const string AuthorizationHeader = "Authorization";
         public JsonGenericReader(HttpClient httpClient, string baseuri, IMapper mapper)
         {
@@ -62,7 +63,7 @@ namespace ProjectStockModels.JsonReader
                     new JsonStringEnumConverter(JsonNamingPolicy.CamelCase),
                 }
             };
-            _httpClient.DefaultRequestHeaders.Add(AuthorizationHeader, "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk2MGQ2ZTU3LWM0ZGUtNDYxZi1hMWIyLTQ1ZjUzNTQyZTA2NyIsIm5iZiI6MTY0MzgzMzA3MiwiZXhwIjoxNjQ0NDM3ODcyLCJpYXQiOjE2NDM4MzMwNzJ9.OvUMA0rh7kgxW-_qOUY4Oad_Ln17A70OTPnzapqvUgo ");
+            _httpClient.DefaultRequestHeaders.Add(AuthorizationHeader, "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE3OTRhYjUxLWYzMzEtNDdiOS1hMGQ2LTMzMWUxOGMxZDEyNyIsIm5iZiI6MTY0MzkwNjEyNSwiZXhwIjoxNjQ0NTEwOTI1LCJpYXQiOjE2NDM5MDYxMjV9.a7HYeLtSAEabLU-zHnniCsh_PBgvA7FoEZ2hC-Pld4U");
             //TODO : supprimer le token ici 
             uri = "https://localhost:7136/" + baseuri; 
             //TODO : rendre configurable l'url => regarder app.config wpf 
@@ -166,20 +167,48 @@ namespace ProjectStockModels.JsonReader
         }
 
         //La fonction get update : works all but on in client
+        //public async Task<int> Update(TModel item)
+        //{
+        
+        //    try
+        //    {
+        //        var map = _mapper.Map<TDto>(item);
+
+          
+        //        return (int)_httpClient.PutAsJsonAsync(uri, map); ;
+
+
+                 
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return StatusCodes.Status400BadRequest;
+        //    }
+
+
+           
+      //  }
+
         public async Task<int> Update(TModel item)
         {
-        
+
+
+
             try
             {
                 var map = _mapper.Map<TDto>(item);
 
-                await _httpClient.PutAsJsonAsync(uri, map);
+                var request = new HttpRequestMessage
+                {
+                    Method = HttpMethod.Put,
+                    RequestUri = new Uri(uri),
+                    Content = new StringContent(JsonConvert.SerializeObject(map), Encoding.UTF8, "application/json")
+                };
 
-              
-                return StatusCodes.Status200OK;
+                return (int)_httpClient.SendAsync(request).Result.StatusCode;
 
 
-                 
+
             }
             catch (Exception e)
             {
@@ -187,7 +216,6 @@ namespace ProjectStockModels.JsonReader
             }
 
 
-           
         }
 
 
@@ -204,6 +232,7 @@ namespace ProjectStockModels.JsonReader
                 Method = HttpMethod.Delete,
                 RequestUri = new Uri(uri),
                 Content = new StringContent(JsonConvert.SerializeObject(_class), Encoding.UTF8, "application/json")
+                
             };
             var response = await _httpClient.SendAsync(request);
 
@@ -222,9 +251,7 @@ namespace ProjectStockModels.JsonReader
         }
 
 
-        //La fonction add : works all but on in client
-        //TODO : rien à faire ici 
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
+
         public async Task<int> Add(TModel item)
         {
 

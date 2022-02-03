@@ -6,78 +6,93 @@
              xmlns:local="clr-namespace:WPF_Application.Rappel" xmlns:WPF_Application.UserControls="clr-namespace:WPF_Application.UserControls"
              mc:Ignorable="d"    Loaded="Window_Loaded"
              d:DesignHeight="880" d:DesignWidth="800">
-    <Grid Background="LightGray">
 
-        <Grid.RowDefinitions>
-            
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="3*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
 
-        <StackPanel Grid.Column="0">
-            <WPF_Application.UserControls:MenuUserControl></WPF_Application.UserControls:MenuUserControl>
+            </Grid.ColumnDefinitions>
 
-        </StackPanel>
+            <StackPanel Grid.Row="0">
+                <WPF_Application.UserControls:MenuUserControl></WPF_Application.UserControls:MenuUserControl>
 
+            </StackPanel >
+            <StackPanel Grid.Row="1" Grid.Column="0">
 
-        <StackPanel Grid.Column="1">
-            <TextBlock Text="Lists of Notification"/>
-            <WrapPanel>
-                <TextBlock Text="Saisir un nom :"/>
-                <TextBox x:Name="TbUserName" Width="150"/>
-               
-            </WrapPanel>
-        
-        </StackPanel>
-        <StackPanel Grid.Column="2">
-            <WrapPanel>
+            </StackPanel>
 
 
-                <StackPanel>
-                    <TextBlock Text="Saisir un text :"/>
-                    <TextBox x:Name="TbText" Width="350"/>
+            <StackPanel Grid.Row="1" Grid.Column="1">
+                <WrapPanel>
+                    <TextBlock Text="Lists of Notification"/>
+                    <WrapPanel>
+                        <TextBlock Text="Saisir un nom :"/>
+                        <TextBox x:Name="TbUserName" Width="150"/>
+
+                    </WrapPanel>
 
 
-                </StackPanel>
-               
-            </WrapPanel>
-        </StackPanel>
-        <StackPanel Grid.Column="3">
-            <WrapPanel>
-                <Button Content="Ajouter une notification" Width="200" HorizontalAlignment="Left" Click="Button_Click"/>
-                <Button Content="Modifier une notification" Width="200" HorizontalAlignment="Left" Click="Button_Click_1"/>
+                </WrapPanel>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="2">
+                <WrapPanel>
 
-                <StackPanel>
+
+
+
+
+
+                        <StackPanel>
+                            <TextBlock Text="Saisir un text :"/>
+                            <TextBox x:Name="TbText" Width="350"/>
+
+
+                        </StackPanel>
+
                    
+                </WrapPanel>
+            </StackPanel>
 
-                </StackPanel>
-                <StackPanel>
-                    
-                    <Button Content="Supprimer un rappel" Width="200" HorizontalAlignment="Left" Click="Button_Click_2"/>
-                    <TextBox x:Name="TxtGuid" Width="50"  Visibility="Hidden" Text="{Binding  NotifsLists.CurrentUserId}" />
-                </StackPanel>
-            </WrapPanel>
-        </StackPanel>
 
-        <ListBox Grid.ColumnSpan="4" SelectedItem="{Binding  NotifsLists.CurrentUser}" ItemsSource="{Binding  NotifsLists.Notifs }" Grid.Row="1" x:Name="ListNotifs">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
+
+            <StackPanel Grid.Column="3" Grid.Row="1">
+                <WrapPanel>
+
+
                     <StackPanel>
-                        <TextBlock Text="ID :"/>
-                        <TextBlock Text="{Binding Id}"/>                      
-                        <TextBlock Text="Texte :"/>
-                        <TextBlock Text="{Binding TextRappel}"/>
-                        <TextBlock Text="Date send :"/>
-                        <TextBlock Text="{Binding SendAt}"/>
+                        <Button Content="Ajouter une notification" Width="200" HorizontalAlignment="Left" Click="Button_Click"/>
+                        <Button Content="Modifier une notification" Width="200" HorizontalAlignment="Left" Click="Button_Click_1"/>
+
+                        <Button Content="Supprimer un rappel" Width="200" HorizontalAlignment="Left" Click="Button_Click_2"/>
+                        <TextBox x:Name="TxtGuid" Width="50"  Visibility="Hidden" Text="{Binding  NotifsLists.Notif.Id}" />
                     </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+                </WrapPanel>
+            </StackPanel>
+            <ListBox Grid.ColumnSpan="8" SelectedItem="{Binding  NotifsLists.Notif}" ItemsSource="{Binding  NotifsLists.Notifs }" Grid.Row="2" x:Name="ListNotifs">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="ID :"/>
+                            <TextBlock Text="{Binding Id}"/>
+                            <TextBlock Text="Texte :"/>
+                            <TextBlock Text="{Binding TextRappel}"/>
+                            <TextBlock Text="Date send :"/>
+                            <TextBlock Text="{Binding SendAt}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+
     </Grid>
 </UserControl>

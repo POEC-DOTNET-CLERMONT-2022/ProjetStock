@@ -123,6 +123,7 @@ namespace WPF_Application.User
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+
             if(TxtGuid.Text == null)
             {
                 MessageBox.Show("Erreur pas selectionner", "Error", MessageBoxButton.OK, MessageBoxImage.Error);

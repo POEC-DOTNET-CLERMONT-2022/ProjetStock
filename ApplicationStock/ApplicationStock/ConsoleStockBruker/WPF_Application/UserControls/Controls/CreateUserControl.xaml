@@ -11,7 +11,7 @@
     <StackPanel>
         <TextBlock x:Name="link_create" FontSize="10">
         </TextBlock>
-        <Button  x:Name="create"   Click="Create_button_Click">Create a account</Button>
+        <Button  x:Name="create" Width="304"  Height="30"  Click="Create_button_Click">Create a account</Button>
     </StackPanel>
 
 </UserControl>

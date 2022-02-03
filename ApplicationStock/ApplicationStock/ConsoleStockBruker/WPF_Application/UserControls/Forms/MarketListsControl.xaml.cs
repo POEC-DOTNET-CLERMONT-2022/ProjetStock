@@ -106,7 +106,7 @@ namespace WPF_Application.Market
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
-            if(TxtGuid.Text == null)
+            if(TxtGuid.Text.Length < 10 ||  TxtGuid.Text == null)
             {
 
                 MessageBox.Show("Erreur pas selectionner", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -126,7 +126,7 @@ namespace WPF_Application.Market
         {
 
 
-            if (TxtGuid.Text == null)
+            if (TxtGuid.Text.Length < 10 ||  TxtGuid.Text == null)
             {
 
                 MessageBox.Show("Erreur pas selectionner", "Error", MessageBoxButton.OK, MessageBoxImage.Error);

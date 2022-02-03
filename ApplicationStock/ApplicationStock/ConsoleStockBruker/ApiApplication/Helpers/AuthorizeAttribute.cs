@@ -26,6 +26,7 @@ namespace ApiApplication.Helpers
             //TODO : authorization header ?
             //
             var token = context.HttpContext.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
+          
             var p = _context._users.Where(x => x._token == token);  
 
 

@@ -72,8 +72,8 @@ namespace WPF_Application.Stocks
 
         private async Task updateStock(StockModel newUser)
         {
-
             await jsonGenericReader.Update(newUser);
+
 
         }
 
@@ -101,31 +101,22 @@ namespace WPF_Application.Stocks
 
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if(TxtGuid.Text == null)
-            {
-                MessageBox.Show("Erreur pas selectionner", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            else
-            {
+          
 
                 var newUser = new StockModel() { Id = new Guid(TxtGuid.Text), EntrepriseName = TbEntrepriseName.Text, Value = int.Parse(TbValue.Text), Name = TbNam.Text };
+                
                 updateStock(newUser);
                
-            }
+            
 
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            if(TxtGuid.Text == null)
-            {
-                MessageBox.Show("Erreur pas selectionner", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            else
-            {
+           
                 deleteStock(new Guid(TxtGuid.Text));
           
-            }
+            
 
            
 
