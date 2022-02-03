@@ -34,9 +34,6 @@ export class NotifsDeleteComponent implements OnInit {
     this.authService.setIsLog(true);
     if (this.tokenStorage.getToken()) {
 
-   this.user = JSON.parse(window.sessionStorage.getItem('auth-user')!);
-
-   var json = JSON.stringify(this.user)
   
    this.id = this.route.snapshot.params['id'];
 

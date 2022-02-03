@@ -32,7 +32,10 @@ export class UserComponentComponent implements OnInit{
     this._users =[];
     this._user =[];
     this.callApi();
-  
+    console.log(this._users)
+
+
+    
   }
   
   ngOnInit(): void {
@@ -47,6 +50,7 @@ export class UserComponentComponent implements OnInit{
 
    this.UserService.getUsers().subscribe((user : User[]) =>{
      this._users = user;
+    
    
    })
 

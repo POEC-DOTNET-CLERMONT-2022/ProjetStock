@@ -36,9 +36,10 @@
   </thead>
   <tbody>
     <tr *ngFor="let user of _users">
+      {{_user}}
  
-      <td *ngIf="user['_id'] != null">{{user['_id']}}</td>
-      <td *ngIf="user['_id'] == null">Null</td>
+      <td *ngIf="user['id'] != null">{{user['id']}}</td>
+      <td *ngIf="user['id'] == null">Null</td>
  
       <td *ngIf="user['_email'] != null">{{user['_email']}}</td>
       <td *ngIf="user['_email'] == null">Null</td>
@@ -51,10 +52,10 @@
       <td *ngIf="user['_phone'] != null && user['_phone'] != '' ">{{user['_phone']}}</td>
       <td *ngIf="user['_phone'] == null || user['_phone'] == ''">Null</td>
 
-      <td *ngIf="user['_siret'] != null && user['_phone'] != ''">{{user['_siret']}}</td>
-      <td *ngIf="user['_siret'] == null || user['_phone'] == ''">Null</td>
+      <td *ngIf="user['_siret'] != null && user['_siret'] != ''">{{user['_siret']}}</td>
+      <td *ngIf="user['_siret'] == null || user['_siret'] == ''">Null</td>
       
-      <td><button class="btn btn-secondary text-left"  [routerLink]="['/delete_user', user['_id'].toString()]">Remove</button><button class="btn btn-primary text-right" [routerLink]="['/modify_user', user['_id'].toString()]" >Modify</button></td>
+      <td><button class="btn btn-secondary text-left"  [routerLink]="['/delete_user', user['id']]">Remove</button><button class="btn btn-primary text-right" [routerLink]="['/modify_user', user['id']]" >Modify</button></td>
     </tr>
    
   </tbody>

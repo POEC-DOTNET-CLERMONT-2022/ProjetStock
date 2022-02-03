@@ -66,12 +66,12 @@
                 </StackPanel>
                 <StackPanel>
                     <Button Content="Supprimer un titre" Width="200" HorizontalAlignment="Left" Click="Button_Click_2"/>
-                    <TextBox x:Name="TxtGuid" Width="50"  Visibility="Hidden" Text="{Binding  StocksList.CurrentStock.Id}" />
+                    <TextBox x:Name="TxtGuid" Width="50"  Visibility="Hidden" Text="{Binding  StocksList.CurrentUser.Id}" />
                 </StackPanel>
             </WrapPanel>
         </StackPanel>
 
-        <ListBox Grid.ColumnSpan="4" SelectedItem="{Binding  StocksList.CurrentStock}" ItemsSource="{Binding  StocksList.Stocks}" Grid.Row="1" x:Name="ListUser">
+        <ListBox Grid.ColumnSpan="4" SelectedItem="{Binding  StocksList.CurrentUser}" ItemsSource="{Binding  StocksList.Stocks}" Grid.Row="1" x:Name="ListUser">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>

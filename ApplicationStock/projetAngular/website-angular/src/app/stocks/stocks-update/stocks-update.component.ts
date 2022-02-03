@@ -82,17 +82,7 @@ export class StocksUpdateComponent implements OnInit {
       data => {
           
       
-          this.tokenStorage.saveToken(data.accessToken);
-          this.tokenStorage.saveUser(data);
-  
-          
-          this.isLoginFailed = false;
-          this.isLoggedIn = true;
-
-          this.authService.setIsLog(true);
-          this.roles = ['user'];
-          this.roles = this.tokenStorage.getUser().roles;
-
+      
        
           this.router.navigate(['/stocks']);
         

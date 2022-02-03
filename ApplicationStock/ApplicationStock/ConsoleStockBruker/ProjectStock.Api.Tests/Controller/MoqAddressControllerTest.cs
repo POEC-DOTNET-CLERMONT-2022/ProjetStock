@@ -1,6 +1,8 @@
 ﻿using ApiApplication.Controllers;
 using ApiApplication.Model;
 using ApiApplication.Models;
+using ApiApplication.Profil.Repository;
+using ApiApplication.Profil.Repository.Interfaces;
 using AutoFixture;
 using AutoMapper;
 using FluentAssertions;
@@ -10,7 +12,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using ProjectStockDTOS;
 using ProjectStockEntity;
-using ProjectStockRepository.Interfaces;
+using ProjectStockLibrary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,36 +27,41 @@ namespace ProjectStock.Api.Tests.Controllers
     {
         private AddressController AddressController { get; set; }
 
-        public Mock<IGenericRepository<AddressEntity>> AddressRepository { get; set; }
+        public Mock<IGenericRepository<Address>> AddressRepository { get; set; }
 
         public IMapper Mapper { get; set; }
 
         public ILogger<AddressController> Logger { get; set; } = new NullLogger<AddressController>();
 
 
-        private IGenericRepository<AddressEntity> _addressRepository; 
+        private IGenericRepository<Address> genericRepository; 
 
         private APIContext APIContext { get; set; }
 
         private Fixture Fixture { get; set; } = new Fixture();
 
-        private IEnumerable<AddressEntity> Addresses{ get; set; }
+        private IEnumerable<Address> Addresses{ get; set; }
+
+      
 
 
-        public MoqAddressControllerTest()
+        public MoqAddressControllerTest(GenericRepository<Address> generic)
         {
             var configuration = new MapperConfiguration(cfg => cfg.AddMaps(typeof(AddressController)));
             Mapper = new Mapper(configuration);
             APIContext = new APIContext(new Microsoft.EntityFrameworkCore.DbContextOptions<APIContext>());
+            genericRepository = generic;
+       
         }
 
         [TestInitialize]
         public void InitTest()
         {
             Fixture = new Fixture();
-            Addresses = Fixture.CreateMany<AddressEntity>();
-            AddressRepository = new Mock<IGenericRepository<AddressEntity>>();
-            //AddressController = new Geneir
+            Addresses = Fixture.CreateMany<Address>();
+           
+            AddressRepository = new Mock<IGenericRepository<Address>>();
+            AddressController = new AddressController(Mapper, APIContext,genericRepository);
         }
 
 
@@ -65,8 +72,8 @@ namespace ProjectStock.Api.Tests.Controllers
         {
 
             //Arrange
-            AddressRepository.Setup(repo => repo.GetAll()).Returns(Addresses);
-            AddressRepository.Setup(repo => repo.Add(It.IsAny<AddressEntity>()))
+          
+            AddressRepository.Setup(repo => repo.Add(It.IsAny<Address>()))
                 .Throws(new Exception("test unitaire"));
 
 
@@ -89,8 +96,8 @@ namespace ProjectStock.Api.Tests.Controllers
         {
 
             //Arrange
-            AddressRepository.Setup(repo => repo.GetAll()).Returns(Addresses);
-            AddressRepository.Setup(repo => repo.Add(It.IsAny<AddressEntity>()))
+            
+            AddressRepository.Setup(repo => repo.Add(It.IsAny<Address>()))
                 .Throws(new Exception("test unitaire"));
 
 
@@ -109,8 +116,8 @@ namespace ProjectStock.Api.Tests.Controllers
         public void TestDelete()
         {
             //Arrange
-            AddressRepository.Setup(repo => repo.GetAll()).Returns(Addresses);
-            AddressRepository.Setup(repo => repo.Add(It.IsAny<AddressEntity>()))
+          
+            AddressRepository.Setup(repo => repo.Add(It.IsAny<Address>()))
                 .Throws(new Exception("test unitaire"));
 
 
@@ -135,8 +142,8 @@ namespace ProjectStock.Api.Tests.Controllers
         public void TestUpdate()
         {
             //Arrange
-            AddressRepository.Setup(repo => repo.GetAll()).Returns(Addresses);
-            AddressRepository.Setup(repo => repo.Add(It.IsAny<AddressEntity>()))
+           
+            AddressRepository.Setup(repo => repo.Add(It.IsAny<Address>()))
                 .Throws(new Exception("test unitaire"));
 
 

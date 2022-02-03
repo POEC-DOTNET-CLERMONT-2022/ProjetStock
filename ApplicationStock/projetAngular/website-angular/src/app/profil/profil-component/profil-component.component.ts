@@ -47,9 +47,13 @@ export class ProfilComponentComponent implements OnInit  {
   
   
         var email = data[3].split(',')[0].split('"')[1];
+        
         this.authService.getUserEmail(email).subscribe((user : User[]) =>{
+          
           this.my_user = user;
+          console.log(this.my_user);
           this.user = (this.my_user[0]);
+     
       
         });
     

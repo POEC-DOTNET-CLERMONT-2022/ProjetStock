@@ -17,7 +17,7 @@ import { NavbarComponent } from 'src/app/navbar/navbar/navbar.component';
   styleUrls: ['./market-update.component.scss']
 })
 export class MarketUpdateComponent implements OnInit {
-  user : User  = new User(Guid.createEmpty(),'','','','','','');
+
 
   market : Market = new Market(Guid.createEmpty(),'', new Date(),new Date());
   form: any = {
@@ -46,10 +46,7 @@ export class MarketUpdateComponent implements OnInit {
        this.dataService.isLoggedIn = true;
        this.roles = this.tokenStorage.getUser().roles;
        this.roles = ['user'];
-       
-    this.user = JSON.parse(window.sessionStorage.getItem('auth-user')!);
- 
-    var json = JSON.stringify(this.user)
+
    
     this.id = this.route.snapshot.params['id'];
 
@@ -74,7 +71,7 @@ export class MarketUpdateComponent implements OnInit {
  
    onSubmit(): void {
   
-    this.authService.putMarket(Guid.parse(this.market['_id'].toString()),this.form.name,new Date(this.form.openingDate.toString())).subscribe(
+    this.authService.putMarket(Guid.parse(this.market['id'].toString()),this.form.name,new Date(this.form.openingDate.toString())).subscribe(
        
       data => {
           

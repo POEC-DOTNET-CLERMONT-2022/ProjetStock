@@ -69,22 +69,12 @@ export class NotifsModifyComponent implements OnInit {
  
    onSubmit(): void {
   
-    this.authService.putNotif(Guid.parse(this.notif['_id'].toString()),this.form.textrappel,new Date(this.form.sendAt.toString())).subscribe(
+    this.authService.putNotif(this.notif['id'],this.form.textrappel,new Date(this.form.sendAt.toString())).subscribe(
        
       data => {
           
       
-          this.tokenStorage.saveToken(data.accessToken);
-          this.tokenStorage.saveUser(data);
-  
-          
-          this.isLoginFailed = false;
-          this.isLoggedIn = true;
-
-          this.authService.setIsLog(true);
-          this.roles = ['user'];
-          this.roles = this.tokenStorage.getUser().roles;
-
+ 
        
           this.router.navigate(['/notifs']);
         

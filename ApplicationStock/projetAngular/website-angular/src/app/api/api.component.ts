@@ -64,6 +64,7 @@ export class ApiComponent implements OnInit {
     this.authService.generateApiKey(this._email,password).subscribe(
       
         data => {
+         
           if( password == password_confirm)
           {
             this.tokenStorage.saveToken(data.accessToken);
@@ -73,6 +74,7 @@ export class ApiComponent implements OnInit {
             this.authService.setIsLog(true);
             this.roles = ['user'];
             this.roles = this.tokenStorage.getUser().roles;
+            
             this.reloadPage();
             this.router.navigate(['api']);
           }
