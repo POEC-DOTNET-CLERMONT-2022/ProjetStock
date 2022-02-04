@@ -21,6 +21,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF_Application.Utils;
+using System.Text.RegularExpressions;
+using System.Net.Mail;
 
 namespace WPF_Application
 {
@@ -29,8 +32,11 @@ namespace WPF_Application
     /// </summary>
     public partial class CreateUser : UserControl
     {
+
        
         private readonly IMapper _mapper = ((App)Application.Current).Mapper;
+
+        public INavigator Navigator { get; set; } = ((App)Application.Current).Navigator;
 
         private JsonGenericReader<UserModel, UserDto> jsonGenericReader { get; }
         public CreateUser()
@@ -38,27 +44,52 @@ namespace WPF_Application
             InitializeComponent();
             jsonGenericReader = new UserServiceReader(new HttpClient(), _mapper);
 
-            MainWindow parentWindow = Window.GetWindow(this) as MainWindow;
             
         }
-        private void login_button_create_Click(object sender, RoutedEventArgs e)
+
+
+
+        public bool CheckEmail(string email)
+        {
+            try 
+            { 
+                MailAddress m = new MailAddress(email);
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
+        
+        
+
+        private void button_create_Click(object sender, RoutedEventArgs e)
         {  
             userMenu.Content = null;
             ApiApplication.Models.CreateResult _user = new ApiApplication.Models.CreateResult();
-            _user._firstName = "user";
-            _user._lastName = "user";
+            _user._firstName = TbLastName.Text;
+            _user._lastName = TbName.Text;
+            _user._email = Tbemail.Text;
             _user._password = TxtPassword.Password;
 
-
-            _user._email = EMail.Text;
             try
             {
-              //  Create(_user,sender);
-                
+                var regex = new Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
+                if (this.CheckEmail(_user._email))
+                {
+                    Create(_user, sender);
+                }
+                else
+                {
+                    throw new Exception("Erreur email");
+                }
+
+                    
 
             }catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message,ex.Message.ToString(),MessageBoxButton.OK,MessageBoxImage.Error);
             }
 
         }
@@ -66,39 +97,24 @@ namespace WPF_Application
 
 
 
-        //private async Task Create(CreateResult create, object sender)
-        //{
-        //    var result = await this.jsonGenericReader.CreateAccount(create);
+        private async Task Create(CreateResult create, object sender)
+        {
+            var result = await this.jsonGenericReader.CreateAccount(create);
 
-        //    if (result == 200)
-        //    {
-        //        MessageBox.Show("Your account is not register", "Register", MessageBoxButton.OK, MessageBoxImage.Information);
-        //        this.loggedIn_Completed(sender, new EventArgs());
+            if (result == 200)
+            {
+                MessageBox.Show("Your account is register", "Register", MessageBoxButton.OK, MessageBoxImage.Information);
+                Navigator.NavigateTo(typeof(LoginControle));
+            }
+            else
+            {
+                MessageBox.Show("Your account is not register", "Error Connection", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
-                
-             
-
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Your account is not register", "Error Connection", MessageBoxButton.OK, MessageBoxImage.Error);
-        //    }
-
-        //}
+        }
     
        
-        //private void loggedIn_Completed(object sender, EventArgs e)
-        //{
-        //    MainWindow parentWindow = Window.GetWindow(this) as MainWindow;
-        //    if (parentWindow != null)
-        //    {
-        //        parentWindow._loginModalControl.Visibility = Visibility.Visible;
-        //        LoginControle loginControle = new LoginControle();
-        //        parentWindow.Content = loginControle;
-
-               
-        //    }
-        //}
+     
 
     }
 }

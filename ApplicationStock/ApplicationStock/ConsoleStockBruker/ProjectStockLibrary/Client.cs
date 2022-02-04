@@ -162,14 +162,9 @@ namespace ProjectStockLibrary
         }
         public void AddAdress(Address address)
         {
-            if (!_addresses.Contains(address))
-            {
+
                 _addresses.Add(address);
-            }
-            else
-            {
-                throw new Exception("Is already add");
-            }
+        
             
         }
 

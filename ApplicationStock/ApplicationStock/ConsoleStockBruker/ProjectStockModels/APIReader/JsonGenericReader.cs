@@ -137,8 +137,27 @@ namespace ProjectStockModels.JsonReader
         }
 
 
+        public virtual async Task<HttpResponseMessage> GetById(Guid id)
+        {
 
-      
+            ProjectStockModels.APIReader.Models.GetClass _user = new ProjectStockModels.APIReader.Models.GetClass();
+
+            _user.Id = id;
+            HttpClient httpClient_ = new HttpClient();
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri(uri),
+                Content = new StringContent(JsonConvert.SerializeObject(_user), Encoding.UTF8, "application/json")
+            };
+
+            return _httpClient.SendAsync(request).Result;
+
+
+        }
+
+
+
         public virtual async Task<HttpResponseMessage> GetByEmail(AuthenticateRequest create)
         {
             HttpClient httpClient_ = new HttpClient();

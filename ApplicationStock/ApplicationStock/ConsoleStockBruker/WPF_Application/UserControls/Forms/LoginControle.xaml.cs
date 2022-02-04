@@ -72,7 +72,18 @@ namespace WPF_Application
             if ((int) result.StatusCode == 200)
             {
 
-        
+                // var user_info_http = await this.jsonGenericReader.GetById(mapped.Id);
+           
+                //var object_ = await user_info_http.Content.ReadAsStringAsync();
+
+         
+                // var json = JsonConvert.DeserializeObject<Client>(object_);
+                // var mapped_ = _mapper.Map<Client>(json);
+             
+
+                
+                //serviceUserAppCurrent.setClientCurrent(mapped_);
+
                 MessageBox.Show("You are connected", "Connected", MessageBoxButton.OK, MessageBoxImage.Information);
 
 

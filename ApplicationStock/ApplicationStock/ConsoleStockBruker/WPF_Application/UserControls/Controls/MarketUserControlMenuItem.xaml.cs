@@ -10,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -51,9 +52,10 @@ namespace WPF_Application.UserControls.Controls
 
         private async Task loadMarket(JsonGenericReader<MarketModel, MarketDto> jsonGenericReader)
         {
-            //var result = await jsonGenericReader.GetAll();
+           
+           // var result = await jsonGenericReader.GetAll();
             //foreach (var item in result)
-            //   myList.Items.Add(new MenuItem { Name = item._name, Header = item._name });
+            //   _menuItems.Add(new MenuItem { Name = item._name, Header = item._name });
 
           
 

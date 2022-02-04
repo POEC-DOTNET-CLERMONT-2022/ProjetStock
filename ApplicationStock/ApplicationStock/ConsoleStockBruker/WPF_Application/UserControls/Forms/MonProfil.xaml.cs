@@ -65,8 +65,8 @@ namespace WPF_Application
 
         private async void SendUser(Client user)
         {
-
-            UserModel _user = _mapper.Map<UserModel>(user);
+            UserDto _userDto = _mapper.Map<UserDto>(user);
+            UserModel _user = _mapper.Map<UserModel>(_userDto);
 
             var result = await _json.Update(_user);
 
@@ -85,21 +85,25 @@ namespace WPF_Application
 
 
             Client utilisateur = serviceUserAppCurrent.GetClientCurrent();
-
+            utilisateur.Id = new Guid("D8C6F649-3411-45F1-AE7F-BD40976FDDD5");
             utilisateur._lastName = TbNom.Text;
             utilisateur._firstName = TbPrenom.Text;
+            utilisateur._password = TbPassword.Password;
 
 
             utilisateur._email= TbEmail.Text;
+        
 
-            utilisateur.AddAdress(new ProjectStockLibrary.Address(TbAddresse.Text, "", TbCp.Text, TbVille.Text, TbCountry.Text));
+            try
+            {
+                SendUser(utilisateur);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
 
-
-
-          
-
-
-
+            }
+            
 
         }
     }

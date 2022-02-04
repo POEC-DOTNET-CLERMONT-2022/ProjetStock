@@ -216,6 +216,7 @@ namespace ApiApplicationProjectStock.Controllers
             try
             {
                 var p = userDto.ToModel();
+                p._password = _userPasswordHasher.GetPasswordHasher(p._password);
                 if (p == null)
                     return BadRequest();
                 genericRepository.Add(p);
@@ -252,13 +253,15 @@ namespace ApiApplicationProjectStock.Controllers
                 p._firstName = userDto._firstName;
                 p._email = userDto._email;
                 p._phone = userDto._phone;
-                p._password = userDto._password;
+                p._password = _userPasswordHasher.GetPasswordHasher(userDto._password); 
 
 
 
                 _context._users.Update(p);
                 _context.SaveChanges();
                 return Ok(p);
+
+
             }catch(Exception ex)
             {
                 return BadRequest();

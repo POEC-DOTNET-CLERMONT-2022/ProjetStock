@@ -32,8 +32,6 @@ namespace WPF_Application.UserControls
         {
             InitializeComponent();
             DataContext = this;
-        
-
         }
 
 
@@ -131,5 +129,6 @@ namespace WPF_Application.UserControls
         {
             Navigator.NavigateTo(typeof(OrderControl));
         }
+
     }
 }
