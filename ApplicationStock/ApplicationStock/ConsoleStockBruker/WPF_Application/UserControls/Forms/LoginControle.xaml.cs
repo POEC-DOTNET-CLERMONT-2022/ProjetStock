@@ -83,6 +83,7 @@ namespace WPF_Application
 
                 JObject obj = JObject.Parse(json[0].ToString());
                 client.Id = new Guid(obj["id"].ToString());
+                client._addresses = null;
          
                 serviceUserAppCurrent.setClientCurrent(client);
 

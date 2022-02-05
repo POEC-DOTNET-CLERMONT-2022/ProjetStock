@@ -80,6 +80,7 @@ namespace WPF_Application
            
             UserModel _user = _mapper.Map<UserModel>(user);
             _user.Id = new Guid(user.Id.ToString());
+            _user._addresses = new List<Address>();
 
             var result = await _json.Update(_user);
 
