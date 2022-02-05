@@ -44,6 +44,8 @@ namespace WPF_Application.UserControls.Controls
 
 
 
+
+        private ObservableCollection<MarketModel> marketObservable { get; }
         public ObservableCollection<MenuItem> MenuItems
         {
             get { return _menuItems; }
@@ -53,21 +55,43 @@ namespace WPF_Application.UserControls.Controls
         private async Task loadMarket(JsonGenericReader<MarketModel, MarketDto> jsonGenericReader)
         {
            
-           // var result = await jsonGenericReader.GetAll();
-            //foreach (var item in result)
-            //   _menuItems.Add(new MenuItem { Name = item._name, Header = item._name });
+            var result = await jsonGenericReader.GetAll();
+            foreach (var item in result)
+               marketObservable.Add(item);
+              
 
           
 
         }
 
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            DataContext = this;
+            LoadMarket();
+
+        }
+
+        public async void LoadMarket()
+        {
+
+            var userModels = await jsonGenericReader.GetAll();
+
+            MarketLists.Markets = new ObservableCollection<MarketModel>(userModels);
+
+            foreach(var item in userModels)
+            {
+                myList.Items.Add(new MenuItem() { Name = "test" });
+            }
+
+
+        }
         public MarketUserControlMenuItem()
         {
             InitializeComponent();
             HttpClient _client = new HttpClient();
             jsonGenericReader = new MarketServiceReader(_client, _mapper);
-            loadMarket(jsonGenericReader);
-
+            LoadMarket();
+          
         }
     }
 }

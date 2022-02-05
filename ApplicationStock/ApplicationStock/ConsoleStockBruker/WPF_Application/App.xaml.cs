@@ -64,12 +64,13 @@ namespace WPF_Application
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
             Navigator.RegisterView(new LoginControle());
+            Navigator.RegisterView(new MarketUserControlMenuItem());
             Navigator.RegisterView(new UserMainWindowsConnected());
             Navigator.RegisterView(new MenuUserControl());
             Navigator.RegisterView(new MonProfil());
             Navigator.RegisterView(new UsersLists());
             Navigator.RegisterView(new CreateUser());
-            Navigator.RegisterView(new MarketUserControlMenuItem());
+           
             Navigator.RegisterView(new ContactUsControl());
             Navigator.RegisterView(new StockListControl());
             Navigator.RegisterView(new NotificationListsControl());

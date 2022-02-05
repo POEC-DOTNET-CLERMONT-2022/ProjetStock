@@ -32,9 +32,13 @@
                 </MenuItem>
 
 
-                <WPF_Application.UserControls.Controls:MarketUserControlMenuItem></WPF_Application.UserControls.Controls:MarketUserControlMenuItem>
-
-
+                <MenuItem Header="Market" x:Name="myList">
+                    <MenuItem.ItemContainerStyle>
+                        <Style>
+                            <Setter Property="MenuItem.Header" Value="{Binding Name}"/>
+                        </Style>
+                    </MenuItem.ItemContainerStyle>
+                </MenuItem>
 
 
 
