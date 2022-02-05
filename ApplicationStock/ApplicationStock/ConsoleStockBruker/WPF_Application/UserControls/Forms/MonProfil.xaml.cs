@@ -50,29 +50,43 @@ namespace WPF_Application
           
             _json= new UserServiceReader(new HttpClient(), _mapper);
             _lists = new ObservableCollection<UserModel>();
-            Client utilisateur = serviceUserAppCurrent.GetClientCurrent();
-
-
-            utilisateur  = serviceUserAppCurrent.GetClientCurrent();
-
-            TbEmail.Text = utilisateur._email;
-            TbNom.Text = utilisateur._lastName;
-            TbPrenom.Text = utilisateur._firstName;
+   
 
      
         }
 
 
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            DataContext = this;
+            LoadUser();
+        }
+
+        private async void LoadUser()
+        {
+              Client utilisateur = serviceUserAppCurrent.GetClientCurrent();
+
+
+            TbEmail.Text = utilisateur._email;
+            TbNom.Text = utilisateur._lastName;
+            TbPrenom.Text = utilisateur._firstName;
+        }
+
+
+
+
         private async void SendUser(Client user)
         {
-
+           
             UserModel _user = _mapper.Map<UserModel>(user);
+            _user.Id = new Guid(user.Id.ToString());
+            _user._addresses = new List<Address>();
 
             var result = await _json.Update(_user);
 
             if( result == 200)
             {
-                MessageBox.Show("Modifier","modifier", MessageBoxButton.OK,MessageBoxImage.Question);
+                MessageBox.Show("Modifier","Modifier", MessageBoxButton.OK,MessageBoxImage.Question);
             }
             else
             {
@@ -85,21 +99,24 @@ namespace WPF_Application
 
 
             Client utilisateur = serviceUserAppCurrent.GetClientCurrent();
-
             utilisateur._lastName = TbNom.Text;
             utilisateur._firstName = TbPrenom.Text;
+            utilisateur._password = TbPassword.Password;
 
 
             utilisateur._email= TbEmail.Text;
+        
 
-            utilisateur.AddAdress(new ProjectStockLibrary.Address(TbAddresse.Text, "", TbCp.Text, TbVille.Text, TbCountry.Text));
+            try
+            {
+                SendUser(utilisateur);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
 
-
-
-          
-
-
-
+            }
+            
 
         }
     }

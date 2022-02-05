@@ -63,19 +63,41 @@ namespace WPF_Application
 
             var mapped = _mapper.Map<Client>(jObject);
 
+            AuthenticateRequest authenticateRequest = new AuthenticateRequest();
+            authenticateRequest._email = mapped._email;
 
-            serviceUserAppCurrent.setClientCurrent(mapped);
+            var user_info_http = await this.jsonGenericReader.GetByEmail(authenticateRequest);
 
 
 
+            try
+            {
+
+
+                var object_ = await user_info_http.Content.ReadAsStringAsync();
+                JArray json = JArray.Parse(object_);
+              
+
+
+                var client = _mapper.Map<Client>(json[0]);
+
+                JObject obj = JObject.Parse(json[0].ToString());
+                client.Id = new Guid(obj["id"].ToString());
+                client._addresses = null;
+         
+                serviceUserAppCurrent.setClientCurrent(client);
+
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erreur load user info");
+            }
 
             if ((int) result.StatusCode == 200)
             {
-
-        
+                
                 MessageBox.Show("You are connected", "Connected", MessageBoxButton.OK, MessageBoxImage.Information);
-
-
                 Navigator.NavigateTo(typeof(UserMainWindowsConnected));
 
 

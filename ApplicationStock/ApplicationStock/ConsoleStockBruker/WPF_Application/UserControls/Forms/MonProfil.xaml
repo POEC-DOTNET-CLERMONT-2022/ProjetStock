@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPF_Application" xmlns:WPF_Application.UserControls="clr-namespace:WPF_Application.UserControls"
-             mc:Ignorable="d" 
+             mc:Ignorable="d" Loaded="Window_Loaded"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
 
@@ -53,26 +53,14 @@
       
                 <WrapPanel>
                     <StackPanel >
-                        <TextBlock Text="City :"/>
+                        <TextBlock Text="Password :"/>
                         <TextBox x:Name="TbVille" Width="500" HorizontalAlignment="Left"/>
-                        <TextBlock Text="Addresse :"/>
-                        <TextBox x:Name="TbAddresse" Width="500" HorizontalAlignment="Left"/>
-
+                        <PasswordBox x:Name="TbPassword" Width="500"></PasswordBox>
 
                     </StackPanel>
 
                 </WrapPanel>
-                <WrapPanel>
-                    <StackPanel>
-                        <TextBlock Text="Code postal :"/>
-                        <TextBox x:Name="TbCp" Width="500" HorizontalAlignment="Left"/>
-                        <TextBlock Text="Country :"/>
-                        <TextBox x:Name="TbCountry" Width="500" HorizontalAlignment="Left"/>
-
-
-                    </StackPanel>
-
-                </WrapPanel>
+               
 
                 <Button Click="Modify_Click">Modify</Button>
             </StackPanel>

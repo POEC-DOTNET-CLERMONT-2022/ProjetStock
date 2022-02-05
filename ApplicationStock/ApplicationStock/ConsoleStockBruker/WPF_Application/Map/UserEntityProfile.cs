@@ -16,6 +16,7 @@ namespace WPF_Application.Map
         public UserEntityProfile()
         {
             CreateMap<UserEntity,UserModel>().ReverseMap();
+            CreateMap<Client,UserModel>().ReverseMap();
         }
       
     }

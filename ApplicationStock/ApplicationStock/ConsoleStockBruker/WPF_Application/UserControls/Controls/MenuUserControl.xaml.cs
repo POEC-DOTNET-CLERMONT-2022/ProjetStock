@@ -1,6 +1,14 @@
-﻿using System;
+﻿using AutoMapper;
+using ProjectStockDTOS;
+using ProjectStockModels.APIReader.Services;
+using ProjectStockModels.JsonReader;
+using ProjectStockModels.Lists;
+using ProjectStockModels.Model;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -28,15 +36,58 @@ namespace WPF_Application.UserControls
     {
 
         public INavigator Navigator { get; set; } = ((App)Application.Current).Navigator;
+
+        private IMapper _mapper { get; set; } = ((App)Application.Current).Mapper;
+
+        private JsonGenericReader<MarketModel, MarketDto> jsonGenericReader { get; }
+
+
+        private ObservableCollection<MenuItem> _menuItems = new ObservableCollection<MenuItem>();
+        public MarketLists MarketLists { get; set; } = new MarketLists();
+
+
+
+
+        private ObservableCollection<MarketModel> marketObservable { get; }
+        public ObservableCollection<MenuItem> MenuItems
+        {
+            get { return _menuItems; }
+            set { _menuItems = value; }
+        }
         public MenuUserControl()
         {
             InitializeComponent();
             DataContext = this;
-        
-
+            HttpClient _client = new HttpClient();
+            jsonGenericReader = new MarketServiceReader(_client, _mapper);
+            LoadMarket();
         }
 
 
+      
+
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            DataContext = this;
+            LoadMarket();
+
+        }
+
+        public async void LoadMarket()
+        {
+
+            var userModels = await jsonGenericReader.GetAll();
+
+            MarketLists.Markets = new ObservableCollection<MarketModel>(userModels);
+
+            foreach (var item in userModels)
+            {
+                myList.Items.Add(new MenuItem() { Name = "test" , Header = item.Name.ToString() });
+            }
+
+
+        }
+ 
         private void MenuItem_Click_Contact(object sender, RoutedEventArgs e)
         {
             Navigator.NavigateTo(typeof(ContactUsControl));
@@ -131,5 +182,6 @@ namespace WPF_Application.UserControls
         {
             Navigator.NavigateTo(typeof(OrderControl));
         }
+
     }
 }

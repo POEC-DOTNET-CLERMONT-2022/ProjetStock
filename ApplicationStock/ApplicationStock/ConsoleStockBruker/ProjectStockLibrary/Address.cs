@@ -44,7 +44,7 @@ namespace ProjectStockLibrary
 
         public Address(Guid _id)
         {
-            _id = Guid.NewGuid();
+            Id = Guid.NewGuid();
             _address_line_1 = "";
             _address_line_2 = "";
             _codePostal = "";
