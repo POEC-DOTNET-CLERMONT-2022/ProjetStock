@@ -73,10 +73,17 @@ namespace WPF_Application
             try
             {
 
+
                 var object_ = await user_info_http.Content.ReadAsStringAsync();
                 JArray json = JArray.Parse(object_);
+              
+
 
                 var client = _mapper.Map<Client>(json[0]);
+
+                JObject obj = JObject.Parse(json[0].ToString());
+                client.Id = new Guid(obj["id"].ToString());
+         
                 serviceUserAppCurrent.setClientCurrent(client);
 
 
