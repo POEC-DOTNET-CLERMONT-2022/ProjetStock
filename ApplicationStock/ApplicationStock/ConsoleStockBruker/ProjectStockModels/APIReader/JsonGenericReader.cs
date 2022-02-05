@@ -163,8 +163,8 @@ namespace ProjectStockModels.JsonReader
             HttpClient httpClient_ = new HttpClient();
             var request = new HttpRequestMessage
             {
-                Method = HttpMethod.Post,
-                RequestUri = new Uri(uri + "/user_auth"),
+                Method = HttpMethod.Get,
+                RequestUri = new Uri(uri + "/email?email="+create._email),
                 Content = new StringContent(JsonConvert.SerializeObject(create), Encoding.UTF8, "application/json")
             };
 

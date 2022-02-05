@@ -50,17 +50,29 @@ namespace WPF_Application
           
             _json= new UserServiceReader(new HttpClient(), _mapper);
             _lists = new ObservableCollection<UserModel>();
-            Client utilisateur = serviceUserAppCurrent.GetClientCurrent();
+   
+
+     
+        }
 
 
-            utilisateur  = serviceUserAppCurrent.GetClientCurrent();
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            DataContext = this;
+            LoadUser();
+        }
+
+        private async void LoadUser()
+        {
+              Client utilisateur = serviceUserAppCurrent.GetClientCurrent();
+
 
             TbEmail.Text = utilisateur._email;
             TbNom.Text = utilisateur._lastName;
             TbPrenom.Text = utilisateur._firstName;
-
-     
         }
+
+
 
 
         private async void SendUser(Client user)
