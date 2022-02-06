@@ -99,17 +99,23 @@ namespace WPF_Application
 
 
             Client utilisateur = serviceUserAppCurrent.GetClientCurrent();
-            utilisateur._lastName = TbNom.Text;
-            utilisateur._firstName = TbPrenom.Text;
-            utilisateur._password = TbPassword.Password;
 
 
-            utilisateur._email= TbEmail.Text;
-        
+
+
+            Client _client = new Client(utilisateur.Id);
+            _client._lastName = TbNom.Text;
+            _client._firstName = TbPrenom.Text;
+            _client._password = TbPassword.Password;
+
+
+            _client._email= TbEmail.Text;
+            _client._addresses = new List<Address>();
+            _client.setStocks(new List<Stock>());
 
             try
             {
-                SendUser(utilisateur);
+                SendUser(_client);
             }
             catch(Exception ex)
             {

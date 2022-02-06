@@ -76,6 +76,9 @@ namespace WPF_Application
             Navigator.RegisterView(new NotificationListsControl());
             Navigator.RegisterView(new MarketListsControl());
             Navigator.RegisterView(new OrderControl());
+            Navigator.RegisterView(new MarketInfoControl());
+            Navigator.RegisterView(new StockInfoControl());
+            Navigator.RegisterView(new MenuActionStockSell());
         }
 
 

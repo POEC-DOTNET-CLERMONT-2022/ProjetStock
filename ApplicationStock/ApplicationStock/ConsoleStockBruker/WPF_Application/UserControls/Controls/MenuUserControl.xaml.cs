@@ -10,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -42,10 +43,12 @@ namespace WPF_Application.UserControls
         private JsonGenericReader<MarketModel, MarketDto> jsonGenericReader { get; }
 
 
+        private JsonGenericReader<StockModel, StockDto> jsonStockGenericReader { get; set; }
+
         private ObservableCollection<MenuItem> _menuItems = new ObservableCollection<MenuItem>();
         public MarketLists MarketLists { get; set; } = new MarketLists();
 
-
+        public StockLists StockLists { get; set; } = new StockLists();
 
 
         private ObservableCollection<MarketModel> marketObservable { get; }
@@ -60,7 +63,9 @@ namespace WPF_Application.UserControls
             DataContext = this;
             HttpClient _client = new HttpClient();
             jsonGenericReader = new MarketServiceReader(_client, _mapper);
+            
             LoadMarket();
+            LoadStock();
         }
 
 
@@ -70,11 +75,13 @@ namespace WPF_Application.UserControls
         {
             DataContext = this;
             LoadMarket();
-
+            LoadStock();
         }
 
         public async void LoadMarket()
         {
+
+
 
             var userModels = await jsonGenericReader.GetAll();
 
@@ -82,12 +89,56 @@ namespace WPF_Application.UserControls
 
             foreach (var item in userModels)
             {
-                myList.Items.Add(new MenuItem() { Name = "test" , Header = item.Name.ToString() });
+                var menuitem = new MenuItem() { Header = item.Name.ToString() };
+                menuitem.Uid = item.Id.ToString();
+                menuitem.Click += MenuItemNew_Click;
+                myList.Items.Add(menuitem);
             }
 
 
         }
- 
+        public void MenuItemNew_Click(object sender, EventArgs e)
+        {
+            var menuItem = (MenuItem)sender;
+
+            var menuText = menuItem.Uid.ToString();    
+
+            MarketInfoControl.marketGuid = new Guid(menuText);
+            Navigator.NavigateTo(typeof(MarketInfoControl));
+            
+        }
+
+        public async void LoadStock()
+        {
+            HttpClient _client = new HttpClient();
+
+            jsonStockGenericReader = new StockServiceReader(_client, _mapper);
+            var userModels = await jsonStockGenericReader.GetAll();
+
+            StockLists.Stocks = new ObservableCollection<StockModel>(userModels);
+
+            foreach (var item in userModels)
+            {
+                var menuitem = new MenuItem() { Header = item.Name.ToString() };
+                menuitem.Uid = item.Id.ToString();
+                menuitem.Click += MenuItemStock_Click;
+                myStockLists.Items.Add(menuitem);
+            }
+
+       
+
+        }
+        public void MenuItemStock_Click(object sender, EventArgs e)
+        {
+            var menuItem = (MenuItem)sender;
+
+            var menuText = menuItem.Uid.ToString();
+
+            StockInfoControl.stockGuid = new Guid(menuText);
+            Navigator.NavigateTo(typeof(StockInfoControl));
+
+        }
+
         private void MenuItem_Click_Contact(object sender, RoutedEventArgs e)
         {
             Navigator.NavigateTo(typeof(ContactUsControl));
@@ -117,7 +168,7 @@ namespace WPF_Application.UserControls
         }
         private void MenuBuy_Click(object sender, RoutedEventArgs e)
         {
-            Navigator.NavigateTo(typeof(UserNotificationControle));
+            Navigator.NavigateTo(typeof(MenuActionStockSell));
             
         }
 

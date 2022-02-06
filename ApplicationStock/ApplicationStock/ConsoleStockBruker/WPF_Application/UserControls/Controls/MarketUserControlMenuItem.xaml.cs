@@ -80,7 +80,9 @@ namespace WPF_Application.UserControls.Controls
 
             foreach(var item in userModels)
             {
-                myList.Items.Add(new MenuItem() { Name = "test" });
+                var menuitem = new MenuItem() { Name = "test", Header = item.Id.ToString() };
+                myList.Items.Add(menuitem);
+              
             }
 
 
@@ -93,5 +95,7 @@ namespace WPF_Application.UserControls.Controls
             LoadMarket();
           
         }
+
+     
     }
 }

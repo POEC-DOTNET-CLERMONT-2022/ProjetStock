@@ -36,7 +36,6 @@ namespace ProjectStockLibrary
         private List<Stock>? _stocks { get; set; }
 
 
-        [JsonConstructor]
         public Client(string firstName, string lastName, string email, string phone, string siret, string password, List<Address> addresses, List<Stock>? stocks)
         {
              Id = Guid.NewGuid();
