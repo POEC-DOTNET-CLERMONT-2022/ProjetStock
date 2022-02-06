@@ -22,7 +22,6 @@ namespace ProjectStockLibrary
 
         public string _country { get; set; }
 
-       [JsonConstructorAttribute]
         public Address(string address_line_1, string address_line_2, string codePostal, string city, string country)
         {
              Id = Guid.NewGuid();

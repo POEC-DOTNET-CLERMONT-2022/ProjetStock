@@ -54,7 +54,6 @@
                 <WrapPanel>
                     <StackPanel >
                         <TextBlock Text="Password :"/>
-                        <TextBox x:Name="TbVille" Width="500" HorizontalAlignment="Left"/>
                         <PasswordBox x:Name="TbPassword" Width="500"></PasswordBox>
 
                     </StackPanel>
