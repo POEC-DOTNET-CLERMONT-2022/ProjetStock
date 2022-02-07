@@ -29,7 +29,7 @@
                 <WrapPanel>
                     <StackPanel >
                         <TextBlock Text="List stock :"/>
-                        <ComboBox Height="23" Name="comboBox1" Width="120" ItemsSource="{Binding StocksList.Stocks}">
+                        <ComboBox Height="23" Name="comboBox1" Width="120" SelectedItem="{Binding StocksList.Stock}" ItemsSource="{Binding StocksList.Stocks}">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel>
@@ -39,12 +39,14 @@
                             </ComboBox.ItemTemplate>
                           
                         </ComboBox>
+              
 
                     </StackPanel>
+                    
 
                 </WrapPanel>
 
-                       <Button>Buy</Button>
+                       <Button Click="Buy_Click">Buy</Button>
             </StackPanel>
 
         </DockPanel>

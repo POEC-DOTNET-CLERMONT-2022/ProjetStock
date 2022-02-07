@@ -1,6 +1,7 @@
 ﻿using ApiApplication.Controllers;
 using ApiApplication.Model;
 using ApiApplication.Models;
+using ApiApplication.Profil.Repository;
 using AutoFixture;
 using AutoMapper;
 using FluentAssertions;
@@ -38,12 +39,14 @@ namespace ProjectStock.Api.Tests.Controller
 
         private IEnumerable<OrderEntity> Orders { get; set; }
 
+        private GenericRepository<Order> genericRepository;
 
-        public MoqOrderControllerTest()
+        public MoqOrderControllerTest(GenericRepository<Order> generic)
         {
             var configuration = new MapperConfiguration(cfg => cfg.AddMaps(typeof(OrderController)));
             Mapper = new Mapper(configuration);
             APIContext = new APIContext(new Microsoft.EntityFrameworkCore.DbContextOptions<APIContext>());
+            genericRepository = generic;
         }
 
         [TestInitialize]

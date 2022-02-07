@@ -39,12 +39,13 @@
                             </ComboBox.ItemTemplate>
 
                         </ComboBox>
+                       
 
                     </StackPanel>
 
                 </WrapPanel>
 
-                <Button>Sell</Button>
+                <Button Click="Buy_Click">Sell</Button>
             </StackPanel>
 
         </DockPanel>

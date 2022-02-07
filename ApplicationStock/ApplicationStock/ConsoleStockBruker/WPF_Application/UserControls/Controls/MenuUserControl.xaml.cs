@@ -23,6 +23,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPF_Application.Market;
 using WPF_Application.Rappel;
+using WPF_Application.Service.Interfaces;
+using WPF_Application.Service.Services;
 using WPF_Application.Stocks;
 using WPF_Application.User;
 using WPF_Application.UserControls.Forms;
@@ -39,6 +41,9 @@ namespace WPF_Application.UserControls
         public INavigator Navigator { get; set; } = ((App)Application.Current).Navigator;
 
         private IMapper _mapper { get; set; } = ((App)Application.Current).Mapper;
+
+
+        private IServiceUserAppCurrent serviceUserAppCurrent { get; } = ((App)Application.Current)._serviceUserApp;
 
         private JsonGenericReader<MarketModel, MarketDto> jsonGenericReader { get; }
 
@@ -151,6 +156,14 @@ namespace WPF_Application.UserControls
 
             Navigator.NavigateTo(typeof(UsersLists));
          
+        }
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+
+            FileSaveLoggerService service = new FileSaveLoggerService();
+
+            service.AccessToMyInfo(serviceUserAppCurrent.GetClientCurrent());
+
         }
 
         private void MenuItem_Click_3(object sender, RoutedEventArgs e)
