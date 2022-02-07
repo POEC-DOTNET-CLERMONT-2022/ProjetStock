@@ -1,6 +1,7 @@
 ﻿using ApiApplication.Controllers;
 using ApiApplication.Model;
 using ApiApplication.Models;
+using ApiApplication.Profil.Repository;
 using AutoFixture;
 using AutoMapper;
 using FluentAssertions;
@@ -10,12 +11,11 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using ProjectStockDTOS;
 using ProjectStockEntity;
+using ProjectStockLibrary;
 using ProjectStockRepository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjectStock.Api.Tests.Controller
 {
@@ -38,11 +38,14 @@ namespace ProjectStock.Api.Tests.Controller
         private IEnumerable<NotificationEntity> Orders { get; set; }
 
 
-        public MoqNotificationControllerTest()
+        private GenericRepository<Notification> genericRepository;
+
+        public MoqNotificationControllerTest(GenericRepository<Notification> generic)
         {
             var configuration = new MapperConfiguration(cfg => cfg.AddMaps(typeof(NotificationController)));
             Mapper = new Mapper(configuration);
             APIContext = new APIContext(new Microsoft.EntityFrameworkCore.DbContextOptions<APIContext>());
+            genericRepository = generic;
         }
 
         [TestInitialize]

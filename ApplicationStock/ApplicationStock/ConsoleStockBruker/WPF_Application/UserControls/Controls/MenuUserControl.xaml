@@ -10,7 +10,9 @@
             <DockPanel>
                 <Menu DockPanel.Dock="Top" Visibility="Visible" x:Name="_loginModalControl">
                     <MenuItem Header="Menu"  Height="50">
-                        <MenuItem Header="Contact us">
+                    <MenuItem Header="Save user info" Click="Save_Click">
+                    </MenuItem>
+                    <MenuItem Header="Contact us">
                             <MenuItem Header="Direct Message" Click="MenuItem_Click_Contact"></MenuItem>
                             <MenuItem Header="Email: email@admin.com"></MenuItem>
                             <MenuItem Header="Tel: XXXXXXXX"></MenuItem>

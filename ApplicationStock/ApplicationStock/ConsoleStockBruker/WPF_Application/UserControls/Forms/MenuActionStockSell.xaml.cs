@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF_Application.Utils;
 
 namespace WPF_Application.UserControls.Forms
 {
@@ -20,9 +21,23 @@ namespace WPF_Application.UserControls.Forms
     /// </summary>
     public partial class MenuActionStockSell : UserControl
     {
+
+        public INavigator Navigator { get; set; } = ((App)Application.Current).Navigator;
+        
         public MenuActionStockSell()
         {
             InitializeComponent();
         }
+
+        public void Buy_Click(object sender, EventArgs e)
+        {
+            Navigator.NavigateTo(typeof(BuyStockControl));
+        }
+
+        public void Sell_Click(object sender, EventArgs e)
+        {
+            Navigator.NavigateTo(typeof(SellStockControl));
+        }
     }
+
 }

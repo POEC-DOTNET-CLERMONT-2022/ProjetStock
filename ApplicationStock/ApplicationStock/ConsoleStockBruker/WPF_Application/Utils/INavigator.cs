@@ -12,7 +12,7 @@ namespace WPF_Application.Utils
         public ContentControl CurrentContentControl { get; set; }
 
         void RegisterView(Control view);
-
+        
         void NavigateTo(Type type);
 
         void Back();

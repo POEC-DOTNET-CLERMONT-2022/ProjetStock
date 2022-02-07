@@ -33,7 +33,6 @@ using ProjectStockModels.APIReader.Services;
 using AutoMapper;
 using WPF_Application.Service.Interfaces;
 using WPF_Application.Service.Services;
-using WPF_Application.Buy_Sell;
 
 namespace WPF_Application
 {

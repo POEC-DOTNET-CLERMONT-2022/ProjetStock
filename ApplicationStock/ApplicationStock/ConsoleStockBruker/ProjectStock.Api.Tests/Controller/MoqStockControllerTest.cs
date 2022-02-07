@@ -1,5 +1,6 @@
 ﻿using ApiApplication.Model;
 using ApiApplication.Models;
+using ApiApplication.Profil.Repository;
 using ApiApplicationProjectStock.Controllers;
 using AutoFixture;
 using AutoMapper;
@@ -38,12 +39,15 @@ namespace ProjectStock.Api.Test.Controllers
 
         private IEnumerable<StockEntity> Stocks { get; set; }
 
+        private GenericRepository<Stock> genericRepository;
 
-        public MoqStockControllerTest()
+
+        public MoqStockControllerTest(GenericRepository<Stock> generic)
         {
             var configuration = new MapperConfiguration(cfg => cfg.AddMaps(typeof(StocksController)));
             Mapper = new Mapper(configuration);
             APIContext = new APIContext(new Microsoft.EntityFrameworkCore.DbContextOptions<APIContext>());
+            genericRepository = generic;
         }
 
         [TestInitialize]

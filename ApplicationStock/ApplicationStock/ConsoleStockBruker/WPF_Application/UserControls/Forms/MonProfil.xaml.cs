@@ -23,6 +23,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPF_Application.Service.Interfaces;
+using BaseEntity = ProjectStockLibrary.BaseEntity;
 
 namespace WPF_Application
 {
@@ -99,11 +100,11 @@ namespace WPF_Application
 
 
             Client utilisateur = serviceUserAppCurrent.GetClientCurrent();
+            BaseEntity entity = new BaseEntity();
+            entity.Id = utilisateur.Id;
+            Client _client = new Client(entity.Id);
 
-
-
-
-            Client _client = new Client(utilisateur.Id);
+            utilisateur.Id = utilisateur.Id;
             _client._lastName = TbNom.Text;
             _client._firstName = TbPrenom.Text;
             _client._password = TbPassword.Password;

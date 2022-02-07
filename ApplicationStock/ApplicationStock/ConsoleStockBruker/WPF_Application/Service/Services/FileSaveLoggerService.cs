@@ -48,7 +48,7 @@ namespace WPF_Application.Service.Services
 
                     string content = $" id : {client.Id.ToString() }, Name :{ client._lastName}, firstName: {client._firstName}";
 
-                    content += client.readAllMyAdress() + "}";
+                    content +=  "}";
 
                     MessageBox.Show("Erreur", "Erreur", MessageBoxButton.OK, MessageBoxImage.Warning);
 

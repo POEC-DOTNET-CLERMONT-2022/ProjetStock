@@ -94,6 +94,8 @@ namespace WPF_Application
                 throw new Exception("Erreur load user info");
             }
 
+
+
             if ((int) result.StatusCode == 200)
             {
                 
