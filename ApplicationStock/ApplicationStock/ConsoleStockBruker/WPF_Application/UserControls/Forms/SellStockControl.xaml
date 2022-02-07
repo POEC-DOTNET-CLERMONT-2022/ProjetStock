@@ -16,7 +16,7 @@
 
             <StackPanel   Background="LightGray" Height="425" Width="450" HorizontalAlignment="Center" VerticalAlignment="Center">
 
-                <TextBlock FontSize="20">My profile</TextBlock>
+                <TextBlock FontSize="20">Sell a stock</TextBlock>
                 <DockPanel Margin="10" Visibility="Hidden" x:Name="message_error">
                     <TextBlock FontSize="20">
                     Error
