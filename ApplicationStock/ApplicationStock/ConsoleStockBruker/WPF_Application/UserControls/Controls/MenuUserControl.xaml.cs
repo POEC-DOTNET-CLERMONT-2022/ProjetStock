@@ -82,12 +82,10 @@ namespace WPF_Application.UserControls
             LoadMarket();
             LoadStock();
         }
-
+        
         public async void LoadMarket()
         {
-
-
-
+   
             var userModels = await jsonGenericReader.GetAll();
 
             MarketLists.Markets = new ObservableCollection<MarketModel>(userModels);

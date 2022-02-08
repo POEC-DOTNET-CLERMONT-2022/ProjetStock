@@ -242,8 +242,6 @@ namespace ApiApplicationProjectStock.Controllers
             try
             {
 
-
-
                 var p = genericRepository.GetById(userDto.Id);
                 if (p == null)
                     return BadRequest();

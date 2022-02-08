@@ -25,6 +25,8 @@
           <li class="nav-item">
             <a class="nav-link"*ngIf=" isConnected === true" [routerLink]="urlStock">Stocks</a>
           </li>
+       
+         
          
     
     
@@ -41,7 +43,7 @@
             <ul class="dropdown-menu" aria-labelledby="dropdown05">
               <li><a class="dropdown-item" *ngIf=" isConnected === true">Log as {{ user_email }}</a></li>
             
-              <!-- <li><a class="dropdown-item" *ngIf=" isConnected === true" [routerLink]="urlProfile"> Profile</a></li> -->
+               <li><a class="dropdown-item" *ngIf=" isConnected === true" [routerLink]="urlProfile"> Profile</a></li>
               <li><a class="dropdown-item" *ngIf=" isConnected === true" [routerLink]="urlLogOut">Logout</a></li>
           
             </ul>

@@ -185,34 +185,8 @@ namespace ProjectStockModels.JsonReader
             return _model;
         }
 
-        //La fonction get update : works all but on in client
-        //public async Task<int> Update(TModel item)
-        //{
-        
-        //    try
-        //    {
-        //        var map = _mapper.Map<TDto>(item);
-
-          
-        //        return (int)_httpClient.PutAsJsonAsync(uri, map); ;
-
-
-                 
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return StatusCodes.Status400BadRequest;
-        //    }
-
-
-           
-      //  }
-
         public async Task<int> Update(TModel item)
         {
-
-
-
             try
             {
                 var map = _mapper.Map<TDto>(item);
@@ -226,8 +200,6 @@ namespace ProjectStockModels.JsonReader
 
                 return (int)_httpClient.SendAsync(request).Result.StatusCode;
 
-
-
             }
             catch (Exception e)
             {
@@ -239,7 +211,6 @@ namespace ProjectStockModels.JsonReader
 
 
         //La fonction delete marche
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<int> Delete(Guid id)
         {
 

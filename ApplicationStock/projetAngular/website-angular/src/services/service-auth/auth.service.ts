@@ -211,14 +211,13 @@ export class AuthService {
     var data =json.split(':');
    var token = data[4].split(',')[0];
    var email = data[3].split(',')[0];
-   console.log(email)
+   console.log( );
    this._user_token =token.split('"')[1];
     var reqHeader = new HttpHeaders({ 
-      'Content-Type': 'application/json',
-    
-      'Authorization': 'Bearer '+  token.split('"')[1]
+      'Content-Type': 'application/json',    
+      'Authorization': 'Bearer '+  this._user_token
    });  
-    return this.http.get<User[]>('https://localhost:7136/api/User/email?email='+ email , {headers :reqHeader});
+    return this.http.get<User[]>('https://localhost:7136/api/User/email?email=' + email.split('"')[1] , {headers :reqHeader});
   }
 
   getMarket(id : string) : Observable<Market>{  
