@@ -84,7 +84,7 @@ namespace WPF_Application.UserControls.Forms
             var result = this.comboBox1.SelectedItem as StockModel;
 
             var stock = _mapper.Map<Stock>(result);
-            var order = new OrderModel() { Id = Guid.NewGuid(), OrderDate = DateTime.Now, OrderName = "Buy " + DateTime.Now.ToString() + " - " + serviceUserAppCurrent.GetGuid().ToString(), NbStock = 10, Stock = new Stock()};
+            var order = new OrderModel() { Id = Guid.NewGuid(), OrderDate = DateTime.Now, OrderName = "Buy " + DateTime.Now.ToString() + " - " + serviceUserAppCurrent.GetGuid().ToString(), NbStock = 10, Stock = stock};
 
             var resultat = await json.Add(order);
            if(resultat == 200)

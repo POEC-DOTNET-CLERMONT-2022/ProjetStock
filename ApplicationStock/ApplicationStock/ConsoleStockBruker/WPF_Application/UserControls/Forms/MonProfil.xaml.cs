@@ -44,16 +44,13 @@ namespace WPF_Application
         private Client _client { get; set; }
     
 
-
         public MonProfil()
         {
             InitializeComponent();
           
             _json= new UserServiceReader(new HttpClient(), _mapper);
             _lists = new ObservableCollection<UserModel>();
-   
 
-     
         }
 
 
@@ -76,22 +73,20 @@ namespace WPF_Application
 
 
 
-        private async void SendUser(Client user)
+        private async void SendUser(UserModel user)
         {
            
-            UserModel _user = _mapper.Map<UserModel>(user);
-            _user.Id = new Guid(user.Id.ToString());
-            _user._addresses = new List<Address>();
-
-            var result = await _json.Update(_user);
+   
+            var result = await _json.Update(user);
 
             if( result == 200)
             {
-                MessageBox.Show("Modifier","Modifier", MessageBoxButton.OK,MessageBoxImage.Question);
+                MessageBox.Show("Les informations de votre compte ont été modifiés ","Les informations de votre compte ont été modifiés", MessageBoxButton.OK,MessageBoxImage.Question);
             }
             else
             {
-                MessageBox.Show("Erreur","Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Erreur de la modification de vos informations","Une erreur est survenue lors de la modification de vos informations", MessageBoxButton.OK, MessageBoxImage.Error);
+            
             }
         }
 
@@ -100,23 +95,17 @@ namespace WPF_Application
 
 
             Client utilisateur = serviceUserAppCurrent.GetClientCurrent();
-            BaseEntity entity = new BaseEntity();
-            entity.Id = utilisateur.Id;
-            Client _client = new Client(entity.Id);
-
-            utilisateur.Id = utilisateur.Id;
-            _client._lastName = TbNom.Text;
-            _client._firstName = TbPrenom.Text;
-            _client._password = TbPassword.Password;
+            var date = DateTime.Now;
+            var date_changed = date.AddDays(30);
+    
+            var newUser = new UserModel() { FirstName = TbPrenom.Text, Id = utilisateur.Id, LastName = TbNom.Text, Email = TbEmail.Text, Phone = "888", Addresses = new List<Address>(), Stocks = new List<Stock>(), ExpireToken = date_changed, Token = utilisateur._token, Password = TbPassword.Password, Siret = "test" };
+          
 
 
-            _client._email= TbEmail.Text;
-            _client._addresses = new List<Address>();
-            _client.setStocks(new List<Stock>());
 
             try
             {
-                SendUser(_client);
+                SendUser(newUser);
             }
             catch(Exception ex)
             {

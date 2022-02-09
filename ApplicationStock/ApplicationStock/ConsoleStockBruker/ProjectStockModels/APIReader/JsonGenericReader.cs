@@ -191,14 +191,8 @@ namespace ProjectStockModels.JsonReader
             {
                 var map = _mapper.Map<TDto>(item);
 
-                var request = new HttpRequestMessage
-                {
-                    Method = HttpMethod.Put,
-                    RequestUri = new Uri(uri),
-                    Content = new StringContent(JsonConvert.SerializeObject(map), Encoding.UTF8, "application/json")
-                };
 
-                return (int)_httpClient.SendAsync(request).Result.StatusCode;
+                return (int)_httpClient.PutAsJsonAsync(new Uri(uri),map).Result.StatusCode;
 
             }
             catch (Exception e)
@@ -208,6 +202,7 @@ namespace ProjectStockModels.JsonReader
 
 
         }
+
 
 
         //La fonction delete marche
@@ -267,6 +262,7 @@ namespace ProjectStockModels.JsonReader
             {
                 return StatusCodes.Status400BadRequest;
             }
+           
            
 
         }

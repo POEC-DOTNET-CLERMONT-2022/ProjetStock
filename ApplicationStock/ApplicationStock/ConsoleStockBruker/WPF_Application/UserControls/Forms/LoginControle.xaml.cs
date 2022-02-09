@@ -76,6 +76,7 @@ namespace WPF_Application
                 var client = _mapper.Map<Client>(json[0]);
 
                 JObject obj = JObject.Parse(json[0].ToString());
+
                 client.Id = new Guid(obj["id"].ToString());
                 client._addresses = null;
          
@@ -103,7 +104,7 @@ namespace WPF_Application
         }
 
     
-    
+     
 
 
         private void Login_button_Click(object sender, RoutedEventArgs e)

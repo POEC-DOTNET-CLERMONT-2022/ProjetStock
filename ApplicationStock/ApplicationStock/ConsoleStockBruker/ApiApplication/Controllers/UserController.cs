@@ -260,7 +260,8 @@ namespace ApiApplicationProjectStock.Controllers
                 return Ok(p);
 
 
-            }catch(Exception ex)
+            }
+            catch(Exception ex)
             {
                 return BadRequest();
             }
