@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiApplication.Migrations
 {
     [DbContext(typeof(APIContext))]
-    [Migration("20220114193421_pass")]
-    partial class pass
+    [Migration("20220209172436_migration")]
+    partial class migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,6 +28,9 @@ namespace ApiApplication.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("Addresses")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("_address_line_1")
@@ -52,6 +55,8 @@ namespace ApiApplication.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Addresses");
+
                     b.ToTable("_addresses");
                 });
 
@@ -61,9 +66,15 @@ namespace ApiApplication.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("CryptoId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("_email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("_expireToken")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("_firstName")
                         .IsRequired()
@@ -85,15 +96,42 @@ namespace ApiApplication.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("_token")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("CryptoId");
+
                     b.ToTable("_users");
+                });
+
+            modelBuilder.Entity("ProjectStockLibrary.Crypto", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("_name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("_value")
+                        .HasColumnType("real");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("_cryptos");
                 });
 
             modelBuilder.Entity("ProjectStockLibrary.Market", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("CryptoId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("_closingDate")
@@ -107,6 +145,8 @@ namespace ApiApplication.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CryptoId");
 
                     b.ToTable("_markets");
                 });
@@ -135,6 +175,9 @@ namespace ApiApplication.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid>("Stock")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<int>("_nbStock")
                         .HasColumnType("int");
 
@@ -146,6 +189,8 @@ namespace ApiApplication.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Stock");
 
                     b.ToTable("_orders");
                 });
@@ -177,11 +222,55 @@ namespace ApiApplication.Migrations
                     b.ToTable("_stocks");
                 });
 
+            modelBuilder.Entity("ProjectStockLibrary.Address", b =>
+                {
+                    b.HasOne("ProjectStockLibrary.Client", null)
+                        .WithMany("_addresses")
+                        .HasForeignKey("Addresses");
+                });
+
+            modelBuilder.Entity("ProjectStockLibrary.Client", b =>
+                {
+                    b.HasOne("ProjectStockLibrary.Crypto", null)
+                        .WithMany("_listClient")
+                        .HasForeignKey("CryptoId");
+                });
+
+            modelBuilder.Entity("ProjectStockLibrary.Market", b =>
+                {
+                    b.HasOne("ProjectStockLibrary.Crypto", null)
+                        .WithMany("_listMarket")
+                        .HasForeignKey("CryptoId");
+                });
+
+            modelBuilder.Entity("ProjectStockLibrary.Order", b =>
+                {
+                    b.HasOne("ProjectStockLibrary.Stock", "_stock")
+                        .WithMany()
+                        .HasForeignKey("Stock")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("_stock");
+                });
+
             modelBuilder.Entity("ProjectStockLibrary.Stock", b =>
                 {
                     b.HasOne("ProjectStockLibrary.Market", null)
                         .WithMany("_stock")
                         .HasForeignKey("Stock");
+                });
+
+            modelBuilder.Entity("ProjectStockLibrary.Client", b =>
+                {
+                    b.Navigation("_addresses");
+                });
+
+            modelBuilder.Entity("ProjectStockLibrary.Crypto", b =>
+                {
+                    b.Navigation("_listClient");
+
+                    b.Navigation("_listMarket");
                 });
 
             modelBuilder.Entity("ProjectStockLibrary.Market", b =>

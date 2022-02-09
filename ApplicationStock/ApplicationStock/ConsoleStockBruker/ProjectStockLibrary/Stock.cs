@@ -14,8 +14,7 @@ namespace ProjectStockLibrary
     [JsonArray]
     public class Stock : BaseEntity
     {
-        [Key]
-        public new Guid Id { get; private set; }
+    
         public string _name { get;  set; }
         public float _value { get;  set; }
         public string _entrepriseName { get;set; }
