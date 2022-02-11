@@ -57,11 +57,13 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseCors("AllowAnyOrigin");
 }
 
 app.UseRouting();
 
 // global cors policy
+app.UseCors("AllowAnyOrigin");
 app.UseCors(x => x
     .AllowAnyOrigin()
     .AllowAnyMethod()

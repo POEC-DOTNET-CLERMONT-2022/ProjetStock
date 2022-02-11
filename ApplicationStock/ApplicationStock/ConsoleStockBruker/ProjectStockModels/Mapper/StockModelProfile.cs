@@ -13,8 +13,7 @@ namespace ProjectStockModels.Mapper
     {
         public StockModelProfile()
         {
-       
-                CreateMap<StockModel,Stock>().ReverseMap();
+             CreateMap<StockModel,Stock>().ReverseMap();
          }
     }
 }

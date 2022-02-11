@@ -34,12 +34,9 @@ namespace ApiApplication.Controllers
         }
 
 
-
         [Authorize]
         //TODO : attention au règle des URL => https://docs.microsoft.com/fr-fr/aspnet/core/tutorials/first-web-api?view=aspnetcore-6.0&tabs=visual-studio
         [HttpGet("all")]
-
-
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddressDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<IEnumerable<AddressDto>> GetAll()

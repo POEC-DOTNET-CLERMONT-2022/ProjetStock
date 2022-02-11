@@ -19,8 +19,9 @@ namespace ProjectStockLibrary
             Id = Guid.NewGuid();
             _textRappel = textRappel;
             _sendAt = sendAt;
+       
         }
 
- 
+       
     }
 }

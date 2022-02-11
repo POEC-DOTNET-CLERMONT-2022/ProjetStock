@@ -67,21 +67,16 @@ namespace WPF_Application
             authenticateRequest._email = mapped._email;
 
             var user_info_http = await this.jsonGenericReader.GetByEmail(authenticateRequest);
-
-
-
             try
             {
 
 
                 var object_ = await user_info_http.Content.ReadAsStringAsync();
                 JArray json = JArray.Parse(object_);
-              
-
-
                 var client = _mapper.Map<Client>(json[0]);
 
                 JObject obj = JObject.Parse(json[0].ToString());
+
                 client.Id = new Guid(obj["id"].ToString());
                 client._addresses = null;
          
@@ -101,18 +96,15 @@ namespace WPF_Application
                 
                 MessageBox.Show("You are connected", "Connected", MessageBoxButton.OK, MessageBoxImage.Information);
                 Navigator.NavigateTo(typeof(UserMainWindowsConnected));
-
-
             }
             else
             {
                 MessageBox.Show("You are not connected", "Not Connected", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
         }
 
     
-    
+     
 
 
         private void Login_button_Click(object sender, RoutedEventArgs e)

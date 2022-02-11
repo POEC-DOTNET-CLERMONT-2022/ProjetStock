@@ -14,8 +14,6 @@ namespace ProjectStockModels.Model
         public Guid _id;
         public string _lastName;
         public string _firstName;
-
-
         public string _email;
 
         public Guid Id

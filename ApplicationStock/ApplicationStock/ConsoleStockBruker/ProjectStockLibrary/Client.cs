@@ -33,7 +33,7 @@ namespace ProjectStockLibrary
 
         // [ForeignKey("Stock")]
         [ForeignKey("Stocks")]
-        private List<Stock>? _stocks { get; set; }
+        public List<Stock>? _stocks { get; set; }
 
 
         public Client(string firstName, string lastName, string email, string phone, string siret, string password, List<Address> addresses, List<Stock>? stocks)

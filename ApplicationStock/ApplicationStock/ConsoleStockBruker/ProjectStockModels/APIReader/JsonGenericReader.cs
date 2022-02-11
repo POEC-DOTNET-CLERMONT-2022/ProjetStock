@@ -185,48 +185,14 @@ namespace ProjectStockModels.JsonReader
             return _model;
         }
 
-        //La fonction get update : works all but on in client
-        //public async Task<int> Update(TModel item)
-        //{
-        
-        //    try
-        //    {
-        //        var map = _mapper.Map<TDto>(item);
-
-          
-        //        return (int)_httpClient.PutAsJsonAsync(uri, map); ;
-
-
-                 
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return StatusCodes.Status400BadRequest;
-        //    }
-
-
-           
-      //  }
-
         public async Task<int> Update(TModel item)
         {
-
-
-
             try
             {
                 var map = _mapper.Map<TDto>(item);
 
-                var request = new HttpRequestMessage
-                {
-                    Method = HttpMethod.Put,
-                    RequestUri = new Uri(uri),
-                    Content = new StringContent(JsonConvert.SerializeObject(map), Encoding.UTF8, "application/json")
-                };
 
-                return (int)_httpClient.SendAsync(request).Result.StatusCode;
-
-
+                return (int)_httpClient.PutAsJsonAsync(new Uri(uri),map).Result.StatusCode;
 
             }
             catch (Exception e)
@@ -238,8 +204,45 @@ namespace ProjectStockModels.JsonReader
         }
 
 
+        public async Task<int> UpdateAddresses(TModel item)
+        {
+            try
+            {
+                var map = _mapper.Map<TDto>(item);
+
+
+                return (int)_httpClient.PutAsJsonAsync(new Uri(uri+"/addresses"), map).Result.StatusCode;
+
+            }
+            catch (Exception e)
+            {
+                return StatusCodes.Status400BadRequest;
+            }
+
+
+        }
+        public async Task<int> UpdateStocks(TModel item)
+        {
+            try
+            {
+                var map = _mapper.Map<TDto>(item);
+
+
+                return (int)_httpClient.PutAsJsonAsync(new Uri(uri + "/stocks"), map).Result.StatusCode;
+
+            }
+            catch (Exception e)
+            {
+                return StatusCodes.Status400BadRequest;
+            }
+
+
+        }
+
+
+
+
         //La fonction delete marche
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<int> Delete(Guid id)
         {
 
@@ -296,6 +299,7 @@ namespace ProjectStockModels.JsonReader
             {
                 return StatusCodes.Status400BadRequest;
             }
+           
            
 
         }

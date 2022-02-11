@@ -82,12 +82,10 @@ namespace WPF_Application.UserControls
             LoadMarket();
             LoadStock();
         }
-
+        
         public async void LoadMarket()
         {
-
-
-
+   
             var userModels = await jsonGenericReader.GetAll();
 
             MarketLists.Markets = new ObservableCollection<MarketModel>(userModels);
@@ -115,6 +113,7 @@ namespace WPF_Application.UserControls
 
         public async void LoadStock()
         {
+         
             HttpClient _client = new HttpClient();
 
             jsonStockGenericReader = new StockServiceReader(_client, _mapper);
@@ -171,7 +170,13 @@ namespace WPF_Application.UserControls
             Navigator.NavigateTo(typeof(NotificationListsControl));
          
         }
+       
 
+        private void Stocks_Click(object sender, RoutedEventArgs e)
+        {
+            Navigator.NavigateTo(typeof(UsersStocksLists));
+
+        }
 
         private void MyNotification_Click(object sender, RoutedEventArgs e)
         {
@@ -244,7 +249,7 @@ namespace WPF_Application.UserControls
 
         private void Addresses_Click(object sender, RoutedEventArgs e)
         {
-            Navigator.NavigateTo(typeof(OrderControl));
+            Navigator.NavigateTo(typeof(AddressUserLists));
         }
 
     }

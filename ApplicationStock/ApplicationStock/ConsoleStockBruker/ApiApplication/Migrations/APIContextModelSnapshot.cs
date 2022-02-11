@@ -183,7 +183,12 @@ namespace ApiApplication.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid?>("_stockId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("_stockId");
 
                     b.ToTable("_orders");
                 });
@@ -195,6 +200,9 @@ namespace ApiApplication.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("Stock")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("Stocks")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("_entrepriseName")
@@ -211,6 +219,8 @@ namespace ApiApplication.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("Stock");
+
+                    b.HasIndex("Stocks");
 
                     b.ToTable("_stocks");
                 });
@@ -236,16 +246,31 @@ namespace ApiApplication.Migrations
                         .HasForeignKey("CryptoId");
                 });
 
+            modelBuilder.Entity("ProjectStockLibrary.Order", b =>
+                {
+                    b.HasOne("ProjectStockLibrary.Stock", "_stock")
+                        .WithMany()
+                        .HasForeignKey("_stockId");
+
+                    b.Navigation("_stock");
+                });
+
             modelBuilder.Entity("ProjectStockLibrary.Stock", b =>
                 {
                     b.HasOne("ProjectStockLibrary.Market", null)
                         .WithMany("_stock")
                         .HasForeignKey("Stock");
+
+                    b.HasOne("ProjectStockLibrary.Client", null)
+                        .WithMany("_stocks")
+                        .HasForeignKey("Stocks");
                 });
 
             modelBuilder.Entity("ProjectStockLibrary.Client", b =>
                 {
                     b.Navigation("_addresses");
+
+                    b.Navigation("_stocks");
                 });
 
             modelBuilder.Entity("ProjectStockLibrary.Crypto", b =>

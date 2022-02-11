@@ -27,8 +27,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectStock.Api.Tests", "P
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleBenchMarkProjectStock", "ConsoleBenchMarkProjectStock\ConsoleBenchMarkProjectStock.csproj", "{4BAC4E95-7F0E-4D77-8D94-78C90CADCAA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProjectStock", "TestProjectStock\TestProjectStock.csproj", "{A451E8EE-7E14-4C88-9CF6-256BF477FFB5}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,10 +81,6 @@ Global
 		{4BAC4E95-7F0E-4D77-8D94-78C90CADCAA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BAC4E95-7F0E-4D77-8D94-78C90CADCAA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BAC4E95-7F0E-4D77-8D94-78C90CADCAA3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A451E8EE-7E14-4C88-9CF6-256BF477FFB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A451E8EE-7E14-4C88-9CF6-256BF477FFB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A451E8EE-7E14-4C88-9CF6-256BF477FFB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A451E8EE-7E14-4C88-9CF6-256BF477FFB5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

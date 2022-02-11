@@ -12,10 +12,7 @@ namespace ProjectStockModels.Lists
     public class AddressLists : ObservableObject
     {
         private ObservableCollection<AddressModel>? _Addresses;
-
         private AddressModel? _Address;
-
-
         public AddressModel Address
         {
             get { return _Address; }

@@ -12,7 +12,6 @@ namespace ProjectStockModels.Lists
     public  class AddressList : ObservableObject
     {
         private ObservableCollection<UserModel> _users;
-
         private UserModel? _CurrentUser;
 
         public UserModel CurrentUser

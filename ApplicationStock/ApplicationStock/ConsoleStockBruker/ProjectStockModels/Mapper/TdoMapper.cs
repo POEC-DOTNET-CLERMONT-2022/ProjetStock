@@ -10,8 +10,7 @@ using System.Threading.Tasks;
 
 namespace ProjectStockModels.Mapper
 {
-    public class TdoMapper : AutoMapper.Profile 
-                                                  
+    public class TdoMapper : AutoMapper.Profile                                           
     {
         public TdoMapper()
         {

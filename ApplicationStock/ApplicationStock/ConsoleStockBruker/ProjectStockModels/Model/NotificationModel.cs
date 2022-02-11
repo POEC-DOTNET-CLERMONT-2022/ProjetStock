@@ -1,4 +1,5 @@
-﻿using ProjectStockModels.Observable;
+﻿using ProjectStockLibrary;
+using ProjectStockModels.Observable;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,9 @@ namespace ProjectStockModels.Model
 {
     public class NotificationModel : ObservableObject
     {
-
         public Guid _id;
         public string _textRappel;
         public DateTime _sendAt;
-
 
         public Guid Id
         {
@@ -53,6 +52,8 @@ namespace ProjectStockModels.Model
                 }
             }
         }
+
+     
 
     }
 }
