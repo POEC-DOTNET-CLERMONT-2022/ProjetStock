@@ -10,13 +10,10 @@ namespace ProjectStockModels.Model
 {
     public class StockModel : ObservableObject
     {
-
         public Guid _id;
         public string _name;
         public float _value;
         public string _entrepriseName;
-
-
 
         public Guid Id
         {

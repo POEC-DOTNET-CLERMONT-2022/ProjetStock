@@ -13,21 +13,11 @@ namespace ProjectStockDTOS
     [DataContract]
     public class StockDto
     {
-        [DataMember]
-        [Required]
-  
+ 
         public Guid Id { get; set; }
-        [DataMember]
-        [Required]
         public string? _name { get; set; }
-        [DataMember]
-        [Required]
         public float _value { get; set; }
-        [DataMember]
-        [Required]
         public string? _entrepriseName { get; set; }
-        [DataMember]
-        [Required]
         private List<Client>? _clients { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using ApiApplication.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiApplication.Migrations
 {
     [DbContext(typeof(APIContext))]
-    partial class APIContextModelSnapshot : ModelSnapshot
+    [Migration("20220211104852_my_migration_mig")]
+    partial class my_migration_mig
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -183,12 +185,12 @@ namespace ApiApplication.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("_stockId")
+                    b.Property<Guid>("stock")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("_stockId");
+                    b.HasIndex("stock");
 
                     b.ToTable("_orders");
                 });
@@ -245,7 +247,7 @@ namespace ApiApplication.Migrations
                 {
                     b.HasOne("ProjectStockLibrary.Stock", "_stock")
                         .WithMany()
-                        .HasForeignKey("_stockId")
+                        .HasForeignKey("stock")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

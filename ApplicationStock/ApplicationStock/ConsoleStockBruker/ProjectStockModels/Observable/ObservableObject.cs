@@ -11,7 +11,6 @@ namespace ProjectStockModels.Observable
     public class ObservableObject : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
-
         protected virtual void OnNotifyPropertyChanged([CallerMemberName] string propertyname  = "")
         {
             if (PropertyChanged != null)

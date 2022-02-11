@@ -9,34 +9,15 @@ using ProjectStockLibrary;
 
 namespace ProjectStockDTOS
 {
-
     public class CryptoDto
     {
-        //TODO : inutile pour REST
-        [DataMember]
-        [Required]
-
         public Guid Id {get; private set;}
-
-        [DataMember]
-        [Required]
         public string? _name {get; set;}
-
-        [DataMember]
-        
         public float _value{get; set;}
-
-        [DataMember]
-        [Required]
         public List<Client>? _listClient {get; set;}
-
-        [DataMember]
-        [Required]
         public List<Market>? _listMarker {get; set;}
 
-
     }
-
 }
 
 

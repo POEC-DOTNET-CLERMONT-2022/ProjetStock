@@ -9,12 +9,9 @@ namespace ProjectStockModels.Model
 {
     public class NotificationModel : ObservableObject
     {
-
         public Guid _id;
         public string _textRappel;
         public DateTime _sendAt;
-
-
         public Guid Id
         {
             get { return _id; }

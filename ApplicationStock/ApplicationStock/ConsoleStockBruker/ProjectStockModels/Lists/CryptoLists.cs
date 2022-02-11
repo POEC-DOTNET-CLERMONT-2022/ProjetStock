@@ -12,7 +12,6 @@ namespace ProjectStockModels.Lists
     public class CryptoLists : ObservableObject
     {
         private ObservableCollection<CryptoModel>? _Cryptos;
-
         private CryptoModel? _Crypto;
 
 

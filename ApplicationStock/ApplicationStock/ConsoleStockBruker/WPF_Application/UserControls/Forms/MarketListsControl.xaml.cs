@@ -32,8 +32,6 @@ namespace WPF_Application.Market
     public partial class MarketListsControl : UserControl
     {
 
-
-
         private readonly IGenericRepository<MarketEntity> _marketRepository = ((App)Application.Current).marketRepository;
         private readonly IMapper _mapper = ((App)Application.Current).Mapper;
 
@@ -68,13 +66,9 @@ namespace WPF_Application.Market
             var userModels = await jsonGenericReader.GetAll();
 
             MarketsLists.Markets = new ObservableCollection<MarketModel>(userModels);
-
-
         }
 
-
-
-        private async Task updateMarket( MarketModel market)
+        private async Task updateMarket(MarketModel market)
         {
             await jsonGenericReader.Update(market);
 

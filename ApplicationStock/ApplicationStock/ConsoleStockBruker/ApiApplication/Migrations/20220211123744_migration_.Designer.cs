@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiApplication.Migrations
 {
     [DbContext(typeof(APIContext))]
-    [Migration("20220209172436_migration")]
-    partial class migration
+    [Migration("20220211123744_migration_")]
+    partial class migration_
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -175,9 +175,6 @@ namespace ApiApplication.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("Stock")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int>("_nbStock")
                         .HasColumnType("int");
 
@@ -188,9 +185,12 @@ namespace ApiApplication.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid>("stock")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("Stock");
+                    b.HasIndex("stock");
 
                     b.ToTable("_orders");
                 });
@@ -247,7 +247,7 @@ namespace ApiApplication.Migrations
                 {
                     b.HasOne("ProjectStockLibrary.Stock", "_stock")
                         .WithMany()
-                        .HasForeignKey("Stock")
+                        .HasForeignKey("stock")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

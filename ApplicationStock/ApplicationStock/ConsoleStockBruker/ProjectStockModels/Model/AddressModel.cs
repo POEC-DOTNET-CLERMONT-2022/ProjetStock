@@ -11,16 +11,10 @@ namespace ProjectStockModels.Model
     {
         private Guid _id;
         private string? _address_line_1;
-
         private string? _address_line_2;
-
         private string? _codePostal;
-
         private string? _city;
-
         private string? _country;
-
-
         public Guid Id
         {
             get { return _id; }

@@ -94,10 +94,6 @@ namespace ApiApplicationProjectStock.Controllers
            
             p._name = cryptoDto._name;
             p._value = cryptoDto._value;
-
-
-           
-
             _context._cryptos.Update(p);
             _context.SaveChanges();
 

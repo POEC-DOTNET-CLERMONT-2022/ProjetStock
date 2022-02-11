@@ -4,25 +4,28 @@
 
 namespace ApiApplication.Migrations
 {
-    public partial class migration : Migration
+    public partial class ma_migration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            
+            migrationBuilder.DropForeignKey(
+                name: "FK__orders__stocks_stock",
+                table: "_orders");
+
             migrationBuilder.RenameColumn(
-                name: "Stocke",
+                name: "stock",
                 table: "_orders",
-                newName: "Stock");
+                newName: "_stockId");
 
             migrationBuilder.RenameIndex(
-                name: "IX__orders_Stocke",
+                name: "IX__orders_stock",
                 table: "_orders",
-                newName: "IX__orders_Stock");
+                newName: "IX__orders__stockId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK__orders__stocks_Stock",
+                name: "FK__orders__stocks__stockId",
                 table: "_orders",
-                column: "Stock",
+                column: "_stockId",
                 principalTable: "_stocks",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
@@ -31,23 +34,23 @@ namespace ApiApplication.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK__orders__stocks_Stock",
+                name: "FK__orders__stocks__stockId",
                 table: "_orders");
 
             migrationBuilder.RenameColumn(
-                name: "Stock",
+                name: "_stockId",
                 table: "_orders",
-                newName: "Stocke");
+                newName: "stock");
 
             migrationBuilder.RenameIndex(
-                name: "IX__orders_Stock",
+                name: "IX__orders__stockId",
                 table: "_orders",
-                newName: "IX__orders_Stocke");
+                newName: "IX__orders_stock");
 
             migrationBuilder.AddForeignKey(
-                name: "FK__orders__stocks_Stocke",
+                name: "FK__orders__stocks_stock",
                 table: "_orders",
-                column: "Stocke",
+                column: "stock",
                 principalTable: "_stocks",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
