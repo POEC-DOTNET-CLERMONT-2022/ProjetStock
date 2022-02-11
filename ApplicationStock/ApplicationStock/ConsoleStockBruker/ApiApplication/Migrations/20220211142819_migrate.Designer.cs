@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiApplication.Migrations
 {
     [DbContext(typeof(APIContext))]
-    [Migration("20220211123348_migration_test")]
-    partial class migration_test
+    [Migration("20220211142819_migrate")]
+    partial class migrate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -185,12 +185,12 @@ namespace ApiApplication.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("stock")
+                    b.Property<Guid?>("_stockId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("stock");
+                    b.HasIndex("_stockId");
 
                     b.ToTable("_orders");
                 });
@@ -202,6 +202,9 @@ namespace ApiApplication.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("Stock")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("Stocks")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("_entrepriseName")
@@ -218,6 +221,8 @@ namespace ApiApplication.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("Stock");
+
+                    b.HasIndex("Stocks");
 
                     b.ToTable("_stocks");
                 });
@@ -247,9 +252,7 @@ namespace ApiApplication.Migrations
                 {
                     b.HasOne("ProjectStockLibrary.Stock", "_stock")
                         .WithMany()
-                        .HasForeignKey("stock")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("_stockId");
 
                     b.Navigation("_stock");
                 });
@@ -259,11 +262,17 @@ namespace ApiApplication.Migrations
                     b.HasOne("ProjectStockLibrary.Market", null)
                         .WithMany("_stock")
                         .HasForeignKey("Stock");
+
+                    b.HasOne("ProjectStockLibrary.Client", null)
+                        .WithMany("_stocks")
+                        .HasForeignKey("Stocks");
                 });
 
             modelBuilder.Entity("ProjectStockLibrary.Client", b =>
                 {
                     b.Navigation("_addresses");
+
+                    b.Navigation("_stocks");
                 });
 
             modelBuilder.Entity("ProjectStockLibrary.Crypto", b =>

@@ -15,7 +15,7 @@ namespace ProjectStockLibrary
         public string _orderName { get;  set; }
         public  DateTime _orderDate { get;  set; }
        
-        [ForeignKey("_StockId")]
+     
         public Stock? _stock { get; set; }
         public int _nbStock { get; set; }
         public Order(string orderName,Stock stock,int nbStock) 

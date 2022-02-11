@@ -268,6 +268,66 @@ namespace ApiApplicationProjectStock.Controllers
 
         }
 
+        // GET api/<ProjectController>/5
+        [Authorize]
+        [HttpPut("stocks")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<UserDto> PutStocks(UserDto userDto)
+        {
+
+            try
+            {
+
+                var p = genericRepository.GetById(userDto.Id);
+                if (p == null)
+                    return BadRequest();
+                p._stocks = userDto._stocks;
+
+
+                _context._users.Update(p);
+                _context.SaveChanges();
+                return Ok(p);
+
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+
+        }
+
+        // GET api/<ProjectController>/5
+        [Authorize]
+        [HttpPut("adresses")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<UserDto> PutAddresses(UserDto userDto)
+        {
+
+            try
+            {
+
+                var p = genericRepository.GetById(userDto.Id);
+                if (p == null)
+                    return BadRequest();
+                p._addresses = userDto._addresses;
+
+
+                _context._users.Update(p);
+                _context.SaveChanges();
+                return Ok(p);
+
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+
+        }
+
         // DELETE api/<ProjectController>/5
         [Authorize]
         [HttpDelete]

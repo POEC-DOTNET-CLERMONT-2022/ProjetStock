@@ -4,21 +4,21 @@
 
 namespace ApiApplication.Migrations
 {
-    public partial class ma_migration : Migration
+    public partial class migrate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK__orders__stocks_stock",
+                name: "FK__orders__stocks__StockId",
                 table: "_orders");
 
             migrationBuilder.RenameColumn(
-                name: "stock",
+                name: "_StockId",
                 table: "_orders",
                 newName: "_stockId");
 
             migrationBuilder.RenameIndex(
-                name: "IX__orders_stock",
+                name: "IX__orders__StockId",
                 table: "_orders",
                 newName: "IX__orders__stockId");
 
@@ -27,8 +27,7 @@ namespace ApiApplication.Migrations
                 table: "_orders",
                 column: "_stockId",
                 principalTable: "_stocks",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                principalColumn: "Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -40,20 +39,19 @@ namespace ApiApplication.Migrations
             migrationBuilder.RenameColumn(
                 name: "_stockId",
                 table: "_orders",
-                newName: "stock");
+                newName: "_StockId");
 
             migrationBuilder.RenameIndex(
                 name: "IX__orders__stockId",
                 table: "_orders",
-                newName: "IX__orders_stock");
+                newName: "IX__orders__StockId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK__orders__stocks_stock",
+                name: "FK__orders__stocks__StockId",
                 table: "_orders",
-                column: "stock",
+                column: "_StockId",
                 principalTable: "_stocks",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                principalColumn: "Id");
         }
     }
 }

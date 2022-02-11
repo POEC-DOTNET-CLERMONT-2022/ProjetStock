@@ -81,6 +81,8 @@ namespace WPF_Application
             Navigator.RegisterView(new MenuActionStockSell());
             Navigator.RegisterView(new BuyStockControl());
             Navigator.RegisterView(new SellStockControl());
+            Navigator.RegisterView(new UsersStocksLists());
+            Navigator.RegisterView(new AddressUserLists());
         }
 
 

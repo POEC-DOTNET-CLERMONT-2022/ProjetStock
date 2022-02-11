@@ -204,6 +204,43 @@ namespace ProjectStockModels.JsonReader
         }
 
 
+        public async Task<int> UpdateAddresses(TModel item)
+        {
+            try
+            {
+                var map = _mapper.Map<TDto>(item);
+
+
+                return (int)_httpClient.PutAsJsonAsync(new Uri(uri+"/addresses"), map).Result.StatusCode;
+
+            }
+            catch (Exception e)
+            {
+                return StatusCodes.Status400BadRequest;
+            }
+
+
+        }
+        public async Task<int> UpdateStocks(TModel item)
+        {
+            try
+            {
+                var map = _mapper.Map<TDto>(item);
+
+
+                return (int)_httpClient.PutAsJsonAsync(new Uri(uri + "/stocks"), map).Result.StatusCode;
+
+            }
+            catch (Exception e)
+            {
+                return StatusCodes.Status400BadRequest;
+            }
+
+
+        }
+
+
+
 
         //La fonction delete marche
         public async Task<int> Delete(Guid id)

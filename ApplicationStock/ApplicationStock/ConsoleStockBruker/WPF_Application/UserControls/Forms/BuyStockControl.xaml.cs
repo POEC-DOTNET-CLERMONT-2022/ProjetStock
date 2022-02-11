@@ -43,8 +43,10 @@ namespace WPF_Application.UserControls.Forms
 
         private JsonGenericReader<OrderModel, OrderDto> json { get; set; }
 
+        private JsonGenericReader<UserModel, UserDto> jsonUser { get; set; }
 
         private static ObservableCollection<StockModel> _lists { get; set; }
+
         public StockLists StocksList { get; set; } = new StockLists();
 
         public BuyStockControl()
@@ -78,13 +80,16 @@ namespace WPF_Application.UserControls.Forms
 
 
             HttpClient _client = new HttpClient();
+            HttpClient _client2 = new HttpClient();
+
+            jsonUser = new UserServiceReader(_client2, _mapper);
 
             json = new OrderServiceReader(_client, _mapper);
 
             var result = this.comboBox1.SelectedItem as StockModel;
 
-           //ar ordername = "Buy " + DateTime.Now.ToString() + " - " + serviceUserAppCurrent.GetGuid().ToString();
-            var stock = new Stock(result.Id, result.Name, result._value, result.EntrepriseName);
+           //var ordername = "Buy " + DateTime.Now.ToString() + " - " + serviceUserAppCurrent.GetGuid().ToString();
+            var stock = new Stock(Guid.NewGuid(), result.Name, result._value, result.EntrepriseName);
 
           
             var order = new OrderModel() { Id = Guid.NewGuid(), OrderDate = DateTime.Now, OrderName = "Buy " + DateTime.Now.ToString() + " - " + serviceUserAppCurrent.GetGuid().ToString(), NbStock = 10, Stock = stock};
@@ -92,9 +97,13 @@ namespace WPF_Application.UserControls.Forms
             var resultat = await json.Add(order);
            if(resultat == 200)
             {
+                Client client = serviceUserAppCurrent.GetClientCurrent();
+                client.AddStocks(stock);
+
+                UserModel model = _mapper.Map<UserModel>(client);
+                await jsonUser.UpdateStocks(model);
                 MessageBox.Show("Vous avez acheté une action", "Achat action", MessageBoxButton.OK,MessageBoxImage.Asterisk);
                 Navigator.NavigateTo(typeof(MenuActionStockSell));
-
             }
             else
             {
