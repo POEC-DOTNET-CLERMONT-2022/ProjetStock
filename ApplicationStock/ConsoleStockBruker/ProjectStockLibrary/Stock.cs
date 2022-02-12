@@ -21,7 +21,8 @@ namespace ProjectStockLibrary
 
         [ForeignKey("Client")]
         private List<Client> _clients { get; set; }
-        
+       
+
 
 
         public Stock(string name,float value, string entrepriseName)

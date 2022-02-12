@@ -79,6 +79,7 @@ namespace WPF_Application.Stocks
 
         private async Task addStock(StockModel newUser)
         {
+
             await jsonGenericReader.Add(newUser);
 
         }

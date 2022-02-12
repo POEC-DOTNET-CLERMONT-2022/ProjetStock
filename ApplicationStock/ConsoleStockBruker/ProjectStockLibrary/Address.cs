@@ -12,8 +12,7 @@ namespace ProjectStockLibrary
     [JsonArray]
     public class Address : BaseEntity
     {
-        [Key]
-        public new Guid Id { get;  set; }
+
         public string _address_line_1 { get; set; }
         public string _address_line_2 { get;  set; }
         public string _codePostal { get;set; }
@@ -21,6 +20,9 @@ namespace ProjectStockLibrary
         public string _city { get; set; }
 
         public string _country { get; set; }
+
+
+        public Guid ClientId { get; set; }
 
         public Address(string address_line_1, string address_line_2, string codePostal, string city, string country)
         {

@@ -29,7 +29,7 @@
                         <MenuItem Header="Lists of notifications" Click="MenuItem_Click_3">
                         </MenuItem>
                         <MenuItem Header="Lists of markets" Click="MenuItem_Click_Markets"/>
-                        <MenuItem Header="Lists of orders" Click="Addresses_Click"></MenuItem>
+                        <MenuItem Header="Lists of orders" Click="ListOrder_Click"></MenuItem>
 
                 </MenuItem>
 
@@ -63,7 +63,7 @@
                
 
                         <MenuItem Header="My profile" Click="Profile_Click"></MenuItem>
-                    <MenuItem Header="My Orders" Click="Orders_click"></MenuItem>
+                    <MenuItem Header="My Orders" Click="Orders_Click"></MenuItem>
                     <MenuItem Header="My Stocks" Click="Stocks_Click"></MenuItem>
                     <MenuItem Header="My Addresses" Click="Addresses_Click"></MenuItem>
                     <MenuItem Header="My Notification"  Click="MyNotification_Click"></MenuItem>

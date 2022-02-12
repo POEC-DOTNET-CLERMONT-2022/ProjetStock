@@ -10,7 +10,7 @@ namespace ApiApplication.Models
         public string _lastName { get; set; }
         public string _email { get; set; }
         public string Token { get; set; }
-
+        public Guid Id { get; set; }
 
         public AuthenticateResponse(Client user, string token)
         {
@@ -18,6 +18,7 @@ namespace ApiApplication.Models
             _lastName = user._lastName;
             _email = user._email;
             Token = token;
+            Id = user.Id;
         }
     }
 }

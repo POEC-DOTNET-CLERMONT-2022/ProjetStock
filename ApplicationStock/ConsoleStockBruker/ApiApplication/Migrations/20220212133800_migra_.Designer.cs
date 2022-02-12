@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiApplication.Migrations
 {
     [DbContext(typeof(APIContext))]
-    [Migration("20220211142819_migrate")]
-    partial class migrate
+    [Migration("20220212133800_migra_")]
+    partial class migra_
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,7 +30,7 @@ namespace ApiApplication.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("Addresses")
+                    b.Property<Guid?>("ClientId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("_address_line_1")
@@ -55,7 +55,7 @@ namespace ApiApplication.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Addresses");
+                    b.HasIndex("ClientId");
 
                     b.ToTable("_addresses");
                 });
@@ -201,10 +201,10 @@ namespace ApiApplication.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("Stock")
+                    b.Property<Guid?>("ClientId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("Stocks")
+                    b.Property<Guid?>("Stock")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("_entrepriseName")
@@ -220,9 +220,9 @@ namespace ApiApplication.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Stock");
+                    b.HasIndex("ClientId");
 
-                    b.HasIndex("Stocks");
+                    b.HasIndex("Stock");
 
                     b.ToTable("_stocks");
                 });
@@ -231,7 +231,7 @@ namespace ApiApplication.Migrations
                 {
                     b.HasOne("ProjectStockLibrary.Client", null)
                         .WithMany("_addresses")
-                        .HasForeignKey("Addresses");
+                        .HasForeignKey("ClientId");
                 });
 
             modelBuilder.Entity("ProjectStockLibrary.Client", b =>
@@ -259,13 +259,13 @@ namespace ApiApplication.Migrations
 
             modelBuilder.Entity("ProjectStockLibrary.Stock", b =>
                 {
+                    b.HasOne("ProjectStockLibrary.Client", null)
+                        .WithMany("_stocks")
+                        .HasForeignKey("ClientId");
+
                     b.HasOne("ProjectStockLibrary.Market", null)
                         .WithMany("_stock")
                         .HasForeignKey("Stock");
-
-                    b.HasOne("ProjectStockLibrary.Client", null)
-                        .WithMany("_stocks")
-                        .HasForeignKey("Stocks");
                 });
 
             modelBuilder.Entity("ProjectStockLibrary.Client", b =>

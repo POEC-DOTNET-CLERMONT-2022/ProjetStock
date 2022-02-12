@@ -27,13 +27,20 @@ namespace ProjectStockLibrary
 
         public string _password { get; set; }
 
-        [ForeignKey("Addresses")]
 
-        public List<Address>? _addresses { get; set; }
+        [ForeignKey("ClientId")]
+        public virtual ICollection<Address> _addresses { get; set; }
 
-        // [ForeignKey("Stock")]
-        [ForeignKey("Stocks")]
-        public List<Stock>? _stocks { get; set; }
+        [ForeignKey("ClientId")]
+        public  virtual ICollection<Stock> _stocks { get; set; }
+
+        [ForeignKey("ClientId")]
+        public virtual ICollection<Notification> _notifications { get; set; }
+
+        [ForeignKey("ClientId")]
+        public virtual ICollection<Order>? _Orders { get; set; }
+
+
 
 
         public Client(string firstName, string lastName, string email, string phone, string siret, string password, List<Address> addresses, List<Stock>? stocks)
@@ -48,6 +55,8 @@ namespace ProjectStockLibrary
             _addresses = addresses;
             _stocks = stocks;
             _password = password;
+            _notifications = new List<Notification>();
+            _Orders = new List<Order>();
 
 
 
@@ -64,6 +73,8 @@ namespace ProjectStockLibrary
             _phone = string.IsNullOrEmpty(phone) && phone.Length < 12 || phone is null ? throw new ArgumentNullException(nameof(phone)) : phone;
             _addresses = addresses;
             _stocks = stocks;
+            _notifications = new List<Notification>();
+            _Orders = new List<Order>();
             _password = "";
 
 
@@ -84,7 +95,8 @@ namespace ProjectStockLibrary
             _addresses = new List<Address>();
             _stocks = new List<Stock>();
             _password = "";
-            
+            _notifications = new List<Notification>();
+            _Orders = new List<Order>();
 
 
         }
@@ -101,7 +113,8 @@ namespace ProjectStockLibrary
             _addresses = new List<Address>();
             _stocks = new List<Stock>();
             _password = password;
-
+            _notifications = new List<Notification>();
+            _Orders = new List<Order>();
 
 
         }
@@ -123,6 +136,8 @@ namespace ProjectStockLibrary
             _phone = "";
             _addresses = new List<Address>();
             _stocks = new List<Stock>();
+            _notifications = new List<Notification>();
+            _Orders = new List<Order>();
             _password = "";
         }
         public Client()
@@ -135,6 +150,8 @@ namespace ProjectStockLibrary
             _phone = "";
             _addresses = new List<Address>();
             _stocks = new List<Stock>();
+            _notifications = new List<Notification>();
+            _Orders = new List<Order>();
             _password = "";
         }
 

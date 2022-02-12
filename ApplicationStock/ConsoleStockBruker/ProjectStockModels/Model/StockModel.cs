@@ -15,6 +15,7 @@ namespace ProjectStockModels.Model
         public float _value;
         public string _entrepriseName;
 
+       
         public Guid Id
         {
             get { return _id; }

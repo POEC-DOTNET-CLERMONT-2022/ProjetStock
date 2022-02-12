@@ -93,11 +93,11 @@ namespace ApiApplicationProjectStock.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<StockDto> Post(StockDto stockDto)
         {
-            var p = stockDto.ToModelStock();
+            var p = _mapper.Map<Stock>(stockDto);
             try
             {
               
-
+               
              
     
                 genericRepository.Add(p);

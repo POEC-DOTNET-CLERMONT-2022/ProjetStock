@@ -74,7 +74,7 @@ namespace ApiApplication.Controllers
         {
             try
             {
-                var p = orderDto.ToModel();
+                var p = _mapper.Map<Order>(orderDto);
 
                 var mapProj = _mapper.Map<OrderDto>(p);
 
@@ -105,6 +105,7 @@ namespace ApiApplication.Controllers
             p._orderName = orderDto._orderName;
             p._orderDate = orderDto._orderDate;
             p._nbStock = orderDto._nbStock;
+            
 
 
             genericRepository.Update(p);

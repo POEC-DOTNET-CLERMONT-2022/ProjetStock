@@ -95,13 +95,13 @@ namespace WPF_Application.UserControls.Forms
             var order = new OrderModel() { Id = Guid.NewGuid(), OrderDate = DateTime.Now, OrderName = "Buy " + DateTime.Now.ToString() + " - " + serviceUserAppCurrent.GetGuid().ToString(), NbStock = 10, Stock = stock};
 
             var resultat = await json.Add(order);
-           if(resultat == 200)
+           if(resultat == 400)
             {
                 Client client = serviceUserAppCurrent.GetClientCurrent();
                 client.AddStocks(stock);
 
                 UserModel model = _mapper.Map<UserModel>(client);
-                await jsonUser.UpdateStocks(model);
+                await jsonUser.UpdateStocks(model,"/stocks");
                 MessageBox.Show("Vous avez acheté une action", "Achat action", MessageBoxButton.OK,MessageBoxImage.Asterisk);
                 Navigator.NavigateTo(typeof(MenuActionStockSell));
             }

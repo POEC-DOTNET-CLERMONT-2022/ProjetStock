@@ -98,7 +98,9 @@ export class AuthService {
       '_token' :_token,
      '_expireDate' : _expireDate,
       '_stocks' : _stocks,
-      '_addresses' :    _addresses
+      '_addresses' : _addresses,
+      '_Orders' : [],
+      '_notifications' : []
      },  {headers : reqHeader});
    }
 
@@ -123,7 +125,9 @@ export class AuthService {
      '_token' : " ",
     '_expireDate' : _expireDate,
      '_stocks' : _stocks,
-     '_addresses' :    _addresses
+     '_addresses' : _addresses,
+     '_Orders' : [],
+     '_notifications' : []
     }, {headers : reqHeader});
   }
   addMarket(_id : Guid,_name :string,_openingDate :Date): Observable<any> {
@@ -185,6 +189,8 @@ export class AuthService {
     var data =json.split(':');
    var token = data[4].split(',')[0];
    this._user_token =token.split('"')[1];
+
+  console.log(data);
     var reqHeader = new HttpHeaders({ 
       'Content-Type': 'application/json',
     
@@ -263,6 +269,8 @@ export class AuthService {
     var data =json.split(':');
    var token = data[4].split(',')[0];
    this._user_token =token.split('"')[1];
+   
+  console.log();
     var reqHeader = new HttpHeaders({ 
       'Content-Type': 'application/json',
     
@@ -271,7 +279,8 @@ export class AuthService {
     return this.http.post('https://localhost:7136/api/notification/', {
      'id' : Guid.create().toString(),
      'textRappel' : _textRappel,
-     '__sentAt ' : _sentAt 
+     '__sentAt ' : _sentAt,
+     'ClientId' :data[5].split('"')[1]
     }, {headers :reqHeader});
   }
 
@@ -288,7 +297,8 @@ export class AuthService {
     return this.http.put('https://localhost:7136/api/notification/', {
      'id' : _id.toString(),
      'textRappel' : _textRappel,
-     '_sentAt ' : _sentAt 
+     '_sentAt ' : _sentAt,
+     'ClientId' :data[5].split('"')[1]
     }, {headers :reqHeader});
   }
 
@@ -308,7 +318,8 @@ export class AuthService {
      '_orderName' : _orderName,
      '_orderDate' : _orderDate,
      '_stock' : _stock,
-     '_nbStock' : _nbStock
+     '_nbStock' : _nbStock,
+     'ClientId' :data[5].split('"')[1]
     }, {headers: reqHeader});
   }
   
@@ -327,7 +338,8 @@ export class AuthService {
      '_orderName' : _orderName,
      '_orderDate' : _orderDate,
      '_stock' : _stock,
-     '_nbStock' : _nbStock
+     '_nbStock' : _nbStock,
+     'ClientId' :data[5].split('"')[1]
     }, {headers :reqHeader});
   }
 

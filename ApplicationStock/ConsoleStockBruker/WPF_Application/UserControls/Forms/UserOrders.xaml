@@ -6,77 +6,63 @@
              xmlns:local="clr-namespace:WPF_Application.User" xmlns:WPF_Application.UserControls="clr-namespace:WPF_Application.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-   
+
     <Grid>
-        
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+
         </Grid.ColumnDefinitions>
-        <StackPanel>
-            <WrapPanel>
 
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="8">
+            <WPF_Application.UserControls:MenuUserControl></WPF_Application.UserControls:MenuUserControl>
 
+        </StackPanel >
+        <StackPanel Grid.Row="1" Grid.Column="8">
 
-
-            </WrapPanel>
-            <WrapPanel>
-
-            </WrapPanel>
-            <StackPanel Grid.Column="0">
-
-                <WrapPanel>
-
-                    <StackPanel>
-                        <TextBlock Text="Saisir un nom :"/>
-                        <TextBox x:Name="TxtNom" Width="200"/>
-
-                    </StackPanel>
-
-
-                </WrapPanel>
-            </StackPanel>
         </StackPanel>
-        <StackPanel Grid.Column="1">
-            <WrapPanel>
 
+
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <WrapPanel>
                 <StackPanel>
-                    <TextBlock Text="Saisir une qte :"/>
-                    <TextBox x:Name="TxtQte" Width="200"/>
+                    <TextBlock Text="Mes orders"/>
+
 
                 </StackPanel>
 
             </WrapPanel>
         </StackPanel>
-        <StackPanel Grid.Column="2">
-            <WrapPanel>
+        <StackPanel Grid.Row="1" Grid.Column="2">
 
-
-                <StackPanel>
-
-                    <Button Content="Modifier une commande " Width="200" HorizontalAlignment="Left" Click="Button_Click_1"/>
-                    <TextBox x:Name="TxtGuid" Width="50"  Visibility="Hidden" Text="{Binding CurrentOrder.Id}" />
-                </StackPanel>
-          
-            </WrapPanel>
         </StackPanel>
-        <ListBox Grid.ColumnSpan="3" SelectedItem="{Binding CurrentOrder}" ItemsSource="{Binding _Orders}" Grid.Row="1" x:Name="ListOrders">
+
+
+
+        <StackPanel Grid.Column="3" Grid.Row="1">
+
+        </StackPanel>
+
+        <ListBox Grid.ColumnSpan="8" SelectedItem="{Binding   OrderLists.Order}" ItemsSource="{Binding  OrderLists.Orders}" Grid.Row="2" x:Name="ListUser" Background="LightGray">
+
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="ID :"/>
-                        <TextBlock Text="{Binding _Id}"/>
                         <TextBlock Text="Name :"/>
-                        <TextBlock Text="{Binding orderName}"/>
-                        <TextBlock Text="Order date :"/>
-                        <TextBlock Text="{Binding orderDate}"/>
-                        <TextBlock Text="Nb Stock :"/>
-                        <TextBlock Text="{Binding nbStock}"/>
+                        <TextBlock Text="{Binding OrderName}"/>
+                        <TextBlock Text="orderDate :"/>
+                        <TextBlock Text="{Binding OrderDate}"/>
+                        <TextBlock Text="Nb stock  :"/>
+                        <TextBlock Text="{Binding NbStock}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

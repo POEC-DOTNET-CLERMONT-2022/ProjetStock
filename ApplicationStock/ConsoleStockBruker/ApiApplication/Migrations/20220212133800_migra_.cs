@@ -4,7 +4,7 @@
 
 namespace ApiApplication.Migrations
 {
-    public partial class migrat : Migration
+    public partial class migra_ : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

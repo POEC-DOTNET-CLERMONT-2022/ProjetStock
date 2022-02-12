@@ -26,10 +26,7 @@ namespace WPF_Application.User
     /// Logique d'interaction pour UsersLists.xaml
     /// </summary>
     ///
-    //TODO : BINDING !!!!!!! 
-    //TODO : BINDING !!!!!!! 
-    //TODO : BINDING !!!!!!! 
-    //TODO : BINDING !!!!!!! 
+   
     public partial class UsersLists : UserControl
     {
 
@@ -98,7 +95,7 @@ namespace WPF_Application.User
         
             if(TxtGuid.Text != null)
             {
-                var newUser = new UserModel() { FirstName = TbUserFirstName.Text, Id = new Guid(TxtGuid.Text), LastName = TbUserName.Text, Email = TbEmail.Text, Phone = TbPhone.Text, Addresses = new List<Address>(), Stocks = new List<Stock>(), ExpireToken = DateTime.Now, Token = "", Password = TxtPassword.Password, Siret = TbSriret.Text };
+                var newUser = new UserModel() { FirstName = TbUserFirstName.Text, Id = new Guid(TxtGuid.Text), LastName = TbUserName.Text, Email = TbEmail.Text, Phone = TbPhone.Text, Addresses = new List<Address>(), Stocks = new List<Stock>(), ExpireToken = DateTime.Now, Token = "", Password = TxtPassword.Password, Siret = TbSriret.Text, };
                 updateUser(newUser);
                
             }

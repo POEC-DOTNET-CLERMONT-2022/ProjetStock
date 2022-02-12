@@ -13,5 +13,6 @@ namespace ProjectStockDTOS
         public Guid Id { get; set; }
         public  string? textRappel { get; set; }
         public DateTime sendAt { get; set; }
+        public Guid ClientId { get; set; } = Guid.Empty;
     }
 }

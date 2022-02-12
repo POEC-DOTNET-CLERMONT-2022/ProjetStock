@@ -76,16 +76,16 @@ namespace ApiApplication.Controllers
         {
             try
             {
-                var p = notificationDto.ToModelStock();
+                var p = _mapper.Map<Notification>(notificationDto);
 
-                var mapProj = _mapper.Map<NotificationDto>(p);
+                
 
-                if (mapProj == null)
+                if (p == null)
                     return NotFound();
                 else
                 {
                     genericRepository.Add(p);
-                    return Ok(mapProj);
+                    return Ok(notificationDto);
                 }
                   
 
@@ -114,6 +114,8 @@ namespace ApiApplication.Controllers
                 return BadRequest();
             p._textRappel = notificationDto.textRappel;
             p._sendAt = notificationDto.sendAt;
+            p.ClientId = notificationDto.ClientId;
+            
 
             var mapProj = _mapper.Map<NotificationDto>(p);
             genericRepository.Update(p);
