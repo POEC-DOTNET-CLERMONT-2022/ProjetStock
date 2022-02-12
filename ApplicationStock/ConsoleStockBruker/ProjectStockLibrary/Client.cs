@@ -7,35 +7,45 @@ using System.Text.RegularExpressions;
 namespace ProjectStockLibrary
 {
     [DataContract]
-    public class Client
+    public class Client : BaseEntity
     {
         [Key]
-        public  Guid _id { get; private set; }
+        public new Guid Id { get; set; }
         public string _firstName { get;  set; }
         public string _lastName { get; set; }
         public string _email { get; set; }
+
         public string _phone { get;  set; }
+
         public string _siret { get;  set; }
 
-        [JsonIgnore]
-        public string? _token { get; set; } = null;
 
-        [JsonIgnore]
+        public string _token { get; set; } = null;
+
         public DateTime? _expireToken { get; set; } = null;
 
-        [JsonIgnore]
+
         public string _password { get; set; }
 
-        [ForeignKey("Address")]
-        public List<Address> _addresses { get; private set; }
 
-        [ForeignKey("Stock")]
-        private List<Stock> _stocks { get; set; }
+        [ForeignKey("ClientId")]
+        public virtual ICollection<Address> _addresses { get; set; }
 
-        [JsonConstructorAttribute]
-        public Client(string firstName, string lastName, string email, string phone, string siret ,List<Address> addresses, List<Stock> stocks)
+        [ForeignKey("ClientId")]
+        public  virtual ICollection<Stock> _stocks { get; set; }
+
+        [ForeignKey("ClientId")]
+        public virtual ICollection<Notification> _notifications { get; set; }
+
+        [ForeignKey("ClientId")]
+        public virtual ICollection<Order>? _Orders { get; set; }
+
+
+
+
+        public Client(string firstName, string lastName, string email, string phone, string siret, string password, List<Address> addresses, List<Stock>? stocks)
         {
-            _id = Guid.NewGuid();
+             Id = Guid.NewGuid();
             _firstName = string.IsNullOrEmpty(firstName) ? throw new ArgumentNullException(nameof(firstName)) : firstName;
             _lastName = string.IsNullOrEmpty(lastName) ? throw new ArgumentNullException(nameof(lastName)) : lastName;
             var regex = new Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
@@ -44,16 +54,38 @@ namespace ProjectStockLibrary
             _phone = string.IsNullOrEmpty(phone) && phone.Length < 12 || phone is null ? throw new ArgumentNullException(nameof(phone)) : phone;
             _addresses = addresses;
             _stocks = stocks;
+            _password = password;
+            _notifications = new List<Notification>();
+            _Orders = new List<Order>();
+
+
+
+        }
+
+        public Client(string firstName, string lastName, string email, string phone, string siret ,List<Address> addresses, List<Stock>? stocks)
+        {
+            Id= Guid.NewGuid();
+            _firstName = string.IsNullOrEmpty(firstName) ? throw new ArgumentNullException(nameof(firstName)) : firstName;
+            _lastName = string.IsNullOrEmpty(lastName) ? throw new ArgumentNullException(nameof(lastName)) : lastName;
+            var regex = new Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
+            _email = !regex.IsMatch(email) ? throw new Exception(nameof(email)) : email;
+            _siret = string.IsNullOrEmpty(siret) && siret.Length < 14 || siret is null ? throw new ArgumentNullException(nameof(siret)) : siret;
+            _phone = string.IsNullOrEmpty(phone) && phone.Length < 12 || phone is null ? throw new ArgumentNullException(nameof(phone)) : phone;
+            _addresses = addresses;
+            _stocks = stocks;
+            _notifications = new List<Notification>();
+            _Orders = new List<Order>();
             _password = "";
 
 
 
         }
 
+      
 
         public Client(string firstName , string lastName, string email, string phone, string siret)
         {
-            _id = Guid.NewGuid();
+            Id= Guid.NewGuid();
             _firstName = string.IsNullOrEmpty(firstName) ? throw new ArgumentNullException(nameof(firstName)) : firstName;
             _lastName = string.IsNullOrEmpty(lastName) ? throw new ArgumentNullException(nameof(lastName)) : lastName;
             var regex = new Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
@@ -63,14 +95,15 @@ namespace ProjectStockLibrary
             _addresses = new List<Address>();
             _stocks = new List<Stock>();
             _password = "";
-            
+            _notifications = new List<Notification>();
+            _Orders = new List<Order>();
 
 
         }
-        [JsonConstructor]
+       
         public Client(string firstName, string lastName, string email, string phone, string siret, string password)
         {
-            _id = Guid.NewGuid();
+            Id = Guid.NewGuid();
             _firstName = string.IsNullOrEmpty(firstName) ? throw new ArgumentNullException(nameof(firstName)) : firstName;
             _lastName = string.IsNullOrEmpty(lastName) ? throw new ArgumentNullException(nameof(lastName)) : lastName;
             var regex = new Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
@@ -80,13 +113,14 @@ namespace ProjectStockLibrary
             _addresses = new List<Address>();
             _stocks = new List<Stock>();
             _password = password;
-
+            _notifications = new List<Notification>();
+            _Orders = new List<Order>();
 
 
         }
         public Client(Guid id, string firstName , string lastName, string email, string phone, string siret) : this(firstName, lastName, email, phone, siret)
         {
-            _id = id;
+            Id = id;
             
         }
 
@@ -94,7 +128,7 @@ namespace ProjectStockLibrary
 
         public Client(Guid _id)
         {
-            _id = _id;
+            Id = _id;
             _firstName = "";
             _lastName = "";
             _email = "";
@@ -102,11 +136,13 @@ namespace ProjectStockLibrary
             _phone = "";
             _addresses = new List<Address>();
             _stocks = new List<Stock>();
+            _notifications = new List<Notification>();
+            _Orders = new List<Order>();
             _password = "";
         }
         public Client()
         {
-            _id = Guid.NewGuid();
+            Id = Guid.NewGuid();
             _firstName = "";
             _lastName = "";
             _email = "test@test.fr";
@@ -114,6 +150,8 @@ namespace ProjectStockLibrary
             _phone = "";
             _addresses = new List<Address>();
             _stocks = new List<Stock>();
+            _notifications = new List<Notification>();
+            _Orders = new List<Order>();
             _password = "";
         }
 
@@ -123,20 +161,26 @@ namespace ProjectStockLibrary
             _token = token;
         }
 
+        public void setStocks(List<Stock> _list)
+        {
+            this._stocks = _list;
+        }
+
+
+        public void setAddress(List<Address> _list)
+        {
+            this._addresses = _list;
+        }
+
         public void setExpireDate(DateTime date)
         {
             _expireToken = date ;
         }
         public void AddAdress(Address address)
         {
-            if (!_addresses.Contains(address))
-            {
+
                 _addresses.Add(address);
-            }
-            else
-            {
-                throw new Exception("Is already add");
-            }
+        
             
         }
 

@@ -9,10 +9,9 @@ using System.Threading.Tasks;
 
 namespace ProjectStockModels.Lists
 {
-    public  class UsersList : ObservableObject
+    public  class AddressList : ObservableObject
     {
         private ObservableCollection<UserModel> _users;
-
         private UserModel? _CurrentUser;
 
         public UserModel CurrentUser

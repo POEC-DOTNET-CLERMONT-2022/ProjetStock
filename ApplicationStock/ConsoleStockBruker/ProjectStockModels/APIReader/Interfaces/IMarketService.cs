@@ -12,10 +12,11 @@ namespace ProjectStockModels.APIReader.Interfaces
         Task<IEnumerable<MarketModel>> GetAll();
 
         Task<MarketModel> Get(Guid id);
+
         Task<int> Update(MarketModel item);
 
-
         Task<int> Delete(Guid id);
+
         Task<int> Add(MarketModel item);
     }
 }

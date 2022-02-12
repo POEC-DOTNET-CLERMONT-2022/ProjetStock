@@ -1,6 +1,7 @@
 ﻿using ApiApplication.Controllers;
 using ApiApplication.Model;
 using ApiApplication.Models;
+using ApiApplication.Profil.Repository;
 using AutoFixture;
 using AutoMapper;
 using FluentAssertions;
@@ -38,12 +39,14 @@ namespace ProjectStock.Api.Tests.Controller
 
         private IEnumerable<OrderEntity> Orders { get; set; }
 
+        private GenericRepository<Order> genericRepository;
 
-        public MoqOrderControllerTest()
+        public MoqOrderControllerTest(GenericRepository<Order> generic)
         {
             var configuration = new MapperConfiguration(cfg => cfg.AddMaps(typeof(OrderController)));
             Mapper = new Mapper(configuration);
             APIContext = new APIContext(new Microsoft.EntityFrameworkCore.DbContextOptions<APIContext>());
+            genericRepository = generic;
         }
 
         [TestInitialize]
@@ -52,7 +55,7 @@ namespace ProjectStock.Api.Tests.Controller
             Fixture = new Fixture();
             Orders = Fixture.CreateMany<OrderEntity>();
             orderRepository = new Mock<IGenericRepository<OrderEntity>>();
-            OrderController = new OrderController(Mapper, APIContext);
+           // OrderController = new OrderController(Mapper, APIContext);
         }
 
 
@@ -111,7 +114,7 @@ namespace ProjectStock.Api.Tests.Controller
                 .Throws(new Exception("test unitaire"));
 
             DeleteClass _delete = new DeleteClass();
-            _delete._id = new Guid("23467B99 - 0F3E-42DF - A7AC - 43869A1E07C0");
+            _delete.Id = new Guid("23467B99 - 0F3E-42DF - A7AC - 43869A1E07C0");
             var result = OrderController.Delete(_delete);
 
 
@@ -138,7 +141,7 @@ namespace ProjectStock.Api.Tests.Controller
 
 
             OrderDto _order = new OrderDto();
-            _order._id = Guid.NewGuid();
+            _order.Id = Guid.NewGuid();
             _order._orderName = "test";
             _order._stock = new Stock();
 

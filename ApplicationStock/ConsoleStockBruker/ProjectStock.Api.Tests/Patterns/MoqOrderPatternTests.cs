@@ -32,7 +32,7 @@ namespace ProjectStock.Api.Tests.Patterns
         {
             var id = Guid.NewGuid();
             var stock = new Stock();
-            OrderDto _orderDto = new OrderDto() { _id = id , _nbStock = 5, _orderDate = DateTime.Now, _orderName = "test", _stock = stock};
+            OrderDto _orderDto = new OrderDto() { Id = id , _nbStock = 5, _orderDate = DateTime.Now, _orderName = "test", _stock = stock};
 
             Order _order = new Order("test", stock, 5,DateTime.Now, id);
 
@@ -57,7 +57,7 @@ namespace ProjectStock.Api.Tests.Patterns
 
             var id = Guid.NewGuid();
             var stock = new Stock();
-            OrderDto _orderDto = new OrderDto() { _id = id, _nbStock = 5, _orderDate = DateTime.Now, _orderName = "test", _stock = stock };
+            OrderDto _orderDto = new OrderDto() { Id = id, _nbStock = 5, _orderDate = DateTime.Now, _orderName = "test", _stock = stock };
 
             Order _order = new Order("test", stock, 5, DateTime.Now, id);
 

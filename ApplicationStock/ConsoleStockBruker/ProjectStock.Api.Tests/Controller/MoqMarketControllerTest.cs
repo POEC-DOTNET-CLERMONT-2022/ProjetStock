@@ -1,5 +1,6 @@
 ﻿using ApiApplication.Model;
 using ApiApplication.Models;
+using ApiApplication.Profil.Repository;
 using ApiApplicationProjectStock.Controllers;
 using AutoFixture;
 using AutoMapper;
@@ -37,11 +38,15 @@ namespace ProjectStock.Api.Tests.Controller
 
         private IEnumerable<MarketEntity> Markets { get; set; }
 
+        private GenericRepository<Market> genericRepository { get; } 
 
-        public MoqMarketControllerTest()
+
+
+        public MoqMarketControllerTest(GenericRepository<Market> generic)
         {
             var configuration = new MapperConfiguration(cfg => cfg.AddMaps(typeof(MarketController)));
             Mapper = new Mapper(configuration);
+            genericRepository = generic;
         }
 
 
@@ -51,7 +56,7 @@ namespace ProjectStock.Api.Tests.Controller
             Fixture = new Fixture();
             Markets = Fixture.CreateMany<MarketEntity>();   
             marketRepository = new Mock<IGenericRepository<MarketEntity>>();
-            MarketController = new MarketController(Mapper, new APIContext(new Microsoft.EntityFrameworkCore.DbContextOptions<APIContext>()));
+            MarketController = new MarketController(Mapper, new APIContext(new Microsoft.EntityFrameworkCore.DbContextOptions<APIContext>()),genericRepository);
         }
 
 
@@ -108,7 +113,7 @@ namespace ProjectStock.Api.Tests.Controller
             marketRepository.Setup(repo => repo.Add(It.IsAny<MarketEntity>()))
                 .Throws(new Exception("test unitaire"));
             DeleteClass _delete = new DeleteClass();
-            _delete._id = new Guid("23467B99 - 0F3E-42DF - A7AC - 43869A1E07C0");
+            _delete.Id = new Guid("23467B99 - 0F3E-42DF - A7AC - 43869A1E07C0");
             var result = MarketController.Delete(_delete);
 
 

@@ -18,11 +18,15 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Net;
+using System.Net.Mime;
 using ProjectStockDTOS;
 using ProjectStockModels.Model;
 using ApiApplication.Models;
 using ApiApplication.Service.Interfaces;
 using ProjectStockModels.APIReader.ServiceSpe;
+using Newtonsoft.Json.Linq;
+using ProjectStockLibrary;
+using MediaTypeHeaderValue = Microsoft.Net.Http.Headers.MediaTypeHeaderValue;
 
 namespace ProjectStockModels.JsonReader
 {
@@ -37,6 +41,7 @@ namespace ProjectStockModels.JsonReader
 
         private IPasswordHasherService _userPasswordHasher { get; }
 
+
         private const string AuthorizationHeader = "Authorization";
         public JsonGenericReader(HttpClient httpClient, string baseuri, IMapper mapper)
         {
@@ -48,6 +53,7 @@ namespace ProjectStockModels.JsonReader
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(
             new MediaTypeWithQualityHeaderValue("application/json"));
+            //TODO : use => MediaTypeNames.Application.Json
             _options = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true,
@@ -57,8 +63,10 @@ namespace ProjectStockModels.JsonReader
                     new JsonStringEnumConverter(JsonNamingPolicy.CamelCase),
                 }
             };
-            _httpClient.DefaultRequestHeaders.Add(AuthorizationHeader, "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIzNDY3Yjk5LTBmM2UtNDJkZi1hN2FjLTQzODY5YTFlMDdjMCIsIm5iZiI6MTY0MjQwNDY3MSwiZXhwIjoxNjQzMDA5NDcxLCJpYXQiOjE2NDI0MDQ2NzF9.3XvBwc9RVmZyVUGvaZqkAQX6Hh4Yn69uEhVdzFo-nAw");
+            _httpClient.DefaultRequestHeaders.Add(AuthorizationHeader, "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE3OTRhYjUxLWYzMzEtNDdiOS1hMGQ2LTMzMWUxOGMxZDEyNyIsIm5iZiI6MTY0MzkwNjEyNSwiZXhwIjoxNjQ0NTEwOTI1LCJpYXQiOjE2NDM5MDYxMjV9.a7HYeLtSAEabLU-zHnniCsh_PBgvA7FoEZ2hC-Pld4U");
+            //TODO : supprimer le token ici 
             uri = "https://localhost:7136/" + baseuri; 
+            //TODO : rendre configurable l'url => regarder app.config wpf 
             _httpClient.BaseAddress = new Uri(uri);
 
             _userPasswordHasher = new PassworsHasherService();
@@ -70,9 +78,6 @@ namespace ProjectStockModels.JsonReader
 
         public async Task<HttpResponseMessage> Connect(AuthenticateRequest create)
         {
-           
-
-               
                 HttpClient httpClient_ = new HttpClient();
                 var request = new HttpRequestMessage
                 {
@@ -80,8 +85,8 @@ namespace ProjectStockModels.JsonReader
                     RequestUri = new Uri(uri + "/authenticate"),
                     Content = new StringContent(JsonConvert.SerializeObject(create), Encoding.UTF8, "application/json")
                 };
-
-              
+                            
+                //TODO : utiliser plutôt _httpClient.PostAsJsonAsync()
                 return _httpClient.SendAsync(request).Result;
 
     
@@ -100,11 +105,13 @@ namespace ProjectStockModels.JsonReader
                     RequestUri = new Uri(uri + "/register"),
                     Content = new StringContent(JsonConvert.SerializeObject(create), Encoding.UTF8, "application/json")
                 };
+                //TODO : retourner un HttpStatusCode
                 return (int)_httpClient.SendAsync(request).Result.StatusCode;
 
             }
             catch (Exception ex)
             {
+                //TODO : Logger l'exception ici 
                 return StatusCodes.Status400BadRequest;
             }
 
@@ -130,14 +137,40 @@ namespace ProjectStockModels.JsonReader
         }
 
 
-        public virtual async Task<TModel> GetByEmail(string email)
+        public virtual async Task<HttpResponseMessage> GetById(Guid id)
         {
 
+            ProjectStockModels.APIReader.Models.GetClass _user = new ProjectStockModels.APIReader.Models.GetClass();
 
-            var uri_ = new Uri(uri + "/email?email=" + email);
-            TDto response = await _httpClient.GetFromJsonAsync<TDto>(uri_, _options);
-            TModel _model = _mapper.Map<TModel>(response);
-            return _model;
+            _user.Id = id;
+            HttpClient httpClient_ = new HttpClient();
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri(uri),
+                Content = new StringContent(JsonConvert.SerializeObject(_user), Encoding.UTF8, "application/json")
+            };
+
+            return _httpClient.SendAsync(request).Result;
+
+
+        }
+
+
+
+        public virtual async Task<HttpResponseMessage> GetByEmail(AuthenticateRequest create)
+        {
+            HttpClient httpClient_ = new HttpClient();
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri(uri + "/email?email="+create._email),
+                Content = new StringContent(JsonConvert.SerializeObject(create), Encoding.UTF8, "application/json")
+            };
+
+            return _httpClient.SendAsync(request).Result;
+
+
         }
 
 
@@ -145,50 +178,67 @@ namespace ProjectStockModels.JsonReader
         public virtual async Task<TModel> GetByToken(string token)
         {
 
-
+            //TODO : à supprimer 
             var uri_ = new Uri(uri + "/token?token="+token);
             TDto response = await _httpClient.GetFromJsonAsync<TDto>(uri_, _options);
             TModel _model = _mapper.Map<TModel>(response);
             return _model;
         }
 
-        //La fonction get update : works all but on in client
         public async Task<int> Update(TModel item)
         {
-        
             try
             {
                 var map = _mapper.Map<TDto>(item);
 
-                await _httpClient.PutAsJsonAsync(uri, map);
 
-              
-                return StatusCodes.Status200OK;
+                return (int)_httpClient.PutAsJsonAsync(new Uri(uri),map).Result.StatusCode;
 
-
-                 
             }
             catch (Exception e)
             {
                 return StatusCodes.Status400BadRequest;
             }
-           
+
+
         }
 
 
+       
+        public async Task<int> UpdateStocks(TModel item, string url)
+        {
+            try
+            {
+                var map = _mapper.Map<TDto>(item);
+
+
+                return (int)_httpClient.PutAsJsonAsync(new Uri(uri + url), map).Result.StatusCode;
+
+            }
+            catch (Exception e)
+            {
+                return StatusCodes.Status400BadRequest;
+            }
+
+
+        }
+
+
+
+
         //La fonction delete marche
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<int> Delete(Guid id)
         {
 
             DeleteClass _class = new DeleteClass();
-            _class._id = id;
+            _class.Id = id;
 
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Delete,
                 RequestUri = new Uri(uri),
                 Content = new StringContent(JsonConvert.SerializeObject(_class), Encoding.UTF8, "application/json")
+                
             };
             var response = await _httpClient.SendAsync(request);
 
@@ -207,8 +257,7 @@ namespace ProjectStockModels.JsonReader
         }
 
 
-        //La fonction add : works all but on in client
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
+
         public async Task<int> Add(TModel item)
         {
 
@@ -234,6 +283,7 @@ namespace ProjectStockModels.JsonReader
             {
                 return StatusCodes.Status400BadRequest;
             }
+           
            
 
         }

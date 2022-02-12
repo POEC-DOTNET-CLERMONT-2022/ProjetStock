@@ -9,24 +9,15 @@ using ProjectStockLibrary;
 
 namespace ProjectStockDTOS
 {
+    //TODO : inutile pour REST 
     [DataContract]
     public class StockDto
     {
-        [DataMember]
-        [Required]
-  
-        public Guid _id { get; set; }
-        [DataMember]
-        [Required]
+ 
+        public Guid Id { get; set; }
         public string? _name { get; set; }
-        [DataMember]
-        [Required]
         public float _value { get; set; }
-        [DataMember]
-        [Required]
         public string? _entrepriseName { get; set; }
-        [DataMember]
-        [Required]
         private List<Client>? _clients { get; set; }
     }
 }

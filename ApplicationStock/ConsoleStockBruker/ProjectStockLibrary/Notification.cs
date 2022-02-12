@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,20 +8,32 @@ using System.Threading.Tasks;
 
 namespace ProjectStockLibrary
 {
-    public class Notification
+    [JsonArray]
+    public class Notification : BaseEntity
     {
         [Key]
-        public Guid _id { get; set; }
+        public  new Guid Id { get; set; }
         public string _textRappel { get; set; }
         public DateTime _sendAt { get;  set; }
-        
+
+        public Guid ClientId { get; set; }
+
+      
         public Notification(string textRappel,DateTime sendAt)
         {
-            _id = Guid.NewGuid();
+            Id = Guid.NewGuid();
             _textRappel = textRappel;
             _sendAt = sendAt;
+
+       
         }
 
- 
+       public Notification()
+        {
+            Id = Guid.NewGuid();
+            _textRappel = "test";
+            _sendAt = DateTime.Now;
+            ClientId = Guid.Empty;
+        }
     }
 }

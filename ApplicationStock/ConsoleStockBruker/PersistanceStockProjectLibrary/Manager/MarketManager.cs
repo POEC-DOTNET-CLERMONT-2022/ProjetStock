@@ -23,7 +23,7 @@ namespace PersistanceStockProjectLibrary.Manager
             foreach (var creature in creatures)
             {
 
-                yield return new MarketDto() { _id = creature._id,_name = creature._name,_openingDate= creature._openingDate,_closingDate =creature._closingDate , _stocks = creature._stock};
+                yield return new MarketDto() { Id = creature.Id,_name = creature._name,_openingDate= creature._openingDate,_closingDate =creature._closingDate , _stocks = creature._stock};
             }
         }
         public IEnumerable<Market> GetAllMarkets()

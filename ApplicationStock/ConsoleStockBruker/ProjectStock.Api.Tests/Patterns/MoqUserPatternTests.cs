@@ -30,7 +30,7 @@ namespace ProjectStock.Api.Tests.Patterns
         {
             var id = Guid.NewGuid();
             var stock = new Stock();
-            UserDto userDto = new UserDto() { _id = id, _addresses = new List<Address>(),_stocks = new List<Stock>(), _email = "test" };
+            UserDto userDto = new UserDto() { Id = id, _addresses = new List<Address>(),_stocks = new List<Stock>(), _email = "test" };
             Client client = new Client(id) { _email = "test" };
 
             var mapped = client.ToDto();
@@ -51,7 +51,7 @@ namespace ProjectStock.Api.Tests.Patterns
 
             var id = Guid.NewGuid();
             var stock = new Stock();
-            UserDto userDto = new UserDto() { _id = id, _addresses = new List<Address>(), _stocks = new List<Stock>(), _email = "test" };
+            UserDto userDto = new UserDto() { Id = id, _addresses = new List<Address>(), _stocks = new List<Stock>(), _email = "test" };
             Client client = new Client(id) { _email = "test" };
 
             var mapped = userDto.ToModel();

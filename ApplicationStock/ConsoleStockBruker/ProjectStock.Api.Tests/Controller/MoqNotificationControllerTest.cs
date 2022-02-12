@@ -1,6 +1,7 @@
 ﻿using ApiApplication.Controllers;
 using ApiApplication.Model;
 using ApiApplication.Models;
+using ApiApplication.Profil.Repository;
 using AutoFixture;
 using AutoMapper;
 using FluentAssertions;
@@ -10,12 +11,11 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using ProjectStockDTOS;
 using ProjectStockEntity;
+using ProjectStockLibrary;
 using ProjectStockRepository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjectStock.Api.Tests.Controller
 {
@@ -38,11 +38,14 @@ namespace ProjectStock.Api.Tests.Controller
         private IEnumerable<NotificationEntity> Orders { get; set; }
 
 
-        public MoqNotificationControllerTest()
+        private GenericRepository<Notification> genericRepository;
+
+        public MoqNotificationControllerTest(GenericRepository<Notification> generic)
         {
             var configuration = new MapperConfiguration(cfg => cfg.AddMaps(typeof(NotificationController)));
             Mapper = new Mapper(configuration);
             APIContext = new APIContext(new Microsoft.EntityFrameworkCore.DbContextOptions<APIContext>());
+            genericRepository = generic;
         }
 
         [TestInitialize]
@@ -51,7 +54,7 @@ namespace ProjectStock.Api.Tests.Controller
             Fixture = new Fixture();
             Orders = Fixture.CreateMany<NotificationEntity>();
             notifsRepository = new Mock<IGenericRepository<NotificationEntity>>();
-            NotificationController = new NotificationController(Mapper, APIContext);
+            //NotificationController = new NotificationController(Mapper, APIContext);
         }
 
 
@@ -111,7 +114,7 @@ namespace ProjectStock.Api.Tests.Controller
 
 
             DeleteClass _delete = new DeleteClass();
-            _delete._id = new Guid("23467B99 - 0F3E-42DF - A7AC - 43869A1E07C0");
+            _delete.Id = new Guid("23467B99 - 0F3E-42DF - A7AC - 43869A1E07C0");
             var result = NotificationController.Delete(_delete);
 
 
@@ -139,7 +142,7 @@ namespace ProjectStock.Api.Tests.Controller
 
 
             NotificationDto _notif = new NotificationDto();
-            _notif._id = new Guid("23467B99 - 0F3E-42DF - A7AC - 43869A1E07C0");
+            _notif.Id = new Guid("23467B99 - 0F3E-42DF - A7AC - 43869A1E07C0");
             _notif.sendAt = DateTime.Now;
             _notif.textRappel = "test";
 

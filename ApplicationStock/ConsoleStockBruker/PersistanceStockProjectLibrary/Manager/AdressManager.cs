@@ -23,7 +23,7 @@ namespace PersistanceStockProjectLibrary.Manager
             foreach (var creature in creatures)
             {
 
-                yield return new AddressDto() { _id = creature._id, _address_line_1 = creature._address_line_1, _address_line_2 = creature._address_line_2,_city = creature._city,_codePostal=creature._codePostal,_country=creature._country };
+                yield return new AddressDto() { Id = creature.Id, _address_line_1 = creature._address_line_1, _address_line_2 = creature._address_line_2,_city = creature._city,_codePostal=creature._codePostal,_country=creature._country };
             }
         }
         public IEnumerable<Address> GetAllAddress()

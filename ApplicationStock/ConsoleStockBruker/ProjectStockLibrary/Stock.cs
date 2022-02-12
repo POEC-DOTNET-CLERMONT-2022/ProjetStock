@@ -5,26 +5,29 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using ProjectStockLibrary;
 
 
 namespace ProjectStockLibrary
 {
-    public class Stock
+    [JsonArray]
+    public class Stock : BaseEntity
     {
-        [Key]
-        public Guid _id { get; private set; }
+    
         public string _name { get;  set; }
         public float _value { get;  set; }
         public string _entrepriseName { get;set; }
+
         [ForeignKey("Client")]
         private List<Client> _clients { get; set; }
-        
+       
+
 
 
         public Stock(string name,float value, string entrepriseName)
         {
-            _id = Guid.NewGuid();
+            Id = Guid.NewGuid();
             _name = string.IsNullOrEmpty(name) ? throw new ArgumentNullException(nameof(name)) : name;
             _value = value < 0 ? throw new Exception(nameof(_value)) : value;
             _entrepriseName = string.IsNullOrEmpty(entrepriseName) ? throw new ArgumentNullException(nameof(entrepriseName)) : entrepriseName;
@@ -48,7 +51,7 @@ namespace ProjectStockLibrary
 
         public Stock()
         {
-            _id = Guid.NewGuid();
+            Id = Guid.NewGuid();
             _name = "";
             _value = 0;
             _entrepriseName = "";

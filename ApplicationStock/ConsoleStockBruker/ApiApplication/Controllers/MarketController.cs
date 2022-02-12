@@ -1,9 +1,11 @@
 ﻿using ApiApplication.Helpers;
 using ApiApplication.Model;
 using ApiApplication.Models;
+using ApiApplication.Profil.Repository.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using ProjectStockDTOS;
+using ProjectStockLibrary;
 using ProjectStockPatternsLibrary;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -17,24 +19,37 @@ namespace ApiApplicationProjectStock.Controllers
         private readonly IMapper _mapper;
 
         private readonly APIContext _context;
-        public MarketController(IMapper mapper, APIContext context)
+
+        private readonly IGenericRepository<Market> genericRepository;
+
+
+        public MarketController(IMapper mapper, APIContext context, IGenericRepository<Market> marketRepository)
         {
             _mapper = mapper;
             _context = context;
+            this.genericRepository = marketRepository;
         }
 
         //// GET api/<ProjectController>/
-        [Authorize]
+   
         [HttpGet("all")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MarketDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<IEnumerable<MarketDto>> GetAll()
         {
-            var p = _context._markets.ToList();
-            if (p == null)
-                return NotFound();
-            else
-                return Ok(p);
+            try
+            {
+                var p = genericRepository.GetAll();
+                if (p == null)
+                    return NotFound();
+                else
+                    return Ok(p);
+
+            }catch (Exception ex)
+            {
+                return BadRequest();
+            }
+          
 
         }
 
@@ -46,13 +61,20 @@ namespace ApiApplicationProjectStock.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<MarketDto> Get([FromQuery]Guid id)
         {
-                var p = _context._markets.Find(id);
+            try
+            {
+                var p = genericRepository.GetById(id);
 
-            
                 if (p == null)
                     return NotFound();
 
                 return Ok(p);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message); 
+            }
+            
             
         }
 
@@ -76,8 +98,7 @@ namespace ApiApplicationProjectStock.Controllers
                     return NotFound();
                 else
                 {
-                    _context._markets.Add(p);
-                    _context.SaveChanges();
+                    genericRepository.Add(p);
                     return Ok(mapProj);
                 }
                     
@@ -97,22 +118,29 @@ namespace ApiApplicationProjectStock.Controllers
         public ActionResult<MarketDto> Put(MarketDto marketDto)
         {
 
+            try
+            {
 
-            var p = _context._markets.Find(marketDto._id);
-            if( p == null)
+                var p = genericRepository.GetById(marketDto.Id);
+                if (p == null)
+                {
+                    return BadRequest();
+                }
+
+                p._name = marketDto._name;
+                p._openingDate = marketDto._openingDate;
+
+                var mapProj = _mapper.Map<MarketDto>(p);
+
+                genericRepository.Update(p);
+
+                return Ok(mapProj);
+            }
+            catch (Exception ex)
             {
                 return BadRequest();
             }
-           
-            p._name = marketDto._name;
-            p._openingDate = marketDto._openingDate;
 
-            var mapProj = _mapper.Map<MarketDto>(p);
-
-            _context._markets.Update(p);
-            _context.SaveChanges();
-
-            return Ok(mapProj);
         }
 
         // DELETE api/<ProjectController>/5
@@ -121,16 +149,24 @@ namespace ApiApplicationProjectStock.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MarketDto))]
         public ActionResult<MarketDto> Delete(DeleteClass delete)
         {
-            var p = _context._markets.Find(delete._id);
-            if(p != null)
+            try
             {
-                _context._markets.Remove(p);
-          
+                var p = genericRepository.GetById(delete.Id);
+                if (p != null)
+                {
+                    _context._markets.Remove(p);
+
+                }
+
+                else
+                    return NotFound();
+                return Ok(p);
+
+            }catch (Exception ex)
+            {
+                return BadRequest();
             }
            
-            else
-                return NotFound();
-            return Ok(p);
         }
 
         // DELETE api/<ProjectController>/5
@@ -139,16 +175,24 @@ namespace ApiApplicationProjectStock.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MarketDto))]
         public ActionResult<MarketDto> DeleteById(Guid id)
         {
-            var p = _context._markets.Find(id);
-            if (p != null)
+
+            try
             {
-                _context._markets.Remove(p);
+                var p = genericRepository.GetById(id);
+                if (p != null)
+                {
+                    _context._markets.Remove(p);
 
-            }
+                }
 
-            else
+                else
+                    return NotFound();
+                return Ok(p);
+            }catch(Exception ex)
+            {
                 return NotFound();
-            return Ok(p);
+            }
+          
         }
     }
 }

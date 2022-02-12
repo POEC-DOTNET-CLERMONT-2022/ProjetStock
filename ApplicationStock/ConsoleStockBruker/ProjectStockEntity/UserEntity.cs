@@ -9,7 +9,7 @@ namespace ProjectStockEntity
     public  class UserEntity : IEquatable<UserEntity>
     {
         [Key]
-        public Guid _id { get; private set; }
+        public Guid Id { get; private set; }
         
         public string _firstName { get; set; }
        

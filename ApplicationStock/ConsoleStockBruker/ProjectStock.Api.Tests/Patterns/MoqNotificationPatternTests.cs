@@ -34,8 +34,8 @@ namespace ProjectStock.Api.Tests.Patterns
             var stock = new Stock();
    
 
-            Notification notification = new Notification("test",DateTime.Now) { _id = id };
-            NotificationDto notificationDto = new NotificationDto() { _id = id, sendAt = DateTime.Now, textRappel="test" };
+            Notification notification = new Notification("test",DateTime.Now) { Id = id };
+            NotificationDto notificationDto = new NotificationDto() { Id = id, sendAt = DateTime.Now, textRappel="test" };
             var mapped = notification.ToDtoStock();
 
             Assert.IsNotNull(mapped);
@@ -56,8 +56,8 @@ namespace ProjectStock.Api.Tests.Patterns
             var stock = new Stock();
 
 
-            Notification notification = new Notification("test", DateTime.Now) { _id = id };
-            NotificationDto notificationDto = new NotificationDto() { _id = id, sendAt = DateTime.Now, textRappel = "test" };
+            Notification notification = new Notification("test", DateTime.Now) { Id = id };
+            NotificationDto notificationDto = new NotificationDto() { Id = id, sendAt = DateTime.Now, textRappel = "test" };
             var mapped = notificationDto.ToModelStock();
 
             Assert.IsNotNull(mapped);

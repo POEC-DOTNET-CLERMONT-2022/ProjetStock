@@ -32,13 +32,20 @@ namespace ApiApplicationProjectStock.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<CryptoDto> Get([FromQuery] Guid id)
         {
-            var p = _context._cryptos.Find(id);
+            try
+            {
+                var p = _context._cryptos.Find(id);
 
 
-            if (p == null)
-                return NotFound();
+                if (p == null)
+                    return NotFound();
 
-            return Ok(p);
+                return Ok(p);
+            }catch (Exception ex)
+            {
+                return BadRequest();
+            }
+          
 
         }
 
@@ -81,16 +88,12 @@ namespace ApiApplicationProjectStock.Controllers
         {
 
            
-            var p = _context._cryptos.Find(cryptoDto._id);
+            var p = _context._cryptos.Find(cryptoDto.Id);
             if (p == null)
                 return BadRequest();
            
             p._name = cryptoDto._name;
             p._value = cryptoDto._value;
-
-
-           
-
             _context._cryptos.Update(p);
             _context.SaveChanges();
 
@@ -104,7 +107,7 @@ namespace ApiApplicationProjectStock.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<CryptoDto> Delete(DeleteClass delete)
         {
-            var p = _context._cryptos.Find(delete._id);
+            var p = _context._cryptos.Find(delete.Id);
             if(p != null)
             {
                 _context._cryptos.Remove(p);

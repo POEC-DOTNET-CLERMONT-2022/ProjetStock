@@ -18,7 +18,7 @@ namespace ProjectStockPatternsLibrary.Factory
 
         public static OrderDto ToDto(this Order order)
         {
-            return new OrderDto() {_id = order._id,_nbStock = order._nbStock,_orderDate = order._orderDate,_orderName=order._orderName };
+            return new OrderDto() {Id = order.Id,_nbStock = order._nbStock,_orderDate = order._orderDate,_orderName=order._orderName };
         }
 
         public static IEnumerable<Order> ToDto(this IEnumerable<OrderDto> orders)

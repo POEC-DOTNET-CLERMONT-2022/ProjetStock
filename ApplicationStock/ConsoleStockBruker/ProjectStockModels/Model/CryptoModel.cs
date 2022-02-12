@@ -15,7 +15,6 @@ namespace ProjectStockModels.Model
         private float _value;
         private List<Client>? _clients;
         private List<Market>? _markets;
-
         public Guid Id
         {
             get { return _id; }
@@ -45,6 +44,7 @@ namespace ProjectStockModels.Model
             get { return _value; }
             set
             {
+                //TODO : condition inutile
                 if (value != null )
                 {
                     _value = value;

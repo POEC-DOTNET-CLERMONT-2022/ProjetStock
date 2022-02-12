@@ -11,8 +11,8 @@ namespace ProjectStockModels.Lists
 {
     public class NotificationLists : ObservableObject
     {
+        //TODO : nommage
         private ObservableCollection<NotificationModel>? _Notifs;
-
         private NotificationModel? _Notif;
 
         public  NotificationModel Notif

@@ -1,26 +1,32 @@
-﻿using ApiApplication.Service;
+﻿
+using ApiApplication.Service;
 using ApiApplication.Service.Interfaces;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace ApiApplication.Controllers.Services
+namespace ApiApplication.Service
 {
-    internal class PasswordHasherService : IPasswordHasherService
+ 
+    namespace ApiApplication.Controllers.Services
     {
-        public string GetPasswordHasher(string password_not_hashed)
+        //TODO : dupliquer ! 
+        public class PasswordHasherService : IPasswordHasherService
         {
-            using (var sha256 = SHA256.Create())
+            public string GetPasswordHasher(string password_not_hashed)
             {
-                // Send a sample text to hash.  
-                var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password_not_hashed));
-                // Get the hashed string.  
-                var hash = BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
-                // Print the string.
-                // 
-                return hash;
+                using (var sha256 = SHA256.Create())
+                {
+                    // Send a sample text to hash.  
+                    var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password_not_hashed));
+                    // Get the hashed string.  
+                    var hash = BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
+                    // Print the string.
+                    // 
+                    return hash;
+
+                }
 
             }
-
         }
     }
 }

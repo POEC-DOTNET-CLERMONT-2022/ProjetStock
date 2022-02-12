@@ -20,7 +20,7 @@ namespace ProjectStockPatternsLibrary
 
         public static NotificationDto ToDtoStock(this Notification notif)
         {
-            return new NotificationDto() { _id = notif._id,sendAt = notif._sendAt, textRappel = notif._textRappel };
+            return new NotificationDto() { Id = notif.Id,sendAt = notif._sendAt, textRappel = notif._textRappel };
         }
 
         public static IEnumerable<Market> ToDto(this IEnumerable<MarketDto> markets)
@@ -33,7 +33,7 @@ namespace ProjectStockPatternsLibrary
 
         public static Notification ToModelStock(this NotificationDto notif)
         {
-            return new Notification(notif.textRappel,notif.sendAt) { _id = notif._id};
+            return new Notification(notif.textRappel,notif.sendAt) { Id = notif.Id};
         }
     }
 }

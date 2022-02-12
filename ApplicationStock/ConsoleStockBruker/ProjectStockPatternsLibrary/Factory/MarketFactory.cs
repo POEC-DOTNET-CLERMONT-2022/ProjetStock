@@ -19,7 +19,7 @@ namespace ProjectStockPatternsLibrary
 
         public static MarketDto ToDtoStock(this Market market)
         {
-            return new MarketDto() { _id = market._id,_closingDate= market._closingDate,_openingDate=market._openingDate,_stocks= market._stock,_name=market._name};
+            return new MarketDto() { Id = market.Id,_closingDate= market._closingDate,_openingDate=market._openingDate,_stocks= market._stock,_name=market._name};
         }
 
         public static IEnumerable<Market> ToDto(this IEnumerable<MarketDto> markets)
@@ -32,7 +32,7 @@ namespace ProjectStockPatternsLibrary
 
         public static Market ToModelStock(this MarketDto market)
         {
-            return new Market(market._name) { _id = market._id, _closingDate = market._closingDate, _openingDate = market._openingDate, _stock = market._stocks  };
+            return new Market(market._name) { Id = market.Id, _closingDate = market._closingDate, _openingDate = market._openingDate, _stock = market._stocks  };
         }
     }
 }

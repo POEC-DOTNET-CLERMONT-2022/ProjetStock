@@ -33,8 +33,8 @@
   <tbody>
     <tr *ngFor="let user of _notifs">
  
-      <td *ngIf="user['_id'] != null">{{user['_id']}}</td>
-      <td *ngIf="user['_id'] == null">Null</td>
+      <td *ngIf="user['id'] != null">{{user['id']}}</td>
+      <td *ngIf="user['id'] == null">Null</td>
      
       
       <td *ngIf="user['_textRappel'] != null">{{user['_textRappel']}}</td>
@@ -43,7 +43,7 @@
       <td *ngIf="user['_sendAt'] != null">{{user['_sendAt']}}</td>
       <td *ngIf="user['_sendAt'] == null">Null</td>
 
-      <td><button class="btn btn-secondary" [routerLink]="['/delete_notifs/', user['_id'].toString()]">Remove</button><button class="btn btn-primary" [routerLink]="['/modify_notifs/', user['_id'].toString()]">Modify</button></td>
+      <td><button class="btn btn-secondary" [routerLink]="['/delete_notifs/', user['id']]">Remove</button><button class="btn btn-primary" [routerLink]="['/modify_notifs/', user['id']]">Modify</button></td>
     </tr>
    
   </tbody>

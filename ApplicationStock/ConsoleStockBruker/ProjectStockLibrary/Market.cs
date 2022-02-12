@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace ProjectStockLibrary
 {
-    public class Market
+    public class Market : BaseEntity
     {
         [Key]
-        public Guid _id { get; set; }
+        public new Guid Id { get; set; }
         public string _name {  get;  set; }
         public DateTime _openingDate {  get;  set; }
         public  DateTime _closingDate { get; set; }
@@ -21,7 +21,7 @@ namespace ProjectStockLibrary
         
         public Market(string name, DateTime closingDate , DateTime openingDate)
         {
-            _id = Guid.NewGuid();
+            Id = Guid.NewGuid();
             _name = string.IsNullOrEmpty(name) ? throw new ArgumentNullException(nameof(name)) : name;
             _openingDate = openingDate;
             _closingDate = closingDate;
@@ -32,7 +32,7 @@ namespace ProjectStockLibrary
 
         public Market(string name)
         {
-            _id = Guid.NewGuid();
+            Id = Guid.NewGuid();
             _name = string.IsNullOrEmpty(name) ? throw new ArgumentNullException(nameof(name)) : name;
             _openingDate = DateTime.Now;
             _closingDate = DateTime.Now;

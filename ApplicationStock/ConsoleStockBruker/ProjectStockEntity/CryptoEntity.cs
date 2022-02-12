@@ -12,7 +12,7 @@ namespace ProjectStockEntity
     public sealed class CryptoEntity:IEquatable<CryptoEntity>
     {
         [Key]
-        public Guid _id {get; private set;}
+        public Guid Id {get; private set;}
         public string? _name {get; set;}
         
         public float _value {get; set;}

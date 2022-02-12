@@ -21,7 +21,6 @@ namespace ProjectStockModels.Mapper
             CreateMap<NotificationModel, NotificationDto>().ReverseMap();
             CreateMap<MarketModel, MarketDto>().ReverseMap();
             CreateMap<StockModel, StockDto>().ReverseMap();
-
             CreateMap<OrderModel, Order>().ReverseMap();
             CreateMap<OrderModel,OrderDto>().ReverseMap();
             CreateMap<OrderDto, OrderModel>().ReverseMap();

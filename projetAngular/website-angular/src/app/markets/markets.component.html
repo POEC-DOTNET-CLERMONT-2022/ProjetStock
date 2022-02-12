@@ -39,8 +39,8 @@
   <tbody>
     <tr *ngFor="let user of _markets">
  
-      <td *ngIf="user['_id'] != null">{{user['_id']}}</td>
-      <td *ngIf="user['_id'] == null">Null</td>
+      <td *ngIf="user['id'] != null">{{user['id']}}</td>
+      <td *ngIf="user['id'] == null">Null</td>
  
         <td *ngIf="user['_name'] != null">{{user['_name']}}</td>
       <td *ngIf="user['_name'] == null">Null</td>
@@ -49,7 +49,7 @@
       <td *ngIf="user['_openingDate'] == null">Null</td>
 
       
-      <td><button class="btn btn-secondary" [routerLink]="['/delete_market/', user['_id'].toString()]">Remove</button><button class="btn btn-primary" [routerLink]="['/modifier_market/', user['_id'].toString()]">Modify</button></td>
+      <td><button class="btn btn-secondary" [routerLink]="['/delete_market/', user['id']]">Remove</button><button class="btn btn-primary" [routerLink]="['/modifier_market/', user['id']]">Modify</button></td>
     </tr>
    
   </tbody>

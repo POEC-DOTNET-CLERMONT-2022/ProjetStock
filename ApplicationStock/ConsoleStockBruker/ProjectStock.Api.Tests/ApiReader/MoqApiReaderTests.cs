@@ -62,7 +62,7 @@ namespace ProjectStock.Api.Tests.ApiReader
         {
             Fixture = new Fixture();
             Orders = Fixture.CreateMany<NotificationEntity>();
-            NotificationController = new NotificationController(Mapper, APIContext);
+           // NotificationController = new NotificationController(Mapper, APIContext);
         }
 
 
@@ -92,10 +92,10 @@ namespace ProjectStock.Api.Tests.ApiReader
 
             //Arrange
            
-            Guid _id = new Guid("23467B99 - 0F3E-42DF - A7AC - 43869A1E07C0");
+            Guid Id= new Guid("23467B99 - 0F3E-42DF - A7AC - 43869A1E07C0");
   
             //Assert
-            var result_generic = _jsonReader.Get(_id);
+            var result_generic = _jsonReader.Get(Id);
             var mapped = Mapper.Map<IEnumerable<NotificationDto>>(result_generic);
             var count_mapped = mapped.Count() > 0;
             Assert.IsTrue(count_mapped);
@@ -112,8 +112,8 @@ namespace ProjectStock.Api.Tests.ApiReader
 
 
             DeleteClass _delete = new DeleteClass();
-            _delete._id = new Guid("23467B99 - 0F3E-42DF - A7AC - 43869A1E07C0");
-            var result =_jsonReader.Delete(_delete._id);
+            _delete.Id = new Guid("23467B99 - 0F3E-42DF - A7AC - 43869A1E07C0");
+            var result =_jsonReader.Delete(_delete.Id);
 
 
             //Assert
@@ -134,7 +134,7 @@ namespace ProjectStock.Api.Tests.ApiReader
             //Arrange
       
             NotificationDto _notif = new NotificationDto();
-            _notif._id = new Guid("23467B99 - 0F3E-42DF - A7AC - 43869A1E07C0");
+            _notif.Id = new Guid("23467B99 - 0F3E-42DF - A7AC - 43869A1E07C0");
             _notif.sendAt = DateTime.Now;
             _notif.textRappel = "test";
 
@@ -154,7 +154,7 @@ namespace ProjectStock.Api.Tests.ApiReader
         public void TestAdd()
         {
             NotificationDto _notif = new NotificationDto();
-            _notif._id = new Guid("23467B99 - 0F3E-42DF - A7AC - 43869A1E07C0");
+            _notif.Id = new Guid("23467B99 - 0F3E-42DF - A7AC - 43869A1E07C0");
             _notif.sendAt = DateTime.Now;
             _notif.textRappel = "test";
 

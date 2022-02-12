@@ -6,6 +6,7 @@ using System.Text;
 
 namespace ProjectStockModels.APIReader.ServiceSpe
 {
+    //TODO : à mettre dans une ddl qui sera utilisé que par le serveur 
     internal class PassworsHasherService : IPasswordHasherService
     {
         public string GetPasswordHasher(string password_not_hashed)

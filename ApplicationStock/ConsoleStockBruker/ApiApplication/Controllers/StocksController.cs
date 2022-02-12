@@ -1,12 +1,15 @@
 ﻿using ApiApplication.Helpers;
 using ApiApplication.Model;
 using ApiApplication.Models;
+using ApiApplication.Profil.Repository;
+using ApiApplication.Profil.Repository.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 using Microsoft.AspNetCore.Mvc;
 using ProjectStockDTOS;
+using ProjectStockLibrary;
 using ProjectStockPatternsLibrary;
 using System.Net;
 
@@ -23,11 +26,14 @@ namespace ApiApplicationProjectStock.Controllers
         private readonly IMapper _mapper;
 
         private readonly APIContext _context;
-        public StocksController(IMapper mapper, APIContext context)
+
+        private readonly IGenericRepository<Stock> genericRepository;
+        public StocksController(IMapper mapper, APIContext context,IGenericRepository<Stock> generic)
         {
             _mapper = mapper;
             _context = context;
-           
+            genericRepository = generic;
+
         }
 
 
@@ -38,11 +44,20 @@ namespace ApiApplicationProjectStock.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<IEnumerable<StockDto>> GetAll()
         {
-            var p = _context._stocks.ToList();
-            if (p == null)
-                return NotFound();
-            else
-                return Ok(p);
+
+            try
+            {
+                var p = genericRepository.GetAll();
+                if (p == null)
+                    return NotFound();
+                else
+                    return Ok(p);
+
+            }catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+           
 
         }
 
@@ -55,7 +70,7 @@ namespace ApiApplicationProjectStock.Controllers
         public ActionResult<StockDto> Get([FromQuery] Guid id)
         {
             try { 
-               var p = _context._stocks.Find(id);
+               var p = genericRepository.GetById(id); 
 
                var mapProj = _mapper.Map<StockDto>(p);
 
@@ -71,22 +86,22 @@ namespace ApiApplicationProjectStock.Controllers
         }
 
         // GET api/<ProjectController>/5
-        [Authorize]
-      
+  
         [HttpPost]
      
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(StockDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<StockDto> Post(StockDto stockDto)
         {
-
+            var p = _mapper.Map<Stock>(stockDto);
             try
             {
-                var p = stockDto.ToModelStock();
-
+              
+               
              
-                _context._stocks.Add(p);
-                _context.SaveChanges();
+    
+                genericRepository.Add(p);
+            
                 return Ok(p);
 
             }catch (Exception ex)
@@ -104,20 +119,26 @@ namespace ApiApplicationProjectStock.Controllers
         public ActionResult<StockDto> Put(StockDto stockDto)
         {
 
+            try{
+            
+                var p = genericRepository.GetById(stockDto.Id);
+                if (p == null)
+                    return BadRequest();
 
-            var p = _context._stocks.Find(stockDto._id);
-            if (p == null)
+                p._entrepriseName = stockDto._entrepriseName;
+                p._value = stockDto._value;
+                p._name = stockDto._name;
+
+
+                var mapProj = _mapper.Map<StockDto>(p);
+                genericRepository.Update(p);
+                return Ok(mapProj);
+            }
+            catch (Exception ex)
+            {
                 return BadRequest();
-
-            p._entrepriseName = stockDto._entrepriseName;
-            p._value = stockDto._value;
-            p._name = stockDto._name;
+            }
            
-
-            var mapProj = _mapper.Map<StockDto>(p);
-            _context._stocks.Update(p);
-            _context.SaveChanges();
-            return Ok(mapProj);
         }
 
         // DELETE api/<ProjectController>/5
@@ -127,17 +148,28 @@ namespace ApiApplicationProjectStock.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(StockDto))]
         public ActionResult<StockDto> Delete(DeleteClass delete)
         {
-            var p = _context._stocks.Find(delete._id);
-            if (p != null)
-            {
-                _context._stocks.Remove(p);
-                _context.SaveChanges();
-                return Ok(p);
 
+            try
+            {
+   
+
+                var p = genericRepository.GetById(delete.Id);
+
+                if (p != null)
+                {
+                    genericRepository.Delete(p);
+                    return Ok(p);
+
+                }
+
+                else
+                    return NotFound();
             }
-              
-            else
-                return NotFound();
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            
         }
 
 
@@ -146,17 +178,29 @@ namespace ApiApplicationProjectStock.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(StockDto))]
         public ActionResult<StockDto> DeleteById(Guid id)
         {
-            var p = _context._stocks.Find(id);
-            if (p != null)
+
+            try
             {
-                _context._stocks.Remove(p);
-                _context.SaveChanges();
-                return Ok(p);
+              
+                var p = genericRepository.GetById(id);
+                if (p != null)
+                {
+                    _context._stocks.Remove(p);
+                    _context.SaveChanges();
+                    return Ok(p);
+
+                }
+
+                else
+                    return NotFound();
 
             }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+            
 
-            else
-                return NotFound();
 
         }
     }

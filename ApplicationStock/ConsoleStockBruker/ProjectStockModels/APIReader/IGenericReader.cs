@@ -15,6 +15,6 @@ namespace WPF_Application.JsonReader
  
 
         Task<int> Delete(T item);
-         Task<int> Add(T item);
+        Task<int> Add(T item);
     }
 }

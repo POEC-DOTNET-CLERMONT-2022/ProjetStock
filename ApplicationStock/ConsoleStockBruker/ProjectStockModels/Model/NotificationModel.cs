@@ -1,4 +1,5 @@
-﻿using ProjectStockModels.Observable;
+﻿using ProjectStockLibrary;
+using ProjectStockModels.Observable;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +10,23 @@ namespace ProjectStockModels.Model
 {
     public class NotificationModel : ObservableObject
     {
-
         public Guid _id;
         public string _textRappel;
         public DateTime _sendAt;
+        public Guid _clientId;
 
-
+        public Guid ClientId
+        {
+            get { return _id; }
+            set
+            {
+                if (value != null)
+                {
+                    _id = value;
+                    OnNotifyPropertyChanged();
+                }
+            }
+        }
         public Guid Id
         {
             get { return _id; }
@@ -53,6 +65,8 @@ namespace ProjectStockModels.Model
                 }
             }
         }
+
+     
 
     }
 }

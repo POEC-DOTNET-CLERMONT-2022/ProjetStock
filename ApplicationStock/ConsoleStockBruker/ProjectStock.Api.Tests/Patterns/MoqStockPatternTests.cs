@@ -33,7 +33,7 @@ namespace ProjectStock.Api.Tests.Patterns
             var stock = new Stock();
 
 
-            StockDto _stockDto  = new StockDto() { _id = id, _name = "test", _value =1000,_entrepriseName= "michelin"};
+            StockDto _stockDto  = new StockDto() { Id = id, _name = "test", _value =1000,_entrepriseName= "michelin"};
 
             Stock _stock = new Stock(id, "test", 1000, "michelin");
 
@@ -59,7 +59,7 @@ namespace ProjectStock.Api.Tests.Patterns
             var stock = new Stock();
 
 
-            StockDto _stockDto = new StockDto() { _id = id, _name = "test", _value = 1000, _entrepriseName = "michelin" };
+            StockDto _stockDto = new StockDto() { Id = id, _name = "test", _value = 1000, _entrepriseName = "michelin" };
 
             Stock _stock = new Stock(id, "test", 1000, "michelin");
 

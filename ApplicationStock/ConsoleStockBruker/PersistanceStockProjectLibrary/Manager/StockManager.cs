@@ -24,7 +24,7 @@ namespace PersistanceStockProjectLibrary.Manager
                foreach (var creature in creatures)
                 {
 
-                    yield return new StockDto() { _id = creature._id, _name = creature._name, _entrepriseName =creature._entrepriseName, _value = creature._value };
+                    yield return new StockDto() { Id = creature.Id, _name = creature._name, _entrepriseName =creature._entrepriseName, _value = creature._value };
                 }
             }
         public IEnumerable<Stock> GetAllStocks()

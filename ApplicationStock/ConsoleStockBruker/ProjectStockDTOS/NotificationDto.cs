@@ -7,19 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ProjectStockDTOS
-
 {
-
     public  class NotificationDto
     {
-        [DataMember]
-        [Required]
-        public Guid _id { get; set; }
-        [DataMember]
-        [Required]
+        public Guid Id { get; set; }
         public  string? textRappel { get; set; }
-        [DataMember]
-        [Required]
         public DateTime sendAt { get; set; }
+        public Guid ClientId { get; set; } = Guid.Empty;
     }
 }

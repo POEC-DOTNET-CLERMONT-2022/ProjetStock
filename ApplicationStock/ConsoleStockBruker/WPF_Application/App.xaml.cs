@@ -15,6 +15,11 @@ using WPF_Application.Stocks;
 using WPF_Application.UserControls;
 using WPF_Application.Service.Interfaces;
 using WPF_Application.Service.Services;
+using WPF_Application.User;
+using WPF_Application.UserControls.Controls;
+using WPF_Application.Rappel;
+using WPF_Application.Market;
+using WPF_Application.UserControls.Forms;
 
 namespace WPF_Application
 {
@@ -47,22 +52,42 @@ namespace WPF_Application
         public IMapper Mapper { get; }
         public App()
         {
-            InitializeComponent();
+          
 
             var configuration = new MapperConfiguration(cfg => cfg.AddMaps(typeof(App)));
             Mapper = new Mapper(configuration);
-
-          
+           
 
         }
 
 
-        private void App_OnStartup( object sender,StartupEventArgs e)
+        private void App_OnStartup(object sender, StartupEventArgs e)
         {
-            Navigator.RegisterView(new MarketDetailUC());
-            Navigator.RegisterView(new StockDetailUC());
-
+            Navigator.RegisterView(new LoginControle());
+            Navigator.RegisterView(new MarketUserControlMenuItem());
+            Navigator.RegisterView(new UserMainWindowsConnected());
+            Navigator.RegisterView(new MenuUserControl());
+            Navigator.RegisterView(new MonProfil());
+            Navigator.RegisterView(new UsersLists());
+            Navigator.RegisterView(new CreateUser());
+           
+            Navigator.RegisterView(new ContactUsControl());
+            Navigator.RegisterView(new StockListControl());
+            Navigator.RegisterView(new NotificationListsControl());
+            Navigator.RegisterView(new MarketListsControl());
+            Navigator.RegisterView(new OrderControl());
+            Navigator.RegisterView(new MarketInfoControl());
+            Navigator.RegisterView(new StockInfoControl());
+            Navigator.RegisterView(new MenuActionStockSell());
+            Navigator.RegisterView(new BuyStockControl());
+            Navigator.RegisterView(new SellStockControl());
+            Navigator.RegisterView(new UsersStocksLists());
+            Navigator.RegisterView(new AddressUserLists());
+            Navigator.RegisterView(new UsersNotifications());
+            Navigator.RegisterView(new UserOrders());
         }
+
+
 
 
 

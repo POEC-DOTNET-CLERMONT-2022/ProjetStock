@@ -26,9 +26,6 @@ namespace ApiApplication.Model
 
         public override DbSet<TEntity> Set<TEntity>()
         {
-            ChangeTracker.LazyLoadingEnabled = false;
-            ChangeTracker.AutoDetectChangesEnabled = false;
-            ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
 
             return base.Set<TEntity>();
         }

@@ -1,9 +1,11 @@
 ﻿using ApiApplication.Helpers;
 using ApiApplication.Model;
 using ApiApplication.Models;
+using ApiApplication.Profil.Repository.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using ProjectStockDTOS;
+using ProjectStockLibrary;
 using ProjectStockPatternsLibrary.Factory;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -18,10 +20,13 @@ namespace ApiApplication.Controllers
         private readonly IMapper _mapper;
 
         private readonly APIContext _context;
-        public OrderController(IMapper mapper, APIContext context)
+
+        private readonly IGenericRepository<Order> genericRepository;
+        public OrderController(IMapper mapper, APIContext context,IGenericRepository<Order> generic)
         {
             _mapper = mapper;
             _context = context;
+            genericRepository = generic;
         }
 
         //// GET api/<ProjectController>/GetAll
@@ -31,7 +36,7 @@ namespace ApiApplication.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<IEnumerable<OrderDto>> GetAll()
         {
-            var p = _context._orders.ToList();
+            var p = genericRepository.GetAll();
 
             if (p == null)
                 return NotFound();
@@ -49,7 +54,7 @@ namespace ApiApplication.Controllers
         public ActionResult<OrderDto> Get([FromQuery] Guid id)
         {
 
-            var p = _context._orders.Find(id);
+            var p = genericRepository.GetById(id);
 
             var mapProj = _mapper.Map<OrderDto>(p);
 
@@ -69,15 +74,14 @@ namespace ApiApplication.Controllers
         {
             try
             {
-                var p = orderDto.ToModel();
+                var p = _mapper.Map<Order>(orderDto);
 
                 var mapProj = _mapper.Map<OrderDto>(p);
 
                 if (mapProj == null)
                     return NotFound();
                 else
-                    _context._orders.Add(p);
-                _context.SaveChanges();
+                    genericRepository.Add(p);
                 return Ok(mapProj);
             }
             catch (Exception ex)
@@ -94,16 +98,17 @@ namespace ApiApplication.Controllers
         public ActionResult<OrderDto> Put(OrderDto orderDto)
         {
 
-            var p = _context._orders.Find(orderDto._id);
-            if(p == null) 
+            var p = genericRepository.GetById(orderDto.Id);
+
+            if (p == null) 
                 return NotFound();
             p._orderName = orderDto._orderName;
             p._orderDate = orderDto._orderDate;
             p._nbStock = orderDto._nbStock;
             
 
-            _context._orders.Update(p);
-            _context.SaveChanges();
+
+            genericRepository.Update(p);
             return Ok();
         }
 
@@ -113,12 +118,10 @@ namespace ApiApplication.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(OrderDto))]
         public ActionResult<OrderDto> Delete(DeleteClass delete)
         {
-            var p = _context._orders.Find(delete._id);
+            var p = genericRepository.GetById(delete.Id);
             if (p != null)
             {
-                _context._orders.Remove(p);
-                _context.SaveChanges();
-
+               genericRepository.Delete(p);
             }
             else
                 return NotFound();
@@ -132,11 +135,10 @@ namespace ApiApplication.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(OrderDto))]
         public ActionResult<OrderDto> DeleteById(Guid id)
         {
-            var p = _context._orders.Find(id);
+            var p = genericRepository.GetById(id);
             if (p != null)
             {
-                _context._orders.Remove(p);
-                _context.SaveChanges();
+                genericRepository.Delete(p);
 
             }
             else

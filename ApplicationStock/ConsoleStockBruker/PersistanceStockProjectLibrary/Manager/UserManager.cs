@@ -23,8 +23,8 @@ namespace PersistanceStockProjectLibrary.Manager
         
             foreach (var creature in creatures)
             {
-                users.Add(new UserDto() { _id = creature._id, _firstName = creature._firstName, _lastName = creature._lastName, _email = creature._email, _phone = creature._phone, _siret = creature._siret });
-                yield return new UserDto() { _id = creature._id, _firstName = creature._firstName, _lastName = creature._lastName, _email = creature._email, _phone = creature._phone, _siret = creature._siret };
+                users.Add(new UserDto() { Id = creature.Id, _firstName = creature._firstName, _lastName = creature._lastName, _email = creature._email, _phone = creature._phone, _siret = creature._siret });
+                yield return new UserDto() { Id = creature.Id, _firstName = creature._firstName, _lastName = creature._lastName, _email = creature._email, _phone = creature._phone, _siret = creature._siret };
             }
         }
        

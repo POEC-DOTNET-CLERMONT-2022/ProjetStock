@@ -14,10 +14,9 @@ namespace ProjectStockModels.Model
         public Guid _id;
         public string _lastName;
         public string _firstName;
-
-
         public string _email;
 
+       
         public Guid Id
         {
             get { return _id; }
@@ -109,6 +108,39 @@ namespace ProjectStockModels.Model
 
             }
         }
+        public List<Order> _orders;
+
+
+        public List<Order> Orders
+        {
+            get { return _orders; }
+            set
+            {
+                if (value != null)
+                {
+                    _orders = value;
+                    OnNotifyPropertyChanged();
+                }
+
+            }
+        }
+
+
+        public List<Notification> _notifs;
+
+        public List<Notification> Notifications
+        {
+            get { return _notifs; }
+             set   {
+                if (value != null)
+                {
+                        _notifs = value;
+                    OnNotifyPropertyChanged();
+                }
+
+            }
+        }
+
 
 
         public List<Address> _addresses;

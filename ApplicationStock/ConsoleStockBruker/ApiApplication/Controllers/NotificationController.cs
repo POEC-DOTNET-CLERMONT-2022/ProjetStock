@@ -1,9 +1,11 @@
 ﻿using ApiApplication.Helpers;
 using ApiApplication.Model;
 using ApiApplication.Models;
+using ApiApplication.Profil.Repository.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using ProjectStockDTOS;
+using ProjectStockLibrary;
 using ProjectStockPatternsLibrary;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -17,20 +19,23 @@ namespace ApiApplication.Controllers
         private readonly IMapper _mapper;
 
         private readonly APIContext _context;
-        public NotificationController(IMapper mapper, APIContext context)
+        private readonly IGenericRepository<Notification> genericRepository;
+        public NotificationController(IMapper mapper, APIContext context, IGenericRepository<Notification> genericRepository)
         {
             _mapper = mapper;
             _context = context;
+            this.genericRepository = genericRepository;
+
         }
 
         //// GET api/<ProjectController>/GetAll
-        [Authorize]
+        
         [HttpGet("all")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(NotificationDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<IEnumerable<NotificationDto>> GetAll()
         {
-            var p = _context._notifs.ToList();
+            var p = genericRepository.GetAll();
             if (p == null)
                 return NotFound();
             else
@@ -47,7 +52,7 @@ namespace ApiApplication.Controllers
         public ActionResult<NotificationDto> Get([FromQuery] Guid id)
         {
 
-            var p = _context._notifs.Find(id); 
+            var p = genericRepository.GetById(id);
 
             var mapProj = _mapper.Map<NotificationDto>(p);
 
@@ -71,17 +76,16 @@ namespace ApiApplication.Controllers
         {
             try
             {
-                var p = notificationDto.ToModelStock();
+                var p = _mapper.Map<Notification>(notificationDto);
 
-                var mapProj = _mapper.Map<NotificationDto>(p);
+                
 
-                if (mapProj == null)
+                if (p == null)
                     return NotFound();
                 else
                 {
-                    _context._notifs.Add(p);
-                    _context.SaveChanges();
-                    return Ok(mapProj);
+                    genericRepository.Add(p);
+                    return Ok(notificationDto);
                 }
                   
 
@@ -105,15 +109,16 @@ namespace ApiApplication.Controllers
         {
 
 
-            var p = _context._notifs.Find(notificationDto._id);
+            var p = genericRepository.GetById(notificationDto.Id);
             if (p == null)
                 return BadRequest();
             p._textRappel = notificationDto.textRappel;
             p._sendAt = notificationDto.sendAt;
+            p.ClientId = notificationDto.ClientId;
+            
 
             var mapProj = _mapper.Map<NotificationDto>(p);
-            _context._notifs.Update(p);
-            _context.SaveChanges();
+            genericRepository.Update(p);
             return Ok(mapProj);
         }
 
@@ -123,13 +128,13 @@ namespace ApiApplication.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(NotificationDto))]
         public ActionResult<NotificationDto> Delete(DeleteClass delete)
         {
-            var p = _context._notifs.Find(delete._id);
+            var p = genericRepository.GetById(delete.Id);
             if (p != null)
             {
-                _context._notifs.Remove(p);
-                _context.SaveChanges();
+                genericRepository.Delete(p);
 
-            }    
+
+            }
             else
                 return NotFound();
 
@@ -141,11 +146,11 @@ namespace ApiApplication.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(NotificationDto))]
         public ActionResult<NotificationDto> DeleteByGuid(Guid id)
         {
-            var p = _context._notifs.Find(id);
+            var p = genericRepository.GetById(id);
             if (p != null)
             {
-                _context._notifs.Remove(p);
-                _context.SaveChanges();
+                genericRepository.Delete(p);
+
 
             }
             else

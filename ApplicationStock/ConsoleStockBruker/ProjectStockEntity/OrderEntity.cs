@@ -14,7 +14,7 @@ namespace ProjectStockEntity
     {
         [Key]
 
-        public Guid _id { get; private set; }
+        public Guid Id { get; private set; }
 
         public string _orderName { get; set; }
 

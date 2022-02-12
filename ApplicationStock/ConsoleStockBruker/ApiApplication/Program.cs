@@ -10,6 +10,8 @@ using ApiApplication.Helpers;
 using ApiApplication.Interface;
 using ApiApplication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using ApiApplication.Profil.Repository;
+using ApiApplication.Profil.Repository.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,7 +25,8 @@ services.Configure<AppSetting>(builder.Configuration.GetSection("AppSettings"));
 // configure DI for application services
 services.AddScoped<IUserService, UserService>();
 
-
+builder.Services.AddDbContext<APIContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultContext")), ServiceLifetime.Transient);
+services.AddTransient<APIContext>();
 // Add services to the container.
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
@@ -38,12 +41,15 @@ services.Configure<AppSetting>(builder.Configuration.GetSection("AppSettings"));
 // configure DI for application services
 services.AddScoped<IUserService, UserService>();
 
+services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-builder.Services.AddDbContext<APIContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultContext")));
+builder.Services.AddScoped<Microsoft.EntityFrameworkCore.DbContext, APIContext>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -51,11 +57,13 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseCors("AllowAnyOrigin");
 }
 
 app.UseRouting();
 
 // global cors policy
+app.UseCors("AllowAnyOrigin");
 app.UseCors(x => x
     .AllowAnyOrigin()
     .AllowAnyMethod()

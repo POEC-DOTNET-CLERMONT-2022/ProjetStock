@@ -36,8 +36,8 @@
   <tbody>
     <tr *ngFor="let user of _stocks">
  
-      <td *ngIf="user['_id'] != null">{{user['_id']}}</td>
-      <td *ngIf="user['_id'] == null">Null</td>
+      <td *ngIf="user['id'] != null">{{user['id']}}</td>
+      <td *ngIf="user['id'] == null">Null</td>
  
       <td *ngIf="user['_name'] != null">{{user['_name']}}</td>
       <td *ngIf="user['_name'] == null">Null</td>
@@ -48,7 +48,7 @@
       <td *ngIf="user['_entrepriseName'] == null">Null</td>
 
    
-      <td><button class="btn btn-secondary text-left"  [routerLink]="['/delete_stock', user['_id'].toString()]">Remove</button><button class="btn btn-primary text-right" [routerLink]="['/modify_stock', user['_id'].toString()]" >Modify</button></td>
+      <td><button class="btn btn-secondary text-left"  [routerLink]="['/delete_stock', user['id']]">Remove</button><button class="btn btn-primary text-right" [routerLink]="['/modify_stock', user['id']]" >Modify</button></td>
     </tr>
    
   </tbody>

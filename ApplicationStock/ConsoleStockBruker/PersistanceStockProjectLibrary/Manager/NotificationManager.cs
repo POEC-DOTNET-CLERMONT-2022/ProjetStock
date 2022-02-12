@@ -23,7 +23,7 @@ namespace PersistanceStockProjectLibrary.Manager
             foreach (var creature in creatures)
             {
 
-                yield return new NotificationDto() { _id = creature._id,textRappel = creature._textRappel,sendAt = creature._sendAt };
+                yield return new NotificationDto() { Id = creature.Id,textRappel = creature._textRappel,sendAt = creature._sendAt };
             }
         }
         public IEnumerable<Notification> GetAllNotifications()

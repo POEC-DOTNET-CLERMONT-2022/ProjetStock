@@ -27,7 +27,7 @@ namespace PersistanceStockProjectLibrary.Manager
             foreach (var creature in creatures)
             {
 
-                yield return new OrderDto() { _id = creature._id,_orderName = creature._orderName , _orderDate = creature._orderDate,_nbStock= creature._nbStock };
+                yield return new OrderDto() { Id = creature.Id,_orderName = creature._orderName , _orderDate = creature._orderDate,_nbStock= creature._nbStock };
             }
         }
 

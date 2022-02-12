@@ -14,46 +14,24 @@ namespace ProjectStockDTOS
   
     public class UserDto
     {
-        [DataMember]
-        [Required]
-        public Guid _id { get; set; }
-        [DataMember]
-        [Required]
+        public Guid Id { get; set; }
         public string? _firstName { get; set; }
-        [DataMember]
-        [Required]
         public string? _lastName { get; set; }
-        [DataMember]
-
         public string? _email { get; set; }
-        [DataMember]
-        [Required]
         public string? _phone { get; set; }
-        [DataMember]
-        [Required]
         public string? _siret { get; set; }
-        
-        [DataMember]
-        [Required]
         public string? _password { get; set; }
-
-        [JsonIgnore]
-        [DataMember]
-
         public string? _token { get; set; }
-
-        [JsonIgnore]
-        [DataMember]
-    
         public DateTime? _expireToken { get; set; }
+    
+        public ICollection<Address> _addresses { get; set; }
+  
+        public ICollection<Stock> _stocks { get; set; }
 
-        [DataMember]
-        [Required]
-        public List<Address>? _addresses { get; set; }
+        public virtual ICollection<Notification> _notifications { get; set; }
 
-        [DataMember]
-        [Required]
-        public List<Stock>? _stocks { get; set; }
+
+        public virtual ICollection<Order>? _Orders { get; set; } 
 
 
     }

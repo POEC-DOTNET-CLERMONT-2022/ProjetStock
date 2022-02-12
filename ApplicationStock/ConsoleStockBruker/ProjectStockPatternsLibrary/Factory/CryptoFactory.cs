@@ -22,7 +22,7 @@ namespace ProjectStockPatternsLibrary
 
         public static Crypto ToModel(this CryptoDto crypto)
         {
-            return new Crypto(crypto._id) { _name = crypto._name, _value = crypto._value };
+            return new Crypto(crypto.Id) { _name = crypto._name, _value = crypto._value };
     }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using ApiApplication.Controllers;
 using ApiApplication.Model;
 using ApiApplication.Models;
+using ApiApplication.Profil.Repository;
+using ApiApplication.Profil.Repository.Interfaces;
 using AutoFixture;
 using AutoMapper;
 using FluentAssertions;
@@ -10,7 +12,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using ProjectStockDTOS;
 using ProjectStockEntity;
-using ProjectStockRepository.Interfaces;
+using ProjectStockLibrary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,34 +27,41 @@ namespace ProjectStock.Api.Tests.Controllers
     {
         private AddressController AddressController { get; set; }
 
-        public Mock<IGenericRepository<AddressEntity>> AddressRepository { get; set; }
+        public Mock<IGenericRepository<Address>> AddressRepository { get; set; }
 
         public IMapper Mapper { get; set; }
 
         public ILogger<AddressController> Logger { get; set; } = new NullLogger<AddressController>();
 
 
+        private IGenericRepository<Address> genericRepository; 
+
         private APIContext APIContext { get; set; }
 
         private Fixture Fixture { get; set; } = new Fixture();
 
-        private IEnumerable<AddressEntity> Addresses{ get; set; }
+        private IEnumerable<Address> Addresses{ get; set; }
+
+      
 
 
-        public MoqAddressControllerTest()
+        public MoqAddressControllerTest(GenericRepository<Address> generic)
         {
             var configuration = new MapperConfiguration(cfg => cfg.AddMaps(typeof(AddressController)));
             Mapper = new Mapper(configuration);
             APIContext = new APIContext(new Microsoft.EntityFrameworkCore.DbContextOptions<APIContext>());
+            genericRepository = generic;
+       
         }
 
         [TestInitialize]
         public void InitTest()
         {
             Fixture = new Fixture();
-            Addresses = Fixture.CreateMany<AddressEntity>();
-            AddressRepository = new Mock<IGenericRepository<AddressEntity>>();
-            AddressController = new AddressController(Mapper, APIContext);
+            Addresses = Fixture.CreateMany<Address>();
+           
+            AddressRepository = new Mock<IGenericRepository<Address>>();
+            AddressController = new AddressController(Mapper, APIContext,genericRepository);
         }
 
 
@@ -63,12 +72,13 @@ namespace ProjectStock.Api.Tests.Controllers
         {
 
             //Arrange
-            AddressRepository.Setup(repo => repo.GetAll()).Returns(Addresses);
-            AddressRepository.Setup(repo => repo.Add(It.IsAny<AddressEntity>()))
+          
+            AddressRepository.Setup(repo => repo.Add(It.IsAny<Address>()))
                 .Throws(new Exception("test unitaire"));
 
 
             var result = AddressController.GetAll();
+            //TODO vérifier le code de retour 
             //Assert
             var entities = result.Value;
             entities.Should().NotBeNull();
@@ -86,8 +96,8 @@ namespace ProjectStock.Api.Tests.Controllers
         {
 
             //Arrange
-            AddressRepository.Setup(repo => repo.GetAll()).Returns(Addresses);
-            AddressRepository.Setup(repo => repo.Add(It.IsAny<AddressEntity>()))
+            
+            AddressRepository.Setup(repo => repo.Add(It.IsAny<Address>()))
                 .Throws(new Exception("test unitaire"));
 
 
@@ -106,13 +116,13 @@ namespace ProjectStock.Api.Tests.Controllers
         public void TestDelete()
         {
             //Arrange
-            AddressRepository.Setup(repo => repo.GetAll()).Returns(Addresses);
-            AddressRepository.Setup(repo => repo.Add(It.IsAny<AddressEntity>()))
+          
+            AddressRepository.Setup(repo => repo.Add(It.IsAny<Address>()))
                 .Throws(new Exception("test unitaire"));
 
 
             DeleteClass _delete = new DeleteClass();
-            _delete._id = new Guid("23467B99 - 0F3E-42DF - A7AC - 43869A1E07C0");
+            _delete.Id = new Guid("23467B99 - 0F3E-42DF - A7AC - 43869A1E07C0");
             var result = AddressController.Delete(_delete);
 
 
@@ -132,15 +142,15 @@ namespace ProjectStock.Api.Tests.Controllers
         public void TestUpdate()
         {
             //Arrange
-            AddressRepository.Setup(repo => repo.GetAll()).Returns(Addresses);
-            AddressRepository.Setup(repo => repo.Add(It.IsAny<AddressEntity>()))
+           
+            AddressRepository.Setup(repo => repo.Add(It.IsAny<Address>()))
                 .Throws(new Exception("test unitaire"));
 
 
 
 
             AddressDto _Address = new AddressDto();
-            _Address._id = new Guid("23467B99 - 0F3E-42DF - A7AC - 43869A1E07C0");
+            _Address.Id = new Guid("23467B99 - 0F3E-42DF - A7AC - 43869A1E07C0");
             _Address._address_line_1 = "41 rue du cerf volant";
             _Address._address_line_2 = "Address";
             _Address._city = "lyon";

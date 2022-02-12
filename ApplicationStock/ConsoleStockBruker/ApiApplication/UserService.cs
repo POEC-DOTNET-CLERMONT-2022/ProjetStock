@@ -43,7 +43,7 @@ namespace ApiApplication
         }
         public Client GetById(Guid id)
         {
-            return _context._users.FirstOrDefault(x => x._id == id);
+            return _context._users.FirstOrDefault(x => x.Id == id);
         }
 
         // helper methods
@@ -55,7 +55,7 @@ namespace ApiApplication
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new[] { new Claim("id", user._id.ToString()) }),
+                Subject = new ClaimsIdentity(new[] { new Claim("id", user.Id.ToString()) }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Secret phase ez^pozâoeaz^pozapeozaêoazeoazeoazpeoaézeopeozapoaézpepôaezpeoaô")), SecurityAlgorithms.HmacSha256Signature)
             };

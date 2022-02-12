@@ -33,8 +33,8 @@ namespace ProjectStock.Api.Tests.Patterns
             var id = Guid.NewGuid();
             var stock = new Stock();
 
-            MarketDto marketDto = new MarketDto() { _id=id, _closingDate= DateTime.Now,_openingDate= DateTime.Now,_name = "test", _stocks = new List<Stock>()};
-            Market _market = new Market("test",DateTime.Now,DateTime.Now) { _id = id, _closingDate = DateTime.Now, _openingDate = DateTime.Now, _name = "test", _stock = new List<Stock>() };
+            MarketDto marketDto = new MarketDto() { Id=id, _closingDate= DateTime.Now,_openingDate= DateTime.Now,_name = "test", _stocks = new List<Stock>()};
+            Market _market = new Market("test",DateTime.Now,DateTime.Now) { Id = id, _closingDate = DateTime.Now, _openingDate = DateTime.Now, _name = "test", _stock = new List<Stock>() };
 
 
             var mapped = _market.ToDtoStock();
@@ -56,8 +56,8 @@ namespace ProjectStock.Api.Tests.Patterns
             var id = Guid.NewGuid();
             var stock = new Stock();
 
-            MarketDto marketDto = new MarketDto() { _id = id, _closingDate = DateTime.Now, _openingDate = DateTime.Now, _name = "test", _stocks = new List<Stock>() };
-            Market _market = new Market("test", DateTime.Now, DateTime.Now) { _id = id, _closingDate = DateTime.Now, _openingDate = DateTime.Now, _name = "test", _stock = new List<Stock>() };
+            MarketDto marketDto = new MarketDto() { Id = id, _closingDate = DateTime.Now, _openingDate = DateTime.Now, _name = "test", _stocks = new List<Stock>() };
+            Market _market = new Market("test", DateTime.Now, DateTime.Now) { Id = id, _closingDate = DateTime.Now, _openingDate = DateTime.Now, _name = "test", _stock = new List<Stock>() };
 
 
             var mapped = marketDto.ToModelStock();

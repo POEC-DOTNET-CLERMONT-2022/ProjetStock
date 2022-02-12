@@ -7,6 +7,6 @@ namespace ApiApplication.Models
     {
         [DataMember]
         [Required]
-        public Guid _id { get; set; }
+        public Guid Id { get; set; }
     }
 }

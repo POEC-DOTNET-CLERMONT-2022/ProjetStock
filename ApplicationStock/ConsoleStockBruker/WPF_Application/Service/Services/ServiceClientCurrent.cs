@@ -56,7 +56,7 @@ namespace WPF_Application.Service.Services
         public Guid GetGuid()
         {
             if (currentClientApp != null)
-                return this.currentClientApp._id;
+                return this.currentClientApp.Id;
 
             return Guid.Empty;
         }

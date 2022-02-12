@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiApplication", "ApiApplic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectStockModels", "ProjectStockModels\ProjectStockModels.csproj", "{BD06BBEA-0769-4C40-B4CB-D21D43B36516}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectStock.Api.Tests", "ProjectStock.Api.Tests\ProjectStock.Api.Tests.csproj", "{BEF030F4-FC1B-4AED-9521-50A617427607}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectStock.Api.Tests", "ProjectStock.Api.Tests\ProjectStock.Api.Tests.csproj", "{BEF030F4-FC1B-4AED-9521-50A617427607}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleBenchMarkProjectStock", "ConsoleBenchMarkProjectStock\ConsoleBenchMarkProjectStock.csproj", "{4BAC4E95-7F0E-4D77-8D94-78C90CADCAA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{BEF030F4-FC1B-4AED-9521-50A617427607}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BEF030F4-FC1B-4AED-9521-50A617427607}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BEF030F4-FC1B-4AED-9521-50A617427607}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BAC4E95-7F0E-4D77-8D94-78C90CADCAA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BAC4E95-7F0E-4D77-8D94-78C90CADCAA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BAC4E95-7F0E-4D77-8D94-78C90CADCAA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BAC4E95-7F0E-4D77-8D94-78C90CADCAA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

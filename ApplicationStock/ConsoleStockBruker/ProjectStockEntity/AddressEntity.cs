@@ -12,7 +12,7 @@ namespace ProjectStockEntity
     public sealed class AddressEntity : IEquatable<AddressEntity>
     {
         [Key]
-        public Guid _id { get; private set; }
+        public Guid Id { get; private set; }
       
         public string _address_line_1 { get; set; }
      

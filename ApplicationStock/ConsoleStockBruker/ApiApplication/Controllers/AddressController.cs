@@ -1,9 +1,12 @@
 ﻿using ApiApplication.Helpers;
 using ApiApplication.Model;
 using ApiApplication.Models;
+using ApiApplication.Profil.Repository;
+using ApiApplication.Profil.Repository.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using ProjectStockDTOS;
+using ProjectStockLibrary;
 using ProjectStockPatternsLibrary;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -17,27 +20,43 @@ namespace ApiApplication.Controllers
         private readonly IMapper _mapper;
 
         private readonly APIContext _context;
-        public AddressController(IMapper mapper, APIContext context)
+
+        private readonly IGenericRepository<Address> genericRepository;
+        public AddressController(IMapper mapper, APIContext context,IGenericRepository< Address> generic)
         {
+            //TODO : utiliser les repo plutôt que le DBContext directement
             _mapper = mapper;
             _context = context;
+            genericRepository = generic;
+
+
+
         }
 
 
-
         [Authorize]
+        //TODO : attention au règle des URL => https://docs.microsoft.com/fr-fr/aspnet/core/tutorials/first-web-api?view=aspnetcore-6.0&tabs=visual-studio
         [HttpGet("all")]
-
-
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddressDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<IEnumerable<AddressDto>> GetAll()
         {
-            var p = _context._addresses.ToList();
-            if (p == null)
+            //TODO: il faut gérer les exceptions !
+            //TODO: il faut aussi logger les erreurs ! 
+
+            try
+            {
+                var p = genericRepository.GetAll();
+                if (p == null)
+                    return NotFound();
+                else
+                    return Ok(p);
+
+            }catch (Exception ex)
+            {
                 return NotFound();
-            else
-                return Ok(p);
+            }
+            
 
         }
 
@@ -48,7 +67,8 @@ namespace ApiApplication.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<AddressDto> Get([FromQuery] Guid id)
         {
-            var p = _context._addresses.Find(id);
+
+            var p = genericRepository.GetById(id);
             if ( p == null)
                   return NotFound();
                else
@@ -76,46 +96,62 @@ namespace ApiApplication.Controllers
                 else
                 {
 
-                    _context._addresses.Add(p);
-                    _context.SaveChanges();
+                    genericRepository.Add(p);
+
+                    return Ok(mapProj);
                 }
                  
-                    return Ok(mapProj);
+                
 
             }
             catch (Exception ex)
             {
+                //TODO : logger ici 
                 return BadRequest(ex.Message);
             }
         }
 
 
         // GET api/<ProjectController>/5
-       // [Authorize]
+        // [Authorize]
         [HttpPut]
         [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddressDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<AddressDto> Put(AddressDto addressDto)
         {
-            var p = _context._addresses.Find(addressDto._id);
-            if(p == null)
+            try
             {
-                return BadRequest();
+                var p = _context._addresses.Find(addressDto.Id);
+                if (p == null)
+                {
+                    return BadRequest();
+                }
+
+                p._address_line_1 = addressDto._address_line_1;
+                p._address_line_2 = addressDto._address_line_2;
+                p._city = addressDto._city;
+                p._codePostal = addressDto._codePostal;
+                p._country = addressDto._country;
+
+                genericRepository.Update(p);
+            
+                _context.SaveChanges();
+
+                return Ok(p);
             }
 
-            p._address_line_1 = addressDto._address_line_1;
-            p._address_line_2 = addressDto._address_line_2;
-            p._city = addressDto._city;
-            p._codePostal = addressDto._codePostal;
-            p._country = addressDto._country; 
-            var mapProj = _mapper.Map<AddressDto>(p);
 
-            _context._addresses.Update(p);
-            _context.SaveChanges();
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
 
-            return Ok(mapProj);
         }
+
+            //TODO: on fait soit le mapping à la main ou le mapping via automapper 
+
+            
 
         // DELETE api/<ProjectController>/5
         [Authorize]
@@ -123,38 +159,59 @@ namespace ApiApplication.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddressDto))]
         public ActionResult<AddressDto> Delete(DeleteClass delete)
         {
-            var p = _context._addresses.Find(delete._id);
-
-            if (p != null)
+            try
             {
-                _context._addresses.Remove(p);
-               
+
+                var p = _context._addresses.Find(delete.Id);
+
+                if (p != null)
+                {
+                    genericRepository.Delete(p);
+                }
+
+                else
+                    return NotFound();
+
+
+                return Ok(p);
             }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            
 
-            else
-                return NotFound();
-
-             _context.SaveChanges();
-            return Ok(p);
         }
         [Authorize]
         [HttpDelete("id")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddressDto))]
         public ActionResult<AddressDto> DeleteById(Guid id)
         {
-            var p = _context._addresses.Find(id);
-
-            if (p != null)
+            try
             {
-                _context._addresses.Remove(p);
+
+                var p = _context._addresses.Find(id);
+
+                if (p != null)
+                {
+                    _context._addresses.Remove(p);
+
+                }
+
+                else
+                    return NotFound();
+
+                _context.SaveChanges();
+                return Ok(p);
 
             }
+            catch(Exception ex)
+            
+            {
+                return BadRequest(ex.Message);
+            }
+          
 
-            else
-                return NotFound();
-
-            _context.SaveChanges();
-            return Ok(p);
         }
     }
 }

@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 namespace ProjectStockEntity
 {
     [Table("Stock")]
-    public  class StockEntity : IEquatable<StockEntity>
+    public  class StockEntity : IEquatable<StockEntity> 
     {
        
         [Key]
-        public Guid _id { get; private set; }
+        public Guid Id { get; private set; }
         
         public string _name { get; set; }
      
