@@ -37,7 +37,7 @@ namespace WPF_Application.Map
             CreateMap<OrderDto, OrderModel>().ReverseMap();
 
             CreateMap<Notification, NotificationModel>().ReverseMap();
-            
+            CreateMap<Order, OrderModel>().ReverseMap();
 
         }   
 

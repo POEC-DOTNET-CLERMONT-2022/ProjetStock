@@ -273,6 +273,7 @@ namespace ProjectStockModels.JsonReader
                     RequestUri = new Uri(uri),
                     Content = new StringContent(JsonConvert.SerializeObject(map), Encoding.UTF8, "application/json")
                 };
+
                
                 return (int)_httpClient.SendAsync(request).Result.StatusCode;
 

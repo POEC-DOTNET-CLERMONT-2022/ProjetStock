@@ -302,7 +302,8 @@ namespace ApiApplicationProjectStock.Controllers
                 var p = genericRepository.GetById(userDto.Id);
                 if (p == null)
                     return BadRequest();
-                p._stocks = userDto._stocks;
+
+                p._stocks = userDto._stocks.ToList();
 
 
                 _context._users.Update(p);
