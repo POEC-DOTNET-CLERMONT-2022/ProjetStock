@@ -56,7 +56,7 @@
 
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>-
+                    <StackPanel>
                         <TextBlock Text="Value :"/>
                         <TextBlock Text="{Binding Value}"/>
                         <TextBlock Text="OrderName :"/>
