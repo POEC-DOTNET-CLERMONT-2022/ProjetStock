@@ -15,7 +15,20 @@ namespace ProjectStockModels.Model
         public DateTime _orderDate;
         public Stock _stock;
         public int _nbStock;
+        public Guid _clientId;
 
+        public Guid ClientId
+        {
+            get { return _clientId; }
+            set
+            {
+                if (value != null)
+                {
+                    _clientId = value;
+                    OnNotifyPropertyChanged();
+                }
+            }
+        }
         public Guid Id
         {
             get { return _id; }

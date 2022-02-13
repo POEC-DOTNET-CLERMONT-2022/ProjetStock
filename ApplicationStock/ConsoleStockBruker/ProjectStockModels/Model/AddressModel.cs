@@ -9,12 +9,12 @@ namespace ProjectStockModels.Model
 {
     public class AddressModel : ObservableObject
     {
-        private Guid _id;
-        private string? _address_line_1;
-        private string? _address_line_2;
-        private string? _codePostal;
-        private string? _city;
-        private string? _country;
+        public Guid _id;
+        public string? _address_line_1;
+        public string? _address_line_2;
+        public string? _codePostal;
+        public string? _city;
+        public string? _country;
         public Guid Id
         {
             get { return _id; }

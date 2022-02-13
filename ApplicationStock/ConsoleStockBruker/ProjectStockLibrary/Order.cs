@@ -10,13 +10,13 @@ namespace ProjectStockLibrary
 {
     public  class Order : BaseEntity
     {
-        [Key]
-        public new Guid Id { get; private set; }
+        
         public string _orderName { get;  set; }
         public  DateTime _orderDate { get;  set; }
        
      
         public Stock? _stock { get; set; }
+        public Guid ClientId { get; set; }
         public int _nbStock { get; set; }
         public Order(string orderName,Stock stock,int nbStock) 
         {
@@ -28,6 +28,14 @@ namespace ProjectStockLibrary
 
         }
 
+        public Order()
+        {
+            _orderName = "test";
+            _orderDate = DateTime.Now;
+            Id = Guid.NewGuid();
+            _stock = new Stock();
+            _nbStock = 5;
+        }
         public Order(string orderName, int nbStock)
         {
             _orderName = orderName;

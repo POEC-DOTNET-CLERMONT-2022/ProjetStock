@@ -79,6 +79,7 @@ namespace WPF_Application.UserControls
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             DataContext = this;
+
             LoadMarket();
             LoadStock();
         }
@@ -113,7 +114,7 @@ namespace WPF_Application.UserControls
 
         public async void LoadStock()
         {
-         
+           
             HttpClient _client = new HttpClient();
 
             jsonStockGenericReader = new StockServiceReader(_client, _mapper);
@@ -170,8 +171,12 @@ namespace WPF_Application.UserControls
             Navigator.NavigateTo(typeof(NotificationListsControl));
          
         }
-       
+        
+       private void ListOrder_Click(object sender, RoutedEventArgs e)
+        {
+            Navigator.NavigateTo(typeof(OrderControl));
 
+        }
         private void Stocks_Click(object sender, RoutedEventArgs e)
         {
             Navigator.NavigateTo(typeof(UsersStocksLists));
@@ -180,7 +185,7 @@ namespace WPF_Application.UserControls
 
         private void MyNotification_Click(object sender, RoutedEventArgs e)
         {
-            Navigator.NavigateTo(typeof(NotificationListsControl));
+            Navigator.NavigateTo(typeof(UsersNotifications));
 
         
         }
@@ -216,7 +221,7 @@ namespace WPF_Application.UserControls
         private void Orders_Click(object sender, RoutedEventArgs e)
         {
 
-            Navigator.NavigateTo(typeof(OrderControl));
+            Navigator.NavigateTo(typeof(UserOrders));
           
         }
         private void Notifications_Click(object sender, RoutedEventArgs e)

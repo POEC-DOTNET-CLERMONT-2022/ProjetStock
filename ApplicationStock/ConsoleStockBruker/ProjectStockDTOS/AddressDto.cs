@@ -16,5 +16,6 @@ namespace ProjectStockDTOS
         public string? _codePostal { get;  set; }
         public string? _city { get; set; }
         public string? _country { get; set; }
+
     }
 }

@@ -23,8 +23,15 @@ namespace ProjectStockDTOS
         public string? _password { get; set; }
         public string? _token { get; set; }
         public DateTime? _expireToken { get; set; }
-        public List<Address> _addresses { get; set; }
-        public List<Stock> _stocks { get; set; }
+    
+        public ICollection<Address> _addresses { get; set; }
+  
+        public ICollection<Stock> _stocks { get; set; }
+
+        public virtual ICollection<Notification> _notifications { get; set; }
+
+
+        public virtual ICollection<Order>? _Orders { get; set; } 
 
 
     }

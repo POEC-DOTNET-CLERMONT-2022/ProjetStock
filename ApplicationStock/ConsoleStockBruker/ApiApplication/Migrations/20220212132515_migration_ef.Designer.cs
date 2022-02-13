@@ -4,6 +4,7 @@ using ApiApplication.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiApplication.Migrations
 {
     [DbContext(typeof(APIContext))]
-    partial class APIContextModelSnapshot : ModelSnapshot
+    [Migration("20220212132515_migration_ef")]
+    partial class migration_ef
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,7 +30,7 @@ namespace ApiApplication.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("ClientId")
+                    b.Property<Guid?>("ClientId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("_address_line_1")
@@ -155,9 +157,6 @@ namespace ApiApplication.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("ClientId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime>("_sendAt")
                         .HasColumnType("datetime2");
 
@@ -167,8 +166,6 @@ namespace ApiApplication.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClientId");
-
                     b.ToTable("_notifs");
                 });
 
@@ -176,9 +173,6 @@ namespace ApiApplication.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("ClientId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("_nbStock")
@@ -195,8 +189,6 @@ namespace ApiApplication.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ClientId");
 
                     b.HasIndex("_stockId");
 
@@ -239,9 +231,7 @@ namespace ApiApplication.Migrations
                 {
                     b.HasOne("ProjectStockLibrary.Client", null)
                         .WithMany("_addresses")
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ClientId");
                 });
 
             modelBuilder.Entity("ProjectStockLibrary.Client", b =>
@@ -258,23 +248,8 @@ namespace ApiApplication.Migrations
                         .HasForeignKey("CryptoId");
                 });
 
-            modelBuilder.Entity("ProjectStockLibrary.Notification", b =>
-                {
-                    b.HasOne("ProjectStockLibrary.Client", null)
-                        .WithMany("_notifications")
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("ProjectStockLibrary.Order", b =>
                 {
-                    b.HasOne("ProjectStockLibrary.Client", null)
-                        .WithMany("_Orders")
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("ProjectStockLibrary.Stock", "_stock")
                         .WithMany()
                         .HasForeignKey("_stockId");
@@ -295,11 +270,7 @@ namespace ApiApplication.Migrations
 
             modelBuilder.Entity("ProjectStockLibrary.Client", b =>
                 {
-                    b.Navigation("_Orders");
-
                     b.Navigation("_addresses");
-
-                    b.Navigation("_notifications");
 
                     b.Navigation("_stocks");
                 });

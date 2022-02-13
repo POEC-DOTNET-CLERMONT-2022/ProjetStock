@@ -23,6 +23,7 @@ namespace WPF_Application.Map
             CreateMap<MarketModel, MarketDto>().ReverseMap();
             CreateMap<StockModel, StockDto>().ReverseMap();
             CreateMap<Client, UserModel>().ReverseMap();
+            CreateMap<Address, AddressModel>().ReverseMap();
             CreateMap<Stock,StockModel>().ReverseMap();   
 
             CreateMap<UserDto, UserModel>().ReverseMap();
@@ -34,7 +35,9 @@ namespace WPF_Application.Map
  
             CreateMap<OrderModel, OrderDto>().ReverseMap();
             CreateMap<OrderDto, OrderModel>().ReverseMap();
-            
+
+            CreateMap<Notification, NotificationModel>().ReverseMap();
+            CreateMap<Order, OrderModel>().ReverseMap();
 
         }   
 

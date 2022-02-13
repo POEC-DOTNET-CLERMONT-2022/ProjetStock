@@ -21,6 +21,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF_Application.Service.Interfaces;
 
 namespace WPF_Application.User
 {
@@ -32,76 +33,43 @@ namespace WPF_Application.User
       
         private readonly IMapper _mapper = ((App)Application.Current).Mapper;
 
-        public OrderLists OrderLists { get; set; } = new OrderLists();
+        public OrderLists OrdersLists { get; set; } = new OrderLists();
 
 
         private JsonGenericReader<OrderModel, OrderDto> jsonGenericReader { get; }
 
-
-        private static ObservableCollection<OrderModel> _lists { get; set; }
-        private async Task loadOrder(JsonGenericReader<OrderModel, OrderDto> jsonGenericReader)
-        {
-            var result = await jsonGenericReader.GetAll();
-            foreach (var item in result)
-
-                _lists.Add(item);
-        }
-
+    
+        private IServiceUserAppCurrent serviceUserAppCurrent { get; } = ((App)Application.Current)._serviceUserApp;
 
         public UserOrders()
         {
             InitializeComponent();
+          
 
-            InitializeComponent();
-            DataContext = OrderLists;
-            jsonGenericReader = new OrderServiceReader(new HttpClient(), _mapper);
-            _lists = new ObservableCollection<OrderModel>();
-            loadOrder(jsonGenericReader);
-            OrderLists.Orders = _lists;
         }
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            DataContext = this;
+            LoadStock();
+
+        }
+
+        public async void LoadStock()
+        {
+            Client utilisateur = serviceUserAppCurrent.GetClientCurrent();
+            var stocks = utilisateur._Orders;
+            List<OrderModel> userModels = new List<OrderModel>();
+            stocks.ToList().ForEach(stock =>userModels.Add(_mapper.Map<OrderModel>(stock)));
+
+
+            OrdersLists.Orders = new ObservableCollection<OrderModel>(userModels);
+
       
 
 
-        private async Task updateOrder(JsonGenericReader<OrderModel, OrderDto> jsonGenericReader, OrderModel order)
-        {
-            await jsonGenericReader.Update(order);
-
         }
 
-        private async Task deleteOrder(JsonGenericReader<OrderModel, OrderDto> jsonGenericReader, Guid id)
-        {
-            int _return = await jsonGenericReader.Delete(id);
 
 
-            if (_return == 200)
-            {
-                //suppression de l'affichage
-                foreach (var _item in _lists)
-                {
-                    if (_item.Id == id)
-                    {
-                        _lists.Remove(_item);
-                        break;
-                    }
-
-                }
-            }
-
-
-        }
-
-        private async void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
-            var newUser = new OrderModel() { Id = new Guid(TxtGuid.Text), OrderName = TxtNom.Text, NbStock = int.Parse(TxtQte.Text), Stock = new Stock() };
-            updateOrder(jsonGenericReader, newUser);
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-
-            deleteOrder(jsonGenericReader, new Guid(TxtGuid.Text));
-
-        }
     }
 }

@@ -59,10 +59,19 @@ namespace ApiApplicationProjectStock.Controllers
             try
             {
                 var p = genericRepository.GetAll();
+        
+
+
                 if (p == null)
                     return NotFound();
                 else
+                {
+                    p.ForEach(val => val._addresses =  _context._addresses.Where(o => o.ClientId == val.Id).ToList()); 
+
+
                     return Ok(p);
+                }
+                
             }
             catch (Exception ex)
             {
@@ -179,7 +188,11 @@ namespace ApiApplicationProjectStock.Controllers
                 if (p == null)
                     return NotFound();
                 else
+                {
+                    p._addresses = _context._addresses.Where(o => o.ClientId == p.Id).ToList();
                     return Ok(p);
+                }
+               
 
             }
             catch(Exception ex)
@@ -202,7 +215,14 @@ namespace ApiApplicationProjectStock.Controllers
             if (p == null)
                 return NotFound();
             else
+            {                
+                p.ToList().ForEach(val => val._addresses = _context._addresses.Where(o => o.ClientId == val.Id).ToList());
+               
+                p.ToList().ForEach(val => val._notifications = _context._notifs.Where(o => o.ClientId == val.Id).ToList());
+                p.ToList().ForEach(val => val._Orders = _context._orders.Where(o => o.ClientId == val.Id).ToList());
                 return Ok(p);
+            }
+                
         }
 
 
@@ -215,7 +235,7 @@ namespace ApiApplicationProjectStock.Controllers
         {
             try
             {
-                var p = userDto.ToModel();
+                var p = _mapper.Map<Client>(userDto);
                 p._password = _userPasswordHasher.GetPasswordHasher(p._password);
                 if (p == null)
                     return BadRequest();
@@ -282,7 +302,8 @@ namespace ApiApplicationProjectStock.Controllers
                 var p = genericRepository.GetById(userDto.Id);
                 if (p == null)
                     return BadRequest();
-                p._stocks = userDto._stocks;
+
+                p._stocks = userDto._stocks.ToList();
 
 
                 _context._users.Update(p);
@@ -315,8 +336,12 @@ namespace ApiApplicationProjectStock.Controllers
                 p._addresses = userDto._addresses;
 
 
+                _context._addresses.Add(userDto._addresses.Last());
+
                 _context._users.Update(p);
                 _context.SaveChanges();
+
+     
                 return Ok(p);
 
 
@@ -327,6 +352,41 @@ namespace ApiApplicationProjectStock.Controllers
             }
 
         }
+
+        // GET api/<ProjectController>/5
+        [Authorize]
+        [HttpPut("notifs")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<UserDto> PutNotifs(UserDto userDto)
+        {
+
+            try
+            {
+
+                var p = genericRepository.GetById(userDto.Id);
+                if (p == null)
+                    return BadRequest();
+                p._notifications = userDto._notifications;
+
+
+                _context._notifs.Add(userDto._notifications.Last());
+
+                _context._users.Update(p);
+                _context.SaveChanges();
+
+
+                return Ok(p);
+
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+
+        }
+
 
         // DELETE api/<ProjectController>/5
         [Authorize]
@@ -340,6 +400,15 @@ namespace ApiApplicationProjectStock.Controllers
                 var p = genericRepository.GetById(delete.Id);
                 if (p != null)
                 {
+                    p._addresses.ToList().ForEach(p => _context._addresses.Remove(p));
+                    _context.SaveChanges();
+
+                    p._notifications.ToList().ForEach(p => _context._notifs.Remove(p));
+                    _context.SaveChanges();
+
+                    p._Orders.ToList().ForEach(p => _context._orders.Remove(p));
+                    _context.SaveChanges();
+
                     genericRepository.Delete(p);
                 }
 

@@ -22,6 +22,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF_Application.Service.Interfaces;
 
 namespace WPF_Application.UserControls.Forms
 {
@@ -38,6 +39,7 @@ namespace WPF_Application.UserControls.Forms
 
         public OrderLists OrdersList { get; set; } = new OrderLists();
 
+        private IServiceUserAppCurrent serviceUserAppCurrent { get; } = ((App)Application.Current)._serviceUserApp;
 
         public OrderControl()
         {
@@ -91,7 +93,7 @@ namespace WPF_Application.UserControls.Forms
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            var newUser = new OrderModel() { Id = Guid.NewGuid(), OrderName = TbName.Text, OrderDate = DateTime.Now, Stock = new ProjectStockLibrary.Stock(), NbStock = int.Parse(TbValue.Text) };
+            var newUser = new OrderModel() { Id = Guid.NewGuid(), OrderName = TbName.Text, OrderDate = DateTime.Now, Stock = new ProjectStockLibrary.Stock(), NbStock = 10, ClientId = serviceUserAppCurrent.GetClientCurrent().Id };
             addOrder(newUser);
             //OrdersList.Orders.Add(newUser);
 
@@ -101,7 +103,7 @@ namespace WPF_Application.UserControls.Forms
         {
 
 
-            var newUser = new OrderModel() { Id = new Guid(TxtGuid.Text), OrderName = TbName.Text, OrderDate = DateTime.Now, Stock = new ProjectStockLibrary.Stock(), NbStock = int.Parse(TbValue.Text) };
+            var newUser = new OrderModel() { Id = new Guid(TxtGuid.Text), OrderName = TbName.Text, OrderDate = DateTime.Now, Stock = new ProjectStockLibrary.Stock(), NbStock = 10, ClientId = serviceUserAppCurrent.GetClientCurrent().Id };
 
             updateOrder(newUser);
 

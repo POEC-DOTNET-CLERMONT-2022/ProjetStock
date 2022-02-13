@@ -28,6 +28,7 @@ export class UserService {
   getUsers() : Observable<User[]>{ 
     var json = JSON.stringify(JSON.parse(window.sessionStorage.getItem('auth-user')!))
     var data =json.split(':');
+
    var token = data[4].split(',')[0];
    this._user_token =token.split('"')[1];
     var reqHeader = new HttpHeaders({ 

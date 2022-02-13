@@ -22,6 +22,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF_Application.Service.Interfaces;
 
 namespace WPF_Application.Rappel
 {
@@ -37,8 +38,8 @@ namespace WPF_Application.Rappel
         private ObservableCollection<NotificationModel> _lists { get; set; }
         public NotificationLists NotifsLists { get; set; } = new NotificationLists();
 
+        private IServiceUserAppCurrent serviceUserAppCurrent { get; } = ((App)Application.Current)._serviceUserApp;
 
-      
         public NotificationListsControl()
         {
             InitializeComponent();
@@ -67,7 +68,7 @@ namespace WPF_Application.Rappel
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            var newUser = new NotificationModel() { Id = Guid.NewGuid(), SendAt = DateTime.Now, TextRappel = TbText.Text };
+            var newUser = new NotificationModel() { Id = Guid.NewGuid(), SendAt = DateTime.Now, TextRappel = TbText.Text ,ClientId = serviceUserAppCurrent.GetClientCurrent().Id};
             addNotfi(newUser);
          
 
@@ -82,7 +83,7 @@ namespace WPF_Application.Rappel
             }
             else
             {
-                var newUser = new NotificationModel() { Id = Guid.NewGuid(), SendAt = DateTime.Now, TextRappel = TbText.Text };
+                var newUser = new NotificationModel() { Id = Guid.NewGuid(), SendAt = DateTime.Now, TextRappel = TbText.Text,ClientId = serviceUserAppCurrent.GetClientCurrent().Id };
                 updateUser(newUser);
             }
            

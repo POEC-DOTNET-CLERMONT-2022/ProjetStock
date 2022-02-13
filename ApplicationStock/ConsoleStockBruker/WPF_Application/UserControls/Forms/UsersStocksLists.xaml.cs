@@ -47,7 +47,7 @@ namespace WPF_Application.UserControls.Forms
             Client utilisateur = serviceUserAppCurrent.GetClientCurrent();
             var stocks = utilisateur._stocks;
 
-            stocks.Add(new Stock("etst", 5, "tete"));
+            
             IEnumerable<StockModel> userModels = _mapper.Map<IEnumerable<StockModel>>(stocks);          
 
             StocksList.Stocks = new ObservableCollection<StockModel>(userModels);

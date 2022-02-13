@@ -26,85 +26,86 @@ using WPF_Application.Service.Interfaces;
 namespace WPF_Application.UserControls.Forms
 {
     /// <summary>
-    /// Logique d'interaction pour AddressUserLists.xaml
+    /// Logique d'interaction pour UsersNotifications.xaml
     /// </summary>
-    public partial class AddressUserLists : UserControl
+    public partial class UsersNotifications : UserControl
     {
+      
+
         private IServiceUserAppCurrent serviceUserAppCurrent { get; } = ((App)Application.Current)._serviceUserApp;
 
         private readonly IMapper _mapper = ((App)Application.Current).Mapper;
-        public AddressLists StocksList { get; set; } = new AddressLists();
-
         private JsonGenericReader<UserModel, UserDto> _json { get; set; }
-        private ObservableCollection<UserModel> _lists { get; set; }
-
-
-        public AddressUserLists()
-        {
+        public UsersNotifications()
+    {
             InitializeComponent();
             _json = new UserServiceReader(new HttpClient(), _mapper);
-            _lists = new ObservableCollection<UserModel>();
         }
-        
+        public NotificationLists NotifsLists{ get; set; } = new NotificationLists();
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             DataContext = this;
-            LoadAddress();
+            LoadStock();
 
         }
 
-        public async void LoadAddress()
+        public async void LoadStock()
         {
             Client utilisateur = serviceUserAppCurrent.GetClientCurrent();
-            var stocks = utilisateur._addresses;
-          
-            IEnumerable<AddressModel> userModels = _mapper.Map<IEnumerable<AddressModel>>(stocks);
+            var stocks = utilisateur._notifications;
 
-            StocksList.Addresses = new ObservableCollection<AddressModel>(userModels);
+
+
+            List<NotificationModel> userModels = new List<NotificationModel>();
+
+            stocks.ToList().ForEach(stock => userModels.Add(_mapper.Map<NotificationModel>(stock)));
+                
+
+            NotifsLists.Notifs = new ObservableCollection<NotificationModel>(userModels);
 
 
         }
-
-
 
         private async Task setAddress(UserModel user, string message, string message_error)
         {
 
-            var result = await _json.UpdateStocks(user,"/adresses");
-            if(result == 200)
+            var result = await _json.UpdateStocks(user, "/notifs");
+            if (result == 200)
             {
-                MessageBox.Show(message, message,MessageBoxButton.OK,MessageBoxImage.Information);
+                MessageBox.Show(message, message, MessageBoxButton.OK, MessageBoxImage.Information);
+                var _client = _mapper.Map<Client>(user);
+                serviceUserAppCurrent.setClientCurrent(_client);
             }
             else
             {
-                MessageBox.Show(message_error, message_error,MessageBoxButton.OK,MessageBoxImage.Error);
+                MessageBox.Show(message_error, message_error, MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
 
 
         }
 
-     
-    
+
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Client client = serviceUserAppCurrent.GetClientCurrent();
 
+            Notification notification = new Notification() { Id= Guid.NewGuid(),_textRappel = TbText.Text,_sendAt = DateTime.Now,ClientId = serviceUserAppCurrent.GetClientCurrent().Id};
 
-            var newAddress = new Address(TbAdress.Text, TbAddress2.Text, TbCp.Text, TbCity.Text, TbCountry.Text);
-
-            client._addresses.Add(newAddress);
+            client._notifications.Add(notification);
             var mapped = _mapper.Map<UserModel>(client);
-            setAddress(mapped, "add addresses", "Error : addresses can not added");
 
-           serviceUserAppCurrent.setClientCurrent(client);
+
+            mapped._notifs =  _mapper.Map<List<Notification>>(client._notifications);
+            setAddress(mapped, "add notif", "Error : notifs can not added");
+
+          
 
 
 
         }
-
 
     }
 }
