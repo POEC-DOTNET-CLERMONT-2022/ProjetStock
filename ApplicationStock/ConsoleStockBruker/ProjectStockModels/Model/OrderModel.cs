@@ -19,12 +19,12 @@ namespace ProjectStockModels.Model
 
         public Guid ClientId
         {
-            get { return _id; }
+            get { return _clientId; }
             set
             {
                 if (value != null)
                 {
-                    _id = value;
+                    _clientId = value;
                     OnNotifyPropertyChanged();
                 }
             }

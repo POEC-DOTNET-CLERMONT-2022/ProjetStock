@@ -11,7 +11,7 @@ using ProjectStockLibrary;
 
 namespace ProjectStockLibrary
 {
-    [JsonArray]
+
     public class Stock : BaseEntity
     {
     
@@ -19,7 +19,7 @@ namespace ProjectStockLibrary
         public float _value { get;  set; }
         public string _entrepriseName { get;set; }
 
-        [ForeignKey("Client")]
+
         private List<Client> _clients { get; set; }
        
 

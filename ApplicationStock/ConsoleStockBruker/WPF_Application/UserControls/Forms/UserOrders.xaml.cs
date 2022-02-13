@@ -33,7 +33,7 @@ namespace WPF_Application.User
       
         private readonly IMapper _mapper = ((App)Application.Current).Mapper;
 
-        public OrderLists OrderLists { get; set; } = new OrderLists();
+        public OrderLists OrdersLists { get; set; } = new OrderLists();
 
 
         private JsonGenericReader<OrderModel, OrderDto> jsonGenericReader { get; }
@@ -46,8 +46,6 @@ namespace WPF_Application.User
             InitializeComponent();
           
         }
-        public StockLists StocksList { get; set; } = new StockLists();
-
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             DataContext = this;
@@ -59,11 +57,13 @@ namespace WPF_Application.User
         {
             Client utilisateur = serviceUserAppCurrent.GetClientCurrent();
             var stocks = utilisateur._Orders;
+            List<OrderModel> userModels = new List<OrderModel>();
+            stocks.ToList().ForEach(stock =>userModels.Add(_mapper.Map<OrderModel>(stock)));
 
 
-            IEnumerable<OrderModel> userModels = _mapper.Map<IEnumerable<OrderModel>>(stocks);
+            OrdersLists.Orders = new ObservableCollection<OrderModel>(userModels);
 
-            OrderLists.Orders = new ObservableCollection<OrderModel>(userModels);
+      
 
 
         }

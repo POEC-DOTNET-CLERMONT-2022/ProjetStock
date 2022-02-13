@@ -89,20 +89,26 @@ namespace WPF_Application.UserControls.Forms
             var result = this.comboBox1.SelectedItem as StockModel;
 
            //var ordername = "Buy " + DateTime.Now.ToString() + " - " + serviceUserAppCurrent.GetGuid().ToString();
-            var stock = new Stock(Guid.NewGuid(), result.Name, result._value, result.EntrepriseName);
+            var stock = new Stock(result.Id, result.Name, result._value, result.EntrepriseName);
 
-          
-            var order = new OrderModel() { Id = Guid.NewGuid(), OrderDate = DateTime.Now, OrderName = "Buy " + DateTime.Now.ToString() + " - " + serviceUserAppCurrent.GetGuid().ToString(), NbStock = 10, Stock = stock};
-
+            var id = new Guid();
+            var order = new OrderModel() { Id = id, OrderDate = DateTime.Now, OrderName = "Buy " + DateTime.Now.ToString() + " - " + serviceUserAppCurrent.GetGuid().ToString(), NbStock = 10, ClientId = serviceUserAppCurrent.GetClientCurrent().Id,Stock = stock};
+            order.Id = Guid.NewGuid();
+           
             var resultat = await json.Add(order);
-           if(resultat == 400)
+           if(resultat == 200)
             {
                 Client client = serviceUserAppCurrent.GetClientCurrent();
                 client.AddStocks(stock);
 
+                var mapped_order = _mapper.Map<Order>(order);
+                client._Orders.Add(mapped_order);
+
                 UserModel model = _mapper.Map<UserModel>(client);
                 await jsonUser.UpdateStocks(model,"/stocks");
                 MessageBox.Show("Vous avez acheté une action", "Achat action", MessageBoxButton.OK,MessageBoxImage.Asterisk);
+
+                serviceUserAppCurrent.setClientCurrent(client);
                 Navigator.NavigateTo(typeof(MenuActionStockSell));
             }
             else

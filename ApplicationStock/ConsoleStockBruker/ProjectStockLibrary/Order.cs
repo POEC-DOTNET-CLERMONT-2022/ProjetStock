@@ -10,8 +10,7 @@ namespace ProjectStockLibrary
 {
     public  class Order : BaseEntity
     {
-        [Key]
-        public new Guid Id { get; private set; }
+        
         public string _orderName { get;  set; }
         public  DateTime _orderDate { get;  set; }
        

@@ -39,12 +39,12 @@ namespace WPF_Application.UserControls.Forms
         public INavigator Navigator { get; set; } = ((App)Application.Current).Navigator;
 
 
+
         private JsonGenericReader<StockModel, StockDto> jsonGenericReader { get; }
 
         private JsonGenericReader<OrderModel, OrderDto> json { get; set; }
 
-
-
+        private JsonGenericReader<UserModel, UserDto> jsonUser { get; set; }
         private static ObservableCollection<StockModel> _lists { get; set; }
         public StockLists StocksList { get; set; } = new StockLists();
 
@@ -79,26 +79,41 @@ namespace WPF_Application.UserControls.Forms
         {
 
             HttpClient _client = new HttpClient();
+            HttpClient _client2 = new HttpClient();
+
+            jsonUser = new UserServiceReader(_client2, _mapper);
 
             json = new OrderServiceReader(_client, _mapper);
 
             var result = this.comboBox1.SelectedItem as StockModel;
 
-            var stock = _mapper.Map<Stock>(result);
-            var order = new OrderModel() { Id = Guid.NewGuid(), OrderDate = DateTime.Now, OrderName = "Sell " + DateTime.Now.ToString() + " - " + serviceUserAppCurrent.GetGuid().ToString(), NbStock = 10};
+            //var ordername = "Buy " + DateTime.Now.ToString() + " - " + serviceUserAppCurrent.GetGuid().ToString();
+            var stock = new Stock(result.Id, result.Name, result._value, result.EntrepriseName);
+
+            var id = new Guid();
+            var order = new OrderModel() { Id = id, OrderDate = DateTime.Now, OrderName = "Buy " + DateTime.Now.ToString() + " - " + serviceUserAppCurrent.GetGuid().ToString(), NbStock = 10, ClientId = serviceUserAppCurrent.GetClientCurrent().Id, Stock = stock };
+            order.Id = Guid.NewGuid();
 
             var resultat = await json.Add(order);
             if (resultat == 200)
             {
-                MessageBox.Show("Vous avez acheté une action", "Achat action", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-                Navigator.NavigateTo(typeof(MenuActionStockSell));
+                Client client = serviceUserAppCurrent.GetClientCurrent();
+                client.AddStocks(stock);
 
+                var mapped_order = _mapper.Map<Order>(order);
+                client._Orders.Add(mapped_order);
+
+                UserModel model = _mapper.Map<UserModel>(client);
+                await jsonUser.UpdateStocks(model, "/stocks");
+                MessageBox.Show("Vous avez vendu une action", "Vendu action", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+
+                serviceUserAppCurrent.setClientCurrent(client);
+                Navigator.NavigateTo(typeof(MenuActionStockSell));
             }
             else
             {
                 MessageBox.Show("erreur order", "erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
 
         }
     }

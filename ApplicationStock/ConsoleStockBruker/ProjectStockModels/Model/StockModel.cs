@@ -15,7 +15,22 @@ namespace ProjectStockModels.Model
         public float _value;
         public string _entrepriseName;
 
-       
+
+        public List<Client> _clients;
+
+        public List<Client> Clients
+        {
+            get { return _clients; }
+            set
+            {
+                if (value != null)
+                {
+                    _clients = value;
+                    OnNotifyPropertyChanged();
+                }
+
+            }
+        }
         public Guid Id
         {
             get { return _id; }

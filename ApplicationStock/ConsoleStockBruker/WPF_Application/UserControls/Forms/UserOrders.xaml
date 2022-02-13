@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPF_Application.User" xmlns:WPF_Application.UserControls="clr-namespace:WPF_Application.UserControls"
-             mc:Ignorable="d" 
+             mc:Ignorable="d" Loaded="Window_Loaded"
              d:DesignHeight="450" d:DesignWidth="800">
 
     <Grid>
@@ -52,17 +52,15 @@
 
         </StackPanel>
 
-        <ListBox Grid.ColumnSpan="8" SelectedItem="{Binding   OrderLists.Order}" ItemsSource="{Binding  OrderLists.Orders}" Grid.Row="2" x:Name="ListUser" Background="LightGray">
+        <ListBox Grid.ColumnSpan="8"  ItemsSource="{Binding   OrdersLists.Orders}" Grid.Row="2" x:Name="ListUser" Background="LightGray">
 
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="Name :"/>
+                    <StackPanel>-
+                        <TextBlock Text="Value :"/>
+                        <TextBlock Text="{Binding Value}"/>
+                        <TextBlock Text="OrderName :"/>
                         <TextBlock Text="{Binding OrderName}"/>
-                        <TextBlock Text="orderDate :"/>
-                        <TextBlock Text="{Binding OrderDate}"/>
-                        <TextBlock Text="Nb stock  :"/>
-                        <TextBlock Text="{Binding NbStock}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

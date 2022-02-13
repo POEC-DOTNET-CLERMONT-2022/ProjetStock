@@ -23,7 +23,7 @@
 
                     <MenuItem Header="Lists"  Height="50">
 
-                        <MenuItem Header="Lists of  Stocks"  Click="MenuItem_Click"/>
+                        <MenuItem Header="Lists of stocks"  Click="MenuItem_Click"/>
                  
                         <MenuItem Header="Lists of users" Click="MenuItem_Click_2"></MenuItem>
                         <MenuItem Header="Lists of notifications" Click="MenuItem_Click_3">

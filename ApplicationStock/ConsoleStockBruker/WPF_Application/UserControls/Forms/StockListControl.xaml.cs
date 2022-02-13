@@ -93,8 +93,9 @@ namespace WPF_Application.Stocks
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            List<Client> _clients = new List<Client>();
 
-            var newUser = new StockModel() { Id = Guid.NewGuid(), EntrepriseName = TbEntrepriseName.Text, Value = int.Parse(TbValue.Text), Name = TbNam.Text };
+            var newUser = new StockModel() { Id = Guid.NewGuid(), EntrepriseName = TbEntrepriseName.Text, Value = int.Parse(TbValue.Text), Name = TbNam.Text , Clients = _clients};
             addStock( newUser);
             StocksList.Stocks.Add(newUser);
 
