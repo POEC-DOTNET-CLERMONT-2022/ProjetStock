@@ -52,17 +52,15 @@
 
         </StackPanel>
 
-        <ListBox Grid.ColumnSpan="8" SelectedItem="{Binding   OrderLists.Orders}" ItemsSource="{Binding  OrderLists.Orders}" Grid.Row="2" x:Name="ListUser" Background="LightGray">
+        <ListBox Grid.ColumnSpan="8"  ItemsSource="{Binding   OrdersLists.Orders}" Grid.Row="2" x:Name="ListUser" Background="LightGray">
 
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="Name :"/>
+                    <StackPanel>-
+                        <TextBlock Text="Value :"/>
+                        <TextBlock Text="{Binding Value}"/>
+                        <TextBlock Text="OrderName :"/>
                         <TextBlock Text="{Binding OrderName}"/>
-                        <TextBlock Text="orderDate :"/>
-                        <TextBlock Text="{Binding OrderDate}"/>
-                        <TextBlock Text="Nb stock  :"/>
-                        <TextBlock Text="{Binding NbStock}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
