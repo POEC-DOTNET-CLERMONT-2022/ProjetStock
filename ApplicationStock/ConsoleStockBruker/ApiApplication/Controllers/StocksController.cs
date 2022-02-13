@@ -119,7 +119,7 @@ namespace ApiApplicationProjectStock.Controllers
         public ActionResult<StockDto> Put(StockDto stockDto)
         {
 
-            try{
+            try{s
             
                 var p = genericRepository.GetById(stockDto.Id);
                 if (p == null)
