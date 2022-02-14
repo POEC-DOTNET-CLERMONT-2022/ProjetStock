@@ -23,8 +23,6 @@ namespace ProjectStockLibrary
         private List<Client> _clients { get; set; }
        
 
-
-
         public Stock(string name,float value, string entrepriseName)
         {
             Id = Guid.NewGuid();

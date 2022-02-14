@@ -7,9 +7,7 @@ using ApiApplication.Profil.Repository.Interfaces;
 using ApiApplication.Service.ApiApplication.Controllers.Services;
 using ApiApplication.Service.Interfaces;
 using AutoMapper;
-
 using Microsoft.AspNetCore.Mvc;
-
 using ProjectStockDTOS;
 using ProjectStockLibrary;
 using ProjectStockPatternsLibrary;
@@ -66,8 +64,7 @@ namespace ApiApplicationProjectStock.Controllers
                     return NotFound();
                 else
                 {
-                    p.ForEach(val => val._addresses =  _context._addresses.Where(o => o.ClientId == val.Id).ToList()); 
-
+                    p.ForEach(val => val._addresses =  _context._addresses.Where(o => o.ClientId == val.Id).ToList());
 
                     return Ok(p);
                 }
