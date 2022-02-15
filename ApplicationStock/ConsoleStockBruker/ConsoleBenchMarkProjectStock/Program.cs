@@ -19,6 +19,7 @@ var step = Step.Create("fetch_html_page",
                                    });
 
             var scenario = ScenarioBuilder
+
                 .CreateScenario("simple_http", step)
                 .WithWarmUpDuration(TimeSpan.FromSeconds(10))
                 .WithLoadSimulations(

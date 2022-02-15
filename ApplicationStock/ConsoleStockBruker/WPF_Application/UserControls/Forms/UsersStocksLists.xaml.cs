@@ -45,9 +45,9 @@ namespace WPF_Application.UserControls.Forms
         public async void LoadStock()
         {
             Client utilisateur = serviceUserAppCurrent.GetClientCurrent();
-            var stocks = utilisateur._stocks;
+            var stocks = new List<Stock>();
 
-            
+            utilisateur._stocks.ToList().ForEach(x => stocks.Add(x));
             IEnumerable<StockModel> userModels = _mapper.Map<IEnumerable<StockModel>>(stocks);          
 
             StocksList.Stocks = new ObservableCollection<StockModel>(userModels);

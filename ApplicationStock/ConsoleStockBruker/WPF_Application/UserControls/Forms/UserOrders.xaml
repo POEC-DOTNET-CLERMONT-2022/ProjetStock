@@ -10,7 +10,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.25*"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -27,40 +27,32 @@
             <WPF_Application.UserControls:MenuUserControl></WPF_Application.UserControls:MenuUserControl>
 
         </StackPanel >
-        <StackPanel Grid.Row="1" Grid.Column="8">
-
-        </StackPanel>
 
 
-        <StackPanel Grid.Row="1" Grid.Column="1">
-            <WrapPanel>
-                <StackPanel>
-                    <TextBlock Text="Mes orders"/>
-
-
-                </StackPanel>
-
-            </WrapPanel>
-        </StackPanel>
-        <StackPanel Grid.Row="1" Grid.Column="2">
-
-        </StackPanel>
-
-
-
-        <StackPanel Grid.Column="3" Grid.Row="1">
-
-        </StackPanel>
-
-        <ListBox Grid.ColumnSpan="8"  ItemsSource="{Binding   OrdersLists.Orders}" Grid.Row="2" x:Name="ListUser" Background="LightGray">
-
+        <TextBlock  Text="My orders" Grid.Row="1"  Grid.Column="1" FontSize="23">
+            
+        </TextBlock>
+        <ListBox Grid.ColumnSpan="4" Grid.Column="1" ItemsSource="{Binding OrderLists.Orders}" Grid.Row="2" x:Name="ListUser" Background="LightGray">
+          
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="Value :"/>
-                        <TextBlock Text="{Binding Value}"/>
+
+                      
                         <TextBlock Text="OrderName :"/>
                         <TextBlock Text="{Binding OrderName}"/>
+                        <TextBlock Text="OrderDate :"/>
+                        <TextBlock Text="{Binding OrderDate}"/>
+
+                        <TextBlock Text="NbStock :"/>
+                        <TextBlock Text="{Binding NbStock}"/>
+
+                        <!--<TextBlock Text="Value stock :"/>
+                        <TextBlock Text="{Binding Stock._value}"/>
+                        <TextBlock Text="Entrerprise  :"/>
+                        <TextBlock Text="{Binding Stock._entrepriseName}"/>-->
+                        
+                        <Separator />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
