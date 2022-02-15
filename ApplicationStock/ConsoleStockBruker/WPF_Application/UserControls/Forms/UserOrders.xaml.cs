@@ -30,45 +30,43 @@ namespace WPF_Application.User
     /// </summary>
     public partial class UserOrders : UserControl
     {
-      
-        private readonly IMapper _mapper = ((App)Application.Current).Mapper;
 
-        public OrderLists OrdersLists { get; set; } = new OrderLists();
-
-
-        private JsonGenericReader<OrderModel, OrderDto> jsonGenericReader { get; }
-
-    
         private IServiceUserAppCurrent serviceUserAppCurrent { get; } = ((App)Application.Current)._serviceUserApp;
+
+        private readonly IMapper _mapper = ((App)Application.Current).Mapper;
+        public OrderLists OrderLists { get; set; } = new OrderLists();
+
+        private JsonGenericReader<UserModel, UserDto> _json { get; set; }
+        private ObservableCollection<OrderModel> _lists { get; set; }
+
 
         public UserOrders()
         {
             InitializeComponent();
-          
-
+            DataContext = this;
+            _json = new UserServiceReader(new HttpClient(), _mapper);
+        
         }
+
+
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             DataContext = this;
-            LoadStock();
+            LoadAddress();
 
         }
 
-        public async void LoadStock()
+        public async void LoadAddress()
         {
             Client utilisateur = serviceUserAppCurrent.GetClientCurrent();
             var stocks = utilisateur._Orders;
-            List<OrderModel> userModels = new List<OrderModel>();
-            stocks.ToList().ForEach(stock =>userModels.Add(_mapper.Map<OrderModel>(stock)));
 
-
-            OrdersLists.Orders = new ObservableCollection<OrderModel>(userModels);
-
-      
+            IEnumerable<OrderModel> userModels = _mapper.Map<IEnumerable<OrderModel>>(stocks);
+            _lists = new ObservableCollection<OrderModel>(userModels); 
+            OrderLists.Orders = _lists;
 
 
         }
-
 
 
     }

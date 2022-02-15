@@ -18,7 +18,7 @@ namespace ProjectStockModels.Lists
         {
             get { return _Stock; }
             set { 
-              if(_Stock != value)
+              if(value != null)
                 {
                     _Stock = value;
                     OnNotifyPropertyChanged();
@@ -32,7 +32,7 @@ namespace ProjectStockModels.Lists
             get { return _Stocks; }
             set
             {
-                if(_Stocks != value) { 
+                if(value != null) { 
                     _Stocks = value;
                     OnNotifyPropertyChanged();
 

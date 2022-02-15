@@ -18,10 +18,7 @@ namespace ProjectStockLibrary
         public string _name { get;  set; }
         public float _value { get;  set; }
         public string _entrepriseName { get;set; }
-
-
         private List<Client> _clients { get; set; }
-       
 
         public Stock(string name,float value, string entrepriseName)
         {

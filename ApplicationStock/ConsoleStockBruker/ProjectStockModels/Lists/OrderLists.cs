@@ -11,8 +11,8 @@ namespace ProjectStockModels.Lists
 {
     public class OrderLists : ObservableObject
     {
-        private ObservableCollection<OrderModel>? _Orders;
-        private OrderModel? _Order;
+        private ObservableCollection<OrderModel> _Orders;
+        private OrderModel _Order;
 
         public OrderModel Order
         {
@@ -32,7 +32,7 @@ namespace ProjectStockModels.Lists
         {
             get { return  _Orders; }
             set { 
-               if(_Orders != null)
+               if(value != null)
                 {
                     _Orders = value;
                     OnNotifyPropertyChanged();

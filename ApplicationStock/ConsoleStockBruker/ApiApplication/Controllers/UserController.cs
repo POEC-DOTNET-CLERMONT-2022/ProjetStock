@@ -66,6 +66,8 @@ namespace ApiApplicationProjectStock.Controllers
                 {
                     p.ForEach(val => val._addresses =  _context._addresses.Where(o => o.ClientId == val.Id).ToList());
 
+                    p.ForEach(val => val._Orders = _context._orders.Where(o => o.ClientId == val.Id).ToList());
+                    p.ForEach(val => val._notifications = _context._notifs.Where(o => o.ClientId == val.Id).ToList());
                     return Ok(p);
                 }
                 
@@ -187,6 +189,8 @@ namespace ApiApplicationProjectStock.Controllers
                 else
                 {
                     p._addresses = _context._addresses.Where(o => o.ClientId == p.Id).ToList();
+                    p._Orders = _context._orders.Where(o => o.ClientId == p.Id).ToList();
+                    p._notifications = _context._notifs.Where(o => o.ClientId == p.Id).ToList();
                     return Ok(p);
                 }
                
