@@ -22,7 +22,8 @@
 
 </div>
 
-<table class="table table-striped table-bordered"  id="example" >
+
+<table class="table table-striped table-bordered"  id="example">
   <thead class="thead-light">
     <tr>
       <th scope="col">Id</th>
@@ -47,7 +48,7 @@
      
       
       
-      <td><button class="btn btn-secondary" [routerLink]="['/delete_order/', user['_id'].toString()]">Remove</button><button class="btn btn-primary" [routerLink]="['/modify_order/', user['_id'].toString()]">Modify</button></td>
+      <td><button class="btn btn-secondary" [routerLink]="['/delete_order/', user['_id']]">Remove</button><button class="btn btn-primary" [routerLink]="['/modify_order/', user['_id']]">Modify</button></td>
     </tr>
    
   </tbody>

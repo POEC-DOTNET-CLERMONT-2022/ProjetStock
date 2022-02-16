@@ -162,7 +162,8 @@ export class AuthService {
      'id' : Guid.create().toString(),
      '_name' : _name,
      '_value' : _value,
-     '_entrepriseName' : _entrepriseName
+     '_entrepriseName' : _entrepriseName,
+     'clientId' : data[5].split('"')[1]
     }, {headers :reqHeader});
   }
   putStock(_id : Guid,_name :string,_value : number,_entrepriseName : string): Observable<any> {
@@ -180,7 +181,8 @@ export class AuthService {
      'id' : _id,
      '_name' : _name,
      '_value' : 1,
-     '_entrepriseName' : _entrepriseName
+     '_entrepriseName' : _entrepriseName,
+     'clientId' : data[5].split('"')[1]
     }, {headers :reqHeader});
   }
   
@@ -280,7 +282,7 @@ export class AuthService {
      'id' : Guid.create().toString(),
      'textRappel' : _textRappel,
      '__sentAt ' : _sentAt,
-     'ClientId' :data[5].split('"')[1]
+     'ClientId' : data[5].split('"')[1]
     }, {headers :reqHeader});
   }
 
