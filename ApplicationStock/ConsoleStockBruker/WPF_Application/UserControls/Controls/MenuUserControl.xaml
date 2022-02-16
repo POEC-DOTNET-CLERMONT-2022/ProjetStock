@@ -62,7 +62,7 @@
                     <MenuItem Header="My informations"  Height="50">
                
 
-                        <MenuItem Header="My profile" Click="Profile_Click"></MenuItem>
+                    <MenuItem Header="My Profile" Click="Profile_Click"></MenuItem>
                     <MenuItem Header="My Orders" Click="Orders_Click"></MenuItem>
                     <MenuItem Header="My Stocks" Click="Stocks_Click"></MenuItem>
                     <MenuItem Header="My Addresses" Click="Addresses_Click"></MenuItem>

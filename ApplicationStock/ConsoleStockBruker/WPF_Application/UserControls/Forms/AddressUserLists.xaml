@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WPF_Application.UserControls.Forms" xmlns:WPF_Application.UserControls="clr-namespace:WPF_Application.UserControls"
+             xmlns:local="clr-namespace:WPF_Application.UserControls.Forms" xmlns:WPF_Application.UserControls="clr-namespace:WPF_Application.UserControls" xmlns:local1="clr-namespace:WPF_Application.UserControls.Controls"
              mc:Ignorable="d" Loaded="Window_Loaded"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -11,6 +11,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="4*"/>
+            <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -80,25 +81,19 @@
             </WrapPanel>
         </StackPanel>
 
-       
-        <ListBox Grid.ColumnSpan="8" SelectedItem="{Binding  StocksList.Address}" ItemsSource="{Binding  StocksList.Addresses}" Grid.Row="2" x:Name="ListUser" Background="LightGray">
+
+        <ListBox Grid.ColumnSpan="2" SelectedItem="{Binding StocksList.Address}" ItemsSource="{Binding  StocksList.Addresses}" Grid.Row="2" x:Name="ListUser" Background="LightGray" Grid.Column="1">
 
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="Address_line_1 :"/>
-                        <TextBlock Text="{Binding Address_line_1}"/>
-                        <TextBlock Text="Address_line_2 :"/>
-                        <TextBlock Text="{Binding Address_line_2}"/>
-                        <TextBlock Text="CodePostal :"/>
-                        <TextBlock Text="{Binding CodePostal}"/>
-                        <TextBlock Text="City :"/>
-                        <TextBlock Text="{Binding City}"/>
-                        <TextBlock Text="Country :"/>
-                        <TextBlock Text="{Binding Country}"/>
+                        <TextBlock Text="Address :"></TextBlock>
+                        <TextBlock Text="{Binding Address_line_1}"></TextBlock>
+          
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <local1:AddressInfoUc CurrentAddress="{Binding  StocksList.Address}" Grid.Row="2" Grid.Column="4"></local1:AddressInfoUc>
     </Grid>
 </UserControl>

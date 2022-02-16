@@ -31,7 +31,7 @@
         <TextBlock  Text="My stocks" Grid.Row="1"  Grid.Column="1" FontSize="23">
 
         </TextBlock>
-        <ListBox Grid.ColumnSpan="4" Grid.Column="1" ItemsSource="{Binding StocksList.Stocks }" Grid.Row="2" x:Name="ListUser" Background="LightGray">
+        <ListBox Grid.ColumnSpan="4" Grid.Column="1"   SelectedItem="{Binding StocksList.Stock}"  ItemsSource="{Binding StocksList.Stocks }" Grid.Row="2" x:Name="ListUser" Background="LightGray">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>

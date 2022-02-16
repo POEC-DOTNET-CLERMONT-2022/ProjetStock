@@ -57,13 +57,7 @@ namespace WPF_Application.UserControls.Forms
         public async void LoadMarket()
         {
             var userModels = await jsonGenericReader.GetAll();
-
-
-            var market = userModels.Where(x => x.Id == marketGuid).FirstOrDefault();
-            List<MarketModel> _markets = new List<MarketModel>();
-
-            _markets.Add(market);
-            MarketsLists.Markets = new ObservableCollection<MarketModel>(_markets);
+            MarketsLists.Market = userModels.Where(x => x.Id == marketGuid).FirstOrDefault();
 
 
         }

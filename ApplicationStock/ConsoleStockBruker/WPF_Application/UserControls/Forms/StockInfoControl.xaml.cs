@@ -58,12 +58,7 @@ namespace WPF_Application.UserControls.Forms
         {
             var userModels = await jsonGenericReader.GetAll();
 
-
-            var market = userModels.Where(x => x.Id == stockGuid).FirstOrDefault();
-            List<StockModel> _markets = new List<StockModel>();
-
-            _markets.Add(market);
-            StockLists.Stocks = new ObservableCollection<StockModel>(_markets);
+            StockLists.Stock = userModels.Where(x => x.Id == stockGuid).FirstOrDefault();
 
 
         }
