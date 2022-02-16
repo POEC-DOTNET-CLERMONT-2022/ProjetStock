@@ -3,14 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WPF_Application.UserControls.Forms" xmlns:WPF_Application.UserControls="clr-namespace:WPF_Application.UserControls"
+             xmlns:local="clr-namespace:WPF_Application.UserControls.Forms" xmlns:WPF_Application.UserControls="clr-namespace:WPF_Application.UserControls" xmlns:local1="clr-namespace:WPF_Application.UserControls.Controls"
              mc:Ignorable="d"  Loaded="Window_Loaded"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="6*"/>
+            <RowDefinition Height="4*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -26,12 +27,10 @@
             <WPF_Application.UserControls:MenuUserControl></WPF_Application.UserControls:MenuUserControl>
 
         </StackPanel >
-        <StackPanel Grid.Row="1" Grid.Column="8">
-
-        </StackPanel>
-
+      
 
         <StackPanel Grid.Row="1" Grid.Column="1">
+            
             <WrapPanel>
                 <StackPanel>
 
@@ -76,21 +75,24 @@
                 </StackPanel>
             </WrapPanel>
         </StackPanel>
-
-        <ListBox Grid.ColumnSpan="8" SelectedItem="{Binding   OrdersList.Order }" ItemsSource="{Binding   OrdersList.Orders}" Grid.Row="2" x:Name="ListUser" Background="LightGray">
+    
+        <ListBox Grid.ColumnSpan="2" Grid.Column="1"  SelectedItem="{Binding OrdersList.Order }" ItemsSource="{Binding OrdersList.Orders}" Grid.Row="2" x:Name="ListUser" Background="LightGray">
 
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="ID :"/>
-                        <TextBlock Text="{Binding Id}"/>
-                        <TextBlock Text="Value :"/>
-                        <TextBlock Text="{Binding Value}"/>
+
+
                         <TextBlock Text="OrderName :"/>
                         <TextBlock Text="{Binding OrderName}"/>
+
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+
+        <local1:OrderInfoControl Grid.Column="4"  Grid.Row="2" CurrentOrder="{Binding OrdersList.Order}" ></local1:OrderInfoControl>
+
+      
     </Grid>
 </UserControl>

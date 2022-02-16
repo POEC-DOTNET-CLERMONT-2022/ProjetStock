@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WPF_Application.UserControls.Forms" xmlns:WPF_Application.UserControls="clr-namespace:WPF_Application.UserControls"
+             xmlns:local="clr-namespace:WPF_Application.UserControls.Forms" xmlns:WPF_Application.UserControls="clr-namespace:WPF_Application.UserControls" xmlns:local1="clr-namespace:WPF_Application.UserControls.Controls"
              mc:Ignorable="d" Loaded="Window_Loaded"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -15,27 +15,9 @@
         <DockPanel>
 
 
-            <StackPanel   Background="LightGray" Height="425" Width="450" HorizontalAlignment="Center" VerticalAlignment="Center">
-
-                <TextBlock FontSize="20">Stock information</TextBlock>
-                <ListBox Grid.ColumnSpan="8" SelectedItem="{Binding   StockLists.Stock}" ItemsSource="{Binding  StockLists.Stocks}" Grid.Row="2" x:Name="ListUser" Background="LightGray">
-
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel>
-
-                                <TextBlock Text="ID :"/>
-                                <TextBlock Text="{Binding Id}"/>
-                                <TextBlock Text="LastName :"/>
-                                <TextBlock Text="{Binding Name}"/>
-                                <TextBlock Text="Value :"/>
-                                <TextBlock Text="{Binding Value}"/>
-                                <TextBlock Text="Entreprise Name :"/>
-                                <TextBlock Text="{Binding EntrepriseName}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+            <StackPanel  Height="425" Width="450" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <local1:StockInfoUC CurrentStock="{Binding  StockLists.Stock}"></local1:StockInfoUC>
+              
             </StackPanel>
         </DockPanel>
 
