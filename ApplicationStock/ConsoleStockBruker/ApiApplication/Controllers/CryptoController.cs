@@ -1,9 +1,11 @@
 using ApiApplication.Helpers;
 using ApiApplication.Model;
 using ApiApplication.Models;
+using ApiApplication.Profil.Repository.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using ProjectStockDTOS;
+using ProjectStockLibrary;
 using ProjectStockPatternsLibrary;
 
 
@@ -18,10 +20,39 @@ namespace ApiApplicationProjectStock.Controllers
 
         private readonly APIContext _context;
 
-        public Cryptocontroller (IMapper mapper , APIContext context)
+        private readonly IGenericRepository<Crypto> genericRepository;
+
+        public Cryptocontroller (IMapper mapper , APIContext context, IGenericRepository<Crypto> generic)
+
         {
             _mapper = mapper;
             _context = context;
+            genericRepository = generic;
+
+        }
+
+        //// GET api/<ProjectController>/GetAll
+
+        [HttpGet("all")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CryptoDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<IEnumerable<CryptoDto>> GetAll()
+        {
+
+            try
+            {
+                var p = genericRepository.GetAll();
+                if (p == null)
+                    return NotFound();
+                else
+                    return Ok(p);
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+
 
         }
 
@@ -34,70 +65,54 @@ namespace ApiApplicationProjectStock.Controllers
         {
             try
             {
-                var p = _context._cryptos.Find(id);
+                var p = genericRepository.GetById(id);
 
+                var mapProj = _mapper.Map<CryptoDto>(p);
 
-                if (p == null)
+                if (mapProj == null)
                     return NotFound();
 
-                return Ok(p);
+                return Ok(mapProj);
             }catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
           
 
         }
 
 
-        // GET api/<ProjectController>/5
+        // PUT api/<ProjectController>/5
         [Authorize]
-        [HttpPost]
+        [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CryptoDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<CryptoDto> Post(CryptoDto  cryptoDto)
+
+        public ActionResult<CryptoDto> Put(CryptoDto cryptoDto)
         {
+
             try
             {
-                var p = cryptoDto.ToModel();
 
+                var p = genericRepository.GetById(cryptoDto.Id);
                 if (p == null)
-                    return NotFound();
-                else
-                {
-                    _context._cryptos.Add(p);
-                    _context.SaveChanges();
-                    return Ok(p);
-                }
-                   
-            
+                    return BadRequest();
+
+                p._name = cryptoDto._name;
+                p._value = cryptoDto._value;
+                //p._listMarket = cryptoDto._listMarker;
+                //p._listClient = cryptoDto._listClient;
+
+
+                var mapProj = _mapper.Map<CryptoDto>(p);
+                genericRepository.Update(p);
+                return Ok(mapProj);
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
-        }
 
-
-        // GET api/<ProjectController>/5
-        [Authorize]
-        [HttpPut]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CryptoDto))]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<CryptoDto> Put(CryptoDto cryptoDto)
-        {
-
-           
-            var p = _context._cryptos.Find(cryptoDto.Id);
-            if (p == null)
-                return BadRequest();
-           
-            p._name = cryptoDto._name;
-            p._value = cryptoDto._value;
-            _context._cryptos.Update(p);
-            _context.SaveChanges();
-
-            return Ok(p);
         }
 
         // DELETE api/<ProjectController>/5
@@ -107,18 +122,59 @@ namespace ApiApplicationProjectStock.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<CryptoDto> Delete(DeleteClass delete)
         {
-            var p = _context._cryptos.Find(delete.Id);
-            if(p != null)
+            try
             {
-                _context._cryptos.Remove(p);
-          
+                var p = genericRepository.GetById(delete.Id);
+                if (p != null)
+                {
+                    genericRepository.Delete(p);
+                    return Ok(p);
+
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
-           
-            else
-                return NotFound();
-            return Ok(p);
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
-       
+
+        [Authorize]
+        [HttpDelete("id")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CryptoDto))]
+        public ActionResult<CryptoDto> DeleteById(Guid id)
+        {
+
+            try
+            {
+
+                var p = genericRepository.GetById(id);
+                if (p != null)
+                {
+                    _context._cryptos.Remove(p);
+                    _context.SaveChanges();
+                    return Ok(p);
+
+                }
+
+                else
+                    return NotFound();
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+
+
+        }
+
+
+
 
 
     }
