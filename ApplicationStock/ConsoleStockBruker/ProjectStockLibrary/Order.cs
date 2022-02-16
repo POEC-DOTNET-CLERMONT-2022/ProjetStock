@@ -13,7 +13,9 @@ namespace ProjectStockLibrary
         
         public string _orderName { get;  set; }
         public  DateTime _orderDate { get;  set; }
-        public Stock _stock { get; set; }
+
+       
+        public Stock? _stock { get; set; }
         public Guid ClientId { get; set; }
         public int _nbStock { get; set; }
         public Order(string orderName,Stock stock,int nbStock) 

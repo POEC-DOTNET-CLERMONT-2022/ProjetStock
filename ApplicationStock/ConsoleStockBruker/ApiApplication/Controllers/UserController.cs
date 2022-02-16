@@ -191,6 +191,7 @@ namespace ApiApplicationProjectStock.Controllers
                     p._addresses = _context._addresses.Where(o => o.ClientId == p.Id).ToList();
                     p._Orders = _context._orders.Where(o => o.ClientId == p.Id).ToList();
                     p._notifications = _context._notifs.Where(o => o.ClientId == p.Id).ToList();
+                    p._stocks = _context._stocks.Where(o => o.ClientId == p.Id).ToList();
                     return Ok(p);
                 }
                
@@ -221,6 +222,7 @@ namespace ApiApplicationProjectStock.Controllers
                
                 p.ToList().ForEach(val => val._notifications = _context._notifs.Where(o => o.ClientId == val.Id).ToList());
                 p.ToList().ForEach(val => val._Orders = _context._orders.Where(o => o.ClientId == val.Id).ToList());
+                p.ToList().ForEach(val => val._stocks = _context._stocks.Where(o => o.ClientId == val.Id).ToList());
                 return Ok(p);
             }
                 

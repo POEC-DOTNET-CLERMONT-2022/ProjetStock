@@ -15,9 +15,7 @@
             <Separator />
             <TextBlock FontSize="20" Text="Stock Information "></TextBlock>
             <Separator></Separator>
-
-            <TextBlock Text="ID :"/>
-            <TextBlock Text="{Binding CurrentStock.Id}"/>
+            
             <TextBlock Text="Name :"/>
             <TextBlock Text="{Binding CurrentStock.Name}"/>
             <TextBlock Text="Value :"/>

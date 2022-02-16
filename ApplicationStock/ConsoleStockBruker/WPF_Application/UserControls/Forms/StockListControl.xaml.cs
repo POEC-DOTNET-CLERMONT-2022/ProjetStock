@@ -23,6 +23,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF_Application.Service.Interfaces;
 using WPF_Application.Utils;
 
 
@@ -35,7 +36,7 @@ namespace WPF_Application.Stocks
     {
         private readonly IGenericRepository<StockEntity> _stockRepository = ((App)Application.Current).stockRepository;
         private readonly IMapper _mapper = ((App)Application.Current).Mapper;
-
+        private IServiceUserAppCurrent serviceUserAppCurrent { get; } = ((App)Application.Current)._serviceUserApp;
         private JsonGenericReader<StockModel, StockDto> jsonGenericReader { get; }
 
 
@@ -95,7 +96,7 @@ namespace WPF_Application.Stocks
         {
             List<Client> _clients = new List<Client>();
 
-            var newUser = new StockModel() { Id = Guid.NewGuid(), EntrepriseName = TbEntrepriseName.Text, Value = int.Parse(TbValue.Text), Name = TbNam.Text , Clients = _clients};
+            var newUser = new StockModel() { Id = Guid.NewGuid(), EntrepriseName = TbEntrepriseName.Text, Value = int.Parse(TbValue.Text), Name = TbNam.Text , Clients = _clients, ClientId = serviceUserAppCurrent.GetClientCurrent().Id };
             addStock( newUser);
             StocksList.Stocks.Add(newUser);
 
@@ -105,7 +106,7 @@ namespace WPF_Application.Stocks
         {
           
 
-                var newUser = new StockModel() { Id = new Guid(TxtGuid.Text), EntrepriseName = TbEntrepriseName.Text, Value = int.Parse(TbValue.Text), Name = TbNam.Text };
+                var newUser = new StockModel() { Id = new Guid(TxtGuid.Text), EntrepriseName = TbEntrepriseName.Text, Value = int.Parse(TbValue.Text), Name = TbNam.Text, ClientId = serviceUserAppCurrent.GetClientCurrent().Id };
                 
                 updateStock(newUser);
                
