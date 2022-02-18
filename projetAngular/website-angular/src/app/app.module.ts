@@ -35,7 +35,9 @@ import { FooterComponent } from './footer/footer.component';
 import { StocksComponentComponent } from './stocks/stocks-component/stocks-component.component';
 import { StocksAddComponent } from './stocks/stocks-add/stocks-add.component';
 import { StocksDeleteComponent } from './stocks/stocks-delete/stocks-delete.component';
-import { StocksUpdateComponent } from './stocks/stocks-update/stocks-update.component';
+import { StocksUpdateComponent } from './stocks/stocks-update/stocks-update.component'
+
+
 @NgModule({
   
   declarations: [
@@ -77,7 +79,6 @@ import { StocksUpdateComponent } from './stocks/stocks-update/stocks-update.comp
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
- 
 
 
   ],

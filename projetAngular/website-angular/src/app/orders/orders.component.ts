@@ -40,6 +40,7 @@ export class OrdersComponent implements OnInit {
 
 
    this.UserService.getOrders().subscribe((order : Order[]) =>{
+     console.log(this._orders);
      this._orders = order;
    
    })

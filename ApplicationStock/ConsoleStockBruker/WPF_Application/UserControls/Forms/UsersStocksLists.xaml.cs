@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using ProjectStockDTOS;
 using ProjectStockLibrary;
+using ProjectStockModels.JsonReader;
 using ProjectStockModels.Lists;
 using ProjectStockModels.Model;
 using System;
@@ -29,9 +31,11 @@ namespace WPF_Application.UserControls.Forms
         private IServiceUserAppCurrent serviceUserAppCurrent { get; } = ((App)Application.Current)._serviceUserApp;
 
         private readonly IMapper _mapper = ((App)Application.Current).Mapper;
+     
         public UsersStocksLists()
         {
             InitializeComponent();
+            
         }
         public StockLists StocksList { get; set; } = new StockLists();
 

@@ -16,6 +16,20 @@ namespace ProjectStockModels.Model
         public string _entrepriseName;
 
 
+        public Guid _clientId;
+        public Guid ClientId
+        {
+            get { return _clientId; }
+            set
+            {
+                if (value != null)
+                {
+                    _clientId = value;
+                    OnNotifyPropertyChanged();
+                }
+            }
+        }
+
         public List<Client> _clients;
 
         public List<Client> Clients
@@ -31,6 +45,7 @@ namespace ProjectStockModels.Model
 
             }
         }
+  
         public Guid Id
         {
             get { return _id; }
