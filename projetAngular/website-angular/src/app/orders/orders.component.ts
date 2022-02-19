@@ -19,6 +19,17 @@ export class OrdersComponent implements OnInit {
   static pathSupOrder: string = 'delete_order';
   urlSupOrder : string = '/' + NavbarComponent.pathSupOrder;
   
+
+  p: Number = 1;
+  count: Number = 15;
+  public  getCount() : Number{
+    return  this.count;
+  }
+
+  public getP() : Number{
+    return this.p;
+  }
+  
   i : number = 0;
   constructor(private activateRoute : ActivatedRoute,public UserService : UserService,private router:Router) {
 

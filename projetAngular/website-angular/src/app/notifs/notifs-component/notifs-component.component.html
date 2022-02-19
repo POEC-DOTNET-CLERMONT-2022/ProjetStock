@@ -20,7 +20,7 @@
     <br>
     </div>
   </div>
-<table class="table table-striped table-bordered"  id="example" >
+<table class="table table-striped"  id="example" >
   <thead class="thead-light">
     <tr>
       <th scope="col">Id</th>
@@ -31,7 +31,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let user of _notifs">
+    <tr *ngFor="let user of _notifs  | paginate: { itemsPerPage: getCount().toString(), currentPage: getP().toString() }">
  
       <td *ngIf="user['id'] != null">{{user['id']}}</td>
       <td *ngIf="user['id'] == null">Null</td>
@@ -48,5 +48,9 @@
    
   </tbody>
 </table>
+<div class="text-center">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  <br>
+</div>
 <br>
 <br>

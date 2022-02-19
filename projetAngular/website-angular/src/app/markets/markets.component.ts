@@ -24,6 +24,11 @@ export class MarketsComponent implements OnInit {
   static pathDeleteMarket: string = 'delete_market';
   urlDeleteMarket : string = '/' + NavbarComponent.pathDeleteMarket;
   i : number = 0;
+  dtOptions: DataTables.Settings = {};
+
+  p: Number = 1;
+  count: Number = 15;
+
   constructor(private activateRoute : ActivatedRoute,public UserService : UserService,private router:Router) {
 
     this._markets =[];
@@ -32,8 +37,18 @@ export class MarketsComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
+  public  getCount() : Number{
+    return  this.count;
+  }
 
+  public getP() : Number{
+    return this.p;
+  }
+
+
+
+  ngOnInit(): void {
+  
 
   }
 

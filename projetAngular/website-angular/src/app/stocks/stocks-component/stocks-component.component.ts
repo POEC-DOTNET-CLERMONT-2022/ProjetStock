@@ -19,6 +19,15 @@ import { Stock } from 'src/models/Stock';
   styleUrls: ['./stocks-component.component.scss']
 })
 export class StocksComponentComponent implements OnInit {
+  p: Number = 1;
+  count: Number = 15;
+  public  getCount() : Number{
+    return  this.count;
+  }
+
+  public getP() : Number{
+    return this.p;
+  }
 
  
   _stocks : Stock[];
