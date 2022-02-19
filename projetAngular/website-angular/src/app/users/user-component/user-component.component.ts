@@ -18,6 +18,17 @@ import { NavbarComponent } from 'src/app/navbar/navbar/navbar.component';
   styleUrls: ['./user-component.component.scss']
 })
 export class UserComponentComponent implements OnInit{
+  
+  p: Number = 1;
+  count: Number = 15;
+  public  getCount() : Number{
+    return  this.count;
+  }
+
+  public getP() : Number{
+    return this.p;
+  }
+  
   _users : User[];
   _user : User[] ;
   i : number = 0;

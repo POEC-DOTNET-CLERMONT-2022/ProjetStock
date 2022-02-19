@@ -89,7 +89,10 @@ namespace WPF_Application.UserControls.Forms
             var result = this.comboBox1.SelectedItem as StockModel;
 
            //var ordername = "Buy " + DateTime.Now.ToString() + " - " + serviceUserAppCurrent.GetGuid().ToString();
-            var stock = new Stock(result.Id, result.Name, result._value, result.EntrepriseName);
+            
+            var stock = new Stock(result.Name, result._value, result.EntrepriseName);
+            stock.Id  = result.Id;
+            stock.ClientId = serviceUserAppCurrent.GetGuid();
 
             var id = new Guid();
             var order = new OrderModel() { Id = id, OrderDate = DateTime.Now, OrderName = "Buy " + DateTime.Now.ToString() + " - " + serviceUserAppCurrent.GetGuid().ToString(), NbStock = 10, ClientId = serviceUserAppCurrent.GetClientCurrent().Id,Stock = stock};

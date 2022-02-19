@@ -15,7 +15,7 @@ describe("First test", () => {
       cy.get('input[ng-reflect-name="email"]').type('cypress_email@gmail.fr');
       cy.get('input[ng-reflect-name="password"]').type('test');
       cy.get('input[ng-reflect-name="password_confirm"]').type('test');
-
+      cy.get('button[class="btn btn-primary btn-block"]').click();
 
       cy.pause();
       cy.visit("http://localhost:4200/login");

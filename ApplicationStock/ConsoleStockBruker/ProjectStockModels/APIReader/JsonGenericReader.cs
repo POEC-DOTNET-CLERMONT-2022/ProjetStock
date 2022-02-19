@@ -86,7 +86,7 @@ namespace ProjectStockModels.JsonReader
                     Content = new StringContent(JsonConvert.SerializeObject(create), Encoding.UTF8, "application/json")
                 };
                             
-                //TODO : utiliser plutôt _httpClient.PostAsJsonAsync()
+                
                 return _httpClient.SendAsync(request).Result;
 
     

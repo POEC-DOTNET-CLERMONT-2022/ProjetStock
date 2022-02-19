@@ -10,7 +10,16 @@ import { NavbarComponent } from 'src/app/navbar/navbar/navbar.component';
   styleUrls: ['./notifs-component.component.scss']
 })
 export class NotifsComponentComponent implements OnInit {
+  p: Number = 1;
+  count: Number = 15;
+  public  getCount() : Number{
+    return  this.count;
+  }
 
+  public getP() : Number{
+    return this.p;
+  }
+  
   _notifs : Notification[];
 
   static pathAjoutNotifs: string = 'ajout_notif';
