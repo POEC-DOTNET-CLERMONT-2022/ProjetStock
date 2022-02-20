@@ -54,7 +54,7 @@ namespace ProjectStock.Api.Tests.Controller
             Fixture = new Fixture();
             Orders = Fixture.CreateMany<NotificationEntity>();
             notifsRepository = new Mock<IGenericRepository<NotificationEntity>>();
-            //NotificationController = new NotificationController(Mapper, APIContext);
+           
         }
 
 

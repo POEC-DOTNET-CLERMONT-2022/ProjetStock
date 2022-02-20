@@ -47,7 +47,7 @@ namespace ProjectStock.Api.Tests.Divers
             
         }
 
-        //TODO cohérence fluent assertion ? 
+
         [TestMethod]
         public void TestPasswordHasher()
         {
@@ -55,14 +55,14 @@ namespace ProjectStock.Api.Tests.Divers
             var result = _passwordHasherService.GetPasswordHasher(test);
             bool match = Regex.IsMatch(result, "^[A-Fa-f0-9]{64}$");
 
-            Assert.IsNotNull(result);
-            Assert.IsInstanceOfType(result, typeof(string));
+            result.Should().NotBeNull();
+            result.Should().BeOfType<string>();
+      
 
+            test.Should().Equals(result);
 
-            Assert.AreNotSame(test, result);
+            match.Should().BeTrue();
 
-            Assert.IsTrue(match);
-           
 
 
         }

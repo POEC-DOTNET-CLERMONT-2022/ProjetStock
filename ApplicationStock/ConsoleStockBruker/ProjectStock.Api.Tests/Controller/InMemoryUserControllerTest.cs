@@ -54,12 +54,6 @@ namespace ProjectStock.Api.Tests
             [TestInitialize]
             public void InitTest()
             {
-                //UserController = new UserController( Mapper, ApiContext, IuserService);
-                //var option = new DbContextOptionsBuilder()
-                //    .UseInMemoryDatabase("myDataBase").Options;
-                //InMemoryDbContext = new DemoDbContext(option);
-                //InMemoryDbContext.Database.Migrate();
-
                 UserRepository = new GenericRepository<UserEntity>();
                 InMemoryDbContext.AddRange(CleanUserBdd);
                 InMemoryDbContext.SaveChanges();

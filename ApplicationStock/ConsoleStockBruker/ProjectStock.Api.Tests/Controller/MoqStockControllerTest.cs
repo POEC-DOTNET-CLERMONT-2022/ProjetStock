@@ -56,7 +56,7 @@ namespace ProjectStock.Api.Test.Controllers
             Fixture = new Fixture();
             Stocks = Fixture.CreateMany<StockEntity>();
             stockRepository = new Mock<IGenericRepository<StockEntity>>();
-          //  StockController = new StocksController(Mapper, APIContext);
+        
         }
 
 

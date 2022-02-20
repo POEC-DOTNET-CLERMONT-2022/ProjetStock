@@ -63,8 +63,6 @@ namespace ProjectStock.Api.Tests.Controllers
         public void TestGetAllUsers_NullRepository()
         {
             //Arrange
-           // UserController = new UserController(Mapper, APIContext, Iuserservice);
-
 
             //Act
             Guid id = new Guid();
