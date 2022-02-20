@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WPF_Application.UserControls.Forms" xmlns:WPF_Application.UserControls="clr-namespace:WPF_Application.UserControls"
+             xmlns:local="clr-namespace:WPF_Application.UserControls.Forms" xmlns:WPF_Application.UserControls="clr-namespace:WPF_Application.UserControls" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -12,24 +12,40 @@
         <DockPanel>
             <Image Height="86" Width="71"></Image>
         </DockPanel>
-        <DockPanel>
 
 
-            <StackPanel   Background="LightGray" Height="425" Width="450" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <materialDesign:Card 
+             Background="LightGray"   Height="425" Width="450"
+                          Foreground="Black"
+                      Padding="0"                                    
+                             >
+            <DockPanel>
 
 
-                <StackPanel Grid.Row="0" Orientation="Horizontal">
-                    <TextBlock FontSize="20">Sell or Buy Action</TextBlock>
-                  
+                <StackPanel    HorizontalAlignment="Center" VerticalAlignment="Center">
+
+
+                    <StackPanel Grid.Row="0" Orientation="Horizontal"  >
+                        <TextBlock FontSize="20">Sell or Buy Action</TextBlock>
+
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="3" Orientation="Horizontal" >
+
+                        <Button x:Name="btnBuy" Margin="20,20,0,0"  Content="Buy an stock" Height="34" Click="Buy_Click"/>
+
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Center">
+
+                        <Button x:Name="btnSell" Margin="20,20,0,0" Content="Sell a Stock" Height="34" Click="Sell_Click" />
+
+                    </StackPanel>
+
                 </StackPanel>
+            </DockPanel>
 
-                <StackPanel Grid.Row="3" Orientation="Horizontal">
-              
-                    <Button x:Name="btnBuy" Content="Buy an stock" Height="34" Click="Buy_Click"/>
-                    <Button x:Name="btnSell" Margin="5,0,0,0" Content="Sell a Stock" Height="34" Click="Sell_Click" />
-                </StackPanel>
-            </StackPanel>
-        </DockPanel>
+        </materialDesign:Card>
 
 
 

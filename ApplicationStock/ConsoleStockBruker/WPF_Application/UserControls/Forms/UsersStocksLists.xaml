@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WPF_Application.UserControls.Forms" xmlns:WPF_Application.UserControls="clr-namespace:WPF_Application.UserControls" xmlns:lists="clr-namespace:ProjectStockModels.Lists;assembly=ProjectStockModels" xmlns:local1="clr-namespace:WPF_Application.UserControls.Controls" d:DataContext="{d:DesignInstance Type=lists:StockLists}"
+             xmlns:local="clr-namespace:WPF_Application.UserControls.Forms" xmlns:WPF_Application.UserControls="clr-namespace:WPF_Application.UserControls" xmlns:lists="clr-namespace:ProjectStockModels.Lists;assembly=ProjectStockModels" xmlns:local1="clr-namespace:WPF_Application.UserControls.Controls" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" d:DataContext="{d:DesignInstance Type=lists:StockLists}"
              mc:Ignorable="d" Loaded="Window_Loaded"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -32,18 +32,25 @@
         <TextBlock  Text="My stocks" Grid.Row="1"  Grid.Column="1" FontSize="23">
 
         </TextBlock>
-        <ListBox Grid.ColumnSpan="2" Grid.Column="1"   SelectedItem="{Binding StocksList.Stock}"  ItemsSource="{Binding StocksList.Stocks }" Grid.Row="2" x:Name="ListUser" Background="LightGray">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="Name :"/>
-                        <TextBlock Text="{Binding Name}"/>
-                        <Separator/>
-                    </StackPanel>
-                
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <materialDesign:Card  Grid.ColumnSpan="2" Grid.Column="1"  Grid.Row="2"
+             Background="LightGray"
+                          Foreground="Black"
+                      Padding="0"
+                      Width="auto"                
+                             >
+            <ListBox  SelectedItem="{Binding StocksList.Stock}"  ItemsSource="{Binding StocksList.Stocks }" x:Name="ListUser">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="Name :"/>
+                            <TextBlock Text="{Binding Name}"/>
+                            <Separator/>
+                        </StackPanel>
+
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </materialDesign:Card>
         <local1:StockInfoUC CurrentStock="{ Binding StocksList.Stock }" Grid.Row="2" Grid.Column="4"></local1:StockInfoUC>
     </Grid>
 </UserControl>

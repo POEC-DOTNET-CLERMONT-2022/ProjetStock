@@ -15,7 +15,7 @@
         <DockPanel>
 
 
-            <StackPanel   Background="LightGray" Height="425" Width="450" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel   Height="425" Width="450" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <local1:MarketInfoUc CurrentMarket="{Binding  MarketsLists.Market }"></local1:MarketInfoUc>
              </StackPanel>
         </DockPanel>

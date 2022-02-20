@@ -3,48 +3,58 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WPF_Application" xmlns:WPF_Application.UserControls="clr-namespace:WPF_Application.UserControls"
+             xmlns:local="clr-namespace:WPF_Application" xmlns:WPF_Application.UserControls="clr-namespace:WPF_Application.UserControls" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid >
         <WPF_Application.UserControls:MenuUserControl></WPF_Application.UserControls:MenuUserControl>
         <ContentControl x:Name="userMenu"></ContentControl>
-        <DockPanel>
+        <materialDesign:Card 
+             Background="LightGray"
+                          Foreground="Black"
+                      Padding="0"
+                      Width="auto"                
+                             >
+            <DockPanel>
 
-            <StackPanel  Width="600" DockPanel.Dock="top" Background="LightGray" Height="400" >
+                <StackPanel  Width="600" DockPanel.Dock="top" Height="400" >
 
-                <Label x:Name="login" HorizontalAlignment="Center"  FontSize="18"  VerticalAlignment="Center" >Contact Us</Label>
-                <DockPanel x:Name="user_message">
-                    <Label x:Name="username" Margin="0,0,0,0">Email</Label>
-                    <TextBox  Text=""  Width="auto"/>
-                </DockPanel>
-                <DockPanel  x:Name="pass_message"  >
-                    <Label x:Name="password"  Width="58" Height="26">Message</Label>
-                    
-                </DockPanel>
-                <RichTextBox Height="75"></RichTextBox>
-                <DockPanel  x:Name="pass_message_confirm"  />
+                    <Label x:Name="login" HorizontalAlignment="Center"  FontSize="18"  VerticalAlignment="Center" >Contact Us</Label>
+                    <DockPanel x:Name="user_message">
+                        <Label x:Name="username" Margin="0,0,0,0">Email</Label>
+                        <TextBox  Text=""  Width="auto"/>
+                    </DockPanel>
+                    <DockPanel  x:Name="pass_message"  >
+                        <Label x:Name="password"  Width="58" Height="26">Message</Label>
+
+                    </DockPanel>
+                    <RichTextBox Height="75"></RichTextBox>
+                    <DockPanel  x:Name="pass_message_confirm"  />
 
 
-                <DockPanel Margin="10" Visibility="Hidden" x:Name="message_error">
-                    <TextBlock FontSize="20">
+                    <DockPanel Margin="10" Visibility="Hidden" x:Name="message_error">
+                        <TextBlock FontSize="20">
                     Error
-                    </TextBlock>
+                        </TextBlock>
 
 
 
-                </DockPanel>
-                <DockPanel Margin="10">
+                    </DockPanel>
+                    <DockPanel Margin="10">
 
 
-                    <Button Height="30" BorderThickness="3"  x:Name="send" Width="304" Click="send_Click" >Send</Button>
+                        <Button Height="30" BorderThickness="3"  x:Name="send" Width="304" Click="send_Click" >Send</Button>
 
-                </DockPanel>
+                    </DockPanel>
 
 
-            </StackPanel>
+                </StackPanel>
 
-        </DockPanel>
+            </DockPanel>
+        </materialDesign:Card>
+
+
+       
 
 
     </Grid>
