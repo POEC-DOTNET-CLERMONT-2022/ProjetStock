@@ -3,16 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WPF_Application.User" xmlns:WPF_Application.UserControls="clr-namespace:WPF_Application.UserControls" xmlns:local1="clr-namespace:WPF_Application.UserControls.Controls"
+             xmlns:local="clr-namespace:WPF_Application.User" xmlns:WPF_Application.UserControls="clr-namespace:WPF_Application.UserControls" xmlns:local1="clr-namespace:WPF_Application.UserControls.Controls" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" Loaded="Window_Loaded"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="4*"/>
+            <RowDefinition  Height="2*"/>
+            <RowDefinition />
 
             <RowDefinition Height="3*"/>
+            <RowDefinition  Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -32,72 +33,105 @@
 
         </StackPanel>
 
-
-        <StackPanel Grid.Row="1" Grid.Column="1">
-            <WrapPanel>
-                <StackPanel>
-                    <TextBlock Text="Saisir un phone :"/>
-                    <TextBox x:Name="TbPhone" Width="200" HorizontalAlignment="Left"  Text="{Binding UsersList.CurrentUser.Phone}"/>
-                    <TextBlock Text="Saisir un email :"/>
-                    <TextBox x:Name="TbEmail" Width="200"  HorizontalAlignment="Left" Text="{Binding UsersList.CurrentUser.Email}"/>
-
-                    <TextBlock Text="Saisir un siret :"/>
-                    <TextBox x:Name="TbSriret" Width="200" HorizontalAlignment="Left"  Text="{Binding UsersList.CurrentUser.Siret}"/>
-
-                </StackPanel>
-
-            </WrapPanel>
-        </StackPanel>
-        <StackPanel Grid.Row="1" Grid.Column="2">
-            <WrapPanel>
-
-
-
-
-                <StackPanel>
-                    <TextBlock Text="Saisir un nom :"/>
-                    <TextBox x:Name="TbUserName" Width="200" HorizontalAlignment="Left" Text="{Binding UsersList.CurrentUser.Name}"/>
-
-                    <TextBlock Text="Saisir un prenom :"/>
-                    <TextBox x:Name="TbUserFirstName" Width="200" HorizontalAlignment="Left" Text="{Binding UsersList.CurrentUser.FirstName}"/>
-
-                    <TextBlock Text="Saisir un password :"/>
-                    <PasswordBox Margin="0,10,0,0" x:Name="TxtPassword" Height="17" />
-
-
-                </StackPanel>
-            </WrapPanel>
-        </StackPanel>
-
-
-
-        <StackPanel Grid.Column="3" Grid.Row="1">
-            <WrapPanel>
-                <StackPanel>
-                    <Button Content="Ajouter un utilisateur" Width="200" HorizontalAlignment="Left" Click="Button_Click"/>
-                    <Button Content="Modifier un utilsateur " Width="200" HorizontalAlignment="Left" Click="Button_Click_1"/>
-
-                </StackPanel>
-                <StackPanel>
-                    <Button Content="Supprimer un utilisateur" Width="200" HorizontalAlignment="Left" Click="Button_Click_2"/>
-                    <TextBox x:Name="TxtGuid" Width="50"  Visibility="Hidden" Text="{Binding  UsersList.CurrentUser.Id}" />
-                </StackPanel>
-            </WrapPanel>
-        </StackPanel>
-
-        <ListBox Grid.ColumnSpan="2" Grid.Column="1" SelectedItem="{Binding  UsersList.CurrentUser}"  ItemsSource="{Binding UsersList.Users}" Grid.Row="2" x:Name="ListUser"  Background="LightGray">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
+        <materialDesign:Card   Grid.Row="1" Grid.Column="1"
+             Background="LightGray"
+                          Foreground="Black"
+                      Padding="0"
+                      Width="auto"                
+                             >
+            <StackPanel  VerticalAlignment="Center" HorizontalAlignment="Center">
+                <WrapPanel>
                     <StackPanel>
-                        <TextBlock Text="ID :"/>
-                        <TextBlock Text="{Binding Id}"/>
-                  
+                        <TextBlock Text="Saisir un phone :"/>
+                        <TextBox x:Name="TbPhone" Width="200" HorizontalAlignment="Left"  Text="{Binding UsersList.CurrentUser.Phone}"/>
+                        <TextBlock Text="Saisir un email :"/>
+                        <TextBox x:Name="TbEmail" Width="200"  HorizontalAlignment="Left" Text="{Binding UsersList.CurrentUser.Email}"/>
+
+                        <TextBlock Text="Saisir un siret :"/>
+                        <TextBox x:Name="TbSriret" Width="200" HorizontalAlignment="Left"  Text="{Binding UsersList.CurrentUser.Siret}"/>
+
                     </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-            
-        </ListBox>
-        <local1:UserInfoUC  Grid.Column="4"  Grid.Row="2" CurrentUtilisateur ="{ Binding UsersList.CurrentUser}"></local1:UserInfoUC>
+
+                </WrapPanel>
+            </StackPanel>
+        </materialDesign:Card>
+
+        <materialDesign:Card   Grid.Row="1" Grid.Column="2"
+             Background="LightGray"
+                          Foreground="Black"
+                      Padding="0"
+                      Width="auto"                
+                             >
+
+
+            <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <WrapPanel >
+
+
+
+
+                    <StackPanel >
+                        <TextBlock Text="Saisir un nom :"/>
+                        <TextBox x:Name="TbUserName" Width="200" HorizontalAlignment="Left" Text="{Binding UsersList.CurrentUser.Name}"/>
+
+                        <TextBlock Text="Saisir un prenom :"/>
+                        <TextBox x:Name="TbUserFirstName" Width="200" HorizontalAlignment="Left" Text="{Binding UsersList.CurrentUser.FirstName}"/>
+
+                        <TextBlock Text="Saisir un password :"/>
+                        <PasswordBox Margin="0,10,0,0" x:Name="TxtPassword" Height="17" />
+
+
+                    </StackPanel>
+                </WrapPanel>
+            </StackPanel>
+
+        </materialDesign:Card>
+        <materialDesign:Card   Grid.Column="4" Grid.Row="1"
+             Background="LightGray"
+                          Foreground="Black"
+                      Padding="0"
+                      Width="auto"                
+                             >
+
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <WrapPanel>
+                    <StackPanel>
+                        <Button Content="Ajouter un utilisateur" Width="200" HorizontalAlignment="Left" Click="Button_Click"/>
+                        <Button Content="Modifier un utilsateur " Width="200" HorizontalAlignment="Left" Click="Button_Click_1"/>
+
+                    </StackPanel>
+                    <StackPanel>
+                        <Button Content="Supprimer un utilisateur" Width="200" HorizontalAlignment="Left" Click="Button_Click_2"/>
+                        <TextBox x:Name="TxtGuid" Width="50"  Visibility="Hidden" Text="{Binding  UsersList.CurrentUser.Id}" />
+                    </StackPanel>
+                </WrapPanel>
+            </StackPanel>
+        </materialDesign:Card>
+
+
+
+        <materialDesign:Card  Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="3"
+             Background="LightGray"
+                          Foreground="Black"
+                      Padding="0"
+                      Width="auto"                
+                             >
+            <ListBox  SelectedItem="{Binding  UsersList.CurrentUser}"  ItemsSource="{Binding UsersList.Users}" x:Name="ListUser" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="ID :"/>
+                            <TextBlock Text="{Binding Id}"/>
+
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+
+            </ListBox>
+        </materialDesign:Card>
+
+      
+        <local1:UserInfoUC  Grid.Column="4"  Grid.Row="3" CurrentUtilisateur ="{ Binding UsersList.CurrentUser}"></local1:UserInfoUC>
     </Grid>
 
 

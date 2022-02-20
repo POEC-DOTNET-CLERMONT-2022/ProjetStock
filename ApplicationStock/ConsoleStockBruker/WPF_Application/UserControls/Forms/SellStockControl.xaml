@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WPF_Application.UserControls.Forms" xmlns:WPF_Application.UserControls="clr-namespace:WPF_Application.UserControls"
+             xmlns:local="clr-namespace:WPF_Application.UserControls.Forms" xmlns:WPF_Application.UserControls="clr-namespace:WPF_Application.UserControls" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" Loaded="Window_Loaded"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -11,10 +11,13 @@
         <DockPanel>
             <Image Height="86" Width="71"></Image>
         </DockPanel>
-        <DockPanel>
+        <materialDesign:Card Height="425" Width="450"
+             Background="LightGray"
+                          Foreground="Black"
+                      Padding="0"                                    
+                             >
 
-
-            <StackPanel   Background="LightGray" Height="425" Width="450" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
 
                 <TextBlock FontSize="20">Sell a stock</TextBlock>
                 <DockPanel Margin="10" Visibility="Hidden" x:Name="message_error">
@@ -39,16 +42,27 @@
                             </ComboBox.ItemTemplate>
 
                         </ComboBox>
-                       
+
 
                     </StackPanel>
+                    <Separator></Separator>
 
+                  
+            
                 </WrapPanel>
+                <Separator></Separator>
+                <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button  Margin="20,20,0,0"  Click="Buy_Click">Sell</Button>
 
-                <Button Click="Buy_Click">Sell</Button>
+                </StackPanel>
+
             </StackPanel>
 
-        </DockPanel>
+           </materialDesign:Card>
+
+
+
+           
 
 
     </Grid>
