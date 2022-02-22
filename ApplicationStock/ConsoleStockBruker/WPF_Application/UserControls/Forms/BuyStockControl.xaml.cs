@@ -66,7 +66,7 @@ namespace WPF_Application.UserControls.Forms
         }
         public async void LoadStock()
         {
-           
+          
             var userModels = await jsonGenericReader.GetAll();
 
             StocksList.Stocks = new ObservableCollection<StockModel>(userModels);
@@ -95,7 +95,7 @@ namespace WPF_Application.UserControls.Forms
             stock.ClientId = serviceUserAppCurrent.GetGuid();
 
             var id = new Guid();
-            var order = new OrderModel() { Id = id, OrderDate = DateTime.Now, OrderName = "Buy " + DateTime.Now.ToString() + " - " + serviceUserAppCurrent.GetGuid().ToString(), NbStock = 10, ClientId = serviceUserAppCurrent.GetClientCurrent().Id,Stock = stock};
+            var order = new OrderModel() { Id = id, OrderDate = DateTime.Now, OrderName = "Buy " + DateTime.Now.ToString() + " - " + serviceUserAppCurrent.GetGuid().ToString(), NbStock = 10, ClientId = serviceUserAppCurrent.GetClientCurrent().Id,Stock = new Stock()};
             order.Id = Guid.NewGuid();
            
             var resultat = await json.Add(order);

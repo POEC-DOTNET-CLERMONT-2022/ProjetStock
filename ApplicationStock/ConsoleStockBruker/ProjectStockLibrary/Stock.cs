@@ -14,9 +14,11 @@ namespace ProjectStockLibrary
 
     public class Stock : BaseEntity
     {
-    
+        [MaxLength(30)]
         public string _name { get;  set; }
+        [MaxLength(4)]
         public float _value { get;  set; }
+        [MaxLength(20)]
         public string _entrepriseName { get;set; }
 
         public Guid? ClientId { get; set; }

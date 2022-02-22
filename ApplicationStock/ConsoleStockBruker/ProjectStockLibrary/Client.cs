@@ -11,17 +11,20 @@ namespace ProjectStockLibrary
     {
         [Key]
         public new Guid Id { get; set; }
+        [MaxLength(20)]
         public string _firstName { get;  set; }
+        [MaxLength(20)]
         public string _lastName { get; set; }
+        [MaxLength(100)]
         public string _email { get; set; }
-
+        [MaxLength(10)]
         public string _phone { get;  set; }
-
+        [MaxLength(100)]
         public string _siret { get;  set; }
 
 
         public string _token { get; set; } = null;
-
+       
         public DateTime? _expireToken { get; set; } = null;
 
 

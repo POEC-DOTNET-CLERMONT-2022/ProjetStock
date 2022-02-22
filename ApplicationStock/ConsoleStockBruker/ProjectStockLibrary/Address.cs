@@ -12,13 +12,15 @@ namespace ProjectStockLibrary
     [JsonArray]
     public class Address : BaseEntity
     {
-
+        [MaxLength(200)]
         public string _address_line_1 { get; set; }
+        [MaxLength(200)]
         public string _address_line_2 { get;  set; }
+        [MaxLength(6)]
         public string _codePostal { get;set; }
-
+        [MaxLength(200)]
         public string _city { get; set; }
-
+        [MaxLength(50)]
         public string _country { get; set; }
 
 

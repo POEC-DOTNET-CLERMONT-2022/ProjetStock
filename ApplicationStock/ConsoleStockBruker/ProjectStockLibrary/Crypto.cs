@@ -7,8 +7,9 @@ public class Crypto : BaseEntity
     {
         [Key]
         public new Guid Id { get; private set; }
+        [MaxLength(100)]
         public string _name { get; set; }
-
+        [MaxLength(100)]
         public float _value { get; set; }
 
 

@@ -63,8 +63,6 @@ namespace ProjectStock.Api.Tests.Divers
 
             match.Should().BeTrue();
 
-
-
         }
 
 
