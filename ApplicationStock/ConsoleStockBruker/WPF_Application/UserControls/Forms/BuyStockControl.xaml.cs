@@ -95,11 +95,11 @@ namespace WPF_Application.UserControls.Forms
             stock.ClientId = serviceUserAppCurrent.GetGuid();
 
             var id = new Guid();
-            var order = new OrderModel() { Id = id, OrderDate = DateTime.Now, OrderName = "Buy " + DateTime.Now.ToString() + " - " + serviceUserAppCurrent.GetGuid().ToString(), NbStock = 10, ClientId = serviceUserAppCurrent.GetClientCurrent().Id,Stock = new Stock()};
+            var order = new OrderModel() { Id = id, OrderDate = DateTime.Now, OrderName = "Buy " + DateTime.Now.ToString() + " - " + serviceUserAppCurrent.GetGuid().ToString(), NbStock = 10, ClientId = serviceUserAppCurrent.GetClientCurrent().Id};
             order.Id = Guid.NewGuid();
            
             var resultat = await json.Add(order);
-           if(resultat == 200)
+            if(resultat == 200)
             {
                 Client client = serviceUserAppCurrent.GetClientCurrent();
                 client.AddStocks(stock);
