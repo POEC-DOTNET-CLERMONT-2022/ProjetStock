@@ -12,8 +12,12 @@ namespace ProjectStockLibrary
     public class Notification : BaseEntity
     {
         [Key]
+
         public  new Guid Id { get; set; }
+
+        [MaxLength(1000)]
         public string _textRappel { get; set; }
+        [MaxLength(10)]
         public DateTime _sendAt { get;  set; }
 
         public Guid ClientId { get; set; }

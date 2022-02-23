@@ -9,15 +9,15 @@
     <Grid >
         <WPF_Application.UserControls:MenuUserControl></WPF_Application.UserControls:MenuUserControl>
         <ContentControl x:Name="userMenu"></ContentControl>
-        <materialDesign:Card 
+        <materialDesign:Card Width="600" Height="400"
              Background="LightGray"
                           Foreground="Black"
                       Padding="0"
-                      Width="auto"                
+                                
                              >
             <DockPanel>
 
-                <StackPanel  Width="600" DockPanel.Dock="top" Height="400" >
+                <StackPanel   DockPanel.Dock="top" Height="400" >
 
                     <Label x:Name="login" HorizontalAlignment="Center"  FontSize="18"  VerticalAlignment="Center" >Contact Us</Label>
                     <DockPanel x:Name="user_message">

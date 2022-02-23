@@ -12,8 +12,11 @@ namespace ProjectStockLibrary
     {
         [Key]
         public new Guid Id { get; set; }
+        [MaxLength(100)]
         public string _name {  get;  set; }
+        [MaxLength(20)]
         public DateTime _openingDate {  get;  set; }
+        [MaxLength(20)]
         public  DateTime _closingDate { get; set; }
         [ForeignKey("Stock")]
 

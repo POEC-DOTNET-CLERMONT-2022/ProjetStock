@@ -55,7 +55,7 @@ namespace ProjectStock.Api.Tests.Controller
             Fixture = new Fixture();
             Orders = Fixture.CreateMany<OrderEntity>();
             orderRepository = new Mock<IGenericRepository<OrderEntity>>();
-           // OrderController = new OrderController(Mapper, APIContext);
+           
         }
 
 
