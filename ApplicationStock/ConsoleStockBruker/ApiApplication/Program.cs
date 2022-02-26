@@ -31,6 +31,7 @@ services.AddTransient<APIContext>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
 
+//Todo Auth0
 
 services.AddCors();
 services.AddControllers();

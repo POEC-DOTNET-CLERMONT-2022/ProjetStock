@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using ProjectStockDTOS;
 using ProjectStockLibrary;
 using ProjectStockPatternsLibrary;
+using Serilog;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -22,14 +23,14 @@ namespace ApiApplication.Controllers
         private readonly APIContext _context;
 
         private readonly IGenericRepository<Address> genericRepository;
+
+
         public AddressController(IMapper mapper, APIContext context,IGenericRepository< Address> generic)
         {
             //TODO : utiliser les repo plutôt que le DBContext directement
             _mapper = mapper;
             _context = context;
             genericRepository = generic;
-
-
 
         }
 
@@ -48,7 +49,11 @@ namespace ApiApplication.Controllers
             {
                 var p = genericRepository.GetAll();
                 if (p == null)
+                {
+             
                     return NotFound();
+                }
+                
                 else
                     return Ok(p);
 
