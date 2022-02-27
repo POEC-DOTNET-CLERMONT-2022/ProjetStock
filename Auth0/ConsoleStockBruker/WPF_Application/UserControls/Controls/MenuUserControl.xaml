@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="WPF_Application.UserControls.MenuUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Loaded="Window_Loaded"
+             d:DesignHeight="450" d:DesignWidth="800">
+  
+        <WrapPanel Height="50" Width="auto" VerticalAlignment="Top" Background="LightGray"  >
+            <DockPanel>
+                <Menu DockPanel.Dock="Top" Visibility="Visible" x:Name="_loginModalControl">
+                    <MenuItem Header="Menu"  Height="50">
+                    <MenuItem Header="Save user info" Click="Save_Click">
+                    </MenuItem>
+                    <MenuItem Header="Contact us">
+                            <MenuItem Header="Direct Message" Click="MenuItem_Click_Contact"></MenuItem>
+                            <MenuItem Header="Email: email@admin.com"></MenuItem>
+                            <MenuItem Header="Tel: XXXXXXXX"></MenuItem>
+                        </MenuItem>
+
+
+                    </MenuItem>
+
+                    <MenuItem Header="Lists"  Height="50">
+
+                        <MenuItem Header="Lists of stocks"  Click="MenuItem_Click"/>
+                 
+                        <MenuItem Header="Lists of users" Click="MenuItem_Click_2"></MenuItem>
+                        <MenuItem Header="Lists of notifications" Click="MenuItem_Click_3">
+                        </MenuItem>
+                        <MenuItem Header="Lists of markets" Click="MenuItem_Click_Markets"/>
+                        <MenuItem Header="Lists of orders" Click="ListOrder_Click"></MenuItem>
+
+                </MenuItem>
+
+
+                <MenuItem Header="Market" x:Name="myList">
+                    <MenuItem.ItemContainerStyle >
+                        <Style>
+                            <Setter Property="MenuItem.Header" Value="{Binding Name}" />
+                        </Style>
+                    </MenuItem.ItemContainerStyle>
+                </MenuItem>
+
+
+                <MenuItem Header="Stock" x:Name="myStockLists">
+                    <MenuItem.ItemContainerStyle >
+                        <Style>
+                            <Setter Property="MenuItem.Header" Value="{Binding Name}" />
+                        </Style>
+                    </MenuItem.ItemContainerStyle>
+                </MenuItem>
+
+
+
+
+
+
+                <!--<MenuItem Header="Cart"  Height="50">
+                    </MenuItem>-->
+
+                    <MenuItem Header="My informations"  Height="50">
+               
+
+                    <MenuItem Header="My Profile" Click="Profile_Click"></MenuItem>
+                    <MenuItem Header="My Orders" Click="Orders_Click"></MenuItem>
+                    <MenuItem Header="My Stocks" Click="Stocks_Click"></MenuItem>
+                    <MenuItem Header="My Addresses" Click="Addresses_Click"></MenuItem>
+                    <MenuItem Header="My Notification"  Click="MyNotification_Click"></MenuItem>
+                    <MenuItem Header="Sell or Buy orders" Click="MenuBuy_Click"></MenuItem>
+                    <MenuItem Header="Exit" Click="Disconnect_Click">
+                        
+                        
+                        </MenuItem>
+                    </MenuItem>
+                </Menu>
+            </DockPanel>
+        </WrapPanel>
+   
+</UserControl>

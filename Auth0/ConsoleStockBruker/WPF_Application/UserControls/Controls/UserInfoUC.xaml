@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="WPF_Application.UserControls.Controls.UserInfoUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF_Application.UserControls.Controls" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d"  x:Name="root"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+
+        <materialDesign:Card 
+             Background="LightGray"
+                       Foreground="Black"
+                      Padding="0"
+                      Width="auto"                
+                             >
+            <StackPanel DataContext="{Binding .,ElementName=root}" Background="LightGray" >
+
+                <Separator />
+                <TextBlock FontSize="20" Text="User Info"></TextBlock>
+                <Separator></Separator>
+
+                <TextBlock Text="ID :"/>
+                <TextBlock Text="{Binding CurrentUtilisateur.Id}"/>
+                <TextBlock Text="LastName :"/>
+                <TextBlock Text="{Binding CurrentUtilisateur.LastName}"/>
+                <TextBlock Text="Name :"/>
+                <TextBlock Text="{Binding CurrentUtilisateur.FirstName}"/>
+                <TextBlock Text="Email :"/>
+                <TextBlock Text="{Binding CurrentUtilisateur.Email}"/>
+                <TextBlock Text="Siret :"/>
+                <TextBlock Text="{Binding CurrentUtilisateur.Siret}"/>
+                <TextBlock Text="Token :"/>
+                <TextBlock Text="{Binding CurrentUtilisateur.Token}"/>
+                <TextBlock Text="Expire Token :"/>
+                <TextBlock Text="{Binding CurrentUtilisateur.ExpireToken}"/>
+
+
+            </StackPanel>
+        </materialDesign:Card>
+    </Grid>
+</UserControl>
