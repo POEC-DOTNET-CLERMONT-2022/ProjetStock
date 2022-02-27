@@ -1,0 +1,60 @@
+
+<br>
+<div class="container">
+  <br>
+  <div class="container">
+
+  <div class="container">
+    <div class="container">
+      <div class="get-quote">
+          <div class="row">
+              <div class="col-sm-10 col-12">
+                <h3 class="text-left"> List of  orders informations</h3>  
+              </div>
+          
+          </div>
+      </div>
+    </div>
+
+  <br>
+  </div>
+</div>
+
+</div>
+
+
+<table class="table table-striped"  id="example">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">OrderName</th>
+      <th scope="col">NbStock</th>
+      <th scope="col">OrderDate</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of _orders | paginate: { itemsPerPage: getCount().toString(), currentPage: getP().toString() }">
+ 
+      <td *ngIf="user['_id'] != null">{{user['_id']}}</td>
+      <td *ngIf="user['_id'] == null">Null</td>
+ 
+      <td *ngIf="user['_orderName'] != null">{{user['_orderName']}}</td>
+      <td *ngIf="user['_orderName'] == null">Null</td>
+      <td *ngIf="user['_nbStock'] != null">{{user['_nbStock']}}</td>
+      <td *ngIf="user['_nbStock'] == null">Not defined</td>
+      <td *ngIf="user['_orderDate'] != null">{{user['_orderDate']}}</td>
+      <td *ngIf="user['_orderDate'] == null">Null</td>
+     
+      
+      
+      <td><button class="btn btn-secondary" [routerLink]="['/delete_order/', user['_id']]">Remove</button><button class="btn btn-primary" [routerLink]="['/modify_order/', user['_id']]">Modify</button></td>
+    </tr>
+   
+  </tbody>
+</table>
+<div class="text-center">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  <br>
+<br>
+<br>

@@ -20,5 +20,6 @@ namespace ApiApplication.Models
             Token = token;
             Id = user.Id;
         }
+
     }
 }

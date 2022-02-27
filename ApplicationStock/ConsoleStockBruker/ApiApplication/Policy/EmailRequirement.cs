@@ -2,10 +2,10 @@
 
 namespace ApiApplication.Policy
 {
-    public class EmailRequirementPolicy : IAuthorizationRequirement
+    public class EmailRequirement : IAuthorizationRequirement
     {
         public string _email { get; set; }
-        public  EmailRequirementPolicy(string email)
+        public  EmailRequirement(string email)
         {
             _email = email;
         }
