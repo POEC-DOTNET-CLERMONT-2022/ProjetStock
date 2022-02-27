@@ -1,0 +1,72 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Fifth navbar example">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Projet Stock</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample05">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link "  [routerLink]="urlUser"  *ngIf=" isConnected">Users</a>
+        </li>
+        
+      
+        <li class="nav-item">
+          <a class="nav-link"*ngIf=" isConnected === true" [routerLink]="urlOrders">Orders</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link"*ngIf=" isConnected === true" [routerLink]=" urlMarket">Markets</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"*ngIf=" isConnected === true" [routerLink]="urlNotifs">Notifications</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"*ngIf=" isConnected === true" [routerLink]="urlStock">Stocks</a>
+          </li>
+       
+         
+         
+    
+    
+         
+          <li class="nav-item active">
+            <a class="nav-link"   *ngIf=" isConnected === true" [routerLink]="urlApi">API</a>
+          </li>
+  
+        
+        
+        
+          <li class="nav-item dropdown" *ngIf=" isConnected === true" [routerLink]="urlProfile">
+            <a class="nav-link dropdown-toggle" id="dropdown05" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown05">
+              <li><a class="dropdown-item" *ngIf=" isConnected === true">Log as {{ user_email }}</a></li>
+            
+               <li><a class="dropdown-item" *ngIf=" isConnected === true" [routerLink]="urlProfile"> Profile</a></li>
+              <li><a class="dropdown-item" *ngIf=" isConnected === true" [routerLink]="urlLogOut">Logout</a></li>
+          
+            </ul>
+          </li>
+       
+          <li class="nav-item dropdown"  *ngIf=" isConnected === false" >
+            <a class="nav-link dropdown-toggle" id="dropdown05" data-bs-toggle="dropdown" aria-expanded="false">Connection</a>
+         
+            <ul class="dropdown-menu" aria-labelledby="dropdown05">
+              <li><a class="dropdown-item"  [routerLink]="urlLogin" *ngIf=" isConnected === false" >{{ sliceUrl(urlLogin)|titlecase }}</a></li>
+              <li><a class="dropdown-item"  [routerLink]="urlLoginauth" *ngIf=" isConnected === false" > Login with Auth0 </a></li>
+              <li><a class="dropdown-item" [routerLink]="urlRegister" *ngIf=" isConnected === false" >Register</a></li>
+              
+            </ul>
+          </li>
+        
+        
+     
+      </ul>
+    
+ 
+       
+      
+    </div>
+  </div>
+</nav>

@@ -206,7 +206,7 @@ namespace ApiApplicationProjectStock.Controllers
 
 
         // GET api/<ProjectController>/5
-        [Authorize]
+        //[Authorize]
         [HttpGet("email")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -226,6 +226,28 @@ namespace ApiApplicationProjectStock.Controllers
                 return Ok(p);
             }
                 
+        }
+        // GET api/<ProjectController>/5
+        //[Authorize]
+        [HttpGet("emaile")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<AuthenticateResponse> Gets([FromQuery] string email)
+        {
+            var p = _context._users.Where(x => x._email == email).ToList();
+          
+           
+
+            if (p == null)
+                return NotFound();
+            else
+            {
+                Client client = p.First();
+                var mapped = new AuthenticateResponse(client, client._token);
+
+                return Ok(mapped);
+            }
+
         }
 
 

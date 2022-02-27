@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ApiApplication\ApiApplication.csproj" />
+    <ProjectReference Include="..\ProjectStockDTOS\ProjectStockDTOS.csproj" />
+    <ProjectReference Include="..\ProjectStockEntity\ProjectStockEntity.csproj" />
+    <ProjectReference Include="..\ProjectStockLibrary\ProjectStockLibrary.csproj" />
+  </ItemGroup>
+
+</Project>
