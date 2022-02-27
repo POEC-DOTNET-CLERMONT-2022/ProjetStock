@@ -47,6 +47,12 @@
                         <Button Height="30" BorderThickness="3"  x:Name="login_button" Width="304" Click="Login_button_Click" >Connexion</Button>
 
                     </DockPanel>
+                    <DockPanel Margin="10">
+
+
+                        <Button Height="30" BorderThickness="3"  x:Name="loginAuth_button" Width="304" Click="LoginAuth_button_Click" >Connexion Auth0</Button>
+
+                    </DockPanel>
 
 
                 </StackPanel>

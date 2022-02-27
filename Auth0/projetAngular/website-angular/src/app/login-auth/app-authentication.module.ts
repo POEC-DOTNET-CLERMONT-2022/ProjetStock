@@ -4,8 +4,8 @@ import { AuthModule } from '@auth0/auth0-angular';
 @NgModule({
   imports: [
     AuthModule.forRoot({
-        domain: '',
-        clientId: '',
+        domain: 'dev-kiw3a5n6.eu.auth0.com',
+        clientId: 's4XpDitBE8QHGTMNuM3SCfJ7TbQZALwP',
         scope: 'read:current_user',
   
         httpInterceptor: {

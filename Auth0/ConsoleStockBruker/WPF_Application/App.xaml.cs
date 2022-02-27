@@ -85,6 +85,7 @@ namespace WPF_Application
             Navigator.RegisterView(new AddressUserLists());
             Navigator.RegisterView(new UsersNotifications());
             Navigator.RegisterView(new UserOrders());
+            Navigator.RegisterView(new Auth0Control());
         }
 
 

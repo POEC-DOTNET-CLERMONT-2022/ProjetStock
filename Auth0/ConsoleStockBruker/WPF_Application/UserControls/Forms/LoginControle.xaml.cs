@@ -29,6 +29,7 @@ using WPF_Application.Service.Interfaces;
 using Newtonsoft.Json.Linq;
 using WPF_Application.UserControls;
 using WPF_Application.Utils;
+using WPF_Application.UserControls.Forms;
 
 namespace WPF_Application
 {
@@ -119,7 +120,14 @@ namespace WPF_Application
                 loadUser(app_create,sender);
 
         }
-  
+
+        private void LoginAuth_button_Click(object sender, RoutedEventArgs e)
+        {
+
+            Navigator.NavigateTo(typeof(Auth0Control));
+
+        }
+
 
 
 
