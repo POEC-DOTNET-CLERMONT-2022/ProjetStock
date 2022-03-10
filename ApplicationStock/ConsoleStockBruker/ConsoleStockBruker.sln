@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleBenchMarkProjectStoc
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupProjetStock", "SetupProjetStock\SetupProjetStock.vdproj", "{36772778-EA69-44CA-8748-EE257825FF4E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApplicationProjectStock", "BlazorApplicationProjectStock\BlazorApplicationProjectStock.csproj", "{146D24C7-5DD7-498A-AC89-E091932624D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,6 +87,10 @@ Global
 		{4BAC4E95-7F0E-4D77-8D94-78C90CADCAA3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{36772778-EA69-44CA-8748-EE257825FF4E}.Debug|Any CPU.ActiveCfg = Debug
 		{36772778-EA69-44CA-8748-EE257825FF4E}.Release|Any CPU.ActiveCfg = Release
+		{146D24C7-5DD7-498A-AC89-E091932624D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{146D24C7-5DD7-498A-AC89-E091932624D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{146D24C7-5DD7-498A-AC89-E091932624D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{146D24C7-5DD7-498A-AC89-E091932624D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
