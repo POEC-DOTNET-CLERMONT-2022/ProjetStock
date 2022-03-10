@@ -1,0 +1,45 @@
+﻿@page "/orders"
+@using ProjectStockLibrary
+
+@inject HttpClient Http
+
+<PageTitle>Orders</PageTitle>
+
+<h1>Lists of Orders</h1>
+
+
+
+@if (orders == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ordername</th>
+                <th>OrderDate</th>
+                <th>Client Id</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in orders)
+            {
+                <tr>
+                    <td>@order.Id.ToString()</td>
+                    <td>@order._orderName</td>
+                    <td>@order._orderDate.ToString()</td>
+                    <td>@order.ClientId</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Order[]? orders;
+
+  
+}

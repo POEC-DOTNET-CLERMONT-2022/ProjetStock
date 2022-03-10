@@ -1,0 +1,46 @@
+﻿@page "/stocks"
+@using ProjectStockLibrary
+
+@inject HttpClient Http
+
+<PageTitle>Stocks</PageTitle>
+
+<h1>Lists of Stocks</h1>
+
+
+
+@if (stocks == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                 <th>Entreprise Name</th>
+                <th>Value</th>
+  
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var stock in stocks)
+            {
+                <tr>
+                    <td>@stock.Id</td>
+                    <td>@stock._name</td>
+                    <td>@stock._entrepriseName</td>
+                    <td>@stock._value</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Stock[]? stocks;
+
+  
+}

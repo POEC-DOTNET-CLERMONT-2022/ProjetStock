@@ -1,0 +1,45 @@
+﻿@page "/orders"
+@using ProjectStockLibrary
+
+@inject HttpClient Http
+
+<PageTitle>Market</PageTitle>
+
+<h1>Lists of Markets</h1>
+
+
+
+@if (markets == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ordername</th>
+                <th>OrderDate</th>
+                <th>Client Id</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var market in markets)
+            {
+                <tr>
+                    <td>@market.Id</td>
+                    <td>@order._orderName</td>
+                    <td>@order._orderDate.ToString()</td>
+                    <td>@order.ClientId</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Market[]? markets;
+
+  
+}

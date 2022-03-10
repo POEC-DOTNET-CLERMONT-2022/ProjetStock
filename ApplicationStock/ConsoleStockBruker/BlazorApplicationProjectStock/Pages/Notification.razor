@@ -1,0 +1,45 @@
+﻿@page "/notifications"
+@using ProjectStockLibrary
+
+@inject HttpClient Http
+
+<PageTitle>Notifications</PageTitle>
+
+<h1>Lists of Notifications</h1>
+
+
+
+@if (notifs == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ordername</th>
+                <th>OrderDate</th>
+                <th>Client Id</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var notif in notifs)
+            {
+                <tr>
+                    <td>@notif.Id</td>
+                    <td>@notif._orderName</td>
+                    <td>@order._orderDate.ToString()</td>
+                    <td>@order.ClientId</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Notification[]? notifs;
+
+  
+}

@@ -1,0 +1,50 @@
+﻿@page "/users"
+@using ProjectStockLibrary
+
+@inject HttpClient Http
+
+<PageTitle>Users</PageTitle>
+
+<h1>Lists of Users</h1>
+
+
+
+@if (users == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>First Name </th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in users)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user._firstName</td>
+                    <td>@user._lastName</td>
+                    <td>@user._email</td>
+                    <td>@user._phone</td>
+                
+              
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Client[] users;
+
+  
+}
