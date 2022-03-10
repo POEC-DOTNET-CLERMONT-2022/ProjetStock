@@ -35,6 +35,9 @@ else
 
 @code {
     private Market[]? markets;
+    
+    private MarketServiceReader reader = new MarketServiceReader(Http,mapper);
 
+    stocks = await reader.GetAll();
   
 }

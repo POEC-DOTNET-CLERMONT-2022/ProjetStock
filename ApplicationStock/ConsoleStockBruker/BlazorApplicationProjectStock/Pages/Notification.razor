@@ -36,6 +36,9 @@ else
 
 @code {
     private Notification[]? notifs;
+    
+    private NotificationServiceReader reader = new NotificationServiceReader(Http,mapper);
 
+    stocks = await reader.GetAll();
   
 }

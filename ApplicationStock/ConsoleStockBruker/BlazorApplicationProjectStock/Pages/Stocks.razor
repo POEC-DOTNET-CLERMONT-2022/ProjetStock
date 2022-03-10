@@ -1,7 +1,10 @@
 ﻿@page "/stocks"
 @using ProjectStockLibrary
+@using Automapper
 
 @inject HttpClient Http
+@inject IMapper mapper
+
 
 <PageTitle>Stocks</PageTitle>
 
@@ -41,6 +44,9 @@ else
 
 @code {
     private Stock[]? stocks;
+ 
+    private StockServiceReader reader = new StockServiceReader(Http,mapper);
 
+    stocks = await reader.GetAll();
   
 }

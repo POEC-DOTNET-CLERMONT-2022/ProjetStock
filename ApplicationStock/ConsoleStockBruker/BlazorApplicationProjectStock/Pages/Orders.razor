@@ -40,6 +40,9 @@ else
 
 @code {
     private Order[]? orders;
+    
+    private OrderServiceReader reader = new OrderServiceReader(Http,mapper);
 
+    stocks = await reader.GetAll();
   
 }

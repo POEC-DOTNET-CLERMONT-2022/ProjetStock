@@ -1,7 +1,9 @@
 ﻿@page "/users"
 @using ProjectStockLibrary
+@using AutoMapper
 
 @inject HttpClient Http
+@inject IMapper mapper
 
 <PageTitle>Users</PageTitle>
 
@@ -45,6 +47,9 @@ else
 
 @code {
     private Client[] users;
+    
+    private UserServiceReader reader = new UserServiceReader(Http,mapper);
 
+    users = await reader.GetAll();
   
 }
