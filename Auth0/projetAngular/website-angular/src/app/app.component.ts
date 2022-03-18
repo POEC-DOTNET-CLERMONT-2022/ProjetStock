@@ -33,6 +33,8 @@ export class AppComponent implements OnInit{
             this.tokenStorage.saveUser(x);
             window.sessionStorage.removeItem("email");
             NavbarComponent.IsConnected = true;
+           }else{
+             
            }
            window.location.reload();
          
