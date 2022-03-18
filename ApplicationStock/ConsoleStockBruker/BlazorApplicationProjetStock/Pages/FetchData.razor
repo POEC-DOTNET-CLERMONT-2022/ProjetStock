@@ -1,0 +1,52 @@
+﻿@page "/orders"
+@using ProjectStockLibrary
+@using ProjectStockModels.APIReader.Services
+@inject HttpClient Http
+
+<PageTitle>Orders</PageTitle>
+
+<h1>Orders</h1>
+
+<p>My orders</p>
+
+@if (orders == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Temp. (C)</th>
+                <th>Temp. (F)</th>
+                <th>Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in orders)
+            {
+                <tr>
+                    <td>@order._orderName</td>
+                    <td>@order.Id</td>
+                    <td>@order.ClientId</td> 
+                    <td>@order._orderDate.ToString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Order[]? orders;
+
+    //private IMapper mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddMaps(typeof(WPFApplication.App))));
+
+           
+
+
+   /// private OrderServiceReader reader = new OrderServiceReader(new HttpClient(),new ProjectStockModels.Mapper());
+ 
+    
+}

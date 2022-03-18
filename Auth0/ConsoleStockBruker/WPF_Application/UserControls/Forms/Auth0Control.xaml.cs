@@ -39,8 +39,8 @@ namespace WPF_Application.UserControls.Forms
 
             Auth0ClientOptions clientOptions = new Auth0ClientOptions
             {
-                Domain = "domain",
-                ClientId = "client_id"
+                Domain = "dev-kiw3a5n6.eu.auth0.com",
+                ClientId = "muriWtKTSx3HvU4CpqxlJRaFYzaefiHK"
             };
             client = new Auth0Client(clientOptions);
             clientOptions.PostLogoutRedirectUri = clientOptions.RedirectUri;

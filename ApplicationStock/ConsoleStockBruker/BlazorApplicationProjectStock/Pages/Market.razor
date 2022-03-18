@@ -1,0 +1,55 @@
+﻿@page "/markets"
+@using AutoMapper
+@using BlazorApplicationProjectStock.Map
+@using ProjectStockLibrary
+@using ProjectStockModels.APIReader.Services
+
+@inject HttpClient Http
+
+<PageTitle>Market</PageTitle>
+
+<h1>Lists of Markets</h1>
+
+
+
+@if (markets == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+             
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>     
+                <td>"salut"</td>
+                   
+                </tr>
+            
+        </tbody>
+    </table>
+}
+
+@code {
+
+    
+    private static HttpClient httpClient { get; set;  } = new HttpClient();
+    private static MapperConfiguration mapperConfiguration { get; } =  new MapperConfiguration(configuration =>{
+        configuration.AddProfile(new TdoMapper());
+    });
+
+
+    private static IMapper mapper = new Mapper(mapperConfiguration);
+
+
+    public static  MarketServiceReader reader = new MarketServiceReader(httpClient,mapper);
+    private List<Market>? markets =  mapper.Map<List<Market>>( reader.GetAll());
+    
+  
+}

@@ -1,0 +1,64 @@
+﻿@page "/orders"
+@using AutoMapper
+@using BlazorApplicationProjectStock.Map
+@using ProjectStockLibrary
+@using ProjectStockModels.APIReader.Services
+
+
+
+@inject HttpClient Http
+
+<PageTitle>Orders</PageTitle>
+
+<h1>Lists of Orders</h1>
+
+
+
+@if (orders == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ordername</th>
+                <th>OrderDate</th>
+                <th>Client Id</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in orders)
+            {
+                <tr>
+                    <td>@order.Id.ToString()</td>
+                    <td>@order._orderName</td>
+                    <td>@order._orderDate.ToString()</td>
+                    <td>@order.ClientId</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+
+    private static HttpClient httpClient { get; set;  } = new HttpClient();
+    private static MapperConfiguration mapperConfiguration { get; } =  new MapperConfiguration(configuration =>{
+        configuration.AddProfile(new TdoMapper());
+    });
+
+
+    private static IMapper mapper = new Mapper(mapperConfiguration);
+
+
+    public static OrderServiceReader reader { get;}= new OrderServiceReader(httpClient,mapper);
+
+
+    public List<Order>? orders = mapper.Map<List<Order>>(reader.GetAll());
+
+ 
+  
+}
